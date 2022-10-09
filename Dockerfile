@@ -8,11 +8,11 @@ WORKDIR /app
 
 COPY . .
 
-WORKDIR /client
+WORKDIR /app/client
 
 RUN yarn && yarn build
 
-WORKDIR ../server
+WORKDIR /app/server
 
 RUN yarn && yarn build
 
