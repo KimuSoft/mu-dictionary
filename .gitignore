@@ -27,3 +27,4 @@ dist-ssr
 node_modules
 convertedWords.json
 words.json
+config.json
