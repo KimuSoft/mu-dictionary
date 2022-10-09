@@ -9,7 +9,7 @@ const Main: React.FC = () => {
 
   const onSearch = async (keyword: string) => {
     if (!keyword) return
-    navigate("/search/" + keyword)
+    navigate("/search/" + encodeURIComponent(keyword))
   }
 
   return (
