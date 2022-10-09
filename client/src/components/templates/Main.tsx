@@ -2,8 +2,16 @@ import React from "react"
 import styled from "styled-components"
 import SearchBar from "../molecules/SearchBar"
 import Header from "../molecules/Header"
+import { useNavigate } from "react-router-dom"
 
 const Main: React.FC = () => {
+  const navigate = useNavigate()
+
+  const onSearch = async (keyword: string) => {
+    if (!keyword) return
+    navigate("/search/" + keyword)
+  }
+
   return (
     <MainStyle>
       <Header />
@@ -12,7 +20,9 @@ const Main: React.FC = () => {
           <Title>μDictionary</Title>
           <Slogan>우리만의 조금 특별한 한국어 사전</Slogan>
         </Logo>
-        <SearchBar />
+        <SearchBox>
+          <SearchBar onSubmit={onSearch} />
+        </SearchBox>
       </Body>
     </MainStyle>
   )
@@ -31,8 +41,20 @@ const Body = styled.div`
   align-items: center;
   justify-content: center;
 
+  padding-left: 30px;
+  padding-right: 30px;
   padding-bottom: 100px;
   gap: 50px;
+`
+
+const SearchBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 700px;
+  max-width: 100%;
 `
 
 const Logo = styled.div`

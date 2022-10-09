@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Tag from "../atoms/Tag"
 import Pos from "../atoms/Pos"
-import { Word } from "../../types"
+import { IWord, WordClass } from "../../types"
 
 const MeaningBox = styled.div`
   display: flex;
@@ -17,24 +17,33 @@ const Definition = styled.h3`
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 12px;
+
+  margin: 0;
 `
 
 const SenseNumber = styled.h3`
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 19px;
+
+  width: 25px;
+  margin: 0;
 
   /* tailwind/neutral/300 */
   color: #d4d4d4;
 `
 
-const Meaning: React.FC<{ word: Word }> = ({ word }) => {
+const Meaning: React.FC<{ word: IWord }> = ({ word }) => {
   return (
     <MeaningBox>
-      <SenseNumber>01</SenseNumber>
-      <Pos pos={word.wordClass} />
+      <SenseNumber>
+        {word.number
+          ? word.number < 10
+            ? `0${word.number}`
+            : word.number
+          : "01"}
+      </SenseNumber>
+      {word.wordClass !== WordClass.None ? <Pos pos={word.wordClass} /> : null}
       {word.tags.map((tag) => (
         <Tag tag={tag} />
       ))}

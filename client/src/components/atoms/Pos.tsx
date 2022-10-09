@@ -85,6 +85,12 @@ const getWordClassString = (wordClass: WordClass): string => {
       return "수·관·명"
     case WordClass.PronounDeterminer:
       return "대·관"
+    case WordClass.Phrase:
+      return "구"
+    case WordClass.Idiom:
+      return "관용구"
+    case WordClass.Proverb:
+      return "속담"
     default:
       return "품사 없음"
   }

@@ -1,6 +1,5 @@
 import React from "react"
 import { BiSearch } from "react-icons/all"
-import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 const SearchBarBorderBox = styled.div`
@@ -11,7 +10,7 @@ const SearchBarBorderBox = styled.div`
   padding: 0 20px;
   gap: 10px;
 
-  width: 700px;
+  width: 100%;
   height: 55px;
 
   /* tailwind/white */
@@ -42,28 +41,29 @@ const SearchButton = styled(BiSearch)`
   }
 `
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<{
+  defaultValue?: string
+  onSubmit?(keyword: string): Promise<void>
+}> = ({ defaultValue, onSubmit }) => {
   const [keyword, setKeyword] = React.useState("")
-  const navigate = useNavigate()
 
-  const onSearch = () => {
-    if (!keyword) return
-    navigate("/search/" + keyword)
+  const submit = () => {
+    console.log(keyword)
+    if (onSubmit) onSubmit(keyword).then()
   }
 
   return (
     <SearchBarBorderBox>
       <SearchInput
+        defaultValue={defaultValue}
         onChange={(e) => {
           setKeyword(e.target.value)
         }}
         onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            onSearch()
-          }
+          if (e.key === "Enter") submit()
         }}
       />
-      <SearchButton onClick={onSearch} />
+      <SearchButton onClick={submit} />
     </SearchBarBorderBox>
   )
 }

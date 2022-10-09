@@ -1,13 +1,18 @@
-export interface Word {
+export interface IWord {
   name: string
-  definition: string
   wordClass: WordClass
+  origin?: string
+  pronunciation?: string
+  definition: string
   tags: string[]
+  reference: string
+
+  number?: number
 }
 
 export interface Homonym {
   name: string
-  words: Word[]
+  words: IWord[]
   origin?: string
   pronunciation?: string
 }
@@ -41,4 +46,7 @@ export enum WordClass {
   NumeralDeterminerNoun, // 수사·관형사·명사
   PronounDeterminer, // 대명사·관형사
   None, // 품사 없음
+  Phrase = 30, // 구
+  Idiom, // 관용구
+  Proverb, // 속담
 }

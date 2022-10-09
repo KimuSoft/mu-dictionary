@@ -31,7 +31,9 @@ const WordHeader: React.FC<{
   return (
     <WordHeaderBox>
       <Word>{word}</Word>
-      {origin ? <Origin>{`(${origin})`}</Origin> : null}
+      {origin && origin !== "undefined" ? (
+        <Origin>{`(${origin})`}</Origin>
+      ) : null}
       {pronunciation ? <Origin>{`[${pronunciation}]`}</Origin> : null}
     </WordHeaderBox>
   )
