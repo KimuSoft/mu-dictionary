@@ -19,6 +19,9 @@ const Definition = styled.h3`
   font-size: 16px;
 
   margin: 0;
+
+  width: 0;
+  flex-grow: 1;
 `
 
 const SenseNumber = styled.h3`
