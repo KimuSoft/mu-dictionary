@@ -2,7 +2,7 @@ version: '3'
 services:
   mdictionary:
     build:
-      context: ..
+      context: .
 #    deploy:
 #      replicas: $TOTAL_REPLICAS
     depends_on:
