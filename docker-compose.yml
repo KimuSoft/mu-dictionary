@@ -1,15 +1,12 @@
 version: '3'
 services:
-  mdict:
+  mdictionary:
     build:
       context: ..
 #    deploy:
 #      replicas: $TOTAL_REPLICAS
     depends_on:
       - db
-#      - redis
-#      - bridge
-#      - proxy
 #    volumes:
 #      - /run/docker.sock:/run/docker.sock:ro
 #      - ../config.deploy.json:/app/config.json:ro
