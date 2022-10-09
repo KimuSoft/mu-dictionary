@@ -15,7 +15,6 @@ services:
 #      - ../config.deploy.json:/app/config.json:ro
 #      - ./logs:/app/logs:rw
     restart: unless-stopped
-    command: yarn prod
 
   db:
     image: mongo
