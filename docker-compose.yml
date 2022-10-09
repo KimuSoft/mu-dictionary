@@ -1,6 +1,8 @@
 version: '3'
 services:
   mdictionary:
+    ports:
+      - "127.0.0.1:8080:8080"
     build:
       context: .
 #    deploy:
@@ -18,7 +20,7 @@ services:
     volumes:
       - mongo:/data/db
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:27018:27017"
     restart: unless-stopped
 
 volumes:
