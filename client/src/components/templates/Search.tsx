@@ -59,15 +59,16 @@ const MiniLogo = styled.div`
   transition: 0.2s ease-in;
 
   &:hover {
-    color: rgba(147, 197, 253, 0.4);
-    font-weight: 500;
+    color: #faca39;
   }
 `
 
 const Results = styled.div`
   width: 900px;
   height: 100%;
-  overflow: scroll;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   max-width: 100%;
 `
@@ -82,7 +83,7 @@ const SearchPage: React.FC = () => {
   const onSearch = async (newKeyword: string) => {
     if (!newKeyword || newKeyword === keyword) return
     setKeyword(newKeyword)
-    navigate("/search/" + newKeyword)
+    navigate("/search/" + encodeURIComponent(newKeyword))
   }
 
   const refresh = async () => {
