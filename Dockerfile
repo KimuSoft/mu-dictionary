@@ -12,7 +12,7 @@ WORKDIR /client
 
 RUN yarn && yarn build
 
-WORKDIR . ./server
+WORKDIR ../server
 
 RUN yarn && yarn build
 
