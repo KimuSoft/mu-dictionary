@@ -1,3 +1,10 @@
+/*
+  우리말샘 JSON 변환 프로그램으로 변환된 JSON 파일을 뮤셔너리에 맞춰 MongoDB에 저장하는 프로그램입니다.
+  https://github.com/KimuSoft/urimalsam-installer/
+
+  ※ server/src/script/urimalsam/words.json
+ */
+
 import { Word, WordGroup, WordUnit } from "./dTypes"
 import { IWord, WordClass } from "../../types"
 import { MongoClient } from "mongodb"
@@ -20,7 +27,7 @@ const convert = async () => {
   for (const word of words) {
     const _word = {
       name: word.word,
-      simpleName: word.word.replace(/[\s-^]/g, ""),
+      simpleName: word.word.replace(/[\s-^ㆍ]/g, ""),
       wordClass: getWordClass(word),
       origin: word.originalLanguage,
       pronunciation: word.pronunciation,

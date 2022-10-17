@@ -3,11 +3,11 @@ import mongoose, { Model } from "mongoose"
 export interface IWord {
   name: string
   wordClass: WordClass
-  origin?: string
-  pronunciation?: string
   definition: string
   tags: string[]
   reference: string
+  origin?: string
+  pronunciation?: string
 }
 
 export interface IWordMethods {}

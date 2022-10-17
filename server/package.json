@@ -18,13 +18,15 @@
     "koa-static": "^5.0.0",
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
+    "node-xlsx": "^0.21.0",
     "tslog": "^3.3.4",
     "zod": "^3.19.1"
   },
   "scripts": {
     "dev": "ts-node src",
     "build": "tsc",
-    "setup": "ts-node src/script/convert",
-    "prod": "node dist"
+    "prod": "node dist",
+    "urimalsam": "ts-node src/script/convert",
+    "food": "ts-node src/script/foodSafetyKorea"
   }
 }
