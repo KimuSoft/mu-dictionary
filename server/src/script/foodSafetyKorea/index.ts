@@ -1,6 +1,9 @@
 /*
   식품영양성분 데이터베이스
   https://various.foodsafetykorea.go.kr/nutrient/
+
+  ※ 가공식품, 음식 데이터베이스 xlsx 파일을 각각 따로 다운받아서 하위 data 폴더에 넣어야 합니다.
+  ※ 수산물은 데이터베이스 형식이 달라 포함하지 않습니다. 농축산물은 사전에 넣기에 적절치 않고 이미 우리말샘에 있으므로 포함하지 않습니다.
  */
 
 import xlsx from "node-xlsx"
@@ -9,19 +12,26 @@ import * as fs from "fs"
 import * as path from "path"
 import checkWordCondition from "../../utils/checkWordCondition"
 
-const fileName = "food_20221018.xlsx"
+const sources = [
+  // "data/통합 식품영양성분DB_농축산물_20221018.xlsx",
+  // "data/통합 식품영양성분DB_수산물_20221018.xlsx",
+  "data/통합 식품영양성분DB_가공식품_20221018.xlsx",
+  "data/통합 식품영양성분DB_음식_20221018.xlsx",
+]
 
 interface Food {
+  foodType: string
   name: string
   isRepresentative: boolean
   corp: string
   foodGroup: string
-  servingSize: number
+  servingSize: string // (float)
   servingSizeUnit: string
   kcal: string // (number)
 }
+const convert = (fileName: string): IWord[] => {
+  let indexCorrection = 0
 
-const convert = (): IWord[] => {
   console.info(`Start to parse: ${fileName}`)
 
   const workSheetsFromFile = xlsx.parse(path.join(__dirname, fileName))
@@ -29,21 +39,37 @@ const convert = (): IWord[] => {
   console.info(`Start to convert: ${fileName}`)
   const workSheet = workSheetsFromFile[0]
 
+  // ~맛 제거
+  // name = name.replace(/(.*)[\s-].+맛/, "$1")
+
   const words: IWord[] = []
-  let index = 0
   for (const row of workSheet.data as string[][]) {
-    index++
-    if (index <= 4) continue
+    if (row[8] === "채취시기") indexCorrection = 1
+    if (isNaN(parseInt(row[0]))) continue
 
     try {
       const foodData: Food = {
+        foodType: row[3],
         isRepresentative: row[4] === "품목대표",
         name: row[5],
-        corp: row[7],
-        foodGroup: row[10],
-        servingSize: parseInt(row[11]),
-        servingSizeUnit: row[12],
-        kcal: row[15],
+        corp: convertCorp(row[7]),
+        foodGroup: row[9 + indexCorrection],
+        servingSize: row[10 + indexCorrection],
+        servingSizeUnit: row[11 + indexCorrection],
+        kcal: row[14 + indexCorrection],
+      }
+
+      if (/.+[\s-].+맛/.test(foodData.name)) {
+        const seriesName = foodData.name.replace(/(.*)[\s-].+맛/, "$1")
+        if (words.find((food) => food.name === seriesName)) continue
+
+        words.push({
+          name: convertName(seriesName),
+          wordClass: WordClass.Noun,
+          definition: convertSeriesDefinition(foodData),
+          tags: ["food"],
+          reference: "foodSafetyKorea",
+        })
       }
 
       const word: IWord = {
@@ -76,11 +102,15 @@ const convertName = (name: string): string => {
   // 반점으로 나뉜 경우
   if (name.includes(",")) name = name.split(",")[0].trim()
 
+  // 기호 삭제
+  name = name.replace(/[!?]/g, "")
+  name = name.replace(/_/g, " ")
+
   // 괄호 먼저 제거
   name = name.replace(/'\([^)]*\)|\[[^\]]*]|<[^>]*>'/g, "")
 
   // ~맛 제거
-  name = name.replace(/(.*)[\s-].+맛/, "$1")
+  // name = name.replace(/(.*)[\s-].+맛/, "$1")
 
   // 확실한 영어 표현 제거
   // 장문
@@ -133,12 +163,25 @@ const convertName = (name: string): string => {
 
 const convertDefinition = (food: Food): string => {
   const company = !food.isRepresentative ? food.corp + "에서 출시한 " : ""
-  return `${company}${food.foodGroup} 음식, 1회 제공량은 ${food.servingSize}${food.servingSizeUnit}이며, 열량은 ${food.kcal}kcal이다.`
+  return `${company}${food.foodGroup} ${food.foodType}, 1회 제공량은 ${food.servingSize}${food.servingSizeUnit}이며, 열량은 ${food.kcal}kcal이다.`
 }
 
-const result = convert()
+const convertSeriesDefinition = (food: Food): string => {
+  const company = !food.isRepresentative ? food.corp + "에서 출시한 " : ""
+  return `${company}${food.foodGroup} ${food.foodType}`
+}
+
+const convertCorp = (corp: string): string => {
+  return corp.replace(/㈜|\(주\)/g, "주식회사 ").replace(/\s\S+공장$/, "")
+}
+
+const results = []
+for (const fileName of sources) {
+  results.push(...convert(fileName))
+}
+
 // save json
 fs.writeFileSync(
-  path.join(__dirname, "foodSafetyKorea.json"),
-  JSON.stringify(result, null, 2)
+  path.join(__dirname, "data/foodSafetyKorea.json"),
+  JSON.stringify(results, null, 2)
 )
