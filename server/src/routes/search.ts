@@ -22,7 +22,7 @@ router.post("/", async (ctx) => {
     .collection("words")
     .find({
       simpleName: {
-        $regex: new RegExp(`^${keyword.replace(/\s/g, "")}`, "i"),
+        $regex: new RegExp(`^${keyword.replace(/[\s-^ㆍ]/g, "")}`, "i"),
       },
     })
     .limit(100)
