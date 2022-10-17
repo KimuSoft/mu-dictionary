@@ -2,6 +2,7 @@ import mongoose, { Model } from "mongoose"
 
 export interface IWord {
   name: string
+  simpleName: string
   wordClass: WordClass
   definition: string
   tags: string[]

@@ -9,6 +9,7 @@ import { Word, WordGroup, WordUnit } from "./dTypes"
 import { IWord, WordClass } from "../../types"
 import { MongoClient } from "mongodb"
 import { config } from "../../config"
+import getSimpleName from "../../utils/getSimpleName"
 
 const words = require("./words.json") as Word[]
 const mongoClient = new MongoClient(config.db)
@@ -27,7 +28,7 @@ const convert = async () => {
   for (const word of words) {
     const _word = {
       name: word.word,
-      simpleName: word.word.replace(/[\s-^ㆍ]/g, ""),
+      simpleName: getSimpleName(word.word),
       wordClass: getWordClass(word),
       origin: word.originalLanguage,
       pronunciation: word.pronunciation,

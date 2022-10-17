@@ -11,6 +11,7 @@ import { IWord, WordClass } from "../../types"
 import * as fs from "fs"
 import * as path from "path"
 import checkWordCondition from "../../utils/checkWordCondition"
+import getSimpleName from "../../utils/getSimpleName"
 
 const sources = [
   // "data/통합 식품영양성분DB_농축산물_20221018.xlsx",
@@ -65,6 +66,7 @@ const convert = (fileName: string): IWord[] => {
 
         words.push({
           name: convertName(seriesName),
+          simpleName: getSimpleName(seriesName),
           wordClass: WordClass.Noun,
           definition: convertSeriesDefinition(foodData),
           tags: ["food"],
@@ -74,6 +76,7 @@ const convert = (fileName: string): IWord[] => {
 
       const word: IWord = {
         name: convertName(foodData.name),
+        simpleName: getSimpleName(foodData.name),
         wordClass: WordClass.Noun,
         definition: convertDefinition(foodData),
         tags: ["food"],
