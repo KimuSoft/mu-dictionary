@@ -17,24 +17,13 @@ router.post("/", async (ctx) => {
   }
   const { keyword } = result.data
 
-  console.log(
-    await mongoClient
-      .db()
-      .collection("words")
-      .find({
-        simpleName: {
-          $regex: new RegExp(`^${keyword.replace(/\s/g, "")}`, "i"),
-        },
-      })
-      .limit(100)
-      .toArray()
-  )
-
-  ctx.body = await mongoClient
+  await mongoClient
     .db()
     .collection("words")
     .find({
-      name: { $regex: new RegExp(`^${keyword}`, "i") },
+      simpleName: {
+        $regex: new RegExp(`^${keyword.replace(/\s/g, "")}`, "i"),
+      },
     })
     .limit(100)
     .toArray()
