@@ -17,16 +17,22 @@ router.post("/", async (ctx) => {
   }
   const { keyword } = result.data
 
-  await mongoClient
-    .db()
-    .collection("words")
-    .find({
-      simpleName: {
-        $regex: new RegExp(`^${keyword.replace(/[\s-^ㆍ]/g, "")}`, "i"),
-      },
-    })
-    .limit(100)
-    .toArray()
+  try {
+    ctx.body = await mongoClient
+      .db()
+      .collection("words")
+      .find({
+        simpleName: {
+          $regex: new RegExp(`^${keyword.replace(/\s/g, "")}`, "i"),
+        },
+      })
+      .limit(100)
+      .toArray()
+  } catch (error) {
+    ctx.body = {
+      error: error,
+    }
+  }
 })
 
 export default router
