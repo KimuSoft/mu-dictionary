@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { ImSpoonKnife } from "react-icons/all"
+import { BsFillPersonFill, FaSubway, ImSpoonKnife } from "react-icons/all"
 
 const TagBox = styled.div<{ color: string }>`
   display: flex;
@@ -32,12 +32,31 @@ interface Tag {
 const Tag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
     switch (tag) {
+      // 우리말샘 주제
+      case "인명":
+        // tailwind/purple/200
+        return {
+          name: "인명",
+          icon: <BsFillPersonFill color="#000" />,
+          color: "#e9d5ff",
+        }
+
+      // 그 외 커스텀 태그
       case "food":
         // tailwind/lime/400
         return {
           name: "음식",
           icon: <ImSpoonKnife color="#000" />,
           color: "#a3e635",
+        }
+      //
+
+      case "교통+":
+        return {
+          name: "교통+",
+          icon: <FaSubway color="#000" />,
+          // tailwind/cyan/400
+          color: "#22d3ee",
         }
 
       default:
