@@ -1,6 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import { BsFillPersonFill, FaSubway, ImSpoonKnife } from "react-icons/all"
+import {
+  BsFillPersonFill,
+  FaSubway,
+  ImSpoonKnife,
+  MdMovie,
+} from "react-icons/all"
 
 const TagBox = styled.div<{ color: string }>`
   display: flex;
@@ -56,6 +61,14 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: <FaSubway color="#000" />,
           // tailwind/cyan/400
           color: "#22d3ee",
+        }
+
+      case "movie":
+        return {
+          name: "영화",
+          icon: <MdMovie color="#000" />,
+          // tailwind/Emerald/300
+          color: "#6ee7b7",
         }
 
       default:
