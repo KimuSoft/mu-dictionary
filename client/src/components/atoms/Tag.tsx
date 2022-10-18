@@ -49,9 +49,8 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: <ImSpoonKnife color="#000" />,
           color: "#a3e635",
         }
-      //
 
-      case "교통+":
+      case "traffic":
         return {
           name: "교통+",
           icon: <FaSubway color="#000" />,
