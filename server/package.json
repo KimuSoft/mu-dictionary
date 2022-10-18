@@ -27,6 +27,7 @@
     "build": "tsc",
     "prod": "node dist",
     "urimalsam": "ts-node src/script/convert",
-    "food": "ts-node src/script/foodSafetyKorea"
+    "food": "ts-node src/script/foodSafetyKorea",
+    "kric": "ts-node src/script/kric"
   }
 }
