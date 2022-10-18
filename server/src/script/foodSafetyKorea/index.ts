@@ -64,6 +64,11 @@ const convert = (fileName: string): IWord[] => {
         const seriesName = foodData.name.replace(/(.*)[\s-].+맛/, "$1")
         if (words.find((food) => food.name === seriesName)) continue
 
+        if (!checkWordCondition(convertName(seriesName))) {
+          console.warn(`Skip word: ${convertName(seriesName)}`)
+          continue
+        }
+
         words.push({
           name: convertName(seriesName),
           simpleName: getSimpleName(convertName(seriesName)),
@@ -85,6 +90,7 @@ const convert = (fileName: string): IWord[] => {
 
       if (!checkWordCondition(word.name)) {
         console.warn(`Skip word: ${word.name}`)
+        continue
       }
 
       // for (const f in field) {
