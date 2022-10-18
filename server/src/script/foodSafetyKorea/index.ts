@@ -60,13 +60,13 @@ const convert = (fileName: string): IWord[] => {
         kcal: row[14 + indexCorrection],
       }
 
-      if (/.+[\s-].+맛/.test(foodData.name)) {
+      if (/.+[\s-].+맛$/.test(foodData.name)) {
         const seriesName = foodData.name.replace(/(.*)[\s-].+맛/, "$1")
         if (words.find((food) => food.name === seriesName)) continue
 
         words.push({
           name: convertName(seriesName),
-          simpleName: getSimpleName(seriesName),
+          simpleName: getSimpleName(convertName(seriesName)),
           wordClass: WordClass.Noun,
           definition: convertSeriesDefinition(foodData),
           tags: ["food"],
@@ -76,14 +76,16 @@ const convert = (fileName: string): IWord[] => {
 
       const word: IWord = {
         name: convertName(foodData.name),
-        simpleName: getSimpleName(foodData.name),
+        simpleName: getSimpleName(convertName(foodData.name)),
         wordClass: WordClass.Noun,
         definition: convertDefinition(foodData),
         tags: ["food"],
         reference: "foodSafetyKorea",
       }
 
-      if (!checkWordCondition(word.name)) continue
+      if (!checkWordCondition(word.name)) {
+        console.warn(`Skip word: ${word.name}`)
+      }
 
       // for (const f in field) {
       //   if (field[f]) continue
@@ -106,11 +108,15 @@ const convertName = (name: string): string => {
   if (name.includes(",")) name = name.split(",")[0].trim()
 
   // 기호 삭제
-  name = name.replace(/[!?]/g, "")
-  name = name.replace(/_/g, " ")
+  name = name.replace(/[!?.~®]/g, "")
+  name = name.replace(/[_\-+]/g, " ")
+
+  // 붙여쓰기를 대충 허용하니까
+  name = name.replace(/\s/g, "^")
+  name = name.replace(/\^+/g, "^")
 
   // 괄호 먼저 제거
-  name = name.replace(/'\([^)]*\)|\[[^\]]*]|<[^>]*>'/g, "")
+  name = name.replace(/\([^)]*\)|\[[^\]]*]|<[^>]*>/g, "")
 
   // ~맛 제거
   // name = name.replace(/(.*)[\s-].+맛/, "$1")
@@ -125,7 +131,13 @@ const convertName = (name: string): string => {
   name = name.replace(/SET/gi, "세트")
   name = name.replace(/NEW/gi, "뉴")
   name = name.replace(/HOT/gi, "핫")
+  name = name.replace(/COOK/gi, "쿡")
+  name = name.replace(/eat/gi, "잇")
+  name = name.replace(/eats/gi, "잇츠")
+  name = name.replace(/DIY/gi, "디아이와이")
+  name = name.replace(/OK/gi, "오케이")
   name = name.replace(/THE/gi, "더")
+  name = name.replace(/BLT/gi, "비엘티")
   name = name.replace(/REAL/gi, "리얼")
   name = name.replace(/BASE/gi, "베이스")
   name = name.replace(/ABC/gi, "에이비시")
@@ -138,26 +150,32 @@ const convertName = (name: string): string => {
   name = name.replace(/KFC/gi, "케이에프씨")
   name = name.replace(/비타민C/gi, "비타민시")
   name = name.replace(/MILK/gi, "밀크")
+  name = name.replace(/BBQ/gi, "비비큐")
   name = name.replace(/SINCE/gi, "신스")
   name = name.replace(/ICED?/gi, "아이스")
   name = name.replace(/IT'?S/gi, "이츠")
 
   // 두 글자 이하
   name = name.replace(/UV/gi, "유브이")
+  name = name.replace(/cm/gi, "센티미터")
+  name = name.replace(/mm/gi, "밀리미터")
   name = name.replace(/GT/gi, "지티")
   name = name.replace(/CJ/gi, "씨제이")
   name = name.replace(/CU/gi, "씨유")
+  name = name.replace(/IN/gi, "인")
   name = name.replace(/美/gi, "미")
-  name = name.replace(/辛/gi, "신")
+  name = name.replace(/[辛新]/gi, "신")
+  name = name.replace(/秀/gi, "수")
   name = name.replace(/&/gi, "앤드")
+  name = name.replace(/[’']s/gi, "스")
+  name = name.replace(/[’']/gi, "")
+  name = name.replace(/X/gi, "엑스")
+  name = name.replace(/%/gi, "퍼센트")
 
   // ~100g과 같은 용량 표현 제거
   name = name.replace(/[0-9]+G$/gi, "")
   name = name.replace(/[0-9]+KG$/gi, "")
   name = name.replace(/(TALL|VENTI|GRANDE|SMALL|LARGE|MEDIUM)/gi, "")
-
-  // 붙여쓰기를 대충 허용하니까
-  name = name.replace(/\s/g, "^")
 
   name = name.replace(/[MLRVJSGXABCD]$/gi, "")
 
