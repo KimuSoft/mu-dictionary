@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import {
+  BiBuildings,
   BsFillPersonFill,
   FaSubway,
   ImSpoonKnife,
@@ -69,6 +70,14 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: <MdMovie color="#000" />,
           // tailwind/Emerald/300
           color: "#6ee7b7",
+        }
+
+      case "corp":
+        return {
+          name: "기업",
+          icon: <BiBuildings color="#000" />,
+          // tailwind/orange/400
+          color: "#fb923c",
         }
 
       default:
