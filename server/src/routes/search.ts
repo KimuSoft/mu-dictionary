@@ -30,12 +30,13 @@ router.post("/", async (ctx) => {
           },
         },
         { $addFields: { simpleNameLength: { $strLenCP: "$simpleName" } } },
-        { $sort: { simpleNameLength: 0 } },
+        { $sort: { simpleNameLength: 1 } },
         { $project: { simpleNameLength: 0 } },
         { $limit: 100 },
       ])
       .toArray()
   } catch (error) {
+    console.error(error)
     ctx.body = {
       error: error,
     }
