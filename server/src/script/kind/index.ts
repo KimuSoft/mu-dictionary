@@ -114,7 +114,7 @@ const convertName = (name: string) => {
 const convertDefinition = (corp: Corp) => {
   return `${corp.listingDate.getFullYear()}년 ${corp.listingDate.getMonth()}월 ${corp.listingDate.getDate()}일 상장한 대한민국의 ${
     corp.industry
-  } 기업. 대표자는 ${corp.ceo}이며, ${corp.region}에 본사가 위치하였다.`
+  } 기업. 대표자는 ${corp.ceo}이며, 본사는 ${corp.region}에 위치한다.`
 }
 
 fs.writeFileSync(
