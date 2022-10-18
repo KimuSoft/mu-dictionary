@@ -72,7 +72,10 @@ const convert = (fileName: string): IWord[] => {
         })
       }
 
-      if (!checkWordCondition(station.name)) continue
+      if (!checkWordCondition(station.name)) {
+        console.warn(`Invalid word: ${station.name}`)
+        continue
+      }
       words.push({
         name: station.name,
         simpleName: getSimpleName(station.name),
@@ -94,9 +97,9 @@ const convert = (fileName: string): IWord[] => {
 
 const convertName = (name: string) => {
   name = name
-    .replace(/\(.*\)/g, "")
     .replace(/\s/g, "")
-    .replace(/\.·/, "ㆍ")
+    .replace(/\(.*\)/g, "")
+    .replace(/[.·]/g, "ㆍ")
   if (!name.endsWith("역")) name += "역"
 
   return name
@@ -104,6 +107,7 @@ const convertName = (name: string) => {
 
 const convertOrigin = (chineseName: string) => {
   if (/^[ㄱ-ㅎㅏ-ㅣ가-힣\s]+$/.test(chineseName)) return
+  if (!chineseName || chineseName === "-") return
 
   let origin = chineseName.replace(/[（(](.+)[)）]/g, "").replace(/\s/g, "")
   if (!origin.endsWith("驛")) origin += "驛"
