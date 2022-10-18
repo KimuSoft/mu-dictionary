@@ -11,6 +11,7 @@ import path from "path"
 import fs from "fs"
 import checkWordCondition from "../../utils/checkWordCondition"
 import getSimpleName from "../../utils/getSimpleName"
+import alphabetToHangul from "../../utils/alphabetToHangul"
 
 const fileName = "전체_도시철도역사정보_20221007.xlsx"
 
@@ -65,9 +66,11 @@ const convert = (fileName: string): IWord[] => {
           wordClass: WordClass.Noun,
           definition: convertSubNameDefinition(station),
           tags: ["traffic"],
-          origin: convertOrigin(
-            station.chineseName.replace(/\((.+)\)/, "$1").trim()
-          ),
+          origin: /\((.+)\)/.test(station.chineseName)
+            ? convertOrigin(
+                station.chineseName.replace(/\((.+)\)/, "$1").trim()
+              )
+            : undefined,
           reference: "kric",
         })
       }
@@ -76,6 +79,7 @@ const convert = (fileName: string): IWord[] => {
         console.warn(`Invalid word: ${station.name}`)
         continue
       }
+
       words.push({
         name: station.name,
         simpleName: getSimpleName(station.name),
@@ -100,6 +104,8 @@ const convertName = (name: string) => {
     .replace(/\s/g, "")
     .replace(/\(.*\)/g, "")
     .replace(/[.·]/g, "ㆍ")
+
+  name = alphabetToHangul(name)
   if (!name.endsWith("역")) name += "역"
 
   return name

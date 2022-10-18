@@ -11,6 +11,7 @@ import path from "path"
 import fs from "fs"
 import checkWordCondition from "../../utils/checkWordCondition"
 import getSimpleName from "../../utils/getSimpleName"
+import alphabetToHangul from "../../utils/alphabetToHangul"
 
 const fileName = "상장법인목록.xlsx"
 
@@ -81,32 +82,8 @@ const convertName = (name: string) => {
     .replace(/&/gi, "^앤드^")
     .replace(/CJ/gi, "씨제이")
     .replace(/S-Oil/gi, "에쓰오일")
-    .replace(/a/gi, "에이")
-    .replace(/b/gi, "비")
-    .replace(/c/gi, "시")
-    .replace(/d/gi, "디")
-    .replace(/e/gi, "이")
-    .replace(/f/gi, "에프")
-    .replace(/g/gi, "지")
-    .replace(/h/gi, "에이치")
-    .replace(/i/gi, "아이")
-    .replace(/j/gi, "제이")
-    .replace(/k/gi, "케이")
-    .replace(/l/gi, "엘")
-    .replace(/m/gi, "엠")
-    .replace(/n/gi, "엔")
-    .replace(/o/gi, "오")
-    .replace(/p/gi, "피")
-    .replace(/q/gi, "큐")
-    .replace(/r/gi, "알")
-    .replace(/s/gi, "에스")
-    .replace(/t/gi, "티")
-    .replace(/u/gi, "유")
-    .replace(/v/gi, "브이")
-    .replace(/w/gi, "더블유")
-    .replace(/x/gi, "엑스")
-    .replace(/y/gi, "와이")
-    .replace(/z/gi, "지")
+
+  name = alphabetToHangul(name)
 
   return name
 }
