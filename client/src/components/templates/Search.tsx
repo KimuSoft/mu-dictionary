@@ -46,7 +46,7 @@ const Top = styled.div`
 
 const MiniLogo = styled.div`
   font-weight: 700;
-  font-size: 64px;
+  font-size: 54px;
   line-height: 77px;
 
   cursor: pointer;

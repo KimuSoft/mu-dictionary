@@ -44,7 +44,7 @@ const Body = styled.div`
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 100px;
-  gap: 50px;
+  gap: 35px;
 `
 
 const SearchBox = styled.div`

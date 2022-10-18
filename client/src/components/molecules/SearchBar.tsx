@@ -11,7 +11,7 @@ const SearchBarBorderBox = styled.div`
   gap: 10px;
 
   width: 100%;
-  height: 55px;
+  height: 48px;
 
   /* tailwind/white */
   border: 2px solid #ffffff;
@@ -31,8 +31,8 @@ const SearchInput = styled.input`
 `
 
 const SearchButton = styled(BiSearch)`
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   transition: all 0.2s ease-out;
   cursor: pointer;
 
