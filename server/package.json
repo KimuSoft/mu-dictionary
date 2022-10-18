@@ -29,6 +29,7 @@
     "urimalsam": "ts-node src/script/convert",
     "food": "ts-node src/script/foodSafetyKorea",
     "kric": "ts-node src/script/kric",
-    "kobis": "ts-node src/script/kobis"
+    "kobis": "ts-node src/script/kobis",
+    "kind": "ts-node src/script/kind"
   }
 }
