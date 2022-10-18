@@ -5,10 +5,12 @@
   ※ xlsx 파일을 다운받아주세요
  */
 
-import { IWord } from "../../types"
+import { IWord, WordClass } from "../../types"
 import xlsx from "node-xlsx"
 import path from "path"
 import fs from "fs"
+import checkWordCondition from "../../utils/checkWordCondition"
+import getSimpleName from "../../utils/getSimpleName"
 
 const fileName = "전체_도시철도역사정보_20221007.xlsx"
 
@@ -38,40 +40,52 @@ const convert = (fileName: string): IWord[] => {
     index++
     if (index === 1) continue
 
-    let name = row[1]
-
-    const subNameReg = /\((.+)\)/
-    if (subNameReg.test(row[1]))
-      try {
-        // 부역명 검사를 해야 함!
-        /*
-      명 덕
-(2·28민주운동기념회관)
-       */
-        const station: Station = {
-          code: row[0],
-          name: convertName(row[1]),
-          lineNumber: row[2],
-          lineName: row[3],
-          englishName: row[4],
-          chineseName: row[5],
-          transferStation: row[6],
-          operatingAgency: row[11],
-          address: row[12],
-        }
-        // if (!checkWordCondition(word.name)) continue
-        // words.push({
-        //   name: convertName(seriesName),
-        //   simpleName: getSimpleName(seriesName),
-        //   wordClass: WordClass.Noun,
-        //   definition: convertSeriesDefinition(foodData),
-        //   tags: ["food"],
-        //   reference: "foodSafetyKorea",
-        // })
-      } catch (error) {
-        console.error(error)
-        console.warn(`Failed to parse: ${row}`)
+    try {
+      const station: Station = {
+        code: row[0],
+        name: convertName(row[1]),
+        lineNumber: row[2],
+        lineName: row[3],
+        englishName: row[4],
+        chineseName: row[5],
+        transferStation: row[6],
+        operatingAgency: row[11],
+        address: row[12],
       }
+
+      // 노선명 데이터
+
+      // 부역명 검사를 해야 함!
+      const subNameReg = /\((.+)\)/
+      if (subNameReg.test(row[1])) {
+        const subName = convertName(row[1].match(subNameReg)![1])
+        words.push({
+          name: subName,
+          simpleName: getSimpleName(subName),
+          wordClass: WordClass.Noun,
+          definition: convertSubNameDefinition(station),
+          tags: ["traffic"],
+          origin: convertOrigin(
+            station.chineseName.replace(/\((.+)\)/, "$1").trim()
+          ),
+          reference: "kric",
+        })
+      }
+
+      if (!checkWordCondition(station.name)) continue
+      words.push({
+        name: station.name,
+        simpleName: getSimpleName(station.name),
+        wordClass: WordClass.Noun,
+        definition: convertDefinition(station),
+        tags: ["traffic"],
+        origin: convertOrigin(station.chineseName),
+        reference: "kric",
+      })
+    } catch (error) {
+      console.error(error)
+      console.warn(`Failed to parse: ${row}`)
+    }
   }
 
   console.info(`Finish to convert: ${fileName}`)
@@ -79,16 +93,37 @@ const convert = (fileName: string): IWord[] => {
 }
 
 const convertName = (name: string) => {
-  name = name.replace(/\(.*\)/g, "").replace(/\s/g, "")
+  name = name
+    .replace(/\(.*\)/g, "")
+    .replace(/\s/g, "")
+    .replace(/\.·/, "ㆍ")
   if (!name.endsWith("역")) name += "역"
 
   return name
 }
 
-const result = convert(fileName)
+const convertOrigin = (chineseName: string) => {
+  if (/^[ㄱ-ㅎㅏ-ㅣ가-힣\s]+$/.test(chineseName)) return
 
-// save json
+  let origin = chineseName.replace(/[（(](.+)[)）]/g, "").replace(/\s/g, "")
+  if (!origin.endsWith("驛")) origin += "驛"
+
+  return origin
+}
+
+const convertDefinition = (station: Station) => {
+  return `${station.address}에 위치한 ${station.lineName}의 ${station.transferStation}. 역번은 ${station.code}이며, ${station.operatingAgency}에서 운영한다.`
+}
+
+const convertSubNameDefinition = (station: Station) => {
+  return `${station.lineName} ${station.name}의 부역명.`
+}
+
+const getLineDefinition = (station: Station) => {
+  return `대한민국의 철도 노선. 노선 번호는 ${station.lineName}이다.`
+}
+
 fs.writeFileSync(
   path.join(__dirname, "result.json"),
-  JSON.stringify(result, null, 2)
+  JSON.stringify(convert(fileName), null, 2)
 )

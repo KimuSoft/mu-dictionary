@@ -185,6 +185,6 @@ for (const fileName of sources) {
 
 // save json
 fs.writeFileSync(
-  path.join(__dirname, "data/foodSafetyKorea.json"),
+  path.join(__dirname, "result.json"),
   JSON.stringify(results, null, 2)
 )
