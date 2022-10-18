@@ -3,6 +3,7 @@
   https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do
 
   ※ xlsx 파일을 다운받아주세요
+  ※ 에로 영화의 경우 사전에 수록하지 않습니다.
  */
 
 import { IWord, WordClass } from "../../types"
@@ -90,6 +91,7 @@ const convertName = (name: string) => {
     .replace(/go/gi, "고")
     .replace(/the/gi, "더")
     .replace(/\^+/g, "^")
+    .replace(/^\^|\^$/g, "")
 
   return name
 }
@@ -101,7 +103,9 @@ const convertDefinition = (movie: Movie) => {
   )}의 ${movie.genre.replace(/[.,\/]/g, "ㆍ")} ${movie.shortOrLong}영화. ${
     movie.director || movie.production
       ? `${movie.director ? `${movie.director} 감독` : ""}${
-          movie.production ? `, 제작사는 ${movie.production}이다.` : " 제작."
+          movie.production
+            ? `, 제작사는 ${movie.production.replace(/,/g, ", ")}이다.`
+            : " 제작."
         }`
       : ""
   }`
