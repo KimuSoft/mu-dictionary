@@ -15,18 +15,25 @@ router.post("/", async (ctx) => {
     console.error(result.error)
     return (ctx.body = { error: result.error })
   }
-  const { keyword } = result.data
+  const keyword = result.data.keyword.replace(/\s/g, "")
 
   try {
     ctx.body = await mongoClient
       .db()
       .collection("words")
-      .find({
-        simpleName: {
-          $regex: new RegExp(`^${keyword.replace(/\s/g, "")}`, "i"),
+      .aggregate([
+        {
+          $match: {
+            simpleName: {
+              $regex: new RegExp(keyword, "i"),
+            },
+          },
         },
-      })
-      .limit(100)
+        { $addFields: { simpleNameLength: { $strLenCP: "$simpleName" } } },
+        { $sort: { simpleNameLength: 0 } },
+        { $project: { simpleNameLength: 0 } },
+        { $limit: 100 },
+      ])
       .toArray()
   } catch (error) {
     ctx.body = {
