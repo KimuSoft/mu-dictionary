@@ -28,6 +28,7 @@
     "prod": "node dist",
     "urimalsam": "ts-node src/script/convert",
     "food": "ts-node src/script/foodSafetyKorea",
-    "kric": "ts-node src/script/kric"
+    "kric": "ts-node src/script/kric",
+    "kobis": "ts-node src/script/kobis"
   }
 }
