@@ -11,7 +11,6 @@ import path from "path"
 import fs from "fs"
 import checkWordCondition from "../../utils/checkWordCondition"
 import getSimpleName from "../../utils/getSimpleName"
-import { parseString } from "xml2js"
 
 const fileName = "상장법인목록.xlsx"
 
