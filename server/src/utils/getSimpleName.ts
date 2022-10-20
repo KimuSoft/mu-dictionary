@@ -1,3 +1,3 @@
 export default (name: string) => {
-  return name.replace(/[\s-^ㆍ]/g, "")
+  return name.replace(/[\s-^ㆍ]/g, "").replace(/(\(.*\))/g, "")
 }
