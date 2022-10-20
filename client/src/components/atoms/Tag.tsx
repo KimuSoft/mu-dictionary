@@ -3,7 +3,10 @@ import styled from "styled-components"
 import {
   BiBuildings,
   BsFillPersonFill,
+  FaGamepad,
   FaSubway,
+  FiBook,
+  GrMonitor,
   ImSpoonKnife,
   MdMovie,
 } from "react-icons/all"
@@ -47,7 +50,61 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "#e9d5ff",
         }
 
+      case "책명":
+        // tailwind/Emerald/200
+        return {
+          name: "책명",
+          icon: <FiBook color="#000" />,
+          color: "#a7f3d0",
+        }
+
       // 그 외 커스텀 태그
+      case "person":
+        // tailwind/purple/400
+        return {
+          name: "인명+",
+          icon: <BsFillPersonFill color="#000" />,
+          color: "#c084fc",
+        }
+
+      case "game":
+        // tailwind/violet/400
+        return {
+          name: "게임",
+          icon: <FaGamepad color="#000" />,
+          color: "#c084fc",
+        }
+
+      case "ani":
+        // tailwind/Amber/300
+        return {
+          name: "애니메이션",
+          color: "#fcd34d",
+        }
+
+      case "comic":
+        // tailwind/Red/400
+        return {
+          name: "만화",
+          color: "#f87171",
+        }
+
+      case "tv":
+        // tailwind/violet/400
+        return {
+          name: "방송",
+          icon: <GrMonitor color="#000" />,
+          color: "#f472b6",
+        }
+
+      case "book":
+        // tailwind/Emerald/400
+        return {
+          name: "책명+",
+          icon: <FiBook color="#000" />,
+          color: "#34d399",
+        }
+
       case "food":
         // tailwind/lime/400
         return {
