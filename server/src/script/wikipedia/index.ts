@@ -40,7 +40,7 @@ const convert = async () => {
       wordClass: WordClass.Noun,
       definition: convertDefinition(doc.definition),
       tags,
-      reference: "wikipeida",
+      reference: "wikipedia",
     } as IWord
 
     // console.log(name, tags)

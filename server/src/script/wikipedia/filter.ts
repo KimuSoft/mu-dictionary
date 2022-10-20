@@ -30,6 +30,22 @@ export const tagData = [
     code: "person",
     regex: /년 출생$/i,
   },
+  {
+    // 기업 (외국계)
+    code: "corp",
+    regex: /기업$/i,
+  },
+  {
+    // 정보통신+
+    code: "computer",
+    regex:
+      /(웹사이트|포털 사이트|프로그래밍 언어|웹 애플리케이션|소프트웨어|라이브러리)$/i,
+  },
+  {
+    // 픽션
+    code: "fiction",
+    regex: /가공의|의 등장인물$|가공인물|세대 포켓몬$/i,
+  },
 ]
 
 export interface WikiDoc {

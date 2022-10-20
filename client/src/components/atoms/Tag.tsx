@@ -4,6 +4,8 @@ import {
   BiBuildings,
   BsFillPersonFill,
   FaGamepad,
+  FaInternetExplorer,
+  FaMagic,
   FaSubway,
   FiBook,
   GrMonitor,
@@ -56,6 +58,30 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
           name: "책명",
           icon: <FiBook color="#000" />,
           color: "#a7f3d0",
+        }
+
+      case "정보·통신":
+        // tailwind/Gray/400
+        return {
+          name: "정보·통신",
+          icon: <FaInternetExplorer color="#000" />,
+          color: "#9ca3af",
+        }
+
+      case "computer":
+        // tailwind/Gray/400
+        return {
+          name: "정보·통신+",
+          icon: <FaInternetExplorer color="#fff" />,
+          color: "#4b5563",
+        }
+
+      case "fiction":
+        // tailwind/Gray/400
+        return {
+          name: "픽션",
+          icon: <FaMagic color="#fff" />,
+          color: "#6366f1",
         }
 
       // 그 외 커스텀 태그
