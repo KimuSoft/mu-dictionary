@@ -1,46 +1,19 @@
 import React from "react"
-import styled from "styled-components"
+import { BsFillPersonFill } from "react-icons/bs"
+import { FiBook } from "react-icons/fi"
 import {
-  BiBuildings,
-  BsFillPersonFill,
   FaGamepad,
   FaInternetExplorer,
   FaMagic,
   FaSubway,
-  FiBook,
-  GrMonitor,
-  ImSpoonKnife,
-  MdMovie,
-} from "react-icons/all"
+} from "react-icons/fa"
+import { GrMonitor } from "react-icons/gr"
+import { ImSpoonKnife } from "react-icons/im"
+import { MdMovie } from "react-icons/md"
+import { BiBuildings } from "react-icons/bi"
+import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react"
 
-const TagBox = styled.div<{ color: string }>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-
-  background: ${(props) => props.color};
-  border-radius: 10px;
-`
-
-const TagLabel = styled.h1`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-
-  /* tailwind/black */
-  color: #000000;
-`
-
-interface Tag {
-  name: string
-  icon?: any
-}
-
-const Tag: React.FC<{ tag: string }> = ({ tag }) => {
+const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
     switch (tag) {
       // 우리말샘 주제
@@ -48,7 +21,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/purple/200
         return {
           name: "인명",
-          icon: <BsFillPersonFill color="#000" />,
+          icon: BsFillPersonFill,
           color: "#e9d5ff",
         }
 
@@ -56,7 +29,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/Emerald/200
         return {
           name: "책명",
-          icon: <FiBook color="#000" />,
+          icon: FiBook,
           color: "#a7f3d0",
         }
 
@@ -64,7 +37,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/Gray/400
         return {
           name: "정보·통신",
-          icon: <FaInternetExplorer color="#000" />,
+          icon: FaInternetExplorer,
           color: "#9ca3af",
         }
 
@@ -72,7 +45,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/Gray/400
         return {
           name: "정보·통신+",
-          icon: <FaInternetExplorer color="#fff" />,
+          icon: FaInternetExplorer,
           color: "#4b5563",
         }
 
@@ -80,7 +53,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/Gray/400
         return {
           name: "픽션",
-          icon: <FaMagic color="#fff" />,
+          icon: FaMagic,
           color: "#6366f1",
         }
 
@@ -89,7 +62,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/purple/400
         return {
           name: "인명+",
-          icon: <BsFillPersonFill color="#000" />,
+          icon: BsFillPersonFill,
           color: "#c084fc",
         }
 
@@ -97,7 +70,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/violet/400
         return {
           name: "게임",
-          icon: <FaGamepad color="#000" />,
+          icon: FaGamepad,
           color: "#c084fc",
         }
 
@@ -119,7 +92,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/violet/400
         return {
           name: "방송",
-          icon: <GrMonitor color="#000" />,
+          icon: GrMonitor,
           color: "#f472b6",
         }
 
@@ -127,7 +100,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/Emerald/400
         return {
           name: "책명+",
-          icon: <FiBook color="#000" />,
+          icon: FiBook,
           color: "#34d399",
         }
 
@@ -135,14 +108,14 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         // tailwind/lime/400
         return {
           name: "음식",
-          icon: <ImSpoonKnife color="#000" />,
+          icon: ImSpoonKnife,
           color: "#a3e635",
         }
 
       case "traffic":
         return {
           name: "교통+",
-          icon: <FaSubway color="#000" />,
+          icon: FaSubway,
           // tailwind/cyan/400
           color: "#22d3ee",
         }
@@ -150,7 +123,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
       case "movie":
         return {
           name: "영화",
-          icon: <MdMovie color="#000" />,
+          icon: MdMovie,
           // tailwind/Emerald/300
           color: "#6ee7b7",
         }
@@ -158,7 +131,7 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
       case "corp":
         return {
           name: "기업",
-          icon: <BiBuildings color="#000" />,
+          icon: BiBuildings,
           // tailwind/orange/400
           color: "#fb923c",
         }
@@ -172,11 +145,11 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
   const tagData = getTagData(tag)
 
   return (
-    <TagBox color={tagData.color}>
-      {tagData.icon}
+    <Tag color={tagData.color}>
+      {tagData.icon && <TagLeftIcon as={tagData.icon} />}
       <TagLabel>{tagData.name}</TagLabel>
-    </TagBox>
+    </Tag>
   )
 }
 
-export default Tag
+export default ThemeTag

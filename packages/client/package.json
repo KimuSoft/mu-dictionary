@@ -11,13 +11,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@chakra-ui/theme-tools": "^2.1.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@types/lodash": "^4.14.186",
     "@types/styled-components": "^5.1.26",
     "axios": "^1.1.2",
+    "framer-motion": "^11.2.10",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.6"
   },

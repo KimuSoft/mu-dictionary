@@ -1,33 +1,12 @@
 import React from "react"
-import { WordClass } from "../../types"
-import styled from "styled-components"
-
-const PosBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-
-  /* tailwind/zinc/700 */
-
-  background: #3f3f46;
-  border-radius: 10px;
-`
-
-const PosLabel = styled.h1`
-  font-weight: 700;
-  font-size: 12px;
-
-  color: #ffffff;
-`
+import { WordClass } from "../../types/types"
+import { Tag, TagLabel } from "@chakra-ui/react"
 
 const Pos: React.FC<{ pos: WordClass }> = ({ pos }) => {
   return (
-    <PosBox>
-      <PosLabel>{getWordClassString(pos)}</PosLabel>
-    </PosBox>
+    <Tag>
+      <TagLabel>{getWordClassString(pos)}</TagLabel>
+    </Tag>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import Tag from "../atoms/Tag"
+import ThemeTag from "../atoms/ThemeTag"
 import Pos from "../atoms/Pos"
-import { IWord, WordClass } from "../../types"
+import { IWord, WordClass } from "../../types/types"
 
 const MeaningBox = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const Meaning: React.FC<{ word: IWord }> = ({ word }) => {
       </SenseNumber>
       {word.wordClass !== WordClass.None ? <Pos pos={word.wordClass} /> : null}
       {word.tags.map((tag) => (
-        <Tag tag={tag} />
+        <ThemeTag tag={tag} />
       ))}
       <Definition>{word.definition}</Definition>
     </MeaningBox>
