@@ -1,5 +1,26 @@
+import mongoose, { Model } from "mongoose"
+
+export interface IWord {
+  name: string
+  simpleName: string
+  wordClass: WordClass
+  definition: string
+  tags: string[]
+  reference: string
+  origin?: string
+  pronunciation?: string
+}
+
+export interface IWordMethods {}
+
+export type WordModel = Model<IWord, {}, IWordMethods>
+export type UserDoc = mongoose.Document<{}, {}, IWord> & {
+  _id: mongoose.Types.ObjectId
+} & IWord &
+  IWordMethods
+
 // 품사
-export enum PartOfSpeech {
+export enum WordClass {
   Noun, // 명사
   Pronoun, // 대명사
   Numeral, // 수사

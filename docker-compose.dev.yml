@@ -1,12 +1,29 @@
 version: "3"
-
 services:
   db:
-    image: mongo
-    volumes:
-      - mongo-data:/data/db
+    image: postgres:16
     ports:
-      - "127.0.0.1:27017:27017"
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=paring
+      - POSTGRES_DB=mudict
+    command: ['postgres', '-c', 'wal_level=logical']
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.1.1
+    restart: always
+    volumes:
+      - ./meili_data:/meili_data
+    ports:
+      - "7700:7700"
+
+  meilisync:
+    image: long2ice/meilisync
+    volumes:
+      - ./config.yml:/meilisync/config.yml
+    restart: always
 
 volumes:
-  mongo-data:
+  pg-data:

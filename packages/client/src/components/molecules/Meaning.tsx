@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import ThemeTag from "../atoms/ThemeTag"
-import Pos from "../atoms/Pos"
+import PosTag from "../atoms/PosTag"
 import { IWord, WordClass } from "../../types/types"
 
 const MeaningBox = styled.div`
@@ -46,7 +46,9 @@ const Meaning: React.FC<{ word: IWord }> = ({ word }) => {
             : word.number
           : "01"}
       </SenseNumber>
-      {word.wordClass !== WordClass.None ? <Pos pos={word.wordClass} /> : null}
+      {word.wordClass !== WordClass.None ? (
+        <PosTag pos={word.wordClass} />
+      ) : null}
       {word.tags.map((tag) => (
         <ThemeTag tag={tag} />
       ))}
