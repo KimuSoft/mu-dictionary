@@ -1,0 +1,19 @@
+meilisearch:
+  api_url: meilisearch:7700
+#  api_key: 'MEILISEARCH_API_KEY'
+  insert_size: 1000
+  insert_interval : 10
+
+source:
+  type: postgres
+  host: db
+  port: 5432
+  database: mudict
+  user: postgres
+  password: paring
+
+sync:
+  - table: words
+    index: words
+    pk: id
+    full: true

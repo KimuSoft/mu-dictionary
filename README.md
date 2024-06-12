@@ -9,6 +9,9 @@
 * 빌드에서 세팅까지 한 방에!
 ```shell
 docker-compose up -d --build
+
+# 디버그 시
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
 ## DB 관리

@@ -2,7 +2,7 @@ import React from "react"
 import { WordClass } from "../../types/types"
 import { Tag, TagLabel } from "@chakra-ui/react"
 
-const Pos: React.FC<{ pos: WordClass }> = ({ pos }) => {
+const PosTag: React.FC<{ pos: WordClass }> = ({ pos }) => {
   return (
     <Tag>
       <TagLabel>{getWordClassString(pos)}</TagLabel>
@@ -75,4 +75,4 @@ const getWordClassString = (wordClass: WordClass): string => {
   }
 }
 
-export default Pos
+export default PosTag
