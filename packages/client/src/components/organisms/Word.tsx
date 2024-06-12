@@ -2,7 +2,7 @@ import React from "react"
 import WordHeader from "../molecules/WordHeader"
 import Meaning from "../molecules/Meaning"
 import styled from "styled-components"
-import { Homonym } from "../../types"
+import { Homonym } from "../../types/types"
 
 const ResultStyle = styled.div`
   display: flex;
