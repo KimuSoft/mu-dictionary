@@ -72,6 +72,12 @@ importers:
         specifier: ^3.1.0
         version: 3.2.10(@types/node@20.14.2)(terser@5.31.1)
 
+  packages/scripts/example:
+    devDependencies:
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
   packages/server:
     dependencies:
       '@nestjs/common':

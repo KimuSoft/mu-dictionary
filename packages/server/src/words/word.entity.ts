@@ -6,8 +6,19 @@ export class WordEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  // 조건
+  // - 한국어가 한 글자 이상 포함될 것
+  // - 한국어와 숫자, 단어 구분 구호(-, ^, 띄어쓰기) 만을 허용
   @Column()
   name: string;
+
+  // 한국어와 숫자만을 허용하는 단순화된 단어명
+  @Column()
+  simplifiedName: string;
+
+  // 단어의 원형
+  @Column()
+  origin: string;
 
   @Column({ nullable: true })
   pronunciation: string | null;
@@ -16,7 +27,7 @@ export class WordEntity {
   definition: string;
 
   @Column()
-  partOfSpeech: PartOfSpeech;
+  pos: PartOfSpeech;
 
   @Column()
   tags: string[] = [];
