@@ -1,13 +1,13 @@
 export interface IWord {
   name: string
-  wordClass: WordClass
-  origin?: string
-  pronunciation?: string
+  simplifiedName: string
+  origin: string
   definition: string
+  pos: WordClass
+  pronunciation?: string
   tags: string[]
-  reference: string
-
-  number?: number
+  referenceId: string
+  url: string
 }
 
 export interface Homonym {

@@ -19,11 +19,11 @@ services:
     ports:
       - "7700:7700"
 
-  meilisync:
-    image: long2ice/meilisync
-    volumes:
-      - ./config.yml:/meilisync/config.yml
-    restart: always
+#  meilisync:
+#    image: long2ice/meilisync:0.1.0
+#    volumes:
+#      - ./config.yml:/meilisync/config.yml
+#    restart: always
 
 volumes:
   pg-data:

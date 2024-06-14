@@ -4,7 +4,7 @@ import { Tag, TagLabel } from "@chakra-ui/react"
 
 const PosTag: React.FC<{ pos: WordClass }> = ({ pos }) => {
   return (
-    <Tag>
+    <Tag flexShrink={0} size={"sm"}>
       <TagLabel>{getWordClassString(pos)}</TagLabel>
     </Tag>
   )

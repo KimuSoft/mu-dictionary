@@ -21,7 +21,7 @@ export class WordEntity {
   origin: string;
 
   @Column({ nullable: true })
-  pronunciation: string | null;
+  pronunciation?: string;
 
   @Column()
   definition: string;
@@ -29,21 +29,32 @@ export class WordEntity {
   @Column()
   pos: PartOfSpeech;
 
-  @Column()
+  @Column('text', { array: true, default: [] })
   tags: string[] = [];
 
   @Column({ nullable: true })
-  thumbnail: string | null;
+  thumbnail?: string;
 
   @Column({ nullable: true })
-  url: string | null;
+  url?: string;
 
   // 단어 설명의 출처 URL
   @Column()
   referenceId: string;
 
-  // 단어에서 띄어쓰기, 기호 등을 모두 제거한다.
-  simplifyName(): string {
-    return this.name.replace(/[^a-zA-Z0-9가-힣]/g, '');
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name,
+      simplifiedName: this.simplifiedName,
+      origin: this.origin,
+      pronunciation: this.pronunciation,
+      definition: this.definition,
+      pos: this.pos,
+      tags: this.tags,
+      thumbnail: this.thumbnail,
+      url: this.url,
+      referenceId: this.referenceId,
+    };
   }
 }

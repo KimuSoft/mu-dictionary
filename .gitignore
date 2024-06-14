@@ -34,3 +34,5 @@ config.json
 *.xlsx
 result.json
 wikiResult.json
+
+meili_data

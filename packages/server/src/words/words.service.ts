@@ -4,6 +4,8 @@ import { Meilisearch } from 'meilisearch';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WordEntity } from './word.entity';
 import { Repository } from 'typeorm';
+import { SearchWordDto } from './dto/search-word.dto';
+import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
 
 @Injectable()
 export class WordsService {
@@ -22,8 +24,21 @@ export class WordsService {
   //   return this.wordRepository.find();
   // }
 
-  async search(query: string) {
-    return this.meilisearch.index('words').search(query);
+  async search({ q: query, limit, offset }: SearchWordDto) {
+    return this.meilisearch.index('words').search(query, {
+      limit,
+      offset,
+    });
+  }
+
+  async autocomplete({ q: query, limit }: AutocompleteWordDto) {
+    const result = await this.meilisearch
+      .index('autocomplete')
+      .search<{ name: string }>(query, {
+        limit,
+      });
+
+    return result.hits.map((hit) => hit.name);
   }
 
   async sync() {
@@ -31,17 +46,32 @@ export class WordsService {
     const words = await this.wordRepository.find();
     const index = this.meilisearch.index('words');
     await index.deleteAllDocuments();
-    await index.addDocuments(words);
 
+    console.info(`Adding ${words.length} words...`);
+    await index.addDocuments(words.map((word) => word.toJSON()));
+
+    console.info('Done.');
+  }
+
+  async autocompleteSync() {
     // autocomplete index
-    // simplifedName을 중복 제거하고 array로 받아옴
+    console.info('Syncing autocomplete...');
     const simplifiedWords = await this.wordRepository
-      .createQueryBuilder('words')
-      .select('ARRAY_AGG(DISTINCT simplifiedName)', 'simplifiedName')
-      .getRawOne();
+      .createQueryBuilder('word')
+      .select('name')
+      .distinct(true)
+      .getRawMany();
+
+    console.log(simplifiedWords[0]);
 
     const autocomplete = this.meilisearch.index('autocomplete');
     await autocomplete.deleteAllDocuments();
-    await autocomplete.addDocuments(simplifiedWords.simplifiedName);
+    await autocomplete.addDocuments(
+      simplifiedWords.map((word, i) => ({
+        id: i,
+        name: word.name,
+      })),
+    );
+    console.info('Done.');
   }
 }
