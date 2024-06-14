@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports.AppDataSource = new DataSource({
   type: 'postgres',
-  url: process.env.DB_URL,
+  url: process.env.DATABASE_URL,
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/migrations/*.js'],
   // cli: {
