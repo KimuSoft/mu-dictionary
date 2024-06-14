@@ -12,6 +12,7 @@ import { ImSpoonKnife } from "react-icons/im"
 import { MdMovie, MdOndemandVideo } from "react-icons/md"
 import { BiBuildings } from "react-icons/bi"
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react"
+import { TbBrandMinecraft } from "react-icons/tb"
 
 const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
@@ -22,7 +23,7 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
         return {
           name: "인명",
           icon: BsFillPersonFill,
-          color: "#e9d5ff",
+          color: "blue",
         }
 
       case "책명":
@@ -30,7 +31,7 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
         return {
           name: "책명",
           icon: FiBook,
-          color: "#a7f3d0",
+          color: "green",
         }
 
       case "정보·통신":
@@ -38,15 +39,7 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
         return {
           name: "정보·통신",
           icon: FaInternetExplorer,
-          color: "#9ca3af",
-        }
-
-      case "computer":
-        // tailwind/Gray/400
-        return {
-          name: "정보·통신+",
-          icon: FaInternetExplorer,
-          color: "#4b5563",
+          color: "purple",
         }
 
       case "fiction":
@@ -55,15 +48,6 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           name: "픽션",
           icon: FaMagic,
           color: "#6366f1",
-        }
-
-      // 그 외 커스텀 태그
-      case "person":
-        // tailwind/purple/400
-        return {
-          name: "인명+",
-          icon: BsFillPersonFill,
-          color: "#c084fc",
         }
 
       case "게임":
@@ -82,14 +66,21 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: MdOndemandVideo,
         }
 
-      case "comic":
+      case "마인크래프트":
+        return {
+          name: "마인크래프트",
+          color: "green",
+          icon: TbBrandMinecraft,
+        }
+
+      case "만화":
         // tailwind/Red/400
         return {
           name: "만화",
           color: "#f87171",
         }
 
-      case "tv":
+      case "방송":
         // tailwind/violet/400
         return {
           name: "방송",
@@ -97,10 +88,10 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "#f472b6",
         }
 
-      case "book":
+      case "책명":
         // tailwind/Emerald/400
         return {
-          name: "책명+",
+          name: "책명",
           icon: FiBook,
           color: "#34d399",
         }
@@ -113,23 +104,22 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "red",
         }
 
-      case "traffic":
+      case "교통":
         return {
-          name: "교통+",
+          name: "교통",
           icon: FaSubway,
           // tailwind/cyan/400
           color: "#22d3ee",
         }
 
-      case "movie":
+      case "영화":
         return {
           name: "영화",
           icon: MdMovie,
-          // tailwind/Emerald/300
-          color: "#6ee7b7",
+          color: "blue",
         }
 
-      case "corp":
+      case "기업":
         return {
           name: "기업",
           icon: BiBuildings,
