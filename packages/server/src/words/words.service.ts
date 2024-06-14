@@ -42,6 +42,10 @@ export class WordsService {
     return result.hits.map((hit) => hit.name);
   }
 
+  async getMeiliSearchStats() {
+    return this.meilisearch.getStats();
+  }
+
   async checkTasks() {
     // check if there are any tasks
     const tasks: TasksResults = await this.meilisearch.getTasks();

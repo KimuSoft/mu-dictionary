@@ -41,6 +41,13 @@ export class WordsController {
     return this.wordsService.autocompleteSync();
   }
 
+  // 임시: Meilisearch stats
+  @Get('search/stat')
+  async getMeiliSearchStats() {
+    return this.wordsService.getMeiliSearchStats();
+  }
+
+  // 임시: Meilisearch 개요
   @Post('check-tasks')
   @ApiOperation({ summary: 'Meilisearch 작업 확인' })
   async checkTasks() {
