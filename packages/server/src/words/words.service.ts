@@ -97,8 +97,8 @@ export class WordsService {
       );
 
       await autocomplete.addDocuments(
-        chunk.map((word, i) => ({
-          id: i,
+        chunk.map((word, idx) => ({
+          id: i * 5000 + idx,
           name: word.name,
         })),
       );
