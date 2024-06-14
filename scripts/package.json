@@ -4,20 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sync": "bun run src/sync/index.ts",
+    "kobis": "bun run src/kobis/index.ts",
     "grac": "bun run src/grac3/index.ts",
     "genshin": "bun run src/genshin/index.ts",
     "opendict": "bun run src/opendict/index.ts",
-    "sync": "bun run src/sync/index.ts"
+    "minecraft": "bun run src/minecraft/index.ts",
+    "laftel": "bun run src/laftel/index.ts",
+    "foodsafetykorea": "bun run src/foodsafetykorea/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.17.5",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "es-hangul": "^1.3.5",
     "fast-xml-parser": "^4.4.0",
     "knex": "^3.1.0",
-    "pg": "^8.12.0"
+    "lodash": "^4.17.21",
+    "pg": "^8.12.0",
+    "read-excel-file": "^5.8.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/bun": "^1.1.4"

@@ -1,0 +1,92 @@
+export interface FoodNutritionInfo {
+  // no: number; // 번호
+  sampleId: string; // 샘플 ID
+  FoodCode: string; // 식품 코드
+  FoodGroup: string; // DB 군
+  CommercialProduct: string; // 상용 제품
+  FoodName: string; // 식품명
+  Year: number; // 연도
+  ManufacturerDistributor: string; // 제조사/유통사
+  FoodCategory: string; // 식품 대분류
+  FoodSubcategory: string; // 식품 상세분류
+  ServingSizePerMeal: number; // 1회 제공량
+  ContentUnit: string; // 내용량 단위
+  TotalContentGrams: number | null; // 총 내용량 (g)
+  TotalContentMilliliters: number | null; // 총 내용량 (mL)
+  EnergyKcal: number; // 에너지 (kcal)
+  // MoistureGrams: number; // 수분 (g)
+  // ProteinGrams: number; // 단백질 (g)
+  // FatGrams: number; // 지방 (g)
+  // CarbohydratesGrams: number; // 탄수화물 (g)
+  // TotalSugarsGrams: number; // 총 당류 (g)
+  // GlucoseGrams: number; // 포도당 (g)
+  // FructoseGrams: number; // 과당 (g)
+  // SugarAlcoholGrams: number; // 당알콜 (g)
+  // ErythritolGrams: number; // 에리스리톨 (g)
+  // TotalDietaryFiberGrams: number; // 총 식이섬유 (g)
+  // CalciumMilligrams: number; // 칼슘 (mg)
+  // IronMilligrams: number; // 철 (mg)
+  // MagnesiumMilligrams: number; // 마그네슘 (mg)
+  // PhosphorusMilligrams: number; // 인 (mg)
+  // PotassiumMilligrams: number; // 칼륨 (mg)
+  // SodiumMilligrams: number; // 나트륨 (mg)
+  // ZincMilligrams: number; // 아연 (mg)
+  // CopperMilligrams: number; // 구리 (mg)
+  // CopperMicrograms: number; // 구리 (μg)
+  // ManganeseMilligrams: number; // 망간 (mg)
+  // ManganeseMicrograms: number; // 망간 (μg)
+  // SeleniumMicrograms: number; // 셀레늄 (μg)
+  // IodineMicrograms: number; // 요오드 (μg)
+  // ChlorineMilligrams: number; // 염소 (mg)
+  // VitaminAReMicrograms: number; // 비타민 A (μg RE)
+  // BetaCaroteneMicrograms: number; // 베타카로틴 (μg)
+  // VitaminDD2D3Micrograms: number; // 비타민 D (D2+D3) (μg)
+  // VitaminD3Micrograms: number; // 비타민 D3 (μg)
+  // VitaminD1Micrograms: number; // 비타민 D1 (μg)
+  // VitaminEMilligrams: number; // 비타민 E (mg)
+  // VitaminEAlphaTEMilligrams: number; // 비타민 E (mg α-TE)
+  // VitaminKMilligrams: number; // 비타민 K (mg)
+  // VitaminKMicrograms: number; // 비타민 K (μg)
+  // VitaminK1Micrograms: number; // 비타민 K1 (μg)
+  // VitaminK2Micrograms: number; // 비타민 K2 (μg)
+  // VitaminB1Milligrams: number; // 비타민 B1 (mg)
+  // VitaminB1Micrograms: number; // 비타민 B1 (μg)
+  // VitaminB2Milligrams: number; // 비타민 B2 (mg)
+  // VitaminB2Micrograms: number; // 비타민 B2 (μg)
+  // NiacinMilligramsNE: number; // 나이아신 (mg NE)
+  // PantothenicAcidMilligrams: number; // 판토텐산 (mg)
+  // VitaminB6Milligrams: number; // 비타민 B6 (mg)
+  // VitaminB6Micrograms: number; // 비타민 B6 (μg)
+  // BiotinMicrograms: number; // 비오틴 (μg)
+  // FolateDFEMicrograms: number; // 엽산 (DFE) (μg)
+  // VitaminB12Micrograms: number; // 비타민 B12 (μg)
+  // VitaminCGrams: number; // 비타민 C (g)
+  // VitaminCMilligrams: number; // 비타민 C (mg)
+  // CholineMilligrams: number; // 콜린 (mg)
+  // LeucineMilligrams: number; // 류신 (mg)
+  // TryptophanMilligrams: number; // 트립토판 (mg)
+  // HistidineMilligrams: number; // 히스티딘 (mg)
+  // ArginineMilligrams: number; // 아르기닌 (mg)
+  // CysteineMilligrams: number; // 시스테인 (mg)
+  // ProlineMilligrams: number; // 프롤린 (mg)
+  // TaurineMilligrams: number; // 타우린 (mg)
+  // CholesterolGrams: number; // 콜레스테롤 (g)
+  // CholesterolMilligrams: number; // 콜레스테롤 (mg)
+  // TotalSaturatedFattyAcidsGrams: number; // 총 포화 지방산 (g)
+  // LinoleicAcid186n6cGrams: number; // 리놀레산 (18:2(n-6)c) (g)
+  // AlphaLinolenicAcid183n3Micrograms: number; // 알파 리놀렌산 (18:3(n-3)) (μg)
+  // GammaLinolenicAcid183n6Micrograms: number; // 감마 리놀렌산 (18:3(n-6)) (μg)
+  // ArachidonicAcid204n6Micrograms: number; // 아라키돈산 (20:4(n-6)) (μg)
+  // EicosapentaenoicAcid205n3Micrograms: number; // 에이코사펜타에노산 (20:5(n-3)) (μg)
+  // DocosahexaenoicAcid226n3Micrograms: number; // 도코사헥사에노산 (22:6(n-3)) (μg)
+  // EPADHACombinedMicrograms: number; // EPA와 DHA의 합 (μg)
+  // Omega3FattyAcidsGrams: number; // 오메가 3 지방산 (g)
+  // TransFattyAcidsGrams: number; // 트랜스 지방산 (g)
+  // TotalUnsaturatedFattyAcidsGrams: number; // 총 불포화 지방산 (g)
+  // AshGrams: number; // 회분 (g)
+  // CaffeineMilligrams: number; // 카페인 (mg)
+
+  // Source of Nutrient Information (영양소 정보 출처)
+  // NutrientInfoSource: string; // 성분표 출처
+  // IssuingAgency: string; // 발행기관
+}

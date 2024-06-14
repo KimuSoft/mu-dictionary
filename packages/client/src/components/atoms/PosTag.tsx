@@ -1,10 +1,14 @@
 import React from "react"
 import { WordClass } from "../../types/types"
-import { Tag, TagLabel } from "@chakra-ui/react"
+import { Tag, TagLabel, useColorModeValue } from "@chakra-ui/react"
 
 const PosTag: React.FC<{ pos: WordClass }> = ({ pos }) => {
   return (
-    <Tag flexShrink={0} size={"sm"}>
+    <Tag
+      bgColor={useColorModeValue("gray.200", "gray.700")}
+      flexShrink={0}
+      size={"sm"}
+    >
       <TagLabel>{getWordClassString(pos)}</TagLabel>
     </Tag>
   )

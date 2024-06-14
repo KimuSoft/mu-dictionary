@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 import {
-  Input,
   InputGroup,
   InputProps,
   InputRightElement,
+  useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react"
 import { BiSearch } from "react-icons/bi"
@@ -21,6 +21,8 @@ const SearchInput: React.FC<
     onSubmit?: (value: string) => unknown
   } & Omit<InputProps, "onChange" | "onSubmit">
 > = ({ onChange, onSubmit, ...props }) => {
+  const { colorMode } = useColorMode()
+
   const [searchQuery, setSearchQuery] = React.useState("")
   const [autocompleteItems, setAutocompleteItems] = React.useState<string[]>([])
 
@@ -33,7 +35,7 @@ const SearchInput: React.FC<
     const timeout = setTimeout(async () => {
       const autocompletes = await autocompleteWords(searchQuery, 5)
       setAutocompleteItems(autocompletes)
-    }, 200)
+    }, 0)
 
     return () => clearTimeout(timeout)
   }, [searchQuery])
@@ -49,7 +51,7 @@ const SearchInput: React.FC<
         placement={"bottom"}
         emptyState={false}
         onSelectOption={(value) => {
-          onSubmit?.(value.item.value)
+          onSubmit?.(value.item.value.trim())
           // _onChange(value.item.value).then()
         }}
       >
@@ -65,14 +67,40 @@ const SearchInput: React.FC<
           {...props}
         />
         <AutoCompleteList bgColor={useColorModeValue("gray.100", "gray.700")}>
-          {autocompleteItems.map((item, idx) => (
-            <AutoCompleteItem key={`option-${idx}`} value={item}>
-              {item}
-            </AutoCompleteItem>
-          ))}
+          <AutoCompleteItem
+            py={1}
+            fontSize={"sm"}
+            color={
+              autocompleteItems.includes(searchQuery.trim())
+                ? colorMode === "light"
+                  ? "black"
+                  : "white"
+                : "gray.500"
+            }
+            value={searchQuery}
+          >
+            {searchQuery}
+          </AutoCompleteItem>
+
+          {autocompleteItems.map(
+            (item, idx) =>
+              item !== searchQuery && (
+                <AutoCompleteItem
+                  py={1}
+                  fontSize={"sm"}
+                  key={`option-${idx}`}
+                  value={item}
+                >
+                  {item}
+                </AutoCompleteItem>
+              ),
+          )}
         </AutoCompleteList>
       </AutoComplete>
-      <InputRightElement>
+      <InputRightElement
+        cursor={"pointer"}
+        onClick={() => onSubmit?.(searchQuery.trim())}
+      >
         <BiSearch />
       </InputRightElement>
     </InputGroup>

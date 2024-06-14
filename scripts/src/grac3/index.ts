@@ -1,6 +1,6 @@
 // 게임물관리위원회 게임물3.0 API로부터 모든 게임을 가져와 키뮤사전 형태로 저장한다.
 
-import axios, { getAdapter, isAxiosError } from "axios";
+import axios, { isAxiosError } from "axios";
 import { XMLParser } from "fast-xml-parser";
 import { GameRating, GameRatingResponse } from "./types";
 import { MuDict, PartOfSpeech } from "../types";
@@ -54,7 +54,7 @@ const run = async () => {
       const totalCount = jsonRes.result.tcount;
       const percentage = ((currentCount / totalCount) * 100).toFixed(2);
       console.info(
-        `Response ${currentCount}/${jsonRes.result.tcount} (${percentage}%)`
+        `Response ${currentCount}/${jsonRes.result.tcount} (${percentage}%)`,
       );
 
       // 응답 데이터 분석
@@ -125,7 +125,7 @@ const run = async () => {
   // 실패한 아이템도 저장 writeFile
   await writeFile(
     `./${REFERENCE_ID}_failed.json`,
-    JSON.stringify(failedItems, null, 2)
+    JSON.stringify(failedItems, null, 2),
   );
 };
 

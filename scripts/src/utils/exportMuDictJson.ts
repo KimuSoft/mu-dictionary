@@ -4,7 +4,7 @@ export const exportMuDictJson = async (refId: string, data: Object) => {
   const today = new Date();
   // array json 파일로 저장
   await writeFile(
-    `./${refId.toUpperCase()}_${today.getFullYear()}-${today
+    `./data/${refId.toUpperCase()}_${today.getFullYear()}-${today
       .getMonth()
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}-${today
@@ -15,6 +15,6 @@ export const exportMuDictJson = async (refId: string, data: Object) => {
       .toString()
       .padStart(2, "0")}.json`,
 
-    JSON.stringify(data, null, 2)
+    JSON.stringify(data, null, 2),
   );
 };

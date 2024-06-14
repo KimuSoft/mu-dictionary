@@ -4,6 +4,8 @@ import Knex from "knex";
 import "dotenv";
 import { MuDict, MuDictItem } from "../types";
 
+const whitelist = process.argv.slice(2);
+
 const knex = Knex({
   client: "pg",
   connection: process.env.DATABASE_URL,
@@ -17,8 +19,18 @@ const loadJsonFiles = async () => {
   const data = await Promise.all(
     jsonFiles.map(async (file) => {
       const json = await readFile(`./data/${file}`, "utf8");
-      return JSON.parse(json) as MuDict;
-    })
+      const jsonData = JSON.parse(json) as MuDict;
+
+      // whitelist가 비어있지 않고 whitelist에 해당되지 않는 경우 데이터 제외
+      if (
+        whitelist.length &&
+        !whitelist.includes(jsonData.default.referenceId)
+      ) {
+        return null;
+      }
+
+      return jsonData as MuDict;
+    }),
   );
 
   return data;
@@ -29,6 +41,8 @@ const run = async () => {
 
   // 데이터베이스에 데이터 삽입
   for (const dict of data) {
+    if (!dict) continue;
+
     console.info(`Start to sync ${dict.default.referenceId}...`);
 
     // word 테이블에서 기존 동일 referenceId 데이터 삭제

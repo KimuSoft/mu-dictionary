@@ -28,6 +28,8 @@ const Header: React.FC<{
       position={"fixed"}
       px={12}
       py={3}
+      bgColor={useColorModeValue("white", "gray.800")}
+      zIndex={100}
       // borderColor={useColorModeValue("gray.200", "gray.700")}
       // borderBottom={"1px solid"}
     >
