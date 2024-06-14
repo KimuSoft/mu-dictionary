@@ -2,12 +2,18 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
 import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { exportMuDictJson } from "../utils/exportMuDictJson";
+
+// bun genshin <경로>
+const EXISTING_PATH = process.argv[2] || "./src/genshin/TextMapKR.json";
+
+const REFERENCE_ID = "genshin";
 
 const result: MuDict = {
   items: [],
   default: {
     definition: "게임 '원신'에 등장하는 단어",
-    referenceId: "genshin",
+    referenceId: REFERENCE_ID,
     tags: ["원신"],
     pos: PartOfSpeech.Noun,
   },
@@ -15,9 +21,10 @@ const result: MuDict = {
 
 const run = async () => {
   console.info("Loding TextMapKR.json...");
-  const textMapKR = JSON.parse(
-    await readFile("./TextMapKR.json", "utf8")
-  ) as Record<string, string>;
+  const textMapKR = JSON.parse(await readFile(EXISTING_PATH, "utf8")) as Record<
+    string,
+    string
+  >;
   console.info("TextMapKR.json loaded.");
 
   const texts = Object.values(textMapKR);
@@ -39,29 +46,13 @@ const run = async () => {
     .map((text) => wordConvert(text)!)
     .map((text) => ({
       ...text,
-      definition: "",
       url:
         "https://genshin.gamedot.org/?mid=search&word=" + encodeURI(text.name),
     }));
 
   result.items = muDictItems;
 
-  const today = new Date();
-  // array json 파일로 저장
-  await writeFile(
-    `./GENSHIN_${today.getFullYear()}-${today
-      .getMonth()
-      .toString()
-      .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}-${today
-      .getHours()
-      .toString()
-      .padStart(2, "0")}-${today
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}.json`,
-
-    JSON.stringify(result, null, 2)
-  );
+  await exportMuDictJson(REFERENCE_ID, result);
 };
 
 run().then();

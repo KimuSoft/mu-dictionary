@@ -66,12 +66,12 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "#c084fc",
         }
 
-      case "game":
+      case "게임":
         // tailwind/violet/400
         return {
           name: "게임",
           icon: FaGamepad,
-          color: "#c084fc",
+          color: "purple",
         }
 
       case "ani":
@@ -138,14 +138,14 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
 
       default:
         // tailwind/yellow/400
-        return { name: tag, color: "#facc15" }
+        return { name: tag, color: "gray" }
     }
   }
 
   const tagData = getTagData(tag)
 
   return (
-    <Tag color={tagData.color}>
+    <Tag colorScheme={tagData.color} size={"sm"} flexShrink={0}>
       {tagData.icon && <TagLeftIcon as={tagData.icon} />}
       <TagLabel>{tagData.name}</TagLabel>
     </Tag>

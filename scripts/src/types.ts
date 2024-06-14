@@ -7,7 +7,7 @@ export interface MuDictItem {
   name: string;
   simplifiedName: string;
   origin: string;
-  definition: string;
+  definition?: string;
   pronunciation?: string;
   pos?: PartOfSpeech;
   tags?: string[];
