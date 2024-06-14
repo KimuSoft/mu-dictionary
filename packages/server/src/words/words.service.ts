@@ -48,8 +48,8 @@ export class WordsService {
     const index = this.meilisearch.index('words');
     await index.deleteAllDocuments();
 
-    // chunk words into 1000 words (with lodash
-    const chunks = chunk(words, 1000);
+    // chunk words into 1000 words (with lodash)
+    const chunks = chunk(words, 10000);
 
     // log like 100 / 200 (50%)
     let i = 0;

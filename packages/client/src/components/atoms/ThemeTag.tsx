@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa"
 import { GrMonitor } from "react-icons/gr"
 import { ImSpoonKnife } from "react-icons/im"
-import { MdMovie } from "react-icons/md"
+import { MdMovie, MdOndemandVideo } from "react-icons/md"
 import { BiBuildings } from "react-icons/bi"
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react"
 
@@ -74,11 +74,12 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "purple",
         }
 
-      case "ani":
+      case "애니메이션":
         // tailwind/Amber/300
         return {
           name: "애니메이션",
-          color: "#fcd34d",
+          color: "orange",
+          icon: MdOndemandVideo,
         }
 
       case "comic":
