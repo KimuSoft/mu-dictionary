@@ -88,14 +88,6 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "#f472b6",
         }
 
-      case "책명":
-        // tailwind/Emerald/400
-        return {
-          name: "책명",
-          icon: FiBook,
-          color: "#34d399",
-        }
-
       case "식품":
         // tailwind/lime/400
         return {

@@ -102,7 +102,7 @@ export class WordsService {
     await autocomplete.deleteAllDocuments();
 
     console.info('Adding documents...');
-    const chunkedWords = chunk(simplifiedWords, 5000);
+    const chunkedWords = chunk(simplifiedWords, 10000);
     // log like 100 / 200 (50%)
     let i = 0;
     const total = chunkedWords.length;
@@ -116,12 +116,12 @@ export class WordsService {
       await autocomplete.addDocuments(
         chunk.map((word, idx) => ({
           id: i * 5000 + idx,
-          name: word.name,
+          name: word.name.replace(/[-^]/g, ''),
         })),
       );
 
       // 500ms delay
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
     console.info('Done.');
   }

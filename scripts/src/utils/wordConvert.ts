@@ -1,3 +1,8 @@
+export const simplifyName = (word: string) => {
+  // 한국어와 숫자만을 허용
+  return word.replace(/[^ㅏ-ㅣㄱ-ㅎ가-힣0-9]/g, "");
+};
+
 // 단순한, 기호 및 영어 등을 한국어로 변환함
 export const convertToKorean = (word: string) => {
   // 기호 replacing
@@ -540,7 +545,7 @@ export const wordConvert = (
   }
 
   // 한국어, 숫자만을 허용함
-  const simplifiedName = name.replace(/[^가-힣0-9]/g, "");
+  const simplifiedName = simplifyName(name);
 
   return {
     origin: word.trim(),
