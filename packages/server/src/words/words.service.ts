@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectMeiliSearch } from 'nestjs-meilisearch';
-import { Meilisearch } from 'meilisearch';
+import { Meilisearch, TasksResults } from 'meilisearch';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WordEntity } from './word.entity';
 import { Repository } from 'typeorm';
@@ -40,6 +40,14 @@ export class WordsService {
       });
 
     return result.hits.map((hit) => hit.name);
+  }
+
+  async checkTasks() {
+    // check if there are any tasks
+    const tasks: TasksResults = await this.meilisearch.getTasks();
+    console.info(`Tasks: ${tasks.total}`);
+
+    return tasks;
   }
 
   async sync() {

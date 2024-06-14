@@ -40,4 +40,10 @@ export class WordsController {
   async autocompleteSync() {
     return this.wordsService.autocompleteSync();
   }
+
+  @Post('check-tasks')
+  @ApiOperation({ summary: 'Meilisearch 작업 확인' })
+  async checkTasks() {
+    return this.wordsService.checkTasks();
+  }
 }
