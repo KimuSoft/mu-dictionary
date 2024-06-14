@@ -57,11 +57,13 @@ export class WordsService {
   async sync() {
     console.info('Syncing words...');
     const words = await this.wordRepository.find();
-    await this.meilisearch.createIndex('words', {
-      primaryKey: 'id',
-    });
     const index = this.meilisearch.index('words');
     await index.deleteAllDocuments();
+
+    console.info('Updating index...');
+    await this.meilisearch.updateIndex('words', {
+      primaryKey: 'id',
+    });
 
     // chunk words into 1000 words (with lodash)
     const chunks = chunk(words, 10000);
