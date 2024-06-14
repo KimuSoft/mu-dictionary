@@ -104,12 +104,12 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "#34d399",
         }
 
-      case "food":
+      case "식품":
         // tailwind/lime/400
         return {
-          name: "음식",
+          name: "식품",
           icon: ImSpoonKnife,
-          color: "#a3e635",
+          color: "red",
         }
 
       case "traffic":

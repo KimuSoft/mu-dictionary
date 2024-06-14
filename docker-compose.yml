@@ -1,27 +1,33 @@
-version: '3'
+version: "3"
 services:
-  mdictionary:
+  mudict:
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:5222:3000"
     build:
       context: .
-#    deploy:
-#      replicas: $TOTAL_REPLICAS
+      dockerfile: Dockerfile
     depends_on:
       - db
-#    volumes:
-#      - /run/docker.sock:/run/docker.sock:ro
-#      - ../config.deploy.json:/app/config.json:ro
-#      - ./logs:/app/logs:rw
-    restart: unless-stopped
+    restart: always
 
   db:
-    image: mongo
-    volumes:
-      - mongo:/data/db
+    image: postgres
     ports:
-      - "127.0.0.1:27018:27017"
-    restart: unless-stopped
+      - "2300:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=paring
+      - POSTGRES_DB=mudict
+
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    restart: always
+    volumes:
+      - meili_data:/meili_data
+    ports:
+      - "7700"
 
 volumes:
-  mongo:
+  pg-data:
+  meili_data:

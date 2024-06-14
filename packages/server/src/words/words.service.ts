@@ -6,6 +6,7 @@ import { WordEntity } from './word.entity';
 import { Repository } from 'typeorm';
 import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
+import { chunk } from 'lodash';
 
 @Injectable()
 export class WordsService {
@@ -47,8 +48,24 @@ export class WordsService {
     const index = this.meilisearch.index('words');
     await index.deleteAllDocuments();
 
+    // chunk words into 1000 words (with lodash
+    const chunks = chunk(words, 1000);
+
+    // log like 100 / 200 (50%)
+    let i = 0;
+    const total = chunks.length;
     console.info(`Adding ${words.length} words...`);
-    await index.addDocuments(words.map((word) => word.toJSON()));
+
+    // for each chunk, add documents
+    for (const chunk of chunks) {
+      i++;
+      console.info(
+        `Adding chunk ${i} / ${total} (${Math.round((i / total) * 100)}%)`,
+      );
+      await index.addDocuments(chunk.map((word) => word.toJSON()));
+      // 500ms delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
 
     console.info('Done.');
   }
@@ -60,18 +77,35 @@ export class WordsService {
       .createQueryBuilder('word')
       .select('name')
       .distinct(true)
-      .getRawMany();
+      .getRawMany<{ name: string }>();
 
     console.log(simplifiedWords[0]);
 
     const autocomplete = this.meilisearch.index('autocomplete');
     await autocomplete.deleteAllDocuments();
-    await autocomplete.addDocuments(
-      simplifiedWords.map((word, i) => ({
-        id: i,
-        name: word.name,
-      })),
-    );
+
+    console.info('Adding documents...');
+    const chunkedWords = chunk(simplifiedWords, 5000);
+    // log like 100 / 200 (50%)
+    let i = 0;
+    const total = chunkedWords.length;
+
+    for (const chunk of chunkedWords) {
+      i++;
+      console.info(
+        `Adding chunk ${i} / ${total} (${Math.round((i / total) * 100)}%)`,
+      );
+
+      await autocomplete.addDocuments(
+        chunk.map((word, i) => ({
+          id: i,
+          name: word.name,
+        })),
+      );
+
+      // 500ms delay
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
     console.info('Done.');
   }
 }

@@ -7,6 +7,7 @@ export interface IWord {
   pronunciation?: string
   tags: string[]
   referenceId: string
+  thumbnail?: string
   url: string
 }
 

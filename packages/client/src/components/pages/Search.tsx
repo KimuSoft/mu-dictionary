@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
 import SearchTemplate from "../templates/SearchTemplate"
 import { useSearchParams } from "react-router-dom"
 import { IWord } from "../../types/types"
@@ -9,12 +9,20 @@ const Search: React.FC = () => {
   const searchQuery = searchParams.get("q") || ""
 
   const [searchResults, setSearchResults] = React.useState<IWord[]>([])
+  const [totalCount, setTotalCount] = React.useState<number>(0)
+  const [isLoading, setIsLoading] = React.useState(false)
+
+  const allLoaded = useMemo(
+    () => searchResults.length === totalCount,
+    [searchResults, totalCount],
+  )
 
   const refresh = async () => {
-    console.log("리프레시!!!")
+    setIsLoading(true)
     const words = await searchWords(searchQuery, 1000, 0)
-    console.log(words)
+    setTotalCount(words.estimatedTotalHits)
     setSearchResults(words.hits)
+    setIsLoading(false)
 
     // const _homonyms = _.groupBy(res.data, (h) => `${h.name}-${h.origin}`)
     // const homonyms: Homonym[] = []
@@ -59,6 +67,8 @@ const Search: React.FC = () => {
       keyword={searchQuery}
       searchResults={searchResults}
       onEndReached={refresh}
+      isLoading={isLoading}
+      allLoaded={allLoaded}
     />
   )
 }
