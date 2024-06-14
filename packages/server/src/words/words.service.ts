@@ -57,6 +57,9 @@ export class WordsService {
   async sync() {
     console.info('Syncing words...');
     const words = await this.wordRepository.find();
+    await this.meilisearch.createIndex('words', {
+      primaryKey: 'id',
+    });
     const index = this.meilisearch.index('words');
     await index.deleteAllDocuments();
 
