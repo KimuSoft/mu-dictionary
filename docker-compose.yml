@@ -21,7 +21,7 @@ services:
       - POSTGRES_DB=mudict
 
   meilisearch:
-    image: getmeili/meilisearch:latest
+    image: getmeili/meilisearch:v1.1.1
     restart: always
     volumes:
       - meili_data:/meili_data
