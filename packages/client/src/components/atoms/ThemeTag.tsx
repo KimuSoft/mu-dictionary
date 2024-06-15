@@ -2,22 +2,207 @@ import React from "react"
 import { BsFillPersonFill } from "react-icons/bs"
 import { FiBook } from "react-icons/fi"
 import {
+  FaBus,
+  FaBusinessTime,
+  FaCalculator,
+  FaCat,
+  FaCross,
+  FaFlask,
   FaGamepad,
+  FaHistory,
   FaInternetExplorer,
   FaMagic,
+  FaMap,
+  FaPalette,
+  FaStarAndCrescent,
   FaSubway,
+  FaTree,
 } from "react-icons/fa"
 import { GrMonitor } from "react-icons/gr"
 import { ImSpoonKnife } from "react-icons/im"
-import { MdMovie, MdOndemandVideo } from "react-icons/md"
-import { BiBuildings } from "react-icons/bi"
+import {
+  MdAttachMoney,
+  MdMovie,
+  MdOndemandVideo,
+  MdSchool,
+  MdTempleBuddhist,
+} from "react-icons/md"
+import { BiBuildings, BiSolidFactory } from "react-icons/bi"
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react"
 import { TbBrandMinecraft } from "react-icons/tb"
+import { LuAtom, LuConstruction } from "react-icons/lu"
+import { IoMdPlanet } from "react-icons/io"
+import { PiStarFourFill } from "react-icons/pi"
+import { FaEarthAsia, FaMusic } from "react-icons/fa6"
+import { RiPlantFill } from "react-icons/ri"
+import { IoLanguage } from "react-icons/io5"
+import { GoLaw } from "react-icons/go"
 
 const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
     switch (tag) {
       // 우리말샘 주제
+      case "가톨릭":
+        return {
+          name: "가톨릭",
+          icon: FaCross,
+          color: "blue",
+        }
+
+      case "건설":
+        return {
+          name: "건설",
+          icon: LuConstruction,
+          color: "red",
+        }
+
+      case "경영":
+        return {
+          name: "경영",
+          icon: FaBusinessTime,
+          color: "teal",
+        }
+
+      case "경제":
+        return {
+          name: "경제",
+          icon: MdAttachMoney,
+          color: "teal",
+        }
+
+      case "공업":
+        return {
+          name: "공업",
+          icon: BiSolidFactory,
+          color: "red",
+        }
+
+      case "교육":
+        return {
+          name: "교육",
+          icon: MdSchool,
+          color: "blue",
+        }
+
+      case "교통":
+        return {
+          name: "교통",
+          icon: FaSubway,
+          color: "blue",
+        }
+
+      case "기독교":
+        return {
+          name: "기독교",
+          icon: FaCross,
+          color: "blue",
+        }
+
+      case "동물":
+        return {
+          name: "동물",
+          icon: FaCat,
+          color: "green",
+        }
+
+      case "수학":
+        return {
+          name: "수학",
+          icon: FaCalculator,
+          color: "blue",
+        }
+
+      case "물리":
+        return {
+          name: "물리",
+          icon: LuAtom,
+          color: "purple",
+        }
+
+      case "천문":
+        return {
+          name: "천문",
+          icon: IoMdPlanet,
+          color: "cyan",
+        }
+
+      case "화학":
+        return {
+          name: "화학",
+          icon: FaFlask,
+          color: "purple",
+        }
+
+      case "미술":
+        return {
+          name: "미술",
+          icon: FaPalette,
+          color: "yellow",
+        }
+
+      case "음악":
+        return {
+          name: "음악",
+          icon: FaMusic,
+          color: "orange",
+        }
+
+      case "식물":
+        return {
+          name: "식물",
+          icon: RiPlantFill,
+          color: "green",
+        }
+
+      case "환경":
+        return {
+          name: "환경",
+          icon: FaTree,
+          color: "green",
+        }
+
+      case "불교":
+        return {
+          name: "불교",
+          icon: MdTempleBuddhist,
+          color: "red",
+        }
+
+      case "법률":
+        return {
+          name: "법률",
+          icon: GoLaw,
+          color: "blue",
+        }
+
+      case "언어":
+        return {
+          name: "언어",
+          icon: IoLanguage,
+          color: "green",
+        }
+
+      case "지구":
+        return {
+          name: "지구",
+          icon: FaEarthAsia,
+          color: "green",
+        }
+
+      case "지명":
+        return {
+          name: "지명",
+          icon: FaMap,
+          color: "orange",
+        }
+
+      case "역사":
+        return {
+          name: "역사",
+          icon: FaHistory,
+          color: "orange",
+        }
+
       case "인명":
         // tailwind/purple/200
         return {
@@ -41,6 +226,8 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: FaInternetExplorer,
           color: "purple",
         }
+
+      // 추가 단어
 
       case "fiction":
         // tailwind/Gray/400
@@ -96,10 +283,10 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           color: "red",
         }
 
-      case "교통":
+      case "대중교통":
         return {
-          name: "교통",
-          icon: FaSubway,
+          name: "대중교통",
+          icon: FaBus,
           // tailwind/cyan/400
           color: "#22d3ee",
         }
@@ -117,6 +304,21 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           icon: BiBuildings,
           // tailwind/orange/400
           color: "#fb923c",
+        }
+
+      // 추가 단어 중 세부 단어
+      case "원신":
+        return {
+          name: "원신",
+          icon: PiStarFourFill,
+          color: "white",
+        }
+
+      case "프로젝트 문":
+        return {
+          name: "프로젝트 문",
+          icon: FaStarAndCrescent,
+          color: "pink",
         }
 
       default:
