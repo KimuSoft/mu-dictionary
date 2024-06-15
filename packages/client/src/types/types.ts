@@ -1,4 +1,6 @@
 export interface IWord {
+  id: string
+  sourceId: string
   name: string
   simplifiedName: string
   origin: string

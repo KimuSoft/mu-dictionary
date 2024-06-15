@@ -5,6 +5,7 @@ import {
   Divider,
   Highlight,
   HStack,
+  IconButton,
   Image,
   Link,
   Spacer,
@@ -19,11 +20,55 @@ import { IWord } from "../../types/types"
 import { Virtuoso } from "react-virtuoso"
 import ThemeTag from "../atoms/ThemeTag"
 import PosTag from "../atoms/PosTag"
+import { IoVolumeMedium } from "react-icons/io5"
 
 const Word: React.FC<{ word: IWord; keyword: string }> = ({
   word,
   keyword,
 }) => {
+  const getSpeech = (text: string) => {
+    let voices: SpeechSynthesisVoice[] = []
+    console.info("getSpeech", text)
+
+    //디바이스에 내장된 voice를 가져온다.
+    const setVoiceList = () => {
+      voices = window.speechSynthesis.getVoices()
+    }
+
+    setVoiceList()
+
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      // voice list에 변경됐을때, voice를 다시 가져온다.
+      window.speechSynthesis.onvoiceschanged = setVoiceList
+    }
+
+    const speech = (txt: string) => {
+      const lang = "ko-KR"
+      const utterThis = new SpeechSynthesisUtterance(txt)
+
+      utterThis.lang = lang
+
+      /* 한국어 vocie 찾기
+         디바이스 별로 한국어는 ko-KR 또는 ko_KR로 voice가 정의되어 있다.
+      */
+      const kor_voice = voices.find(
+        (elem) => elem.lang === lang || elem.lang === lang.replace("-", "_"),
+      )
+
+      //힌국어 voice가 있다면 ? utterance에 목소리를 설정한다 : 리턴하여 목소리가 나오지 않도록 한다.
+      if (kor_voice) {
+        utterThis.voice = kor_voice
+      } else {
+        return
+      }
+
+      //utterance를 재생(speak)한다.
+      window.speechSynthesis.speak(utterThis)
+    }
+
+    speech(text)
+  }
+
   return (
     <HStack w={"100%"} mb={7} alignItems={"flex-start"}>
       <VStack w={"100%"}>
@@ -49,13 +94,21 @@ const Word: React.FC<{ word: IWord; keyword: string }> = ({
           {word.pronunciation && (
             <Text color={"gray.500"}>[{word.pronunciation}]</Text>
           )}
+          <IconButton
+            aria-label={"play sound"}
+            icon={<IoVolumeMedium />}
+            variant={"ghost"}
+            size={"sm"}
+            color={"gray.500"}
+            onClick={() => getSpeech(word.pronunciation || word.name)}
+          />
         </HStack>
         <Box w={"100%"}>
           <Text>
             <HStack display={"inline-flex"} mr={3} gap={1}>
               <PosTag pos={word.pos} />
-              {word.tags.map((tag) => (
-                <ThemeTag tag={tag} />
+              {word.tags.map((tag, idx) => (
+                <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
               ))}
             </HStack>
             {word.definition}
@@ -96,7 +149,7 @@ const SearchTemplate: React.FC<{
           data={searchResults}
           endReached={onEndReached}
           itemContent={(index, word) => (
-            <Word key={index} word={word} keyword={keyword} />
+            <Word key={"word-" + word.id} word={word} keyword={keyword} />
           )}
           components={{
             Header: () => (
