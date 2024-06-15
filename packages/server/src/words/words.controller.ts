@@ -34,6 +34,13 @@ export class WordsController {
     return this.wordsService.sync();
   }
 
+  // diffSync
+  @Post('diff-sync')
+  @ApiOperation({ summary: 'Meilisearch 동기화 (only Insert & Delete)' })
+  async diffSync() {
+    return this.wordsService.diffSync();
+  }
+
   // 임시: Meilisearch 동기화용
   @Post('async')
   @ApiOperation({ summary: 'Meilisearch 자동완성 색인' })

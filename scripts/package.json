@@ -14,7 +14,8 @@
     "foodsafetykorea": "bun run src/foodsafetykorea/index.ts",
     "stardew-valley": "bun run src/stardew-valley/index.ts",
     "lobotomy-corp": "bun run src/lobotomy-corp/index.ts",
-    "kric-station": "bun run src/kric-station/index.ts"
+    "kric-station": "bun run src/kric-station/index.ts",
+    "kind": "bun run src/kind/index.ts"
   },
   "keywords": [],
   "author": "",
