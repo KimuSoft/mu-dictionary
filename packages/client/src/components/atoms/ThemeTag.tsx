@@ -303,7 +303,7 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
           name: "기업",
           icon: BiBuildings,
           // tailwind/orange/400
-          color: "#fb923c",
+          color: "orange",
         }
 
       // 추가 단어 중 세부 단어
