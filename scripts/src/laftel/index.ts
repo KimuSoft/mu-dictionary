@@ -71,6 +71,7 @@ const run = async () => {
 
     result.items.push({
       ...nameData,
+      sourceId: REFERENCE_ID + "_" + anime.id,
       definition: `${anime.genres.join(", ")} ${anime.medium} 애니메이션. 등급은 ${anime.content_rating}이다.`,
       url: `https://laftel.net/item/${anime.id}`,
       thumbnail: anime.img,

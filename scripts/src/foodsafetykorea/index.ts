@@ -67,6 +67,7 @@ const run = async () => {
       const definition = `${item.Year}년 ${josa(item.ManufacturerDistributor, "이/가")} 제조한 ${item.FoodSubcategory} 식품. 1회 제공량은 ${item.ServingSizePerMeal}${item.ContentUnit}이며, 열량은 ${item.EnergyKcal}㎉이다.`;
 
       const muDictItem: MuDictItem = {
+        sourceId: REFERENCE_ID + "_" + item.FoodCode,
         ...result.default,
         ...nameData,
         definition,

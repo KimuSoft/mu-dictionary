@@ -18,9 +18,9 @@ const REFERENCE_ID = "opendict";
 const result: MuDict = {
   items: [],
   default: {
-    definition: "~에 등장하는 단어",
+    definition: "",
     referenceId: REFERENCE_ID,
-    tags: ["example"],
+    tags: [],
     pos: PartOfSpeech.Noun,
   },
 };
@@ -31,6 +31,8 @@ const run = async () => {
     file.endsWith(".json"),
   );
 
+  const idSet = new Set<string>();
+
   for (const file of files) {
     console.info(`Load '${EXISTING_PATH}/${file}' file...`);
 
@@ -40,12 +42,29 @@ const run = async () => {
 
     // 여기에 컨버팅 코드 입력
     for (const item of refData.channel.item) {
+      const id = REFERENCE_ID + "_" + item.target_code;
+
+      if (idSet.has(id)) {
+        console.warn(`ID 중복 발생: ${id}`);
+        continue;
+      }
+      idSet.add(id);
+
       const word = toIpfString(item.wordinfo.word);
       const definition = item.senseinfo.definition;
 
       // 품사 없으면 그냥 명사 취급
-      const pos =
+      let pos =
         convertStringToPartOfSpeech(item.senseinfo.pos) || PartOfSpeech.Noun;
+
+      if (item.wordinfo.word_type === "속담") {
+        pos = PartOfSpeech.Proverb;
+      }
+
+      if (item.wordinfo.word_type === "관용구") {
+        pos = PartOfSpeech.Phrase;
+      }
+
       const tags = item.senseinfo.cat_info?.map((cat) => cat.cat) || [];
 
       if (item.senseinfo.type !== "일반어") {
@@ -55,6 +74,7 @@ const run = async () => {
       const url = item.link;
 
       const muDictItem: MuDictItem = {
+        sourceId: id,
         name: word,
         simplifiedName: simplifyName(word),
         origin:
@@ -62,6 +82,7 @@ const run = async () => {
             ?.map((info) => info.original_language)
             .join("") || word,
         definition,
+        pronunciation: item.wordinfo?.pronunciation_info?.[0]?.pronunciation,
         pos,
         tags,
         url,

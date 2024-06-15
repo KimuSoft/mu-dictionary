@@ -22,6 +22,7 @@ const run = async () => {
   const files = await readdir(EXISTING_PATH);
 
   const items: {
+    key: string;
     id: string;
     file: string;
     name: string;
@@ -47,6 +48,7 @@ const run = async () => {
       const description = data.content[`${id}_Description`];
 
       items.push({
+        key,
         id,
         file,
         name: value,
@@ -123,6 +125,7 @@ const run = async () => {
       : "";
 
     result.items.push({
+      sourceId: REFERENCE_ID + "_" + item.file + "_" + item.id,
       origin: nameData.origin,
       name: nameData.name,
       simplifiedName: nameData.simplifiedName,

@@ -44,7 +44,9 @@ const run = async () => {
     //   JSON.stringify(data, null, 2),
     // );
 
+    let idx = 0;
     for (const name of nameOrNames) {
+      idx++;
       const nameData = wordConvert(name);
       if (!nameData) {
         console.warn(
@@ -82,6 +84,7 @@ const run = async () => {
       }
 
       result.items.push({
+        sourceId: REFERENCE_ID + "_" + file.replace(".xml", "") + "_" + idx,
         name: nameData.name,
         origin: nameData.origin,
         simplifiedName: nameData.simplifiedName,

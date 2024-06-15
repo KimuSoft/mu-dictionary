@@ -5,6 +5,7 @@ export interface WordInfo {
     original_language: string;
     language_type: string;
   }[];
+  pronunciation_info?: { pronunciation: string }[];
   word_type: string;
 }
 
@@ -15,7 +16,7 @@ export interface SenseInfo {
   }[];
   relation_info: {
     link: string;
-    link_target_code: number;
+    target_code: number;
     word: string;
     type: string;
   }[];

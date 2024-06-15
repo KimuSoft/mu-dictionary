@@ -75,6 +75,7 @@ const run = async () => {
 
     result.items.push({
       ...wordData,
+      sourceId: REFERENCE_ID + "_" + key,
       definition,
       url:
         "https://minecraft.fandom.com/ko/wiki/" +

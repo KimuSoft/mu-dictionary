@@ -55,8 +55,12 @@ const run = async () => {
 
   movies.push(...data2.slice(5).map(convertMovieObject));
 
+  let idx = 0;
+
   // 키뮤사전 형식으로 변환
   for (const movie of movies) {
+    idx++;
+
     const nameData = wordConvert(movie.title.replace(/\(.+\)/g, ""));
     if (!nameData) {
       console.warn(`Failed to convert ${movie.title}`);
@@ -65,6 +69,7 @@ const run = async () => {
 
     result.items.push({
       ...nameData,
+      sourceId: REFERENCE_ID + "_" + idx,
       // <제작연도>년 <제작국가>에서 제작된 <감독> 감독의 <유형> <장르> 영화. 제작사는 <제작사>이다.
       definition:
         `${movie.productionYear}년 ${movie.productionCountry}에서 제작된 ${

@@ -4,6 +4,7 @@ export interface MuDict {
 }
 
 export interface MuDictItem {
+  sourceId: string;
   name: string;
   simplifiedName: string;
   origin: string;

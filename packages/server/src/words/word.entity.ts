@@ -6,6 +6,9 @@ export class WordEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ unique: true })
+  sourceId: string;
+
   // 조건
   // - 한국어가 한 글자 이상 포함될 것
   // - 한국어와 숫자, 단어 구분 구호(-, ^, 띄어쓰기) 만을 허용
@@ -45,6 +48,7 @@ export class WordEntity {
   toJSON() {
     return {
       id: this.id,
+      sourceId: this.sourceId,
       name: this.name,
       simplifiedName: this.simplifiedName,
       origin: this.origin,
