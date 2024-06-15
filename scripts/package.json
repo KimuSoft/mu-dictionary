@@ -11,7 +11,9 @@
     "opendict": "bun run src/opendict/index.ts",
     "minecraft": "bun run src/minecraft/index.ts",
     "laftel": "bun run src/laftel/index.ts",
-    "foodsafetykorea": "bun run src/foodsafetykorea/index.ts"
+    "foodsafetykorea": "bun run src/foodsafetykorea/index.ts",
+    "stardew-valley": "bun run src/stardew-valley/index.ts",
+    "lobotomy-corp": "bun run src/lobotomy-corp/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +29,8 @@
     "lodash": "^4.17.21",
     "pg": "^8.12.0",
     "read-excel-file": "^5.8.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "yaml": "^2.4.5"
   },
   "devDependencies": {
     "@types/bun": "^1.1.4"

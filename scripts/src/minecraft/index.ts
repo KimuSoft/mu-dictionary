@@ -77,8 +77,8 @@ const run = async () => {
       ...wordData,
       definition,
       url:
-        "https://minecraft-ko.gamepedia.com/ko/wiki/" +
-        encodeURI(key.replace(/\./g, "/")),
+        "https://minecraft.fandom.com/ko/wiki/" +
+        encodeURI(value.replace(/\./g, "/")),
     });
   }
 
