@@ -33,7 +33,7 @@ export class WordEntity {
   pos: PartOfSpeech;
 
   @Column('text', { array: true, default: [] })
-  tags: string[] = [];
+  tags: string[];
 
   @Column({ nullable: true })
   thumbnail?: string;

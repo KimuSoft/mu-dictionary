@@ -4,6 +4,7 @@ import { MeiliSearchModule } from 'nestjs-meilisearch';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { MeilisearchModule } from './meilisearch/meilisearch.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       rootPath: join(__dirname, '..', '..', 'client', 'dist'),
     }),
     WordsModule,
+    MeilisearchModule,
   ],
   controllers: [],
   providers: [],
