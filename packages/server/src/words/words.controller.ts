@@ -22,12 +22,6 @@ export class WordsController {
     return this.wordsService.find(dto);
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: '단어 상세 조회' })
-  async findOneById(@Param() { id }: FindOneWorkDto) {
-    return this.wordsService.findOneById(id);
-  }
-
   @Get('search')
   @ApiOperation({ summary: '단어 검색하기 (use Meilisearch)' })
   async search(@Query() searchDto: SearchWordDto) {
@@ -41,5 +35,11 @@ export class WordsController {
     @Query() autocompleteDto: AutocompleteWordDto,
   ): Promise<string[]> {
     return this.wordsService.autocomplete(autocompleteDto);
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: '단어 상세 조회' })
+  async findOneById(@Param() { id }: FindOneWorkDto) {
+    return this.wordsService.findOneById(id);
   }
 }
