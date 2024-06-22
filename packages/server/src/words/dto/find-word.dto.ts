@@ -36,6 +36,15 @@ export class FindWordDto {
   @Transform(({ value }) => value?.trim())
   name?: string;
 
+  @ApiProperty({
+    description: '단순화된 이름',
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  @Transform(({ value }) => value?.trim())
+  simplifiedName?: string;
+
   // 얻어올 필드
   @ApiProperty({
     description: '얻어올 필드',

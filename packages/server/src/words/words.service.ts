@@ -47,6 +47,25 @@ export class WordsService {
       }
     }
 
+    // 단순화된 이름 쿼리
+    if (dto.simplifiedName) {
+      if (dto.exact) {
+        query = query.andWhere(
+          `${filedPrefix}simplifiedName = :simplifiedName`,
+          {
+            simplifiedName: dto.simplifiedName,
+          },
+        );
+      } else {
+        query = query.andWhere(
+          `${filedPrefix}simplifiedName LIKE :simplifiedName`,
+          {
+            simplifiedName: `%${dto.simplifiedName}%`,
+          },
+        );
+      }
+    }
+
     // 태그 쿼리
     if (dto.tags) {
       if (!Array.isArray(dto.tags)) {
