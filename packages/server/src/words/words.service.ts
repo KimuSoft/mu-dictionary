@@ -51,14 +51,14 @@ export class WordsService {
     if (dto.simplifiedName) {
       if (dto.exact) {
         query = query.andWhere(
-          `${filedPrefix}simplifiedName = :simplifiedName`,
+          `"${filedPrefix}simplifiedName" = :simplifiedName`,
           {
             simplifiedName: dto.simplifiedName,
           },
         );
       } else {
         query = query.andWhere(
-          `${filedPrefix}simplifiedName LIKE :simplifiedName`,
+          `"${filedPrefix}simplifiedName" LIKE :simplifiedName`,
           {
             simplifiedName: `%${dto.simplifiedName}%`,
           },
