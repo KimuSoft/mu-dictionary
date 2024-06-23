@@ -80,7 +80,7 @@ export class WordsService {
     }
 
     // 품사 쿼리
-    if (dto.pos) {
+    if (dto.pos !== undefined) {
       if (!Array.isArray(dto.pos)) {
         query = query.andWhere(`"${filedPrefix}pos" = :pos`, { pos: dto.pos });
       } else {
@@ -90,7 +90,10 @@ export class WordsService {
       }
     }
 
-    return query.offset(dto.offset).limit(dto.limit).getMany();
+    query = query.offset(dto.offset).limit(dto.limit);
+    console.debug(query.getQuery());
+
+    return query.getMany();
   }
 
   async findOneById(id: string) {
