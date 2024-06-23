@@ -90,7 +90,7 @@ export class WordsService {
       }
     }
 
-    query = query.offset(dto.offset).limit(dto.limit);
+    query = query.orderBy('id').offset(dto.offset).limit(dto.limit);
     console.debug(query.getQuery());
 
     return query.getMany();
