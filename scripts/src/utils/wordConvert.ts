@@ -33,6 +33,8 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/families/g, "패밀리즈");
   word = word.replace(/sandwich/g, "샌드위치");
   word = word.replace(/original/g, "오리지널");
+  word = word.replace(/tonight/g, "투나이트");
+  word = word.replace(/realize/g, "리얼라이즈");
 
   // 7 letter replacing
   word = word.replace(/kingdom/g, "킹덤");
@@ -50,10 +52,12 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/genesis/g, "제네시스");
   word = word.replace(/prelude/g, "프렐류드");
   word = word.replace(/version/g, "버전");
+  word = word.replace(/ciabatta/g, "치아바타");
   word = word.replace(/rancher/g, "랜처");
   word = word.replace(/buster/g, "버스터");
   word = word.replace(/cheddar/g, "체다");
   word = word.replace(/choices?/g, "초이스");
+  word = word.replace(/forever/g, "포에버");
   word = word.replace(/project/g, "프로젝트");
   word = word.replace(/episode/g, "에피소드");
   word = word.replace(/vitamin/g, "비타민");
@@ -64,6 +68,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/jungle/g, "정글");
 
   // 6 letter replacing
+  word = word.replace(/runner/g, "러너");
   word = word.replace(/hearts/g, "하츠");
   word = word.replace(/riders/g, "라이더스");
   word = word.replace(/clover/g, "클로버");
@@ -93,18 +98,23 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/coffee/g, "커피");
   word = word.replace(/pretty/g, "프리티");
   word = word.replace(/cinema/g, "시네마");
+  word = word.replace(/voyage/g, "보이지");
   word = word.replace(/mickey/g, "미키");
   word = word.replace(/puzzle/g, "퍼즐");
   word = word.replace(/panini/g, "파니니");
   word = word.replace(/climax/g, "클라이맥스");
   word = word.replace(/cheese/g, "치즈");
+  word = word.replace(/tattoo/g, "타투");
+  word = word.replace(/delete/g, "딜리트");
   word = word.replace(/second/g, "세컨드");
   word = word.replace(/sister/g, "시스터");
+  word = word.replace(/change/g, "체인지");
   word = word.replace(/yogurt/g, "요거트");
   word = word.replace(/series/g, "시리즈");
   word = word.replace(/deluxe/g, "디럭스");
   word = word.replace(/psycho/g, "사이코");
   word = word.replace(/ireland/g, "아일랜드");
+  word = word.replace(/what a/g, "왓 어");
 
   // 5 letter replacing
   word = word.replace(/poker/g, "포커");
@@ -119,6 +129,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/force/g, "포스");
   word = word.replace(/quest/g, "퀘스트");
   word = word.replace(/slime/g, "슬라임");
+  word = word.replace(/never/g, "네버");
   word = word.replace(/dream/g, "드림");
   word = word.replace(/happy/g, "해피");
   word = word.replace(/hol+y/g, "홀리");
@@ -132,15 +143,18 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/bacon/g, "베이컨");
   word = word.replace(/light/g, "라이트");
   word = word.replace(/grand/g, "그랜드");
+  word = word.replace(/words/g, "워즈");
   word = word.replace(/prime/g, "프라임");
   word = word.replace(/heart/g, "하트");
   word = word.replace(/bloom/g, "블룸");
   word = word.replace(/order/g, "오더");
+  word = word.replace(/earth/g, "어스");
   word = word.replace(/happy/g, "해피");
   word = word.replace(/death/g, "데스");
   word = word.replace(/onion/g, "양파");
   word = word.replace(/hyper/g, "하이퍼");
   word = word.replace(/scape/g, "스케이프");
+  word = word.replace(/known/g, "노운");
   word = word.replace(/block/g, "블록");
   word = word.replace(/story/g, "스토리");
   word = word.replace(/girls/g, "걸스");
@@ -154,6 +168,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/field/g, "필드");
   word = word.replace(/first/g, "퍼스트");
   word = word.replace(/sweet/g, "스위트");
+  word = word.replace(/bread/g, "브레드");
   word = word.replace(/enter/g, "엔터");
   word = word.replace(/water/g, "워터");
   word = word.replace(/final/g, "파이널");
@@ -162,7 +177,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/birth/g, "버스");
   word = word.replace(/power/g, "파워");
   word = word.replace(/pocky/g, "포키");
-  word = word.replace(/mania/g, "마니아");
+  word = word.replace(/mania/g, "매니아");
   word = word.replace(/snack/g, "스낵");
   word = word.replace(/metal/g, "메탈");
   word = word.replace(/derby/g, "더비");
@@ -172,6 +187,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/prices?/g, "프라이스");
   word = word.replace(/juice/g, "주스");
   word = word.replace(/right/g, "라이트");
+  word = word.replace(/reset/g, "리셋");
   word = word.replace(/dress/g, "드레스");
   word = word.replace(/ghost/g, "고스트");
   word = word.replace(/korea/g, "코리아");
@@ -182,34 +198,65 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/stage/g, "스테이지");
   word = word.replace(/grape/g, "그레이프");
   word = word.replace(/apple/g, "애플");
+  word = word.replace(/beats/g, "비츠");
   word = word.replace(/blast/g, "블래스트");
+  word = word.replace(/maker/g, "메이커");
   word = word.replace(/dream/g, "드림");
   word = word.replace(/deemo/g, "디모");
   word = word.replace(/k?night/g, "나이트");
   word = word.replace(/multi/g, "멀티");
+  word = word.replace(/unite/g, "유나이트");
+  word = word.replace(/dj\s?doc/g, "디제이디오씨");
+  word = word.replace(/spell/g, "스펠");
+  word = word.replace(/music/g, "뮤직");
+  word = word.replace(/olive/g, "올리브");
   word = word.replace(/chips/g, "칩스");
+  word = word.replace(/don't/g, "돈트");
   word = word.replace(/games/g, "게임즈");
+  word = word.replace(/feels/g, "필즈");
+  word = word.replace(/wanna/g, "워너");
+  word = word.replace(/angel/g, "엔젤");
+  word = word.replace(/clock/g, "클락");
+  word = word.replace(/verse/g, "버스");
 
   // 4 letter replacing
   word = word.replace(/cook/g, "쿡");
+  word = word.replace(/swim/g, "스윔");
+  word = word.replace(/know/g, "노");
   word = word.replace(/full/g, "풀");
   word = word.replace(/eyes/g, "아이즈");
   word = word.replace(/mine/g, "마인");
   word = word.replace(/game/g, "게임");
+  word = word.replace(/goat/g, "고트");
+  word = word.replace(/kiss/g, "키스");
   word = word.replace(/king/g, "킹");
+  word = word.replace(/born/g, "본");
+  word = word.replace(/that/g, "댓");
   word = word.replace(/wave/g, "웨이브");
+  word = word.replace(/beat/g, "비트");
   word = word.replace(/chip/g, "칩");
+  word = word.replace(/talk/g, "토크");
   word = word.replace(/star/g, "스타");
   word = word.replace(/fate/g, "페이트");
   word = word.replace(/stay/g, "스테이");
+  word = word.replace(/taxi/g, "택시");
+  word = word.replace(/feel/g, "필");
   word = word.replace(/time/g, "타임");
   word = word.replace(/duck/g, "덕");
+  word = word.replace(/mood/g, "무드");
+  word = word.replace(/ever/g, "에버");
   word = word.replace(/rush/g, "러시");
+  word = word.replace(/yell/g, "옐");
   word = word.replace(/zero/g, "제로");
+  word = word.replace(/word/g, "워드");
+  word = word.replace(/body/g, "바디");
   word = word.replace(/c418/g, "시418");
+  word = word.replace(/long/g, "롱");
   word = word.replace(/over/g, "오버");
+  word = word.replace(/drop/g, "드롭");
   word = word.replace(/part/g, "파트");
   word = word.replace(/plus/g, "플러스");
+  word = word.replace(/wars/g, "워즈");
   word = word.replace(/dash/g, "대시");
   word = word.replace(/city/g, "시티");
   word = word.replace(/meal/g, "밀");
@@ -220,11 +267,14 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/land/g, "랜드");
   word = word.replace(/blue/g, "블루");
   word = word.replace(/dark/g, "다크");
+  word = word.replace(/like/g, "라이크");
   word = word.replace(/moon/g, "문");
   word = word.replace(/pass/g, "패스");
+  word = word.replace(/text/g, "텍스트");
   word = word.replace(/home/g, "홈");
   word = word.replace(/take/g, "테이크");
   word = word.replace(/auto/g, "오토");
+  word = word.replace(/nova/g, "노바");
   word = word.replace(/love/g, "러브");
   word = word.replace(/cafe/g, "카페");
   word = word.replace(/dive/g, "다이브");
@@ -234,6 +284,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/true/g, "트루");
   word = word.replace(/bird/g, "버드");
   word = word.replace(/hero/g, "히어로");
+  word = word.replace(/some/g, "섬");
   word = word.replace(/back/g, "백");
   word = word.replace(/baby/g, "베이비");
   word = word.replace(/more/g, "모어");
@@ -260,6 +311,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/nova/g, "노바");
   word = word.replace(/tale/g, "테일");
   word = word.replace(/kick/g, "킥");
+  word = word.replace(/good/g, "굿");
   word = word.replace(/club/g, "클럽");
   word = word.replace(/band/g, "밴드");
   word = word.replace(/main/g, "메인");
@@ -277,9 +329,12 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/vita/g, "비타");
   word = word.replace(/xbox/g, "엑스박스");
   word = word.replace(/your/g, "유어");
+  word = word.replace(/what/g, "왓");
   word = word.replace(/self/g, "셀프");
   word = word.replace(/code/g, "코드");
   word = word.replace(/side/g, "사이드");
+  word = word.replace(/boys/g, "보이즈");
+  word = word.replace(/want/g, "원트");
   word = word.replace(/pong/g, "퐁");
   word = word.replace(/rock/g, "락");
   word = word.replace(/lady/g, "레이디");
@@ -287,6 +342,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/only/g, "온리");
   word = word.replace(/ages?/g, "에이지");
   word = word.replace(/sims/g, "심즈");
+  word = word.replace(/team/g, "팀");
   word = word.replace(/hope/g, "호프");
 
   // 3 letter replacing
@@ -298,8 +354,10 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/red/g, "레드");
   word = word.replace(/top/g, "탑");
   word = word.replace(/big/g, "빅");
+  word = word.replace(/get/g, "겟");
   word = word.replace(/hot/g, "핫");
   word = word.replace(/spy/g, "스파이");
+  word = word.replace(/why/g, "와이");
   word = word.replace(/fun/g, "펀");
   word = word.replace(/mbc/g, "엠비씨");
   word = word.replace(/sbs/g, "에스비에스");
@@ -309,6 +367,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/cia/g, "시아이에이");
   word = word.replace(/net/g, "넷");
   word = word.replace(/bbq/g, "비비큐");
+  word = word.replace(/bye/g, "바이");
   word = word.replace(/all/g, "올");
   word = word.replace(/sos/g, "에스오에스");
   word = word.replace(/dha/g, "디에이치에이");
@@ -319,6 +378,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/nba/g, "엔비에이");
   word = word.replace(/pop/g, "팝");
   word = word.replace(/one/g, "원");
+  word = word.replace(/ost/g, "오에스티");
   word = word.replace(/two/g, "투");
   word = word.replace(/sun/g, "선");
   word = word.replace(/ova/g, "오브이에이");
@@ -328,10 +388,13 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/sea/g, "씨");
   word = word.replace(/bit/g, "비트");
   word = word.replace(/ice/g, "아이스");
+  word = word.replace(/dna/g, "디엔에이");
+  word = word.replace(/boy/g, "보이");
   word = word.replace(/tnt/g, "티엔티");
   word = word.replace(/kbo/g, "케이비오");
   word = word.replace(/toy/g, "토이");
   word = word.replace(/rpm/g, "알피엠");
+  word = word.replace(/she/g, "쉬");
   word = word.replace(/act/g, "액트");
   word = word.replace(/the ([aiueo])/g, "디 $1");
   word = word.replace(/the/g, "더");
@@ -352,6 +415,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/ps1/g, "플레이스테이션 1");
   word = word.replace(/psv/g, "플레이스테이션 비타");
 
+  word = word.replace(/h\.o\.t/, "에이치오티");
   word = word.replace(/for/g, "포");
   word = word.replace(/ufo/g, "유에프오");
   word = word.replace(/oad/g, "오에이디");
@@ -368,6 +432,9 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/dog/g, "도그");
   word = word.replace(/ag/g, "에이지");
   word = word.replace(/dp/g, "디피");
+  word = word.replace(/ye/g, "예");
+  word = word.replace(/ya/g, "야");
+  word = word.replace(/yo/g, "요");
   word = word.replace(/war/g, "워");
   word = word.replace(/tcg/g, "트레이딩 카드 게임");
   word = word.replace(/dr\.?/g, "닥터 ");
@@ -382,14 +449,20 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/2d/g, "투디");
   word = word.replace(/go/g, "고");
   word = word.replace(/up/g, "업");
+  word = word.replace(/un/g, "언");
   word = word.replace(/tv/g, "티비");
   word = word.replace(/hi/g, "하이");
   word = word.replace(/by/g, "바이");
+  word = word.replace(/mc/g, "엠시");
   word = word.replace(/no/g, "노");
   word = word.replace(/my/g, "마이");
   word = word.replace(/me/g, "미");
+
   word = word.replace(/we/g, "위");
+  word = word.replace(/dj/g, "디제이");
   word = word.replace(/us/g, "어스");
+  word = word.replace(/oh/g, "오");
+  word = word.replace(/uh/g, "어");
   word = word.replace(/it/g, "잇");
   word = word.replace(/ex/g, "이엑스");
   word = word.replace(/is/g, "이즈");
@@ -473,7 +546,7 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/f$/g, "에프");
   word = word.replace(/g$/g, "지");
   word = word.replace(/h$/g, "에이치");
-  word = word.replace(/i$/g, "아이");
+  word = word.replace(/i/g, "아이");
   word = word.replace(/j$/g, "제이");
   word = word.replace(/k$/g, "케이");
   word = word.replace(/l$/g, "엘");
@@ -491,6 +564,54 @@ export const convertToKorean = (word: string) => {
   word = word.replace(/x/g, "엑스");
   word = word.replace(/y/g, "와이");
   word = word.replace(/z/g, "지");
+
+  // 히라가나/가타카나 리플레이싱
+  word = word.replace(/[あア]/g, "아");
+  word = word.replace(/[いイ]/g, "이");
+  word = word.replace(/[うウ]/g, "우");
+  word = word.replace(/[えエ]/g, "에");
+  word = word.replace(/[おオ]/g, "오");
+  word = word.replace(/[かカ]/g, "카");
+  word = word.replace(/[きキ]/g, "키");
+  word = word.replace(/[くク]/g, "쿠");
+  word = word.replace(/[けケ]/g, "케");
+  word = word.replace(/[こコ]/g, "코");
+  word = word.replace(/[さサ]/g, "사");
+  word = word.replace(/[しシ]/g, "시");
+  word = word.replace(/[すス]/g, "스");
+  word = word.replace(/[せセ]/g, "세");
+  word = word.replace(/[そソ]/g, "소");
+  word = word.replace(/[たタ]/g, "타");
+  word = word.replace(/[ちチ]/g, "치");
+  word = word.replace(/[つツ]/g, "츠");
+  word = word.replace(/[てテ]/g, "테");
+  word = word.replace(/[とト]/g, "토");
+  word = word.replace(/[なナ]/g, "나");
+  word = word.replace(/[にニ]/g, "니");
+  word = word.replace(/[ぬヌ]/g, "누");
+  word = word.replace(/[ねネ]/g, "네");
+  word = word.replace(/[のノ]/g, "노");
+  word = word.replace(/[はハ]/g, "하");
+  word = word.replace(/[ひヒ]/g, "히");
+  word = word.replace(/[ふフ]/g, "후");
+  word = word.replace(/[へヘ]/g, "헤");
+  word = word.replace(/[ほホ]/g, "호");
+  word = word.replace(/[まマ]/g, "마");
+  word = word.replace(/[みミ]/g, "미");
+  word = word.replace(/[むム]/g, "무");
+  word = word.replace(/[めメ]/g, "메");
+  word = word.replace(/[もモ]/g, "모");
+  word = word.replace(/[やヤ]/g, "야");
+  word = word.replace(/[ゆユ]/g, "유");
+  word = word.replace(/[よヨ]/g, "요");
+  word = word.replace(/[らラ]/g, "라");
+  word = word.replace(/[りリ]/g, "리");
+  word = word.replace(/[るル]/g, "루");
+  word = word.replace(/[れレ]/g, "레");
+  word = word.replace(/[ろロ]/g, "로");
+  word = word.replace(/[わワ]/g, "와");
+  word = word.replace(/[をヲ]/g, "오");
+  word = word.replace(/[んン]/g, "응");
 
   word = word.replace(/([^A-z])a([^A-z])/g, "$1에이$2");
   word = word.replace(/([^A-z])b([^A-z])/g, "$1비$2");
@@ -536,7 +657,7 @@ export const wordConvert = (
 } | null => {
   // 모든 기호 제거
   const name = convertToKorean(word)
-    .replace(/[^a-zA-Z0-9ㄱ-ㅎ가-힣ㅏ-ㅣ\s]/g, "")
+    .replace(/[^一-龯ぁ-んァ-ンa-zA-Z0-9ㄱ-ㅎ가-힣ㅏ-ㅣ\s]/g, "")
     .trim();
 
   // 영어가 제거가 안 되는 경우 null을 반환함

@@ -15,7 +15,8 @@
     "stardew-valley": "bun run src/stardew-valley/index.ts",
     "lobotomy-corp": "bun run src/lobotomy-corp/index.ts",
     "kric-station": "bun run src/kric-station/index.ts",
-    "kind": "bun run src/kind/index.ts"
+    "kind": "bun run src/kind/index.ts",
+    "tj": "bun run src/tj-music/index.ts",
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
   "dependencies": {
     "@types/lodash": "^4.17.5",
     "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.4.5",
     "es-hangul": "^1.3.5",
     "fast-xml-parser": "^4.4.0",

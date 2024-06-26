@@ -12,9 +12,9 @@
 * [ ] MeiliSearch 활용 자동완성 구현
 
 ## 단어 출처
-* [ ] (일반어) [우리말샘 사전](https://opendict.korean.go.kr/member/memberDownloadList) 데이터베이스
+* [x] (일반어) [우리말샘 사전](https://opendict.korean.go.kr/member/memberDownloadList) 데이터베이스
 * [x] (식품) [식품영양성분 데이터베이스](https://various.foodsafetykorea.go.kr/nutrient/general/down/list.do)
-* [ ] (교통) [전국대중교통환승센터표준데이터](https://www.data.go.kr/data/15034541/standard.do)
+* [x] (교통) [전국대중교통환승센터표준데이터](https://www.data.go.kr/data/15034541/standard.do)
 * [ ] (교통) [Kric 전국도시철도노선정보표준데이터](https://data.kric.go.kr/rips/M_01_01/detail.do?id=18)
 * [ ] (교통) [Kric 전국도시철도역사정보표준데이터](https://data.kric.go.kr/rips/M_01_01/detail.do?id=32)
 * [ ] (교통) [국토교통부: 전국 버스정류장 위치정보](https://www.data.go.kr/data/15067528/fileData.do)
@@ -23,7 +23,7 @@
 * [ ] (교육) [전국대학및전문대학정보표준데이터](https://www.data.go.kr/data/15107736/standard.do)
 * [x] (영화) [KOBIS 영화관입장권통합전산망](https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do)
 * [x] (게임) [게임물관리위원회 게임물 3.0 API](https://www.grac.or.kr/Game3.0/OpenAPIGuide.aspx)
-* [ ] (기업) [KIND 상장법인목록](https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage)
+* [x] (기업) [KIND 상장법인목록](https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage)
 * [x] (원신) [GenshinData](https://github.com/Masterain98/GenshinData/blob/main/TextMap/TextMapKR.json)
 * [x] (애니메이션) [Laftel](https://www.laftel.net/)
 
