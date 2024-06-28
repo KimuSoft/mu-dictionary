@@ -65,7 +65,7 @@ const run = async () => {
         item.wordinfo.word_type === "관용구" ||
         item.wordinfo.word_unit === "관용구"
       ) {
-        pos = PartOfSpeech.Phrase;
+        pos = PartOfSpeech.Idiom;
       }
 
       const tags = item.senseinfo.cat_info?.map((cat) => cat.cat) || [];
