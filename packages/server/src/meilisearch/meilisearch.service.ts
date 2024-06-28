@@ -164,9 +164,12 @@ export class MeilisearchService {
       );
 
       await autocomplete.addDocuments(
-        chunk.map((word) => ({
-          id: word.name.replace(/[-^]/g, ''),
-        })),
+        chunk.map((word) => {
+          const name = word.name.replace(/[-^]/g, '');
+          const id = encodeURIComponent(name).replace(/%/g, '_');
+
+          return { id, name };
+        }),
       );
 
       // 500ms delay
@@ -191,7 +194,12 @@ export class MeilisearchService {
         .select('name')
         .distinct(true)
         .getRawMany<{ name: string }>()
-    ).map((word) => word.name.replace(/[-^]/g, ''));
+    ).map((word) => {
+      const name = word.name.replace(/[-^]/g, '');
+      const id = encodeURIComponent(name).replace(/%/g, '_');
+
+      return { id, name };
+    });
     console.info('DB Words:', dbWords.length);
 
     console.info('Getting Words from MeiliSearch...');
@@ -201,17 +209,24 @@ export class MeilisearchService {
       .getDocuments({
         offset: 0,
         limit: 100000000,
+        fields: ['id'],
       });
 
-    const msWords: string[] = msWordsRes.results.map((result) => result.name);
+    const msWords: string[] = msWordsRes.results.map((result) => result.id);
     console.info('MeiliSearch Words:', msWords.length);
 
     console.info('Calculating diff (to insert)...');
-    const onlyInDB = difference(dbWords, msWords);
+    const onlyInDB = difference(
+      dbWords.map((word) => word.id),
+      msWords,
+    );
     console.info('Only in DB:', onlyInDB.length);
 
     console.info('Calculating diff (to delete)...');
-    const onlyInMS = difference(msWords, dbWords);
+    const onlyInMS = difference(
+      msWords,
+      dbWords.map((word) => word.id),
+    );
     console.info('Only in MeiliSearch:', onlyInMS.length);
 
     const index = this.meilisearch.index('autocomplete');
@@ -221,7 +236,9 @@ export class MeilisearchService {
       console.info(`Inserting... (total: ${onlyInDB.length})`);
       const chunkedWord = chunk(onlyInDB, 50000);
       for (const chunk of chunkedWord) {
-        await index.addDocuments(chunk.map((word) => ({ id: word })));
+        await index.addDocuments(
+          dbWords.filter((word) => chunk.includes(word.id)),
+        );
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
     } else {
