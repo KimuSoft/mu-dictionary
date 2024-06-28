@@ -143,7 +143,7 @@ export class MeilisearchService {
     await autocomplete.deleteAllDocuments();
 
     await this.meilisearch.updateIndex('autocomplete', {
-      primaryKey: 'name',
+      primaryKey: 'id',
     });
 
     console.info('Adding documents...');
@@ -160,7 +160,7 @@ export class MeilisearchService {
 
       await autocomplete.addDocuments(
         chunk.map((word) => ({
-          name: word.name.replace(/[-^]/g, ''),
+          id: word.name.replace(/[-^]/g, ''),
         })),
       );
 
@@ -176,7 +176,7 @@ export class MeilisearchService {
 
     console.info('Updating index...');
     await this.meilisearch.updateIndex('autocomplete', {
-      primaryKey: 'name',
+      primaryKey: 'id',
     });
 
     console.info('Getting Words from DB...');
@@ -216,7 +216,7 @@ export class MeilisearchService {
       console.info(`Inserting... (total: ${onlyInDB.length})`);
       const chunkedWord = chunk(onlyInDB, 50000);
       for (const chunk of chunkedWord) {
-        await index.addDocuments(chunk.map((word) => ({ name: word })));
+        await index.addDocuments(chunk.map((word) => ({ id: word })));
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
     } else {
