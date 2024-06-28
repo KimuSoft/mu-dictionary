@@ -661,7 +661,7 @@ export const wordConvert = (
     .trim();
 
   // 영어가 제거가 안 되는 경우 null을 반환함
-  if (!/^[가-힣0-9\s]+$/.test(name)) {
+  if (!/^[ㅏ-ㅣㄱ-ㅎ가-힣0-9\s]+$/.test(name)) {
     return null;
   }
 
