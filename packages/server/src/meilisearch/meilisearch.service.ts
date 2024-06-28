@@ -93,6 +93,11 @@ export class MeilisearchService {
     }
 
     console.info('Done.');
+
+    return {
+      inserted: onlyInDB.length,
+      deleted: onlyInMS.length,
+    };
   }
 
   async sync() {
@@ -235,5 +240,10 @@ export class MeilisearchService {
     }
 
     console.info('Done.');
+
+    return {
+      inserted: onlyInDB.length,
+      deleted: onlyInMS.length,
+    };
   }
 }
