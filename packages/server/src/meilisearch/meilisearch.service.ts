@@ -179,7 +179,7 @@ export class MeilisearchService {
       primaryKey: 'name',
     });
 
-    console.info('Getting sourceIds from DB...');
+    console.info('Getting Words from DB...');
     const dbWords = (
       await this.wordRepository
         .createQueryBuilder('word')
@@ -189,7 +189,7 @@ export class MeilisearchService {
     ).map((word) => word.name.replace(/[-^]/g, ''));
     console.info('DB Words:', dbWords.length);
 
-    console.info('Getting sourceIds from MeiliSearch...');
+    console.info('Getting Words from MeiliSearch...');
     // MeiliSearch에서 sourceId만 가져옴
     const msWordsRes = await this.meilisearch
       .index('autocomplete')

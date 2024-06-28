@@ -38,13 +38,13 @@ export class MeilisearchController {
   }
 
   // 임시: Meilisearch stats
-  @Get('search/stat')
+  @Get('stat')
   async getMeiliSearchStats() {
     return this.meilisearchService.getMeiliSearchStats();
   }
 
   // 임시: Meilisearch 개요
-  @Post('check-tasks')
+  @Post('tasks')
   @ApiOperation({ summary: 'Meilisearch 작업 확인' })
   async checkTasks() {
     return this.meilisearchService.checkTasks();

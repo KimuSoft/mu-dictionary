@@ -57,11 +57,14 @@ const run = async () => {
       let pos =
         convertStringToPartOfSpeech(item.senseinfo.pos) || PartOfSpeech.Noun;
 
-      if (item.wordinfo.word_type === "속담") {
+      if (item.wordinfo.word_unit === "속담") {
         pos = PartOfSpeech.Proverb;
       }
 
-      if (item.wordinfo.word_type === "관용구") {
+      if (
+        item.wordinfo.word_type === "관용구" ||
+        item.wordinfo.word_unit === "관용구"
+      ) {
         pos = PartOfSpeech.Phrase;
       }
 
