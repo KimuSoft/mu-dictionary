@@ -186,7 +186,7 @@ export class MeilisearchService {
         .select('name')
         .distinct(true)
         .getRawMany<{ name: string }>()
-    ).map((word) => word.name);
+    ).map((word) => word.name.replace(/[-^]/g, ''));
     console.info('DB Words:', dbWords.length);
 
     console.info('Getting sourceIds from MeiliSearch...');
@@ -214,14 +214,22 @@ export class MeilisearchService {
     // Inserting log with count
     if (onlyInDB.length) {
       console.info(`Inserting... (total: ${onlyInDB.length})`);
-      await index.addDocuments(onlyInDB.map((word) => ({ name: word })));
+      const chunkedWord = chunk(onlyInDB, 50000);
+      for (const chunk of chunkedWord) {
+        await index.addDocuments(chunk.map((word) => ({ name: word })));
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
     } else {
       console.info('No documents to insert.');
     }
 
     if (onlyInMS.length) {
       console.info(`Deleting... (total: ${onlyInMS.length})`);
-      await index.deleteDocuments(onlyInMS);
+      const chunked = chunk(onlyInMS, 50000);
+      for (const chunk of chunked) {
+        await index.deleteDocuments(chunk);
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
     } else {
       console.info('No documents to delete.');
     }
