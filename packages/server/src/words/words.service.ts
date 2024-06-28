@@ -96,6 +96,12 @@ export class WordsService {
     return query.getMany();
   }
 
+  async stat() {
+    return this.wordRepository.query(
+      'SELECT "referenceId", COUNT("referenceId") FROM word GROUP BY "referenceId"',
+    );
+  }
+
   async findOneById(id: string) {
     return this.wordRepository.findOneBy({ id });
   }

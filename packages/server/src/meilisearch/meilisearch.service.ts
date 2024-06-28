@@ -142,6 +142,10 @@ export class MeilisearchService {
     const autocomplete = this.meilisearch.index('autocomplete');
     await autocomplete.deleteAllDocuments();
 
+    await this.meilisearch.updateIndex('autocomplete', {
+      primaryKey: 'name',
+    });
+
     console.info('Adding documents...');
     const chunkedWords = chunk(simplifiedWords, 10000);
     // log like 100 / 200 (50%)
@@ -155,8 +159,7 @@ export class MeilisearchService {
       );
 
       await autocomplete.addDocuments(
-        chunk.map((word, idx) => ({
-          id: i * 5000 + idx,
+        chunk.map((word) => ({
           name: word.name.replace(/[-^]/g, ''),
         })),
       );
@@ -164,6 +167,65 @@ export class MeilisearchService {
       // 500ms delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
+    console.info('Done.');
+  }
+
+  async autocompleteDiffSync() {
+    // DB에서 sourceId만 가져옴
+    console.info('Syncing words...');
+
+    console.info('Updating index...');
+    await this.meilisearch.updateIndex('autocomplete', {
+      primaryKey: 'name',
+    });
+
+    console.info('Getting sourceIds from DB...');
+    const dbWords = (
+      await this.wordRepository
+        .createQueryBuilder('word')
+        .select('name')
+        .distinct(true)
+        .getRawMany<{ name: string }>()
+    ).map((word) => word.name);
+    console.info('DB Words:', dbWords.length);
+
+    console.info('Getting sourceIds from MeiliSearch...');
+    // MeiliSearch에서 sourceId만 가져옴
+    const msWordsRes = await this.meilisearch
+      .index('autocomplete')
+      .getDocuments({
+        offset: 0,
+        limit: 100000000,
+      });
+
+    const msWords: string[] = msWordsRes.results.map((result) => result.name);
+    console.info('MeiliSearch Words:', msWords.length);
+
+    console.info('Calculating diff (to insert)...');
+    const onlyInDB = difference(dbWords, msWords);
+    console.info('Only in DB:', onlyInDB.length);
+
+    console.info('Calculating diff (to delete)...');
+    const onlyInMS = difference(msWords, dbWords);
+    console.info('Only in MeiliSearch:', onlyInMS.length);
+
+    const index = this.meilisearch.index('autocomplete');
+
+    // Inserting log with count
+    if (onlyInDB.length) {
+      console.info(`Inserting... (total: ${onlyInDB.length})`);
+      await index.addDocuments(onlyInDB.map((word) => ({ name: word })));
+    } else {
+      console.info('No documents to insert.');
+    }
+
+    if (onlyInMS.length) {
+      console.info(`Deleting... (total: ${onlyInMS.length})`);
+      await index.deleteDocuments(onlyInMS);
+    } else {
+      console.info('No documents to delete.');
+    }
+
     console.info('Done.');
   }
 }

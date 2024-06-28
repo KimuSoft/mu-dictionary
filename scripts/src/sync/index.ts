@@ -50,12 +50,15 @@ const run = async () => {
     await knex("word").where("referenceId", dict.default.referenceId).delete();
 
     // word 테이블에 데이터 삽입 전 default 값 적용
-    console.info(`Inserting ${dict.default.referenceId}...`);
     const items: MuDictItem[] = dict.items.map((item) => ({
       definition: "",
       ...dict.default,
       ...item,
     }));
+
+    console.info(
+      `Inserting ${dict.default.referenceId}... (SIZE: ${items.length})`,
+    );
 
     // 데이터 삽입
     await knex.batchInsert("word", items, 1000);

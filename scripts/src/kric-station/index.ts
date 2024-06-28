@@ -64,26 +64,25 @@ const run = async () => {
       originName = originName.replace(/\(.+\)/g, "").trim();
 
       const subNameData = wordConvert(subName);
-      if (!subNameData) {
+      if (subNameData) {
+        // <josa(운영기관명, '이/가') 운영하는 <노선명> <환승역구분>. <역사도로명주소>에 위치하였으며, 역번호는 '<역번호>'. 역 전화번호는 <역 전화번호>이다. (환승역일 경우)  <환승노선명.replace(/+/, ', ')>로 갈아탈 수 있는 환승역이다.
+        const subDefinition = `${josa(
+          station.operatingAgency,
+          "이/가",
+        )} 운영하는 ${station.lineName} ${name}역의 부역명.`;
+
+        const item: MuDictItem = {
+          sourceId: `${REFERENCE_ID}_${station.lineCode}_${station.stationCode}_sub`,
+          name: subNameData.name + "역",
+          simplifiedName: subNameData.simplifiedName + "역",
+          origin: (subNameOrigin?.replace(/\s/g, "") || subName) + "驛",
+          definition: subDefinition,
+        };
+
+        result.items.push(item);
+      } else {
         console.error(`Failed to convert ${subName}`);
-        continue;
       }
-
-      // <josa(운영기관명, '이/가') 운영하는 <노선명> <환승역구분>. <역사도로명주소>에 위치하였으며, 역번호는 '<역번호>'. 역 전화번호는 <역 전화번호>이다. (환승역일 경우)  <환승노선명.replace(/+/, ', ')>로 갈아탈 수 있는 환승역이다.
-      const subDefinition = `${josa(
-        station.operatingAgency,
-        "이/가",
-      )} 운영하는 ${station.lineName} ${name}역의 부역명.`;
-
-      const item: MuDictItem = {
-        sourceId: `${REFERENCE_ID}_${station.lineCode}_${station.stationCode}_sub`,
-        name: subNameData.name + "역",
-        simplifiedName: subNameData.simplifiedName + "역",
-        origin: (subNameOrigin?.replace(/\s/g, "") || subName) + "驛",
-        definition: subDefinition,
-      };
-
-      result.items.push(item);
     }
 
     const nameData = wordConvert(name);

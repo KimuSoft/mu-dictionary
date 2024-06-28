@@ -14,9 +14,11 @@
     "foodsafetykorea": "bun run src/foodsafetykorea/index.ts",
     "stardew-valley": "bun run src/stardew-valley/index.ts",
     "lobotomy-corp": "bun run src/lobotomy-corp/index.ts",
+    "bus": "bun run src/bus/index.ts",
     "kric-station": "bun run src/kric-station/index.ts",
     "kind": "bun run src/kind/index.ts",
-    "tj": "bun run src/tj-music/index.ts"
+    "tj": "bun run src/tj-music/index.ts",
+    "format-foreign": "bun run src/utils/foreignFormat.ts"
   },
   "keywords": [],
   "author": "",

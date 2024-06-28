@@ -59,8 +59,9 @@ const run = async () => {
   for (const anime of animes) {
     const nameData = wordConvert(
       anime.name
-        .replace(/\(.+\)/, "")
+        .replace(/\([^)]+\)/g, "")
         .replace(/\s1기/, "")
+        .replace(/\s?-\s?판권\s부활/, "")
         .trim(),
     );
 

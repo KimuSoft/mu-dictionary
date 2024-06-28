@@ -24,10 +24,17 @@ export class MeilisearchController {
   }
 
   // 임시: Meilisearch 동기화용
-  @Post('async')
-  @ApiOperation({ summary: 'Meilisearch 자동완성 색인' })
+  @Post('autocomplete/sync')
+  @ApiOperation({ summary: 'Meilisearch 자동완성 색인 (전체)' })
   async autocompleteSync() {
     return this.meilisearchService.autocompleteSync();
+  }
+
+  // 임시: Meilisearch 동기화용
+  @Post('autocomplete/diff-sync')
+  @ApiOperation({ summary: 'Meilisearch 자동완성 색인 (변경사항만)' })
+  async autocompleteDiffSync() {
+    return this.meilisearchService.autocompleteDiffSync();
   }
 
   // 임시: Meilisearch stats

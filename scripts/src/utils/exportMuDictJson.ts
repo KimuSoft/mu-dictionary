@@ -54,4 +54,5 @@ export const exportMuDictJson = async (refId: string, data: MuDict) => {
 
     JSON.stringify(data, null, 2),
   );
+  console.info(`JSON file exported. (${data.items.length})`);
 };

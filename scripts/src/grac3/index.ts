@@ -89,11 +89,14 @@ const run = async () => {
     // 캐싱
     console.info("Caching...");
     await writeFile(
-      `./${REFERENCE_ID}_cache.json`,
+      `./src/grac3/${REFERENCE_ID}_cache.json`,
       JSON.stringify(games, null, 2),
     );
   } else {
-    const cache = await readFile(`./${REFERENCE_ID}_cache.json`, "utf8");
+    const cache = await readFile(
+      `./src/grac3/${REFERENCE_ID}_cache.json`,
+      "utf8",
+    );
     games.push(...JSON.parse(cache));
   }
 
