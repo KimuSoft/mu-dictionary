@@ -81,8 +81,12 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
       alignItems={"flex-start"}
     >
       <VStack w={"100%"}>
-        <HStack w={"100%"}>
-          <Text fontSize={isMobile ? "md" : "lg"} fontWeight={"bold"}>
+        <HStack w={"100%"} flexWrap={"wrap"} rowGap={0}>
+          <Text
+            flexShrink={0}
+            fontSize={isMobile ? "md" : "lg"}
+            fontWeight={"bold"}
+          >
             <Tooltip label={word.url} hasArrow openDelay={500}>
               <Link href={word.url}>
                 <Highlight
