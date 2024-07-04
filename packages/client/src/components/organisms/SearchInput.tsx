@@ -14,6 +14,7 @@ import {
   AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete"
 import { autocompleteWords } from "../../api/word"
+import { motion } from "framer-motion"
 
 const SearchInput: React.FC<
   {
@@ -35,7 +36,7 @@ const SearchInput: React.FC<
     const timeout = setTimeout(async () => {
       const autocompletes = await autocompleteWords(searchQuery, 5)
       setAutocompleteItems(autocompletes)
-    }, 0)
+    }, 50)
 
     return () => clearTimeout(timeout)
   }, [searchQuery])
@@ -66,9 +67,15 @@ const SearchInput: React.FC<
           }}
           {...props}
         />
-        <AutoCompleteList bgColor={useColorModeValue("gray.100", "gray.700")}>
+        <AutoCompleteList
+          p={0}
+          overflow={"hidden"}
+          bgColor={useColorModeValue("gray.100", "gray.700")}
+        >
           <AutoCompleteItem
-            pb={1}
+            py={1}
+            px={4}
+            m={0}
             fontSize={"sm"}
             color={
               autocompleteItems.includes(searchQuery.trim())
@@ -86,7 +93,12 @@ const SearchInput: React.FC<
             (item, idx) =>
               item !== searchQuery && (
                 <AutoCompleteItem
+                  as={motion.div}
+                  initial={{ y: "-100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   py={1}
+                  px={4}
+                  m={0}
                   fontSize={"sm"}
                   key={`option-${idx}`}
                   value={item}

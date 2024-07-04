@@ -83,17 +83,19 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
       <VStack w={"100%"}>
         <HStack w={"100%"}>
           <Text fontSize={isMobile ? "md" : "lg"} fontWeight={"bold"}>
-            <Link href={word.url}>
-              <Highlight
-                query={keyword}
-                styles={{
-                  color: useColorModeValue("white", "black"),
-                  bg: useColorModeValue("gray.600", "gray.200"),
-                }}
-              >
-                {word.name}
-              </Highlight>
-            </Link>
+            <Tooltip label={word.url} hasArrow openDelay={500}>
+              <Link href={word.url}>
+                <Highlight
+                  query={keyword}
+                  styles={{
+                    color: useColorModeValue("white", "black"),
+                    bg: useColorModeValue("gray.600", "gray.200"),
+                  }}
+                >
+                  {word.name}
+                </Highlight>
+              </Link>
+            </Tooltip>
           </Text>
           {word.origin !== word.name && (
             <Tooltip label={"단어의 유래"} openDelay={500}>
