@@ -103,13 +103,21 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
           </Text>
           {word.origin !== word.name && (
             <Tooltip label={"단어의 유래"} openDelay={500}>
-              <Text fontSize={isMobile ? "sm" : "md"} color={"gray.500"}>
+              <Text
+                flexShrink={0}
+                fontSize={isMobile ? "sm" : "md"}
+                color={"gray.500"}
+              >
                 ({word.origin})
               </Text>
             </Tooltip>
           )}
           {word.pronunciation && (
-            <Text fontSize={isMobile ? "sm" : "md"} color={"gray.500"}>
+            <Text
+              flexShrink={0}
+              fontSize={isMobile ? "sm" : "md"}
+              color={"gray.500"}
+            >
               [{word.pronunciation}]
             </Text>
           )}
