@@ -1,169 +1,87 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {
-  Box,
   Container,
   Divider,
   Highlight,
   HStack,
   IconButton,
-  Image,
-  Link,
   Spacer,
   Spinner,
   Text,
   Tooltip,
   useColorModeValue,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react"
 import Header from "../organisms/Header"
 import { IWord } from "../../types/types"
 import { Virtuoso } from "react-virtuoso"
-import ThemeTag from "../atoms/ThemeTag"
-import PosTag from "../atoms/PosTag"
-import { IoVolumeMedium } from "react-icons/io5"
-
-const Word: React.FC<{ word: IWord; keyword: string }> = ({
-  word,
-  keyword,
-}) => {
-  const getSpeech = (text: string) => {
-    let voices: SpeechSynthesisVoice[] = []
-    console.info("getSpeech", text)
-
-    //디바이스에 내장된 voice를 가져온다.
-    const setVoiceList = () => {
-      voices = window.speechSynthesis.getVoices()
-    }
-
-    setVoiceList()
-
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      // voice list에 변경됐을때, voice를 다시 가져온다.
-      window.speechSynthesis.onvoiceschanged = setVoiceList
-    }
-
-    const speech = (txt: string) => {
-      const lang = "ko-KR"
-      const utterThis = new SpeechSynthesisUtterance(txt)
-
-      utterThis.lang = lang
-
-      /* 한국어 vocie 찾기
-         디바이스 별로 한국어는 ko-KR 또는 ko_KR로 voice가 정의되어 있다.
-      */
-      const kor_voice = voices.find(
-        (elem) => elem.lang === lang || elem.lang === lang.replace("-", "_"),
-      )
-
-      //힌국어 voice가 있다면 ? utterance에 목소리를 설정한다 : 리턴하여 목소리가 나오지 않도록 한다.
-      if (kor_voice) {
-        utterThis.voice = kor_voice
-      } else {
-        return
-      }
-
-      //utterance를 재생(speak)한다.
-      window.speechSynthesis.speak(utterThis)
-    }
-
-    speech(text)
-  }
-
-  return (
-    <HStack w={"100%"} mb={7} alignItems={"flex-start"}>
-      <VStack w={"100%"}>
-        <HStack w={"100%"}>
-          <Text fontSize={"lg"} fontWeight={"bold"}>
-            <Link href={word.url}>
-              <Highlight
-                query={keyword}
-                styles={{
-                  color: useColorModeValue("white", "black"),
-                  bg: useColorModeValue("gray.600", "gray.200"),
-                }}
-              >
-                {word.name}
-              </Highlight>
-            </Link>
-          </Text>
-          {word.origin !== word.name && (
-            <Tooltip label={"단어의 유래"} openDelay={500}>
-              <Text color={"gray.500"}>({word.origin})</Text>
-            </Tooltip>
-          )}
-          {word.pronunciation && (
-            <Text color={"gray.500"}>[{word.pronunciation}]</Text>
-          )}
-          <IconButton
-            aria-label={"play sound"}
-            icon={<IoVolumeMedium />}
-            variant={"ghost"}
-            size={"sm"}
-            color={"gray.500"}
-            onClick={() => getSpeech(word.pronunciation || word.name)}
-          />
-        </HStack>
-        <Box w={"100%"}>
-          <Text>
-            <HStack display={"inline-flex"} mr={3} gap={1}>
-              <PosTag pos={word.pos} />
-              {word.tags.map((tag, idx) => (
-                <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
-              ))}
-            </HStack>
-            {word.definition}
-          </Text>
-        </Box>
-      </VStack>
-      {word.thumbnail && (
-        <Image
-          w={"80px"}
-          borderRadius={4}
-          objectFit={"cover"}
-          alt={word.name}
-          src={word.thumbnail}
-        />
-      )}
-    </HStack>
-  )
-}
+import { GoMoveToTop } from "react-icons/go"
+import WordItem from "../organisms/WordItem"
 
 const SearchTemplate: React.FC<{
   keyword: string
   searchResults: IWord[]
   onEndReached?: () => void
-  isLoading?: boolean
-  allLoaded?: boolean
-}> = ({ keyword, searchResults, onEndReached, isLoading, allLoaded }) => {
+  isLoading: boolean
+  allLoaded: boolean
+  totalCount: number
+}> = ({
+  keyword,
+  searchResults,
+  onEndReached,
+  totalCount,
+  isLoading,
+  allLoaded,
+}) => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [keyword])
+
+  // reset scroll
+  const resetScroll = () => {
+    window.scrollTo(0, 0)
+  }
+
   return (
-    <VStack>
+    <VStack position={"relative"} px={2}>
+      <Tooltip label={"가장 위로 이동"} hasArrow>
+        <IconButton
+          aria-label={"top"}
+          isRound
+          colorScheme={"gray"}
+          icon={<GoMoveToTop />}
+          position={"fixed"}
+          onClick={resetScroll}
+          bottom={5}
+          right={8}
+          zIndex={999}
+        />
+      </Tooltip>
       <Header showSearch={true} showLogo={true} />
-      <Container maxW={"3xl"}>
-        <Divider />
+      <Container maxW={"3xl"} mt={isMobile ? "80px" : "100px"}>
         <Virtuoso
           useWindowScroll
           style={{
-            marginTop: "100px",
             height: "calc(100vh - 100px)",
           }}
           data={searchResults}
           endReached={onEndReached}
-          itemContent={(index, word) => (
-            <Word key={"word-" + word.id} word={word} keyword={keyword} />
+          itemContent={(_index, word) => (
+            <WordItem key={"word-" + word.id} word={word} keyword={keyword} />
           )}
           components={{
             Header: () => (
-              <SearchHeader
-                keyword={keyword}
-                totalCount={searchResults.length}
-              />
+              <SearchHeader keyword={keyword} totalCount={totalCount} />
             ),
             Footer: () => (
               <Footer
                 keyword={keyword}
                 totalCount={searchResults.length}
-                isLoading={!!isLoading}
-                allLoaded={!!allLoaded}
+                isLoading={isLoading}
+                allLoaded={allLoaded}
               />
             ),
           }}
@@ -211,7 +129,7 @@ const Footer: React.FC<{
   totalCount: number
 }> = ({ keyword, allLoaded, isLoading, totalCount }) => {
   return (
-    <VStack w={"100%"} h={"300px"}>
+    <VStack w={"100%"} h={"300px"} mt={20}>
       {!isLoading ? (
         <Text color={"gray.500"}>
           {totalCount && allLoaded
@@ -219,7 +137,7 @@ const Footer: React.FC<{
             : `"${keyword}"에 대한 검색 결과가 없어요...`}
         </Text>
       ) : (
-        <Spinner />
+        <Spinner color={"gray.500"} />
       )}
     </VStack>
   )

@@ -133,6 +133,14 @@ export class MeilisearchService {
     console.info('Done.');
   }
 
+  toUnicodeId(name: string) {
+    // charCodeAt을 이용하여 유니코드로 변환, 글자와 글자 사이는 '-'로 구분
+    return name
+      .split('')
+      .map((char) => char.charCodeAt(0).toString(16))
+      .join('-');
+  }
+
   async autocompleteSync() {
     // autocomplete index
     console.info('Syncing autocomplete...');
@@ -166,7 +174,7 @@ export class MeilisearchService {
       await autocomplete.addDocuments(
         chunk.map((word) => {
           const name = word.name.replace(/[-^]/g, '');
-          const id = encodeURIComponent(name).replace(/%/g, '_');
+          const id = this.toUnicodeId(name);
 
           return { id, name };
         }),
@@ -194,12 +202,7 @@ export class MeilisearchService {
         .select('name')
         .distinct(true)
         .getRawMany<{ name: string }>()
-    ).map((word) => {
-      const name = word.name.replace(/[-^]/g, '');
-      const id = encodeURIComponent(name).replace(/%/g, '_');
-
-      return { id, name };
-    });
+    ).map((word) => word.name.replace(/[-^]/g, ''));
     console.info('DB Words:', dbWords.length);
 
     console.info('Getting Words from MeiliSearch...');
@@ -209,24 +212,18 @@ export class MeilisearchService {
       .getDocuments({
         offset: 0,
         limit: 100000000,
-        fields: ['id'],
+        fields: ['name'],
       });
 
-    const msWords: string[] = msWordsRes.results.map((result) => result.id);
+    const msWords: string[] = msWordsRes.results.map((result) => result.name);
     console.info('MeiliSearch Words:', msWords.length);
 
     console.info('Calculating diff (to insert)...');
-    const onlyInDB = difference(
-      dbWords.map((word) => word.id),
-      msWords,
-    );
+    const onlyInDB = difference(dbWords, msWords);
     console.info('Only in DB:', onlyInDB.length);
 
     console.info('Calculating diff (to delete)...');
-    const onlyInMS = difference(
-      msWords,
-      dbWords.map((word) => word.id),
-    );
+    const onlyInMS = difference(msWords, dbWords);
     console.info('Only in MeiliSearch:', onlyInMS.length);
 
     const index = this.meilisearch.index('autocomplete');
@@ -237,7 +234,10 @@ export class MeilisearchService {
       const chunkedWord = chunk(onlyInDB, 50000);
       for (const chunk of chunkedWord) {
         await index.addDocuments(
-          dbWords.filter((word) => chunk.includes(word.id)),
+          chunk.map((word) => {
+            const id = this.toUnicodeId(word);
+            return { id, name: word };
+          }),
         );
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
@@ -249,7 +249,9 @@ export class MeilisearchService {
       console.info(`Deleting... (total: ${onlyInMS.length})`);
       const chunked = chunk(onlyInMS, 50000);
       for (const chunk of chunked) {
-        await index.deleteDocuments(chunk);
+        await index.deleteDocuments(
+          chunk.map((word) => this.toUnicodeId(word)),
+        );
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
     } else {

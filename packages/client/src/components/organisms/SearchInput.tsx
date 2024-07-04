@@ -68,7 +68,7 @@ const SearchInput: React.FC<
         />
         <AutoCompleteList bgColor={useColorModeValue("gray.100", "gray.700")}>
           <AutoCompleteItem
-            py={1}
+            pb={1}
             fontSize={"sm"}
             color={
               autocompleteItems.includes(searchQuery.trim())

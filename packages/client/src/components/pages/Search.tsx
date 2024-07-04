@@ -13,49 +13,25 @@ const Search: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(false)
 
   const allLoaded = useMemo(
-    () => searchResults.length === totalCount,
+    () => searchResults.length >= totalCount,
     [searchResults, totalCount],
   )
 
   const refresh = async () => {
     setIsLoading(true)
-    const words = await searchWords(searchQuery, 1000, 0)
+    const words = await searchWords(searchQuery, 50, 0)
+    console.log(words)
     setTotalCount(words.estimatedTotalHits)
     setSearchResults(words.hits)
     setIsLoading(false)
+  }
 
-    // const _homonyms = _.groupBy(res.data, (h) => `${h.name}-${h.origin}`)
-    // const homonyms: Homonym[] = []
-    //
-    // console.log(_homonyms)
-    //
-    // let cursorWord = ""
-    // let cursorNo = 1
-    // for (const key of Object.keys(_homonyms)) {
-    //   let words = _homonyms[key]
-    //   const word = words[0]
-    //
-    //   if (cursorWord !== word.name) {
-    //     cursorWord = word.name
-    //     cursorNo = 1
-    //   }
-    //
-    //   words = words.map((w, i) => ({
-    //     ...w,
-    //     number: cursorNo + i,
-    //   }))
-    //
-    //   homonyms.push({
-    //     words: words,
-    //     origin: word.origin,
-    //     name: word.name,
-    //     pronunciation: word.pronunciation,
-    //   })
-    //
-    //   cursorNo += words.length
-    // }
-    //
-    // setSearchResults(homonyms)
+  const loadMore = async () => {
+    if (allLoaded || isLoading) return
+    setIsLoading(true)
+    const words = await searchWords(searchQuery, 50, searchResults.length)
+    setSearchResults([...searchResults, ...words.hits])
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -66,8 +42,9 @@ const Search: React.FC = () => {
     <SearchTemplate
       keyword={searchQuery}
       searchResults={searchResults}
-      onEndReached={refresh}
+      onEndReached={loadMore}
       isLoading={isLoading}
+      totalCount={totalCount}
       allLoaded={allLoaded}
     />
   )
