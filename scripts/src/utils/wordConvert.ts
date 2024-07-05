@@ -11,7 +11,9 @@ const replaceData: ForeignReplaceData[] = JSON.parse(
   readFileSync("foreign_replace.json").toString(),
 );
 replaceData.sort(
-  (a, b) => (b.priority || b.key.length) - (a.priority || a.key.length),
+  (a, b) =>
+    (b.priority !== undefined ? b.priority : b.key.length) -
+    (a.priority !== undefined ? a.priority : a.key.length),
 );
 
 // 단순한, 기호 및 영어 등을 한국어로 변환함

@@ -17,7 +17,7 @@ import {
 import { IoVolumeMedium } from "react-icons/io5"
 import PosTag from "../atoms/PosTag"
 import ThemeTag from "../atoms/ThemeTag"
-import { FaCopy } from "react-icons/fa6"
+import { FaCopy, FaLink } from "react-icons/fa6"
 import { motion } from "framer-motion"
 
 const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
@@ -88,19 +88,17 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
             fontSize={isMobile ? "md" : "lg"}
             fontWeight={"bold"}
           >
-            <Tooltip label={word.url} hasArrow openDelay={500}>
-              <Link href={word.url}>
-                <Highlight
-                  query={keyword}
-                  styles={{
-                    color: useColorModeValue("white", "black"),
-                    bg: useColorModeValue("gray.600", "gray.200"),
-                  }}
-                >
-                  {word.name}
-                </Highlight>
-              </Link>
-            </Tooltip>
+            <Link href={word.url}>
+              <Highlight
+                query={keyword}
+                styles={{
+                  color: useColorModeValue("white", "black"),
+                  bg: useColorModeValue("gray.600", "gray.200"),
+                }}
+              >
+                {word.name}
+              </Highlight>
+            </Link>
           </Text>
           {word.origin !== word.name && (
             <Tooltip label={"단어의 유래"} openDelay={500}>
@@ -150,6 +148,19 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
               color={"gray.500"}
               onClick={() => getSpeech(word.pronunciation || word.name)}
             />
+            {word.url ? (
+              <Tooltip label={word.url} hasArrow openDelay={500}>
+                <IconButton
+                  aria-label={"link"}
+                  icon={<FaLink />}
+                  variant={"ghost"}
+                  isRound
+                  size={"sm"}
+                  color={"gray.500"}
+                  onClick={() => (window.location.href = word.url)}
+                />
+              </Tooltip>
+            ) : null}
           </HStack>
         </HStack>
         <Box w={"100%"}>

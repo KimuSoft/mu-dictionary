@@ -19,7 +19,8 @@
     "kind": "bun run src/kind/index.ts",
     "tj": "bun run src/tj-music/index.ts",
     "format-foreign": "bun run src/utils/foreignFormat.ts",
-    "steam": "bun run src/steam/index.ts"
+    "steam": "bun run src/steam/index.ts",
+    "cv": "bun run src/utils/convert-cli.ts"
   },
   "keywords": [],
   "author": "",
