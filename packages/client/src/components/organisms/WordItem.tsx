@@ -84,6 +84,7 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
         <HStack w={"100%"} flexWrap={"wrap"} rowGap={0}>
           <Text
             flexShrink={0}
+            maxW={"100%"}
             fontSize={isMobile ? "md" : "lg"}
             fontWeight={"bold"}
           >
@@ -105,6 +106,7 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
             <Tooltip label={"단어의 유래"} openDelay={500}>
               <Text
                 flexShrink={0}
+                maxW={"100%"}
                 fontSize={isMobile ? "sm" : "md"}
                 color={"gray.500"}
               >
@@ -115,6 +117,7 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
           {word.pronunciation && (
             <Text
               flexShrink={0}
+              maxW={"100%"}
               fontSize={isMobile ? "sm" : "md"}
               color={"gray.500"}
             >

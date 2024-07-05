@@ -124,8 +124,11 @@ const run = async () => {
       ? ` ${item.description.replace(/\{.+}/g, "몇 ")}`
       : "";
 
+    const sourceId =
+      REFERENCE_ID + "_" + item.file.split(".")[0] + "_" + item.id;
+
     result.items.push({
-      sourceId: REFERENCE_ID + "_" + item.file + "_" + item.id,
+      sourceId: sourceId.toLowerCase().replace(/[.\s]/g, "_").replace(/'/g, ""),
       origin: nameData.origin,
       name: nameData.name,
       simplifiedName: nameData.simplifiedName,

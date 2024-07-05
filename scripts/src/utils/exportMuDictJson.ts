@@ -14,6 +14,20 @@ export const exportMuDictJson = async (refId: string, data: MuDict) => {
     return;
   }
 
+  // referenceId가 /[A-z0-9-_]/를 제외한 문자가 있는지 체크
+  const invalidIdItems = data.items.filter(
+    (item) => !/^[A-z0-9-_]+$/.test(item.sourceId!),
+  );
+
+  // invalidIdItems가 있으면 경고하고 종료
+  if (invalidIdItems.length) {
+    console.error(
+      `${invalidIdItems.length}개의 아이템이 올바르지 않은 ID를 가지고 있습니다. (exportMuDictJson)`,
+      invalidIdItems.map((item) => item.sourceId).join(", "),
+    );
+    return;
+  }
+
   if (uniqBy(itemsWithId, "sourceId").length !== itemsWithId.length) {
     // 무엇이 중복되었는지 계산
     const duplicated = itemsWithId.reduce(
@@ -41,8 +55,9 @@ export const exportMuDictJson = async (refId: string, data: MuDict) => {
   const today = new Date();
   // array json 파일로 저장
   await writeFile(
-    `./data/${refId.toUpperCase()}_${today.getFullYear()}-${today
-      .getMonth()
+    `./data/${refId.toUpperCase()}_${today.getFullYear()}-${(
+      today.getMonth() + 1
+    )
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}-${today
       .getHours()

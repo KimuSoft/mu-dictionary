@@ -133,6 +133,22 @@ export class MeilisearchService {
     console.info('Done.');
   }
 
+  // 특정 referenceId에 해당하는 단어만 동기화
+  async refSync(referenceId: string) {
+    console.info(`Syncing words with referenceId: ${referenceId}`);
+    const words = await this.wordRepository.findBy({ referenceId });
+    const index = this.meilisearch.index('words');
+
+    console.info(`Adding ${words.length} words...`);
+    await index.addDocuments(words.map((word) => word.toJSON()));
+
+    console.info('Done.');
+
+    return {
+      inserted: words.length,
+    };
+  }
+
   toUnicodeId(name: string) {
     // charCodeAt을 이용하여 유니코드로 변환, 글자와 글자 사이는 '-'로 구분
     return name

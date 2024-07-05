@@ -223,6 +223,10 @@
     "replace": "트웬티세컨드"
   },
   {
+    "key": "gem",
+    "replace": "젬"
+  },
+  {
     "key": "23rd",
     "replace": "트웬티서드"
   },
@@ -257,10 +261,6 @@
   {
     "key": "4th",
     "replace": "포스"
-  },
-  {
-    "key": "dead",
-    "replace": "데드"
   },
   {
     "key": "5th",
@@ -748,7 +748,7 @@
   },
   {
     "key": "a\\s",
-    "replace": "어"
+    "replace": "어 "
   },
   {
     "key": "abc",
@@ -769,6 +769,14 @@
   {
     "key": "ag",
     "replace": "에이지"
+  },
+  {
+    "key": "pin",
+    "replace": "핀"
+  },
+  {
+    "key": "fx",
+    "replace": "에프엑스"
   },
   {
     "key": "ages?",
@@ -803,6 +811,18 @@
     "replace": "엔젤"
   },
   {
+    "key": "anima",
+    "replace": "아니마"
+  },
+  {
+    "key": "angels",
+    "replace": "엔젤스"
+  },
+  {
+    "key": "animated",
+    "replace": "애니메이티드"
+  },
+  {
     "key": "animation",
     "replace": "애니메이션"
   },
@@ -819,12 +839,24 @@
     "replace": "앤서"
   },
   {
+    "key": "other",
+    "replace": "아더"
+  },
+  {
     "key": "apple",
     "replace": "애플"
   },
   {
+    "key": "2wei",
+    "replace": "츠바이"
+  },
+  {
     "key": "ar",
     "replace": "에이알"
+  },
+  {
+    "key": "herz",
+    "replace": "헤르츠"
   },
   {
     "key": "at",
@@ -879,6 +911,18 @@
     "replace": "비"
   },
   {
+    "key": "little",
+    "replace": "리틀"
+  },
+  {
+    "key": "moments",
+    "replace": "모멘츠"
+  },
+  {
+    "key": "moment",
+    "replace": "모멘트"
+  },
+  {
     "key": "beat",
     "replace": "비트"
   },
@@ -903,8 +947,93 @@
     "replace": "버드"
   },
   {
+    "key": "digital",
+    "replace": "디지털"
+  },
+  {
     "key": "birth",
     "replace": "버스"
+  },
+  {
+    "key": "sm",
+    "replace": "에스엠"
+  },
+  {
+    "key": "cbs",
+    "replace": "씨비에스"
+  },
+  {
+    "key": "nh",
+    "replace": "엔에이치"
+  },
+  {
+    "key": "s-oil",
+    "replace": "에스오일"
+  },
+  {
+    "key": "[^A-z]ic",
+    "replace": " 인터체인지",
+    "priority": 2
+  },
+  {
+    "key": "[^A-z]jc$",
+    "replace": " 분기점"
+  },
+  {
+    "key": "[^A-z]tg",
+    "replace": " 톨게이트"
+  },
+  {
+    "key": "kt",
+    "replace": "케이티"
+  },
+  {
+    "key": "kcc",
+    "replace": "케이씨씨"
+  },
+  {
+    "key": "bbc",
+    "replace": "비비씨"
+  },
+  {
+    "key": "kaist",
+    "replace": "카이스트"
+  },
+  {
+    "key": "cgv",
+    "replace": "씨지브이"
+  },
+  {
+    "key": "ktx",
+    "replace": "케이티엑스"
+  },
+  {
+    "key": "gm",
+    "replace": "지엠"
+  },
+  {
+    "key": "gmb",
+    "replace": "지엠비"
+  },
+  {
+    "key": "apt",
+    "replace": "아파트"
+  },
+  {
+    "key": "mt",
+    "replace": "엠티"
+  },
+  {
+    "key": "lg",
+    "replace": "엘지"
+  },
+  {
+    "key": "lh",
+    "replace": "엘에이치"
+  },
+  {
+    "key": "sk",
+    "replace": "에스케이"
   },
   {
     "key": "bit",
@@ -923,8 +1052,48 @@
     "replace": "블래스트"
   },
   {
+    "key": "last",
+    "replace": "라스트"
+  },
+  {
+    "key": "dino",
+    "replace": "다이노"
+  },
+  {
     "key": "block",
     "replace": "블록"
+  },
+  {
+    "key": "gay",
+    "replace": "게이"
+  },
+  {
+    "key": "rescue",
+    "replace": "레스큐"
+  },
+  {
+    "key": "bear",
+    "replace": "베어"
+  },
+  {
+    "key": "joy",
+    "replace": "조이"
+  },
+  {
+    "key": "boom",
+    "replace": "붐"
+  },
+  {
+    "key": "bomber",
+    "replace": "봄버"
+  },
+  {
+    "key": "fated",
+    "replace": "페이티드"
+  },
+  {
+    "key": "bring",
+    "replace": "브링"
   },
   {
     "key": "bloom",
@@ -995,8 +1164,52 @@
     "replace": "바이"
   },
   {
+    "key": "steam",
+    "replace": "스팀"
+  },
+  {
+    "key": "bug",
+    "replace": "버그"
+  },
+  {
+    "key": "click",
+    "replace": "클릭"
+  },
+  {
+    "key": "clicker",
+    "replace": "클리커"
+  },
+  {
+    "key": "cookie",
+    "replace": "쿠키"
+  },
+  {
+    "key": "cooking",
+    "replace": "쿠킹"
+  },
+  {
+    "key": "cook",
+    "replace": "쿡"
+  },
+  {
+    "key": "cookies",
+    "replace": "쿠키스"
+  },
+  {
+    "key": "step",
+    "replace": "스텝"
+  },
+  {
     "key": "bye",
     "replace": "바이"
+  },
+  {
+    "key": "raine",
+    "replace": "레인"
+  },
+  {
+    "key": "stal",
+    "replace": "스탈"
   },
   {
     "key": "c418",
@@ -1007,8 +1220,20 @@
     "replace": "카페"
   },
   {
+    "key": "lena",
+    "replace": "레나"
+  },
+  {
+    "key": "bat",
+    "replace": "배트"
+  },
+  {
     "key": "canvas",
     "replace": "캔버스"
+  },
+  {
+    "key": "samuel",
+    "replace": "사무엘"
   },
   {
     "key": "cat",
@@ -1043,6 +1268,10 @@
     "replace": "체다"
   },
   {
+    "key": "pig",
+    "replace": "피그"
+  },
+  {
     "key": "cheese",
     "replace": "치즈"
   },
@@ -1051,8 +1280,16 @@
     "replace": "칩"
   },
   {
+    "key": "have",
+    "replace": "해브"
+  },
+  {
     "key": "chips",
     "replace": "칩스"
+  },
+  {
+    "key": "suika",
+    "replace": "스이카"
   },
   {
     "key": "choices?",
@@ -1099,16 +1336,44 @@
     "replace": "시티"
   },
   {
-    "key": "neo",
-    "replace": "네오"
+    "key": "stone",
+    "replace": "스톤"
+  },
+  {
+    "key": "tbc",
+    "replace": "티비씨"
+  },
+  {
+    "key": "dgb",
+    "replace": "디지비"
+  },
+  {
+    "key": "attack",
+    "replace": "어택"
   },
   {
     "key": "cj",
     "replace": "씨제이"
   },
   {
+    "key": "square",
+    "replace": "스퀘어"
+  },
+  {
+    "key": "obs",
+    "replace": "오비에스"
+  },
+  {
     "key": "climax",
     "replace": "클라이맥스"
+  },
+  {
+    "key": "lpg",
+    "replace": "엘피지"
+  },
+  {
+    "key": "kfc",
+    "replace": "케이에프씨"
   },
   {
     "key": "clock",
@@ -1147,6 +1412,10 @@
     "replace": "쿡"
   },
   {
+    "key": "cool",
+    "replace": "쿨"
+  },
+  {
     "key": "cosmos",
     "replace": "코스모스"
   },
@@ -1163,16 +1432,36 @@
     "replace": "크로스"
   },
   {
-    "key": "cu",
-    "replace": "씨유"
-  },
-  {
     "key": "crystal",
     "replace": "크리스탈"
   },
   {
-    "key": "nana",
-    "replace": "나나"
+    "key": "cu",
+    "replace": "씨유"
+  },
+  {
+    "key": "create",
+    "replace": "크리에이트"
+  },
+  {
+    "key": "creator",
+    "replace": "크리에이터"
+  },
+  {
+    "key": "crimson",
+    "replace": "크림슨"
+  },
+  {
+    "key": "crisis",
+    "replace": "크라이시스"
+  },
+  {
+    "key": "cuties",
+    "replace": "큐티즈"
+  },
+  {
+    "key": "crush",
+    "replace": "크러시"
   },
   {
     "key": "danny",
@@ -1181,6 +1470,10 @@
   {
     "key": "dark",
     "replace": "다크"
+  },
+  {
+    "key": "dance",
+    "replace": "댄스"
   },
   {
     "key": "dash",
@@ -1199,6 +1492,14 @@
     "replace": "디비"
   },
   {
+    "key": "idle",
+    "replace": "아이들"
+  },
+  {
+    "key": "dead",
+    "replace": "데드"
+  },
+  {
     "key": "dear",
     "replace": "디어"
   },
@@ -1209,6 +1510,10 @@
   {
     "key": "deemo",
     "replace": "디모"
+  },
+  {
+    "key": "deep",
+    "replace": "딥"
   },
   {
     "key": "delete",
@@ -1272,8 +1577,20 @@
     "replace": "두"
   },
   {
+    "key": "doom",
+    "replace": "둠"
+  },
+  {
     "key": "dog",
     "replace": "도그"
+  },
+  {
+    "key": "dogs",
+    "replace": "독스"
+  },
+  {
+    "key": "demo",
+    "replace": "데모"
   },
   {
     "key": "don't",
@@ -1325,6 +1642,14 @@
     "replace": "듀티"
   },
   {
+    "key": "driver",
+    "replace": "드라이버"
+  },
+  {
+    "key": "goose",
+    "replace": "구스"
+  },
+  {
     "key": "dvd",
     "replace": "디비디"
   },
@@ -1335,6 +1660,10 @@
   {
     "key": "dynamite",
     "replace": "다이너마이트"
+  },
+  {
+    "key": "d×d",
+    "replace": "디엑스디"
   },
   {
     "key": "eagle",
@@ -1403,10 +1732,6 @@
   {
     "key": "eternal",
     "replace": "이터널"
-  },
-  {
-    "key": "piece",
-    "replace": "피스"
   },
   {
     "key": "eve",
@@ -1497,6 +1822,10 @@
     "replace": "페이트"
   },
   {
+    "key": "kaleid",
+    "replace": "칼레이드"
+  },
+  {
     "key": "fbi",
     "replace": "에프비아이"
   },
@@ -1553,6 +1882,14 @@
     "replace": "플라이"
   },
   {
+    "key": "flower",
+    "replace": "플라워"
+  },
+  {
+    "key": "flowers",
+    "replace": "플라워즈"
+  },
+  {
     "key": "for",
     "replace": "포"
   },
@@ -1601,8 +1938,64 @@
     "replace": "펀"
   },
   {
+    "key": "cinder",
+    "replace": "신더"
+  },
+  {
+    "key": "burst",
+    "replace": "버스트"
+  },
+  {
+    "key": "civil",
+    "replace": "시빌"
+  },
+  {
+    "key": "civilization",
+    "replace": "시빌라이제이션"
+  },
+  {
     "key": "future",
     "replace": "퓨처"
+  },
+  {
+    "key": "pinky",
+    "replace": "핑키"
+  },
+  {
+    "key": "buns",
+    "replace": "번즈"
+  },
+  {
+    "key": "bun",
+    "replace": "번"
+  },
+  {
+    "key": "bikini",
+    "replace": "비키니"
+  },
+  {
+    "key": "lemon",
+    "replace": "레몬"
+  },
+  {
+    "key": "frozen",
+    "replace": "프로즌"
+  },
+  {
+    "key": "geode",
+    "replace": "지오데"
+  },
+  {
+    "key": "fossil",
+    "replace": "포질"
+  },
+  {
+    "key": "keep",
+    "replace": "킵"
+  },
+  {
+    "key": "copper",
+    "replace": "쿠퍼"
   },
   {
     "key": "g.?dragon",
@@ -1621,12 +2014,64 @@
     "replace": "게이트"
   },
   {
+    "key": "balls",
+    "replace": "볼즈"
+  },
+  {
     "key": "gear",
     "replace": "기어"
   },
   {
+    "key": "mops",
+    "replace": "몹스"
+  },
+  {
+    "key": "mobs",
+    "replace": "몹스"
+  },
+  {
+    "key": "sweep",
+    "replace": "스윕"
+  },
+  {
+    "key": "sweeping",
+    "replace": "스위핑"
+  },
+  {
+    "key": "novel",
+    "replace": "노블"
+  },
+  {
+    "key": "dota",
+    "replace": "도타"
+  },
+  {
+    "key": "short",
+    "replace": "쇼트"
+  },
+  {
+    "key": "nexus",
+    "replace": "넥서스"
+  },
+  {
+    "key": "shorts",
+    "replace": "쇼츠"
+  },
+  {
+    "key": "film",
+    "replace": "필름"
+  },
+  {
+    "key": "garden",
+    "replace": "가든"
+  },
+  {
     "key": "gee",
     "replace": "지"
+  },
+  {
+    "key": "topaz",
+    "replace": "토파즈"
   },
   {
     "key": "genesis",
@@ -1685,12 +2130,12 @@
     "replace": "골프"
   },
   {
-    "key": "good",
-    "replace": "굿"
+    "key": "gold",
+    "replace": "골드"
   },
   {
-    "key": "rap",
-    "replace": "랩"
+    "key": "good",
+    "replace": "굿"
   },
   {
     "key": "grand",
@@ -1703,6 +2148,10 @@
   {
     "key": "green",
     "replace": "그린"
+  },
+  {
+    "key": "aquamarine",
+    "replace": "아쿠아마린"
   },
   {
     "key": "gs",
@@ -1753,11 +2202,31 @@
     "replace": "히어로"
   },
   {
+    "key": "snowy",
+    "replace": "스노위"
+  },
+  {
+    "key": "iridium",
+    "replace": "이리듐"
+  },
+  {
+    "key": "shard",
+    "replace": "샤드"
+  },
+  {
     "key": "hey",
     "replace": "헤이"
   },
   {
     "key": "hi",
+    "replace": "하이"
+  },
+  {
+    "key": "omni",
+    "replace": "옴니"
+  },
+  {
+    "key": "high",
     "replace": "하이"
   },
   {
@@ -1771,10 +2240,6 @@
   {
     "key": "hope",
     "replace": "호프"
-  },
-  {
-    "key": "high",
-    "replace": "하이"
   },
   {
     "key": "hot",
@@ -1810,6 +2275,10 @@
     "replace": "아이디"
   },
   {
+    "key": "if",
+    "replace": "이프"
+  },
+  {
     "key": "ii",
     "replace": "2"
   },
@@ -1820,6 +2289,10 @@
   {
     "key": "in",
     "replace": "인"
+  },
+  {
+    "key": "into",
+    "replace": "인투"
   },
   {
     "key": "iq",
@@ -1886,8 +2359,9 @@
     "replace": "카카오"
   },
   {
-    "key": "kbo",
-    "replace": "케이비오"
+    "key": "kan!!",
+    "replace": "깡",
+    "priority": 1000
   },
   {
     "key": "kbo",
@@ -1902,14 +2376,6 @@
     "replace": "킬로그램"
   },
   {
-    "key": "d×d",
-    "replace": "디엑스디"
-  },
-  {
-    "key": "cuties",
-    "replace": "큐티즈"
-  },
-  {
     "key": "kick",
     "replace": "킥"
   },
@@ -1920,6 +2386,10 @@
   {
     "key": "king",
     "replace": "킹"
+  },
+  {
+    "key": "remove",
+    "replace": "리무브"
   },
   {
     "key": "kingdom",
@@ -1962,29 +2432,12 @@
     "replace": "레프트"
   },
   {
-    "key": "refrain",
-    "replace": "리프레인"
-  },
-  {
     "key": "lego",
     "replace": "레고"
   },
   {
     "key": "less",
     "replace": "리스"
-  },
-  {
-    "key": "luck",
-    "replace": "럭"
-  },
-  {
-    "key": "kan!!",
-    "replace": "깡",
-    "priority": 1000
-  },
-  {
-    "key": "lucky",
-    "replace": "러키"
   },
   {
     "key": "let's",
@@ -2001,6 +2454,10 @@
   {
     "key": "like",
     "replace": "라이크"
+  },
+  {
+    "key": "liner",
+    "replace": "라이너"
   },
   {
     "key": "live",
@@ -2027,28 +2484,20 @@
     "replace": "러브"
   },
   {
+    "key": "luck",
+    "replace": "럭"
+  },
+  {
+    "key": "lucky",
+    "replace": "러키"
+  },
+  {
     "key": "lv",
     "replace": "레벨"
   },
   {
     "key": "mad",
     "replace": "매드"
-  },
-  {
-    "key": "ntr",
-    "replace": "엔티알"
-  },
-  {
-    "key": "strike",
-    "replace": "스트라이크"
-  },
-  {
-    "key": "striker",
-    "replace": "스트라이커"
-  },
-  {
-    "key": "strikers",
-    "replace": "스트라이커즈"
   },
   {
     "key": "magic",
@@ -2209,6 +2658,10 @@
     "replace": "뮤직"
   },
   {
+    "key": "muse",
+    "replace": "뮤즈"
+  },
+  {
     "key": "mv",
     "replace": "무비"
   },
@@ -2217,12 +2670,20 @@
     "replace": "마이"
   },
   {
+    "key": "nana",
+    "replace": "나나"
+  },
+  {
     "key": "naruto",
     "replace": "나루토"
   },
   {
     "key": "nba",
     "replace": "엔비에이"
+  },
+  {
+    "key": "neo",
+    "replace": "네오"
   },
   {
     "key": "net",
@@ -2257,12 +2718,12 @@
     "replace": "닌텐도 스위치"
   },
   {
-    "key": "oad",
-    "replace": "오에이디"
+    "key": "ntr",
+    "replace": "엔티알"
   },
   {
-    "key": "into",
-    "replace": "인투"
+    "key": "oad",
+    "replace": "오에이디"
   },
   {
     "key": "of",
@@ -2291,6 +2752,14 @@
   {
     "key": "onion",
     "replace": "양파"
+  },
+  {
+    "key": "line",
+    "replace": "라인"
+  },
+  {
+    "key": "lines",
+    "replace": "라인즈"
   },
   {
     "key": "online",
@@ -2345,28 +2814,28 @@
     "replace": "파트"
   },
   {
-    "key": "fate/kaleid",
-    "replace": "페이트 칼레이드"
-  },
-  {
-    "key": "liner",
-    "replace": "라이너"
-  },
-  {
-    "key": "if",
-    "replace": "이프"
-  },
-  {
-    "key": "포켓몬스터 bw",
-    "replace": "포켓몬스터 베스트위시"
+    "key": "dish",
+    "replace": "디시"
   },
   {
     "key": "pass",
     "replace": "패스"
   },
   {
-    "key": "cool",
-    "replace": "쿨"
+    "key": "diamond",
+    "replace": "다이아몬드"
+  },
+  {
+    "key": "radio",
+    "replace": "라디오"
+  },
+  {
+    "key": "impact",
+    "replace": "임팩트"
+  },
+  {
+    "key": "pedestal",
+    "replace": "페데스탈"
   },
   {
     "key": "pc",
@@ -2379,6 +2848,18 @@
   {
     "key": "peace",
     "replace": "피스"
+  },
+  {
+    "key": "piece",
+    "replace": "피스"
+  },
+  {
+    "key": "status",
+    "replace": "스테이터스"
+  },
+  {
+    "key": "spectral",
+    "replace": "스펙트럴"
   },
   {
     "key": "pk",
@@ -2397,12 +2878,40 @@
     "replace": "포키"
   },
   {
+    "key": "active",
+    "replace": "액티브"
+  },
+  {
     "key": "poker",
     "replace": "포커"
   },
   {
+    "key": "poo",
+    "replace": "푸"
+  },
+  {
+    "key": "pool",
+    "replace": "풀"
+  },
+  {
+    "key": "pools",
+    "replace": "풀즈"
+  },
+  {
+    "key": "ruby",
+    "replace": "루비"
+  },
+  {
     "key": "pong",
     "replace": "퐁"
+  },
+  {
+    "key": "mystic",
+    "replace": "미스틱"
+  },
+  {
+    "key": "jade",
+    "replace": "제이드"
   },
   {
     "key": "pop",
@@ -2497,12 +3006,20 @@
     "replace": "랜처"
   },
   {
-    "key": "room",
-    "replace": "룸"
+    "key": "rap",
+    "replace": "랩"
   },
   {
     "key": "re",
     "replace": "리"
+  },
+  {
+    "key": "stick",
+    "replace": "스틱"
+  },
+  {
+    "key": "boom",
+    "replace": "붐"
   },
   {
     "key": "ready",
@@ -2519,6 +3036,10 @@
   {
     "key": "red",
     "replace": "레드"
+  },
+  {
+    "key": "refrain",
+    "replace": "리프레인"
   },
   {
     "key": "remake",
@@ -2539,6 +3060,18 @@
   {
     "key": "rider",
     "replace": "라이더"
+  },
+  {
+    "key": "respect",
+    "replace": "리스펙트"
+  },
+  {
+    "key": "tale",
+    "replace": "테일"
+  },
+  {
+    "key": "tales",
+    "replace": "테일즈"
   },
   {
     "key": "riders",
@@ -2563,6 +3096,10 @@
   {
     "key": "rocket",
     "replace": "로켓"
+  },
+  {
+    "key": "room",
+    "replace": "룸"
   },
   {
     "key": "rpg",
@@ -2609,6 +3146,10 @@
     "replace": "스케이프"
   },
   {
+    "key": "school",
+    "replace": "스쿨"
+  },
+  {
     "key": "sd",
     "replace": "에스디"
   },
@@ -2625,16 +3166,20 @@
     "replace": "세컨드"
   },
   {
+    "key": "section",
+    "replace": "섹션"
+  },
+  {
     "key": "seed",
     "replace": "시드"
   },
   {
-    "key": "school",
-    "replace": "스쿨"
-  },
-  {
     "key": "self",
     "replace": "셀프"
+  },
+  {
+    "key": "color",
+    "replace": "컬러"
   },
   {
     "key": "seong",
@@ -2643,10 +3188,6 @@
   {
     "key": "series",
     "replace": "시리즈"
-  },
-  {
-    "key": "section",
-    "replace": "섹션"
   },
   {
     "key": "set",
@@ -2673,7 +3214,7 @@
     "replace": "쇼"
   },
   {
-    "key": "side",
+    "key": "sides?",
     "replace": "사이드"
   },
   {
@@ -2697,6 +3238,10 @@
     "replace": "스카이"
   },
   {
+    "key": "simulator",
+    "replace": "시뮬레이터"
+  },
+  {
     "key": "slime",
     "replace": "슬라임"
   },
@@ -2717,12 +3262,32 @@
     "replace": "섬"
   },
   {
+    "key": "hentai",
+    "replace": "헨타이"
+  },
+  {
+    "key": "xp",
+    "replace": "엑스피"
+  },
+  {
+    "key": "solved",
+    "replace": "솔브드"
+  },
+  {
+    "key": "solve",
+    "replace": "솔브"
+  },
+  {
     "key": "someday",
     "replace": "섬데이"
   },
   {
     "key": "song",
     "replace": "송"
+  },
+  {
+    "key": "social",
+    "replace": "소설"
   },
   {
     "key": "sos",
@@ -2749,8 +3314,32 @@
     "replace": "스포츠"
   },
   {
+    "key": "sound",
+    "replace": "사운드"
+  },
+  {
+    "key": "track",
+    "replace": "트랙"
+  },
+  {
+    "key": "rail",
+    "replace": "레일"
+  },
+  {
+    "key": "railed",
+    "replace": "레일드"
+  },
+  {
     "key": "spy",
     "replace": "스파이"
+  },
+  {
+    "key": "hunder",
+    "replace": "헌터"
+  },
+  {
+    "key": "damage",
+    "replace": "대미지"
   },
   {
     "key": "stage",
@@ -2781,12 +3370,24 @@
     "replace": "스토리"
   },
   {
-    "key": "sun",
-    "replace": "선"
+    "key": "strike",
+    "replace": "스트라이크"
+  },
+  {
+    "key": "striker",
+    "replace": "스트라이커"
+  },
+  {
+    "key": "strikers",
+    "replace": "스트라이커즈"
   },
   {
     "key": "summer",
     "replace": "서머"
+  },
+  {
+    "key": "sun",
+    "replace": "선"
   },
   {
     "key": "sunkist",
@@ -2799,10 +3400,6 @@
   {
     "key": "sweet",
     "replace": "스위트"
-  },
-  {
-    "key": "zzang",
-    "replace": "짱"
   },
   {
     "key": "swim",
@@ -2833,18 +3430,6 @@
     "replace": "토크"
   },
   {
-    "key": "wonder",
-    "replace": "원더"
-  },
-  {
-    "key": "wonderful",
-    "replace": "원더풀"
-  },
-  {
-    "key": "animated",
-    "replace": "애니메이티드"
-  },
-  {
     "key": "tattoo",
     "replace": "타투"
   },
@@ -2859,10 +3444,6 @@
   {
     "key": "team",
     "replace": "팀"
-  },
-  {
-    "key": "anima",
-    "replace": "아니마"
   },
   {
     "key": "text",
@@ -2962,12 +3543,20 @@
     "replace": "업"
   },
   {
+    "key": "item",
+    "replace": "아이템"
+  },
+  {
     "key": "us",
     "replace": "어스"
   },
   {
     "key": "v",
     "replace": "5"
+  },
+  {
+    "key": "amethyst",
+    "replace": "애미시스트"
   },
   {
     "key": "v",
@@ -3077,6 +3666,10 @@
     "replace": "왓 어"
   },
   {
+    "key": "where",
+    "replace": "웨어"
+  },
+  {
     "key": "what's",
     "replace": "왓츠"
   },
@@ -3085,12 +3678,28 @@
     "replace": "화이트"
   },
   {
+    "key": "'s",
+    "replace": "스"
+  },
+  {
+    "key": "haley",
+    "replace": "헤일리"
+  },
+  {
     "key": "why",
     "replace": "와이"
   },
   {
     "key": "wii",
     "replace": "위"
+  },
+  {
+    "key": "bracelet",
+    "replace": "브레이슬릿"
+  },
+  {
+    "key": "mussel",
+    "replace": "뮤셀"
   },
   {
     "key": "will",
@@ -3103,6 +3712,94 @@
   {
     "key": "with",
     "replace": "위드"
+  },
+  {
+    "key": "cats",
+    "replace": "캣츠"
+  },
+  {
+    "key": "benjamin",
+    "replace": "벤자민"
+  },
+  {
+    "key": "multi",
+    "replace": "멀티"
+  },
+  {
+    "key": "player",
+    "replace": "플레이어"
+  },
+  {
+    "key": "living",
+    "replace": "리빙"
+  },
+  {
+    "key": "play",
+    "replace": "플레이"
+  },
+  {
+    "key": "cast",
+    "replace": "캐스트"
+  },
+  {
+    "key": "down",
+    "replace": "다운"
+  },
+  {
+    "key": "dodge",
+    "replace": "도지"
+  },
+  {
+    "key": "kin",
+    "replace": "킨"
+  },
+  {
+    "key": "party",
+    "replace": "파티"
+  },
+  {
+    "key": "fix",
+    "replace": "픽스"
+  },
+  {
+    "key": "mastery",
+    "replace": "마스터리"
+  },
+  {
+    "key": "goo",
+    "replace": "구"
+  },
+  {
+    "key": "wall",
+    "replace": "월"
+  },
+  {
+    "key": "paper",
+    "replace": "페이퍼"
+  },
+  {
+    "key": "meals",
+    "replace": "밀즈"
+  },
+  {
+    "key": "meal",
+    "replace": "밀"
+  },
+  {
+    "key": "rise",
+    "replace": "라이즈"
+  },
+  {
+    "key": "engine",
+    "replace": "엔진"
+  },
+  {
+    "key": "wonder",
+    "replace": "원더"
+  },
+  {
+    "key": "wonderful",
+    "replace": "원더풀"
   },
   {
     "key": "word",
@@ -3130,8 +3827,20 @@
     "replace": "11"
   },
   {
+    "key": "bound",
+    "replace": "바운드"
+  },
+  {
     "key": "xii",
     "replace": "12"
+  },
+  {
+    "key": "ape",
+    "replace": "에이프"
+  },
+  {
+    "key": "iron",
+    "replace": "아이언"
   },
   {
     "key": "xiii",
@@ -3248,6 +3957,10 @@
     "replace": "제로"
   },
   {
+    "key": "zzang",
+    "replace": "짱"
+  },
+  {
     "key": "今(.*[ぁ-んァ-ン])",
     "replace": "이마$1",
     "priority": 2
@@ -3264,5 +3977,9 @@
     "key": "見([えたつてら])",
     "replace": "미$1",
     "priority": 2
+  },
+  {
+    "key": "포켓몬스터 bw",
+    "replace": "포켓몬스터 베스트위시"
   }
 ]

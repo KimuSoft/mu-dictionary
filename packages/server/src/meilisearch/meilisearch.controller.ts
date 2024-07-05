@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { MeilisearchService } from './meilisearch.service';
 
@@ -12,8 +12,12 @@ export class MeilisearchController {
     summary: 'Meilisearch 단어 데이터베이스 색인',
     description: '사용 후 재등록을 위해 1분 정도 검색이 되지 않을 수 있음.',
   })
-  async sync() {
-    return this.meilisearchService.sync();
+  async sync(@Query('ref') ref?: string) {
+    if (!ref) {
+      return this.meilisearchService.sync();
+    } else {
+      return this.meilisearchService.refSync(ref);
+    }
   }
 
   // diffSync

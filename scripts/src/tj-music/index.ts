@@ -6,6 +6,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { TJSong } from "./types";
 import { josa } from "es-hangul";
+import toUnicodeId from "../utils/toUnicodeId";
 
 // bun <Command> <Path>
 const useCache = !!process.argv[2];
@@ -285,7 +286,7 @@ const run = async () => {
       .join(", ")} 등이 있다.`;
 
     result.items.push({
-      sourceId: "TJ_PERSON_" + name.origin,
+      sourceId: "TJ_PERSON_" + toUnicodeId(name.origin),
       name: name.name,
       origin: name.origin,
       simplifiedName: name.simplifiedName,

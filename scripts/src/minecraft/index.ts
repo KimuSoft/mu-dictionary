@@ -75,7 +75,7 @@ const run = async () => {
 
     result.items.push({
       ...wordData,
-      sourceId: REFERENCE_ID + "_" + key,
+      sourceId: REFERENCE_ID + "_" + key.replace(/\./g, "_"),
       definition,
       url:
         "https://minecraft.fandom.com/ko/wiki/" +
