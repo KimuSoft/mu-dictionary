@@ -8,6 +8,7 @@
     "kobis": "bun run src/kobis/index.ts",
     "grac": "bun run src/grac3/index.ts",
     "genshin": "bun run src/genshin/index.ts",
+    "genshin2": "bun run src/honeyimpact/index.ts",
     "opendict": "bun run src/opendict/index.ts",
     "minecraft": "bun run src/minecraft/index.ts",
     "laftel": "bun run src/laftel/index.ts",
@@ -20,7 +21,8 @@
     "tj": "bun run src/tj-music/index.ts",
     "format-foreign": "bun run src/utils/foreignFormat.ts",
     "steam": "bun run src/steam/index.ts",
-    "cv": "bun run src/utils/convert-cli.ts"
+    "cv": "bun run src/utils/convert-cli.ts",
+    "pokemon": "bun run src/pokemon/index.ts"
   },
   "keywords": [],
   "author": "",

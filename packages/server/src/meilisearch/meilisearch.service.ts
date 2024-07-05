@@ -263,7 +263,7 @@ export class MeilisearchService {
 
     if (onlyInMS.length) {
       console.info(`Deleting... (total: ${onlyInMS.length})`);
-      const chunked = chunk(onlyInMS, 50000);
+      const chunked = chunk(onlyInMS, 15000);
       for (const chunk of chunked) {
         await index.deleteDocuments(
           chunk.map((word) => this.toUnicodeId(word)),
