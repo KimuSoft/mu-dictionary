@@ -63,7 +63,10 @@ export class WordsController {
         this.cacheExpireTime &&
         this.cacheExpireTime > new Date()
       ) {
-        return this.defaultLongWordCache;
+        return this.defaultLongWordCache.slice(
+          dto.offset,
+          dto.offset + dto.limit,
+        );
       }
 
       const res = await this.wordsService.searchLongWord({
