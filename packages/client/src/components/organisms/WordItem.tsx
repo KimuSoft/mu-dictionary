@@ -22,7 +22,7 @@ import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
 
 const removeHTMLTags = (str: string) => {
-  return str.replace(/<[^>]*>?/gm, "")
+  return str.replace(/<[^>]*>?/gm, "").replace(/&[A-z]{0,5};/, "")
 }
 
 const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
