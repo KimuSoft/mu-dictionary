@@ -17,6 +17,7 @@
     "lobotomy-corp": "bun run src/lobotomy-corp/index.ts",
     "bus": "bun run src/bus/index.ts",
     "kric-station": "bun run src/kric-station/index.ts",
+    "mahjong-soul": "bun run src/mahjong-soul/index.ts",
     "kind": "bun run src/kind/index.ts",
     "tj": "bun run src/tj-music/index.ts",
     "format-foreign": "bun run src/utils/foreignFormat.ts",

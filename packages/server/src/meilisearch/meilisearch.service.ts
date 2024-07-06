@@ -111,7 +111,13 @@ export class MeilisearchService {
       primaryKey: 'sourceId',
     });
 
-    // chunk words into 1000 words (with lodash)
+    await this.syncWords(words);
+
+    console.info('Done.');
+  }
+
+  private async syncWords(words: WordEntity[]) {
+    const index = this.meilisearch.index('words');
     const chunks = chunk(words, 10000);
 
     // log like 100 / 200 (50%)
@@ -129,8 +135,6 @@ export class MeilisearchService {
       // 500ms delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
-
-    console.info('Done.');
   }
 
   // 특정 referenceId에 해당하는 단어만 동기화
@@ -140,7 +144,7 @@ export class MeilisearchService {
     const index = this.meilisearch.index('words');
 
     console.info(`Adding ${words.length} words...`);
-    await index.addDocuments(words.map((word) => word.toJSON()));
+    await this.syncWords(words);
 
     console.info('Done.');
 

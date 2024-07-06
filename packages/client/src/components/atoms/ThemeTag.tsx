@@ -46,7 +46,7 @@ import { RiBankFill, RiPlantFill } from "react-icons/ri"
 import { IoLanguage, IoShareSocial } from "react-icons/io5"
 import { GoLaw } from "react-icons/go"
 import { AiFillLayout } from "react-icons/ai"
-import { GiChickenOven } from "react-icons/gi"
+import { GiBamboo, GiChickenOven } from "react-icons/gi"
 
 const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
@@ -306,6 +306,9 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
 
       case "붕괴: 스타레일":
         return { name: "붕괴: 스타레일", icon: FaMoon, color: "purple" }
+
+      case "작혼":
+        return { name: "작혼", icon: GiBamboo, color: "pink" }
 
       case "프로젝트 문":
         return { name: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" }
