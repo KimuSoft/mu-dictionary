@@ -263,6 +263,7 @@ const run = async () => {
       name: word.name,
       origin: word.origin,
       simplifiedName: word.simplifiedName,
+      url: `https://www.youtube.com/user/ziller/search?query=${song.id}`,
       definition: `${josa(song.singer, "이/가")} 부른 ${song.composer} 작곡, ${song.lyricist} 작사의 노래. TJ 노래방에 ${song.id}번으로 수록되어 있다.`,
       tags: ["음악"],
     });

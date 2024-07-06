@@ -8,6 +8,8 @@ import {
   SteamGameListResponse,
 } from "./types";
 import axios from "axios";
+import analyzeUnknownWords from "../utils/analyzeUnknownWords";
+import removeBraket from "../utils/removeBraket";
 
 // bun <Command> <Path>
 const EXISTING_PATH = "./src/steam/data/v2.json";
@@ -61,7 +63,7 @@ const run = async () => {
 
       // 캐시에 이미 정보가 있으면 패스
       if (gameCache[item.appid]) {
-        console.info("Already cached:", item.appid, item.name);
+        // console.info("Already cached:", item.appid, item.name);
         continue;
       }
 
@@ -107,7 +109,7 @@ const run = async () => {
       console.info(`Downloaded: ${item.appid} - ${item.name} (${data.name})`);
 
       // 500ms 대기
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1200));
     }
     console.info("Download finished.");
   }
@@ -117,7 +119,7 @@ const run = async () => {
   console.info("Converting...");
   for (const id in gameCache) {
     const item = gameCache[id];
-    const nameData = wordConvert(item.name);
+    const nameData = wordConvert(removeBraket(item.name));
     if (!nameData) {
       // console.warn("Failed to convert:", item.name);
       failedName.push(item.name);
@@ -137,9 +139,11 @@ const run = async () => {
         ? "출시 예정인"
         : item.release_date.date + " 출시한";
 
-      const developerStr = item.developers.join(", ");
+      const developerStr = item.developers
+        ? `${item.developers.join(", ")}에서 개발한 `
+        : "";
 
-      definition = `${releaseDataStr} ${developerStr}에서 개발한 ${genres} 게임. ${item.short_description}`;
+      definition = `${releaseDataStr} ${developerStr}${genres} 게임. ${item.short_description}`;
       url = item.website || item.url;
     }
 
@@ -155,6 +159,7 @@ const run = async () => {
   console.log("Converting finished.");
 
   // 데이터가 없는 것도 추가
+  console.info("Adding missing data...");
   for (const item of refData.applist.apps) {
     if (!item.name) continue;
     if (!gameCache[item.appid]) {
@@ -173,11 +178,12 @@ const run = async () => {
       });
     }
   }
+  console.info("Missing data added.");
 
   console.log("saving failed names...");
   await writeFile(
     "./src/steam/data/failed-names.json",
-    JSON.stringify(failedName, null, 2),
+    JSON.stringify(analyzeUnknownWords(failedName), null, 2),
     "utf8",
   );
 

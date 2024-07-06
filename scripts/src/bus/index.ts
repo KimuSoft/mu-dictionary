@@ -59,7 +59,11 @@ const run = async () => {
         continue;
       }
 
-      const definition = `${item.cityFullName}에 위치한 버스 정류장. 정류장 번호는 '${item.stopNumber}', 모바일단축번호는 '${item.mobileNumber}'이다.`;
+      const mobileNumberStr = item.mobileNumber
+        ? `, 모바일단축번호는 '${item.mobileNumber}'이다.`
+        : "이다.";
+
+      const definition = `${item.cityFullName}에 위치한 버스 정류장. 정류장 번호는 '${item.stopNumber}'${mobileNumberStr}`;
 
       const muDictItem: MuDictItem = {
         sourceId: REFERENCE_ID + "_" + item.stopNumber,

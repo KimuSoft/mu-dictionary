@@ -22,7 +22,8 @@
     "format-foreign": "bun run src/utils/foreignFormat.ts",
     "steam": "bun run src/steam/index.ts",
     "cv": "bun run src/utils/convert-cli.ts",
-    "pokemon": "bun run src/pokemon/index.ts"
+    "pokemon": "bun run src/pokemon/index.ts",
+    "starrail": "bun run src/honeyhunter/index.ts"
   },
   "keywords": [],
   "author": "",

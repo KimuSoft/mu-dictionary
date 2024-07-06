@@ -5,6 +5,7 @@ import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as cheerio from "cheerio";
 import axios, { AxiosResponse } from "axios";
 import { uniqBy } from "lodash";
+import { josa } from "es-hangul";
 
 // bun <Command> <Path>
 const reset = process.argv.includes("--reset");
@@ -220,6 +221,7 @@ const run = async () => {
         ...nameData,
         thumbnail: getImageUrl(item.id),
         sourceId: REFERENCE_ID + "_" + item.id,
+        url: `https://gensh.honeyhunterworld.com/${item.id}/?lang=KO`,
       });
       continue;
     }
@@ -251,6 +253,36 @@ const run = async () => {
       else if (item.detail["sub"] === "Event") domainType = "이벤트 전용 비경";
 
       definition += `비경. ${item.detail["description"] || ""}`;
+    } else if (item.id.startsWith("i_")) {
+      let itemType = "아이템";
+      if (item.detail["family"] === "Namecard") itemType = "명함";
+      else if (item.detail["type_(ingame)"])
+        itemType = item.detail["type_(ingame)"];
+
+      definition += `${itemType}. ${item.detail["description"] || ""}`;
+    } else if (item.detail["weapon"]) {
+      let weapon = item.detail["weapon"];
+      if (item.detail["weapon"] === "Bow") weapon = "활";
+      else if (item.detail["weapon"] === "Claymore") weapon = "대검";
+      else if (item.detail["weapon"] === "Catalyst") weapon = "법구";
+      else if (item.detail["weapon"] === "Polearm") weapon = "창";
+      else if (item.detail["weapon"] === "Sword") weapon = "한손검";
+
+      let element = item.detail["element"];
+      if (item.detail["element"] === "Anemo") element = "바람";
+      else if (item.detail["element"] === "Cryo") element = "얼음";
+      else if (item.detail["element"] === "Dendro") element = "풀";
+      else if (item.detail["element"] === "Electro") element = "번개";
+      else if (item.detail["element"] === "Geo") element = "바위";
+      else if (item.detail["element"] === "Hydro") element = "물";
+      else if (item.detail["element"] === "Pyro") element = "불";
+
+      definition += `${item.detail["occupation"]} 소속 ${element} 원소 ${weapon} 캐릭터. 생일은 ${item.detail["month_of_birth"]}월 ${item.detail["day_of_birth"]}일로, 운명의 자리는 ${item.detail["constellation_(introduced)"]}, 이명은 ${item.detail["title"]}이다. ${item.detail["description"] || ""} (CV. ${item.detail["korean_seuyu"]})`;
+    } else if (item.id.startsWith("h_")) {
+      continue;
+    } else if (item.id.startsWith("view_")) {
+      // 전망 포인트
+      definition += `전망 포인트. ${item.detail["description"] || ""}`;
     } else {
       definition += "단어.";
       if (item.detail["description"])

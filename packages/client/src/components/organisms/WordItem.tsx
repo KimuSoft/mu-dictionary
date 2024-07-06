@@ -17,8 +17,9 @@ import {
 import { IoVolumeMedium } from "react-icons/io5"
 import PosTag from "../atoms/PosTag"
 import ThemeTag from "../atoms/ThemeTag"
-import { FaCopy, FaLink } from "react-icons/fa6"
+import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
 import { motion } from "framer-motion"
+import { FaMapMarkedAlt } from "react-icons/fa"
 
 const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
   word,
@@ -152,7 +153,15 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
               <Tooltip label={word.url} hasArrow openDelay={500}>
                 <IconButton
                   aria-label={"link"}
-                  icon={<FaLink />}
+                  icon={
+                    /youtube/.test(word.url) ? (
+                      <FaYoutube />
+                    ) : /map/.test(word.url) ? (
+                      <FaMapMarkedAlt />
+                    ) : (
+                      <FaLink />
+                    )
+                  }
                   variant={"ghost"}
                   isRound
                   size={"sm"}
