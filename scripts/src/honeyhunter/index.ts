@@ -11,6 +11,7 @@ import removeBraket from "../utils/removeBraket";
 // bun <Command> <Path>
 const reset = process.argv.includes("--reset");
 const skipDetail = process.argv.includes("--skip-detail");
+const overwrite = process.argv.includes("--overwrite");
 const REFERENCE_ID = "starrail";
 
 const result: MuDict = {
@@ -173,7 +174,7 @@ const run = async () => {
         continue;
       }
       // 이미 detail이 있는 경우
-      if (item.detail && JSON.stringify(item.detail) !== "{}") {
+      if (!overwrite && item.detail && JSON.stringify(item.detail) !== "{}") {
         // console.info(`detail already exists ${item.id}`);
         continue;
       }
@@ -210,6 +211,12 @@ const run = async () => {
           .trim();
         detail[key] = value;
       });
+
+      // 첫 번째 이미지 태그의 src를 thumbnail로 설정
+      const thumbnail = $("img").first().attr("src");
+      if (thumbnail)
+        detail["thumbnail"] =
+          "https://starrail.honeyhunterworld.com" + thumbnail;
 
       item.detail = detail;
 
@@ -258,6 +265,8 @@ const run = async () => {
       }
 
       definition += `${additionalDescription}${item.detail["설명"] || ""}`;
+    } else if (item.id.endsWith("-character")) {
+      definition += `${item.detail["소속"]} 소속 ${item.detail["운명의_길"]} 운명의 길의 ${item.detail["전투_속성"]} 속성 캐릭터. ${item.detail["스토리"]} (CV. ${item.detail["한국어"]})`;
     } else {
       definition += "단어.";
       if (item.detail["설명"]) definition += " " + item.detail["설명"];
@@ -266,7 +275,7 @@ const run = async () => {
     result.items.push({
       ...nameData,
       definition: definition.trim(),
-      // thumbnail: getImageUrl(item.id),
+      thumbnail: item.detail["thumbnail"],
       sourceId:
         REFERENCE_ID +
         "_" +

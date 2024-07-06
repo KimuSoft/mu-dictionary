@@ -25,6 +25,11 @@ export interface SenseInfo {
     translation: string;
     language_type: string;
   }[];
+  multimedia_info?: {
+    link: string;
+    label: string;
+    type: "삽화" | "사진" | "동영상" | "애니메이션" | "소리";
+  }[];
   type: "일반어" | "지역어(방언)" | "북한어" | "옛말";
   definition_original: string;
   pos: string;

@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsBoolean,
   IsNumber,
   IsOptional,
   IsString,
@@ -44,4 +45,15 @@ export class SearchLongWordDto {
   @IsOptional()
   @Transform(({ value }) => parseInt(value))
   offset: number = 0;
+
+  @ApiProperty({
+    description: '캐시 사용 여부',
+    example: true,
+    default: true,
+    required: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  @Transform(({ value }) => value === 'true')
+  useCache: boolean = true;
 }

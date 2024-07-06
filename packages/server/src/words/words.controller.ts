@@ -53,10 +53,13 @@ export class WordsController {
   defaultLongWordCache: any[] | null = null;
   cacheExpireTime: Date | null = null;
 
+  // 하루
+  expiredTime = 86400000;
+
   @Get('search/long-word')
   @ApiOperation({ summary: '긴 단어 검색하기' })
   async findLongWord(@Query() dto: SearchLongWordDto) {
-    if (!dto.letter) {
+    if (!dto.letter && dto.useCache) {
       // 사용 기한 전인 캐시가 있는지 확인
       if (
         this.defaultLongWordCache &&
@@ -76,7 +79,7 @@ export class WordsController {
       });
       this.defaultLongWordCache = res;
       // 10분 뒤를 지정함
-      this.cacheExpireTime = new Date(Date.now() + 600000);
+      this.cacheExpireTime = new Date(Date.now() + this.expiredTime);
       return res.slice(dto.offset, dto.offset + dto.limit);
     }
 

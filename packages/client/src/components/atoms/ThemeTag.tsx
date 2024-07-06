@@ -17,6 +17,7 @@ import {
   FaMap,
   FaMapMarkerAlt,
   FaMobileAlt,
+  FaMoon,
   FaPalette,
   FaStarAndCrescent,
   FaSteam,
@@ -302,6 +303,9 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
       // 추가 단어 중 세부 단어
       case "원신":
         return { name: "원신", icon: PiStarFourFill, color: "white" }
+
+      case "붕괴: 스타레일":
+        return { name: "붕괴: 스타레일", icon: FaMoon, color: "purple" }
 
       case "프로젝트 문":
         return { name: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" }
