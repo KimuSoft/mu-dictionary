@@ -21,6 +21,10 @@ import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
 import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
 
+const removeHTMLTags = (str: string) => {
+  return str.replace(/<[^>]*>?/gm, "")
+}
+
 const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
   word,
   keyword,
@@ -180,7 +184,7 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
                 <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
               ))}
             </HStack>
-            {word.definition}
+            {removeHTMLTags(word.definition)}
           </Text>
         </Box>
       </VStack>
