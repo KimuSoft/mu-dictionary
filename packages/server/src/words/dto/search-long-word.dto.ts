@@ -1,13 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNumber, IsNumberString, IsOptional } from 'class-validator';
+import {
+  IsNumber,
+  IsOptional,
+  IsString,
+  Length,
+  Max,
+  Min,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
-export class SearchWordDto {
+export class SearchLongWordDto {
   @ApiProperty({
-    description: '검색할 단어',
-    example: '사과',
+    description: '시작 글자',
+    example: '가',
+    required: false,
   })
-  q: string;
+  @IsString()
+  @IsOptional()
+  @Length(1, 1)
+  @Transform(({ value }) => (value.trim() === '' ? undefined : value))
+  letter?: string;
 
   @ApiProperty({
     description: '검색 결과 개수',
@@ -17,6 +29,8 @@ export class SearchWordDto {
   })
   @IsNumber()
   @IsOptional()
+  @Min(1)
+  @Max(10)
   @Transform(({ value }) => parseInt(value))
   limit: number = 10;
 

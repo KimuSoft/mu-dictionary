@@ -10,6 +10,7 @@ import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
 import { FindWordDto } from './dto/find-word.dto';
 import { FindOneWorkDto } from './dto/find-one-work.dto';
+import { SearchLongWordDto } from './dto/search-long-word.dto';
 
 @ApiTags('Words')
 @Controller('api/words')
@@ -47,5 +48,11 @@ export class WordsController {
   @ApiOperation({ summary: '단어 상세 조회' })
   async findOneById(@Param() { id }: FindOneWorkDto) {
     return this.wordsService.findOneById(id);
+  }
+
+  @Get('search/long-word')
+  @ApiOperation({ summary: '긴 단어 검색하기' })
+  async findLongWord(@Query() dto: SearchLongWordDto) {
+    return this.wordsService.searchLongWord(dto);
   }
 }

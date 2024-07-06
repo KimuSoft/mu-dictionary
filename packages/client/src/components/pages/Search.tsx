@@ -35,6 +35,7 @@ const Search: React.FC = () => {
   }
 
   useEffect(() => {
+    setSearchResults([])
     refresh().then()
   }, [searchQuery])
 

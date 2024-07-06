@@ -108,4 +108,25 @@ export class FindWordDto {
   @IsBoolean()
   @Transform(({ value }) => value === 'true')
   exact: boolean = false;
+
+  @ApiProperty({
+    description: '검색 결과 정렬 조건',
+    required: false,
+    example: 'id',
+    default: 'id',
+  })
+  @IsEnum(['id', 'sourceId', 'name', 'length'])
+  @IsOptional()
+  sort: string = 'id';
+
+  @ApiProperty({
+    description: '검색 결과 정렬 순서',
+    example: 'asc',
+    default: 'asc',
+    required: false,
+  })
+  @IsEnum(['ASC', 'DESC'])
+  @Transform(({ value }) => value.toUpperCase())
+  @IsOptional()
+  order: 'ASC' | 'DESC' = 'ASC';
 }

@@ -3,10 +3,11 @@ import { InjectMeiliSearch } from 'nestjs-meilisearch';
 import { Meilisearch } from 'meilisearch';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WordEntity } from './word.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
 import { FindWordDto } from './dto/find-word.dto';
+import { SearchLongWordDto } from './dto/search-long-word.dto';
 
 @Injectable()
 export class WordsService {
@@ -19,8 +20,6 @@ export class WordsService {
 
   async find(dto: FindWordDto): Promise<WordEntity[]> {
     let query = this.wordRepository.createQueryBuilder();
-
-    console.log(dto);
     let filedPrefix = '';
 
     // fields
@@ -42,7 +41,7 @@ export class WordsService {
         });
       } else {
         query = query.andWhere(`${filedPrefix}name LIKE :name`, {
-          name: `%${dto.name}%`,
+          name: dto.name.includes('%') ? dto.name : `%${dto.name}%`,
         });
       }
     }
@@ -90,7 +89,15 @@ export class WordsService {
       }
     }
 
-    query = query.orderBy('id').offset(dto.offset).limit(dto.limit);
+    // 정렬 쿼리
+    query = query.orderBy(
+      dto.sort === 'length'
+        ? `LENGTH("${filedPrefix}simplifiedName")`
+        : dto.sort,
+      dto.order,
+    );
+
+    query = query.offset(dto.offset).limit(dto.limit);
     console.debug(query.getQuery());
 
     return query.getMany();
@@ -125,5 +132,41 @@ export class WordsService {
       });
 
     return result.hits.map((hit) => hit.name);
+  }
+
+  async searchLongWord(dto: SearchLongWordDto) {
+    console.info('loading long words', dto);
+    let query = this.wordRepository
+      .createQueryBuilder('word')
+      .select('word.simplifiedName', 'simplifiedName')
+      .addSelect('LENGTH(word.simplifiedName)', 'length');
+
+    if (dto.letter) {
+      query = query.where({ simplifiedName: Like(`${dto.letter}%`) });
+    }
+
+    const results = await query
+      .groupBy('word.simplifiedName')
+      .orderBy('length', 'DESC')
+      .limit(dto.limit)
+      .offset(dto.offset)
+      .getRawMany<{
+        length: number;
+        simplifiedName: string;
+        tags?: string[];
+        ids?: string[];
+      }>();
+
+    // 각 단어의 태그를 가져옴
+    for (const result of results) {
+      const words = await this.wordRepository.find({
+        select: ['id', 'tags'],
+        where: { simplifiedName: result.simplifiedName },
+      });
+      result.tags = words.map((word) => word.tags).flat();
+      result.ids = words.map((word) => word.id);
+    }
+
+    return results;
   }
 }

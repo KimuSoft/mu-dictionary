@@ -28,6 +28,7 @@ import { GrMonitor } from "react-icons/gr"
 import { ImSpoonKnife } from "react-icons/im"
 import {
   MdAttachMoney,
+  MdMonitor,
   MdMovie,
   MdOndemandVideo,
   MdSchool,
@@ -39,11 +40,12 @@ import { TbBrandMinecraft } from "react-icons/tb"
 import { LuAtom, LuConstruction } from "react-icons/lu"
 import { IoMdPlanet } from "react-icons/io"
 import { PiStarFourFill } from "react-icons/pi"
-import { FaEarthAsia, FaGears, FaMusic } from "react-icons/fa6"
-import { RiPlantFill } from "react-icons/ri"
-import { IoLanguage } from "react-icons/io5"
+import { FaEarthAsia, FaGears, FaMusic, FaTag } from "react-icons/fa6"
+import { RiBankFill, RiPlantFill } from "react-icons/ri"
+import { IoLanguage, IoShareSocial } from "react-icons/io5"
 import { GoLaw } from "react-icons/go"
 import { AiFillLayout } from "react-icons/ai"
+import { GiChickenOven } from "react-icons/gi"
 
 const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
@@ -276,11 +278,26 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
       case "기계":
         return { name: "기계", icon: FaGears, color: "red" }
 
+      case "정치":
+        return { name: "정치", icon: RiBankFill, color: "teal" }
+
+      case "사회 일반":
+        return { name: "사회 일반", icon: IoShareSocial, color: "teal" }
+
+      case "PC/온라인 게임":
+        return { name: "PC/온라인 게임", icon: MdMonitor, color: "purple" }
+
+      case "스타듀 밸리":
+        return { name: "스타듀 밸리", icon: GiChickenOven, color: "green" }
+
       case "심리":
         return { name: "심리", icon: FaHeart, color: "pink" }
 
       case "기업":
         return { name: "기업", icon: BiBuildings, color: "orange" }
+
+      case "고유명 일반":
+        return { name: "고유명 일반", icon: FaTag, color: "gray" }
 
       // 추가 단어 중 세부 단어
       case "원신":
