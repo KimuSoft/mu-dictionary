@@ -123,7 +123,11 @@ const run = async () => {
     const nameDataArr = i.gametitle
       .replace(/\)$/g, "")
       .split(/[()]/)
-      .map((i) => wordConvert(i.replace(/[<\[].+[>\]]/g, "")));
+      .map((i) =>
+        wordConvert(
+          i.replace(/[<\[].+[>\]]/g, "").replace(/^(PC|PS[^_]*)_/g, ""),
+        ),
+      );
 
     const nameData = nameDataArr[0] || nameDataArr[1];
 

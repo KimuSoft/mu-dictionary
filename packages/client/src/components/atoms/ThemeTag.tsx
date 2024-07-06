@@ -7,16 +7,22 @@ import {
   FaCalculator,
   FaCat,
   FaCross,
+  FaDumbbell,
   FaFlask,
   FaGamepad,
+  FaHeart,
   FaHistory,
   FaInternetExplorer,
   FaMagic,
   FaMap,
+  FaMapMarkerAlt,
+  FaMobileAlt,
   FaPalette,
   FaStarAndCrescent,
+  FaSteam,
   FaSubway,
   FaTree,
+  FaVideo,
 } from "react-icons/fa"
 import { GrMonitor } from "react-icons/gr"
 import { ImSpoonKnife } from "react-icons/im"
@@ -33,10 +39,11 @@ import { TbBrandMinecraft } from "react-icons/tb"
 import { LuAtom, LuConstruction } from "react-icons/lu"
 import { IoMdPlanet } from "react-icons/io"
 import { PiStarFourFill } from "react-icons/pi"
-import { FaEarthAsia, FaMusic } from "react-icons/fa6"
+import { FaEarthAsia, FaGears, FaMusic } from "react-icons/fa6"
 import { RiPlantFill } from "react-icons/ri"
 import { IoLanguage } from "react-icons/io5"
 import { GoLaw } from "react-icons/go"
+import { AiFillLayout } from "react-icons/ai"
 
 const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
   const getTagData = (tag: string) => {
@@ -85,18 +92,10 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
         }
 
       case "교통":
-        return {
-          name: "교통",
-          icon: FaSubway,
-          color: "blue",
-        }
+        return { name: "교통", icon: FaSubway, color: "blue" }
 
       case "기독교":
-        return {
-          name: "기독교",
-          icon: FaCross,
-          color: "blue",
-        }
+        return { name: "기독교", icon: FaCross, color: "blue" }
 
       case "동물":
         return {
@@ -192,6 +191,13 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
       case "지명":
         return {
           name: "지명",
+          icon: FaMapMarkerAlt,
+          color: "orange",
+        }
+
+      case "지리":
+        return {
+          name: "지리",
           icon: FaMap,
           color: "orange",
         }
@@ -239,87 +245,58 @@ const ThemeTag: React.FC<{ tag: string }> = ({ tag }) => {
 
       case "게임":
         // tailwind/violet/400
-        return {
-          name: "게임",
-          icon: FaGamepad,
-          color: "purple",
-        }
+        return { name: "게임", icon: FaGamepad, color: "purple" }
 
       case "애니메이션":
         // tailwind/Amber/300
-        return {
-          name: "애니메이션",
-          color: "orange",
-          icon: MdOndemandVideo,
-        }
+        return { name: "애니메이션", color: "orange", icon: MdOndemandVideo }
 
       case "마인크래프트":
-        return {
-          name: "마인크래프트",
-          color: "green",
-          icon: TbBrandMinecraft,
-        }
+        return { name: "마인크래프트", color: "green", icon: TbBrandMinecraft }
 
       case "만화":
         // tailwind/Red/400
-        return {
-          name: "만화",
-          color: "#f87171",
-        }
+        return { name: "만화", icon: AiFillLayout, color: "#f87171" }
 
       case "방송":
-        // tailwind/violet/400
-        return {
-          name: "방송",
-          icon: GrMonitor,
-          color: "#f472b6",
-        }
+        return { name: "방송", icon: GrMonitor, color: "purple" }
 
       case "식품":
-        // tailwind/lime/400
-        return {
-          name: "식품",
-          icon: ImSpoonKnife,
-          color: "red",
-        }
+        return { name: "식품", icon: ImSpoonKnife, color: "red" }
 
       case "대중교통":
-        return {
-          name: "대중교통",
-          icon: FaBus,
-          // tailwind/cyan/400
-          color: "#22d3ee",
-        }
+        return { name: "대중교통", icon: FaBus, color: "blue" }
 
       case "영화":
-        return {
-          name: "영화",
-          icon: MdMovie,
-          color: "blue",
-        }
+        return { name: "영화", icon: MdMovie, color: "blue" }
+
+      case "영상":
+        return { name: "영상", icon: FaVideo, color: "blue" }
+
+      case "기계":
+        return { name: "기계", icon: FaGears, color: "red" }
+
+      case "심리":
+        return { name: "심리", icon: FaHeart, color: "pink" }
 
       case "기업":
-        return {
-          name: "기업",
-          icon: BiBuildings,
-          // tailwind/orange/400
-          color: "orange",
-        }
+        return { name: "기업", icon: BiBuildings, color: "orange" }
 
       // 추가 단어 중 세부 단어
       case "원신":
-        return {
-          name: "원신",
-          icon: PiStarFourFill,
-          color: "white",
-        }
+        return { name: "원신", icon: PiStarFourFill, color: "white" }
 
       case "프로젝트 문":
-        return {
-          name: "프로젝트 문",
-          icon: FaStarAndCrescent,
-          color: "pink",
-        }
+        return { name: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" }
+
+      case "스팀 게임":
+        return { name: "스팀 게임", icon: FaSteam, color: "purple" }
+
+      case "모바일 게임":
+        return { name: "모바일 게임", icon: FaMobileAlt, color: "purple" }
+
+      case "체육":
+        return { name: "체육", icon: FaDumbbell, color: "red" }
 
       default:
         // tailwind/yellow/400
