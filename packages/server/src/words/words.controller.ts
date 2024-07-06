@@ -50,9 +50,33 @@ export class WordsController {
     return this.wordsService.findOneById(id);
   }
 
+  defaultLongWordCache: any[] | null = null;
+  cacheExpireTime: Date | null = null;
+
   @Get('search/long-word')
   @ApiOperation({ summary: '긴 단어 검색하기' })
   async findLongWord(@Query() dto: SearchLongWordDto) {
+    if (!dto.letter) {
+      // 사용 기한 전인 캐시가 있는지 확인
+      if (
+        this.defaultLongWordCache &&
+        this.cacheExpireTime &&
+        this.cacheExpireTime > new Date()
+      ) {
+        return this.defaultLongWordCache;
+      }
+
+      const res = await this.wordsService.searchLongWord({
+        ...dto,
+        offset: 0,
+        limit: 100,
+      });
+      this.defaultLongWordCache = res;
+      // 10분 뒤를 지정함
+      this.cacheExpireTime = new Date(Date.now() + 600000);
+      return res.slice(dto.offset, dto.offset + dto.limit);
+    }
+
     return this.wordsService.searchLongWord(dto);
   }
 }
