@@ -7,6 +7,7 @@ import { searchWords } from "../../api/word"
 const Search: React.FC = () => {
   const [searchParams] = useSearchParams()
   const searchQuery = searchParams.get("q") || ""
+  const tagsFilterQuery = searchParams.get("tags")?.split(",") || []
 
   const [searchResults, setSearchResults] = React.useState<IWord[]>([])
   const [totalCount, setTotalCount] = React.useState<number>(0)
@@ -19,7 +20,7 @@ const Search: React.FC = () => {
 
   const refresh = async () => {
     setIsLoading(true)
-    const words = await searchWords(searchQuery, 50, 0)
+    const words = await searchWords(searchQuery, tagsFilterQuery, 50, 0)
     console.log(words)
     setTotalCount(words.estimatedTotalHits)
     setSearchResults(words.hits)
@@ -29,7 +30,12 @@ const Search: React.FC = () => {
   const loadMore = async () => {
     if (allLoaded || isLoading) return
     setIsLoading(true)
-    const words = await searchWords(searchQuery, 50, searchResults.length)
+    const words = await searchWords(
+      searchQuery,
+      tagsFilterQuery,
+      50,
+      searchResults.length,
+    )
     setSearchResults([...searchResults, ...words.hits])
     setIsLoading(false)
   }

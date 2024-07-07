@@ -121,7 +121,9 @@ export class WordsService {
     return this.meilisearch.index('words').search(query, {
       limit,
       offset,
-      ...(tags.length && { filter: [`tags IN [${tags.join(',')}]`] }),
+      ...(tags.length && {
+        filter: [`tags IN [${tags.map((t) => `"${t}"`).join(',')}]`],
+      }),
     });
   }
 

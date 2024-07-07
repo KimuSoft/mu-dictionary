@@ -12,12 +12,14 @@ export interface SearchWordsResponse {
 
 export const searchWords = async (
   query: string,
+  tags: string[] = [],
   limit: number = 10,
   offset: number = 0,
 ): Promise<SearchWordsResponse> => {
   const res = await api.get<SearchWordsResponse>("words/search", {
     params: {
       q: query,
+      tags,
       limit,
       offset,
     },

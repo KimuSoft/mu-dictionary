@@ -98,20 +98,24 @@ const SearchHeader: React.FC<{ keyword: string; totalCount: number }> = ({
   return (
     <VStack w={"100%"}>
       <HStack w={"100%"}>
-        <Text fontSize={"md"}>
-          {"' "}
-          <Highlight
-            query={keyword}
-            styles={{
-              color: useColorModeValue("black", "white"),
-              fontWeight: "bold",
-            }}
-          >
-            {keyword}
-          </Highlight>
-          {" ' "}
-          검색 결과
-        </Text>
+        {keyword ? (
+          <Text fontSize={"md"}>
+            {"' "}
+            <Highlight
+              query={keyword}
+              styles={{
+                color: useColorModeValue("black", "white"),
+                fontWeight: "bold",
+              }}
+            >
+              {keyword}
+            </Highlight>
+            {" ' "}
+            검색 결과
+          </Text>
+        ) : (
+          <Text>전체 검색 결과</Text>
+        )}
         <Spacer />
         <Text color={"gray.500"} fontSize={"sm"}>
           총 {totalCount}개

@@ -48,7 +48,23 @@ import { PiStarFourFill } from "react-icons/pi"
 
 export default function (tag: string) {
   switch (tag) {
-    // 우리말샘 주제
+    // 총류 및 미분류 (gray)
+
+    // 기술과학 (red)
+
+    // 순수과학 (orange)
+
+    // 예술 (yellow)
+
+    // 자연 및 환경 (green)
+
+    // 사회과학 + 종교 + 역사 (teal)
+
+    // 문학 (blue)
+
+    // 철학 + 종교 + 사회과학 (green)
+
+    // IT 및 컴퓨터 (purple)
     case "가톨릭":
       return {
         name: "가톨릭",
