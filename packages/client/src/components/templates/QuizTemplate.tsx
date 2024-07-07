@@ -104,7 +104,7 @@ const HintItem: React.FC<{
       }
       borderColor={isOpened ? "gray.500" : borderColor}
       onClick={() => {
-        if (!Openable) return
+        if (!Openable || isOpened) return
         setIsOpened(true)
         onOpen(hint.cost)
       }}
