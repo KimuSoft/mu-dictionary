@@ -15,6 +15,14 @@ export class MeilisearchService {
     private readonly wordRepository: Repository<WordEntity>,
   ) {}
 
+  private async updateMeilisearchIndex() {
+    await this.meilisearch.updateIndex('words', {
+      primaryKey: 'sourceId',
+    });
+    const index = this.meilisearch.index('words');
+    await index.updateFilterableAttributes(['tags']);
+  }
+
   async getMeiliSearchStats() {
     return this.meilisearch.getStats();
   }
@@ -32,9 +40,7 @@ export class MeilisearchService {
     console.info('Syncing words...');
 
     console.info('Updating index...');
-    await this.meilisearch.updateIndex('words', {
-      primaryKey: 'sourceId',
-    });
+    await this.updateMeilisearchIndex();
 
     console.info('Getting sourceIds from DB...');
     const dbWords = (
@@ -67,9 +73,6 @@ export class MeilisearchService {
     console.info('Only in MeiliSearch:', onlyInMS.length);
 
     const index = this.meilisearch.index('words');
-
-    console.info('Update Filterable Attributes...');
-    await index.updateFilterableAttributes(['tags']);
 
     // Inserting log with count
     if (onlyInDB.length) {
@@ -110,9 +113,7 @@ export class MeilisearchService {
     await index.deleteAllDocuments();
 
     console.info('Updating index...');
-    await this.meilisearch.updateIndex('words', {
-      primaryKey: 'sourceId',
-    });
+    await this.updateMeilisearchIndex();
 
     await this.syncWords(words);
 
