@@ -35,7 +35,8 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
 
   const getSpeech = (text: string) => {
     let voices: SpeechSynthesisVoice[] = []
-    console.info("getSpeech", text)
+
+    text = text.replace(/[\^-]/g, "")
 
     //디바이스에 내장된 voice를 가져온다.
     const setVoiceList = () => {
