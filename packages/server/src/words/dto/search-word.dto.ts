@@ -10,13 +10,15 @@ export class SearchWordDto {
   q: string;
 
   @ApiProperty({
-    description: '태그 필터링',
+    title: '태그 (or) 조건',
     example: ['건설', '경영'],
     required: false,
   })
   @IsString({ each: true })
-  @Transform(({ value }) => (value && typeof value === 'string' ? [value] : value))
-  tags?: string[];
+  @Transform(({ value }) =>
+    value && typeof value === 'string' ? [value] : value,
+  )
+  tags: string[] = [];
 
   @ApiProperty({
     description: '검색 결과 개수',
