@@ -34,7 +34,7 @@ export class QuizService {
     console.info(query.getQuery());
 
     const word = await query
-      .orderBy('thumbnail IS NOT NULL')
+      .orderBy('thumbnail IS NOT NULL', 'DESC')
       .addOrderBy('LENGTH("simplifiedName") < 7', 'DESC')
       .addOrderBy('RANDOM()')
       .limit(1)
