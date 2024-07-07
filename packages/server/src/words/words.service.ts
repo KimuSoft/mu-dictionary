@@ -117,10 +117,11 @@ export class WordsService {
   //   return this.wordRepository.find();
   // }
 
-  async search({ q: query, limit, offset }: SearchWordDto) {
+  async search({ q: query, limit, offset, tags }: SearchWordDto) {
     return this.meilisearch.index('words').search(query, {
       limit,
       offset,
+      ...(tags && { filter: [`tags IN [${tags.join(',')}]`] }),
     });
   }
 

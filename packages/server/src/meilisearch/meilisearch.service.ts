@@ -53,7 +53,7 @@ export class MeilisearchService {
       fields: ['sourceId'],
     });
 
-    console.log(msWordsRes);
+    // console.log(msWordsRes);
 
     const msWords = msWordsRes.results.map((result) => result.sourceId);
     console.info('MeiliSearch Words:', msWords.length);
@@ -67,6 +67,9 @@ export class MeilisearchService {
     console.info('Only in MeiliSearch:', onlyInMS.length);
 
     const index = this.meilisearch.index('words');
+
+    console.info('Update Filterable Attributes...');
+    await index.updateFilterableAttributes(['tags']);
 
     // Inserting log with count
     if (onlyInDB.length) {

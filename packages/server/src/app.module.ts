@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { MeilisearchModule } from './meilisearch/meilisearch.module';
+import { QuizModule } from './quiz/quiz.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { MeilisearchModule } from './meilisearch/meilisearch.module';
     }),
     WordsModule,
     MeilisearchModule,
+    StatisticsModule,
+    QuizModule,
   ],
   controllers: [],
   providers: [],

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNumber, IsNumberString, IsOptional } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class SearchWordDto {
@@ -8,6 +8,14 @@ export class SearchWordDto {
     example: '사과',
   })
   q: string;
+
+  @ApiProperty({
+    description: '태그 필터링',
+    example: ['건설', '경영'],
+    required: false,
+  })
+  @IsString({ each: true })
+  tags?: string[];
 
   @ApiProperty({
     description: '검색 결과 개수',

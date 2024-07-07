@@ -1,7 +1,8 @@
 import { Controller, Get, Post, Query } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { MeilisearchService } from './meilisearch.service';
 
+@ApiTags('Meilisearch')
 @Controller('api/meilisearch')
 export class MeilisearchController {
   constructor(private readonly meilisearchService: MeilisearchService) {}
