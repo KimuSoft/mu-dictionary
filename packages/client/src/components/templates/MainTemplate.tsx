@@ -4,14 +4,18 @@ import {
   Center,
   Container,
   Heading,
+  HStack,
   Text,
+  Tooltip,
   useMediaQuery,
   VStack,
 } from "@chakra-ui/react"
 import SearchInput from "../organisms/SearchInput"
 import Header from "../organisms/Header"
+import { TagStatItem } from "../pages/Main"
+import ThemeTag from "../atoms/ThemeTag"
 
-const MainTemplate: React.FC = () => {
+const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)")
   const navigate = useNavigate()
 
@@ -36,6 +40,23 @@ const MainTemplate: React.FC = () => {
             placeholder={"단어 무더기에서 원하는 거 찾기"}
             onSubmit={onSearch}
           />
+          <Center gap={1.5} mt={3} flexWrap={"wrap"} maxW={"100%"}>
+            {tagStats.map((tag) => {
+              return (
+                <Tooltip
+                  key={tag.tag}
+                  hasArrow
+                  label={`${tag.count.toLocaleString()}개의 단어`}
+                >
+                  <ThemeTag
+                    userSelect={"none"}
+                    cursor={"pointer"}
+                    tag={tag.tag}
+                  />
+                </Tooltip>
+              )
+            })}
+          </Center>
         </Center>
       </Container>
     </VStack>
