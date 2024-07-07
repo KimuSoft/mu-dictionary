@@ -15,6 +15,7 @@ export class SearchWordDto {
     required: false,
   })
   @IsString({ each: true })
+  @Transform(({ value }) => (typeof value === 'string' ? [value] : value))
   tags?: string[];
 
   @ApiProperty({
