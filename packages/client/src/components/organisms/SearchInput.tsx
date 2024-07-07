@@ -5,8 +5,9 @@ import {
   InputRightElement,
   useColorMode,
   useColorModeValue,
+  useMediaQuery,
 } from "@chakra-ui/react"
-import { BiSearch } from "react-icons/bi"
+import { BiSearch, BiX } from "react-icons/bi"
 import {
   AutoComplete,
   AutoCompleteInput,
@@ -26,6 +27,7 @@ const SearchInput: React.FC<
 
   const [searchQuery, setSearchQuery] = React.useState("")
   const [autocompleteItems, setAutocompleteItems] = React.useState<string[]>([])
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
 
   useEffect(() => {
     if (!searchQuery) {
@@ -109,11 +111,19 @@ const SearchInput: React.FC<
           )}
         </AutoCompleteList>
       </AutoComplete>
-      <InputRightElement
-        cursor={"pointer"}
-        onClick={() => onSubmit?.(searchQuery.trim())}
-      >
-        <BiSearch />
+      <InputRightElement>
+        {searchQuery && isMobile ? (
+          <BiX
+            size={20}
+            style={{ cursor: "pointer" }}
+            onClick={() => setSearchQuery("")}
+          />
+        ) : (
+          <BiSearch
+            style={{ cursor: "pointer" }}
+            onClick={() => onSubmit?.(searchQuery.trim())}
+          />
+        )}
       </InputRightElement>
     </InputGroup>
   )

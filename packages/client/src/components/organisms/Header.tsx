@@ -27,7 +27,7 @@ const Header: React.FC<{
 
   return (
     <HStack
-      w={"100%"}
+      w={"100vw"}
       position={"fixed"}
       px={isMobile ? 3 : 9}
       py={3}
