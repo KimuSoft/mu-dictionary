@@ -1,15 +1,15 @@
 import React, { useEffect, useMemo } from "react"
 import SearchTemplate from "../templates/SearchTemplate"
 import { useSearchParams } from "react-router-dom"
-import { IWord } from "../../types/types"
 import { searchWords } from "../../api/word"
+import { Word } from "mudict-api-types"
 
 const Search: React.FC = () => {
   const [searchParams] = useSearchParams()
   const searchQuery = searchParams.get("q") || ""
   const tagsFilterQuery = searchParams.get("tags")?.split(",") || []
 
-  const [searchResults, setSearchResults] = React.useState<IWord[]>([])
+  const [searchResults, setSearchResults] = React.useState<Word[]>([])
   const [totalCount, setTotalCount] = React.useState<number>(0)
   const [isLoading, setIsLoading] = React.useState(false)
 

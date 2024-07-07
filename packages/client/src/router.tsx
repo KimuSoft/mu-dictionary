@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Search from "./components/pages/Search"
 import Main from "./components/pages/Main"
 import LongWordSearch from "./components/pages/LongWordSearch"
+import QuizPage from "./components/pages/QuizPage"
 
 const Router: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Router: React.FC = () => {
         <Route index path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />
         <Route path="/long-word" element={<LongWordSearch />} />
+        <Route path="/quiz" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   )

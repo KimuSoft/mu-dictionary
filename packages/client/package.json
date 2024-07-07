@@ -26,7 +26,8 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.4.2",
     "react-virtuoso": "^4.7.11",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "mudict-api-types": "workspace:^"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

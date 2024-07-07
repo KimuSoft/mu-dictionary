@@ -1,9 +1,9 @@
 import { api } from "./api"
-import { IWord } from "../types/types"
+import { Word } from "mudict-api-types"
 
 export interface SearchWordsResponse {
   estimatedTotalHits: number
-  hits: IWord[]
+  hits: Word[]
   limit: number
   offset: number
   processingTimeMs: number

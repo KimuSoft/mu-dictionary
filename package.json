@@ -4,6 +4,7 @@
   "packageManager": "pnpm@9.3.0",
   "scripts": {
     "dev": "pnpm run -rp dev",
-    "build": "pnpm run -rp build"
+    "build": "pnpm run -rp build",
+    "api": "pnpm --filter mudict-*-types"
   }
 }

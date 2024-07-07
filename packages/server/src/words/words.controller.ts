@@ -1,11 +1,6 @@
-import { Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { WordsService } from './words.service';
-import {
-  ApiOkResponse,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
 import { FindWordDto } from './dto/find-word.dto';
@@ -15,6 +10,11 @@ import { SearchLongWordDto } from './dto/search-long-word.dto';
 @ApiTags('Words')
 @Controller('api/words')
 export class WordsController {
+  defaultLongWordCache: any[] | null = null;
+  cacheExpireTime: Date | null = null;
+  // 하루
+  expiredTime = 86400000;
+
   constructor(private readonly wordsService: WordsService) {}
 
   @Get()
@@ -49,12 +49,6 @@ export class WordsController {
   async findOneById(@Param() { id }: FindOneWorkDto) {
     return this.wordsService.findOneById(id);
   }
-
-  defaultLongWordCache: any[] | null = null;
-  cacheExpireTime: Date | null = null;
-
-  // 하루
-  expiredTime = 86400000;
 
   @Get('search/long-word')
   @ApiOperation({ summary: '긴 단어 검색하기' })

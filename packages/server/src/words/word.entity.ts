@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { PartOfSpeech } from '../types';
+import { PartOfSpeech, Word } from 'mudict-api-types';
 
 @Entity('word')
-export class WordEntity {
+export class WordEntity implements Word {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

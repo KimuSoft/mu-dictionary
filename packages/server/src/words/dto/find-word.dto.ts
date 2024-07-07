@@ -9,7 +9,7 @@ import {
   Min,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { PartOfSpeech } from '../../types';
+import { PartOfSpeech } from 'mudict-api-types';
 
 export enum WordFields {
   Id = 'id',

@@ -1,4 +1,22 @@
-// 품사
+export interface Word {
+  id: string
+  sourceId: string
+  name: string
+  simplifiedName: string
+  origin: string
+  pronunciation?: string
+  definition: string
+  pos: PartOfSpeech
+  tags: string[]
+  thumbnail?: string
+  url?: string
+  referenceId: string
+}
+
+/**
+ * 품사 목록 enum
+ * Mudict API의 품사와 호환됨
+ */
 export enum PartOfSpeech {
   Noun, // 명사
   Pronoun, // 대명사

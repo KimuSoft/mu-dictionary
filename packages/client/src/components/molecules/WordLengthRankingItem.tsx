@@ -3,7 +3,6 @@ import { LongWordItem } from "../pages/LongWordSearch"
 import {
   Heading,
   HStack,
-  Spacer,
   StackProps,
   Text,
   useColorModeValue,

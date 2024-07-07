@@ -4,6 +4,7 @@ import {
   HStack,
   InputProps,
   Spacer,
+  StackProps,
   useColorModeValue,
   useMediaQuery,
 } from "@chakra-ui/react"
@@ -11,11 +12,13 @@ import ToggleColorModeButton from "../molecules/ToggleColorModeButton"
 import { useNavigate } from "react-router-dom"
 import SearchInput from "./SearchInput"
 
-const Header: React.FC<{
-  showLogo?: boolean
-  showSearch?: boolean
-  searchProps?: Omit<InputProps, "onChange" | "onSubmit">
-}> = ({ showLogo, showSearch, searchProps }) => {
+const Header: React.FC<
+  StackProps & {
+    showLogo?: boolean
+    showSearch?: boolean
+    searchProps?: Omit<InputProps, "onChange" | "onSubmit">
+  }
+> = ({ showLogo, showSearch, searchProps, ...props }) => {
   // 세로화면인지 확인ㅇ
   const [isMobile] = useMediaQuery("(max-width: 768px)")
   const navigate = useNavigate()
@@ -33,8 +36,7 @@ const Header: React.FC<{
       py={3}
       bgColor={useColorModeValue("white", "gray.800")}
       zIndex={100}
-      // borderColor={useColorModeValue("gray.200", "gray.700")}
-      // borderBottom={"1px solid"}
+      {...props}
     >
       {showLogo ? (
         <Heading

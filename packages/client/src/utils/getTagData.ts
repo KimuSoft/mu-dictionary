@@ -308,7 +308,7 @@ export default function (tag: string) {
       return { name: "스타듀 밸리", icon: GiChickenOven, color: "green" }
 
     case "원신":
-      return { name: "원신", icon: PiStarFourFill, color: "white" }
+      return { name: "원신", icon: PiStarFourFill, color: "purple" }
 
     case "붕괴: 스타레일":
       return { name: "붕괴: 스타레일", icon: FaMoon, color: "purple" }

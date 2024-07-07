@@ -1,5 +1,4 @@
 import React from "react"
-import { IWord } from "../../types/types"
 import {
   Box,
   Highlight,
@@ -20,12 +19,13 @@ import ThemeTag from "../atoms/ThemeTag"
 import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
 import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
+import { Word } from "mudict-api-types"
 
 const removeHTMLTags = (str: string) => {
   return str.replace(/<[^>]*>?/gm, "").replace(/&[A-z]{0,5};/, "")
 }
 
-const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
+const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   word,
   keyword,
 }) => {
@@ -171,7 +171,7 @@ const WordItem: React.FC<{ word: IWord; keyword: string }> = ({
                   isRound
                   size={"sm"}
                   color={"gray.500"}
-                  onClick={() => (window.location.href = word.url)}
+                  onClick={() => (window.location.href = word.url!)}
                 />
               </Tooltip>
             ) : null}

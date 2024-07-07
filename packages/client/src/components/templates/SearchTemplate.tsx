@@ -14,14 +14,14 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import Header from "../organisms/Header"
-import { IWord } from "../../types/types"
 import { Virtuoso } from "react-virtuoso"
 import { GoMoveToTop } from "react-icons/go"
 import WordItem from "../organisms/WordItem"
+import { Word } from "mudict-api-types"
 
 const SearchTemplate: React.FC<{
   keyword: string
-  searchResults: IWord[]
+  searchResults: Word[]
   onEndReached?: () => void
   isLoading: boolean
   allLoaded: boolean

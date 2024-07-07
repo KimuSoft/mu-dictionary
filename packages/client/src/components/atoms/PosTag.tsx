@@ -1,78 +1,78 @@
 import React from "react"
-import { WordClass } from "../../types/types"
 import { Tag, TagLabel, useColorModeValue } from "@chakra-ui/react"
+import { PartOfSpeech } from "mudict-api-types"
 
-const PosTag: React.FC<{ pos: WordClass }> = ({ pos }) => {
+const PosTag: React.FC<{ pos: PartOfSpeech }> = ({ pos }) => {
   return (
     <Tag
       bgColor={useColorModeValue("gray.200", "gray.700")}
       flexShrink={0}
       size={"sm"}
     >
-      <TagLabel>{getWordClassString(pos)}</TagLabel>
+      <TagLabel>{getPartOfSpeechString(pos)}</TagLabel>
     </Tag>
   )
 }
 
-const getWordClassString = (wordClass: WordClass): string => {
-  switch (wordClass) {
-    case WordClass.Noun:
+const getPartOfSpeechString = (pos: PartOfSpeech): string => {
+  switch (pos) {
+    case PartOfSpeech.Noun:
       return "명"
-    case WordClass.Pronoun:
+    case PartOfSpeech.Pronoun:
       return "대"
-    case WordClass.Numeral:
+    case PartOfSpeech.Numeral:
       return "수"
-    case WordClass.Postposition:
+    case PartOfSpeech.Postposition:
       return "조"
-    case WordClass.Verb:
+    case PartOfSpeech.Verb:
       return "동"
-    case WordClass.Adjective:
+    case PartOfSpeech.Adjective:
       return "형"
-    case WordClass.Determiner:
+    case PartOfSpeech.Determiner:
       return "관"
-    case WordClass.Adverb:
+    case PartOfSpeech.Adverb:
       return "부"
-    case WordClass.Interjection:
+    case PartOfSpeech.Interjection:
       return "감"
-    case WordClass.Affix:
+    case PartOfSpeech.Affix:
       return "접"
-    case WordClass.DependentNoun:
+    case PartOfSpeech.DependentNoun:
       return "의명"
-    case WordClass.AuxiliaryVerb:
+    case PartOfSpeech.AuxiliaryVerb:
       return "보동"
-    case WordClass.AuxiliaryAdjective:
+    case PartOfSpeech.AuxiliaryAdjective:
       return "보형"
-    case WordClass.Ending:
+    case PartOfSpeech.Ending:
       return "어"
-    case WordClass.DeterminerNoun:
+    case PartOfSpeech.DeterminerNoun:
       return "관·명"
-    case WordClass.NumeralDeterminer:
+    case PartOfSpeech.NumeralDeterminer:
       return "수·관"
-    case WordClass.NounAdverb:
+    case PartOfSpeech.NounAdverb:
       return "명·부"
-    case WordClass.InterjectionNoun:
+    case PartOfSpeech.InterjectionNoun:
       return "감·명"
-    case WordClass.PronounAdverb:
+    case PartOfSpeech.PronounAdverb:
       return "대·부"
-    case WordClass.PronounInterjection:
+    case PartOfSpeech.PronounInterjection:
       return "대·감"
-    case WordClass.VerbAdjective:
+    case PartOfSpeech.VerbAdjective:
       return "동·형"
-    case WordClass.DeterminerInterjection:
+    case PartOfSpeech.DeterminerInterjection:
       return "관·감"
-    case WordClass.AdverbInterjection:
+    case PartOfSpeech.AdverbInterjection:
       return "부·감"
-    case WordClass.DependentNounPostposition:
+    case PartOfSpeech.DependentNounPostposition:
       return "의·명·조"
-    case WordClass.NumeralDeterminerNoun:
+    case PartOfSpeech.NumeralDeterminerNoun:
       return "수·관·명"
-    case WordClass.PronounDeterminer:
+    case PartOfSpeech.PronounDeterminer:
       return "대·관"
-    case WordClass.Phrase:
+    case PartOfSpeech.Phrase:
       return "구"
-    case WordClass.Idiom:
+    case PartOfSpeech.Idiom:
       return "관용구"
-    case WordClass.Proverb:
+    case PartOfSpeech.Proverb:
       return "속담"
     default:
       return "품사 없음"

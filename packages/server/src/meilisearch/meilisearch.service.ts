@@ -15,14 +15,6 @@ export class MeilisearchService {
     private readonly wordRepository: Repository<WordEntity>,
   ) {}
 
-  private async updateMeilisearchIndex() {
-    await this.meilisearch.updateIndex('words', {
-      primaryKey: 'sourceId',
-    });
-    const index = this.meilisearch.index('words');
-    await index.updateFilterableAttributes(['tags']);
-  }
-
   async getMeiliSearchStats() {
     return this.meilisearch.getStats();
   }
@@ -118,27 +110,6 @@ export class MeilisearchService {
     await this.syncWords(words);
 
     console.info('Done.');
-  }
-
-  private async syncWords(words: WordEntity[]) {
-    const index = this.meilisearch.index('words');
-    const chunks = chunk(words, 10000);
-
-    // log like 100 / 200 (50%)
-    let i = 0;
-    const total = chunks.length;
-    console.info(`Adding ${words.length} words...`);
-
-    // for each chunk, add documents
-    for (const chunk of chunks) {
-      i++;
-      console.info(
-        `Adding chunk ${i} / ${total} (${Math.round((i / total) * 100)}%)`,
-      );
-      await index.addDocuments(chunk.map((word) => word.toJSON()));
-      // 500ms delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
   }
 
   // 특정 referenceId에 해당하는 단어만 동기화
@@ -288,5 +259,34 @@ export class MeilisearchService {
       inserted: onlyInDB.length,
       deleted: onlyInMS.length,
     };
+  }
+
+  private async updateMeilisearchIndex() {
+    await this.meilisearch.updateIndex('words', {
+      primaryKey: 'sourceId',
+    });
+    const index = this.meilisearch.index('words');
+    await index.updateFilterableAttributes(['tags']);
+  }
+
+  private async syncWords(words: WordEntity[]) {
+    const index = this.meilisearch.index('words');
+    const chunks = chunk(words, 10000);
+
+    // log like 100 / 200 (50%)
+    let i = 0;
+    const total = chunks.length;
+    console.info(`Adding ${words.length} words...`);
+
+    // for each chunk, add documents
+    for (const chunk of chunks) {
+      i++;
+      console.info(
+        `Adding chunk ${i} / ${total} (${Math.round((i / total) * 100)}%)`,
+      );
+      await index.addDocuments(chunk.map((word) => word.toJSON()));
+      // 500ms delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
   }
 }

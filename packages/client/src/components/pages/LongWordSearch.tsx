@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import LongWordSearchTemplate from "../templates/LongWordSearchTemplate"
 import { api } from "../../api/api"
-import { useParams, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 
 export interface LongWordItem {
   simplifiedName: string
