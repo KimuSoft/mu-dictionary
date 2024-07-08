@@ -9,6 +9,7 @@ import {
   Popover,
   PopoverArrow,
   PopoverBody,
+  PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
   Tag,
@@ -26,6 +27,7 @@ import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
 import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
 import { Word } from "mudict-api-types"
+import getTagData from "../../utils/getTagData"
 
 const removeHTMLTags = (str: string) => {
   return str.replace(/<[^>]*>?/gm, "").replace(/&[A-z]{0,5};/, "")
@@ -46,6 +48,8 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   }, [word.tags])
 
   const toast = useToast()
+
+  const subTagColor = useMemo(() => getTagData(subTags[0]).color, [subTags])
 
   const getSpeech = (text: string) => {
     let voices: SpeechSynthesisVoice[] = []
@@ -201,16 +205,24 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
               {subTags.length ? (
                 <Popover>
                   <PopoverTrigger>
-                    <Tag size={"sm"} colorScheme={"black"}>
+                    <Tag
+                      cursor={"pointer"}
+                      userSelect={"none"}
+                      size={"sm"}
+                      colorScheme={subTagColor}
+                    >
                       ...
                     </Tag>
                   </PopoverTrigger>
                   <PopoverContent>
                     <PopoverArrow />
+                    <PopoverCloseButton />
                     <PopoverBody>
-                      {subTags.map((tag, idx) => (
-                        <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
-                      ))}
+                      <HStack gap={2} flexWrap={"wrap"}>
+                        {subTags.map((tag, idx) => (
+                          <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
+                        ))}
+                      </HStack>
                     </PopoverBody>
                   </PopoverContent>
                 </Popover>
