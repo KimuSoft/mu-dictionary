@@ -6,6 +6,7 @@ import { TagStatItem } from "./Main"
 import QuizTemplate from "../templates/QuizTemplate"
 import { useToast } from "@chakra-ui/react"
 import QuizResultTemplate from "../templates/QuizResultTemplate"
+import { isAxiosError } from "axios"
 
 const QuizPage: React.FC = () => {
   // Setting
@@ -17,6 +18,10 @@ const QuizPage: React.FC = () => {
   const [quiz, setQuiz] = React.useState<Quiz | null>(null)
   const [round, setRound] = React.useState(0)
 
+  const [isEnd, setIsEnd] = React.useState(false)
+
+  const [quizIds, setQuizIds] = React.useState<string[]>([])
+
   const toast = useToast()
 
   const fetchTags = async () => {
@@ -26,18 +31,35 @@ const QuizPage: React.FC = () => {
   }
 
   const fetchQuiz = async () => {
-    const res = await api.get("/quiz", {
-      params: {
-        tags: selectedTags,
-      },
-    })
+    try {
+      const res = await api.get("/quiz", {
+        params: {
+          tags: selectedTags,
+          exclude: quizIds,
+        },
+      })
 
-    setRound(round + 1)
-    setQuiz(res.data)
+      setQuizIds([...quizIds, res.data.id])
+      setRound(round + 1)
+      setQuiz(res.data)
+    } catch (e) {
+      if (!isAxiosError(e)) throw e
+
+      if (e.response?.status === 404) {
+        toast({
+          title: "모든 퀴즈를 다 풀었어요!!!.",
+          description: "클리어를 축하드려요!!",
+          status: "info",
+          isClosable: true,
+          position: "top-right",
+        })
+      }
+    }
   }
 
   useEffect(() => {
     if (coin > 0) return
+    setIsEnd(true)
     toast({
       title: "게임 오버!",
       description: "코인이 부족합니다. 게임을 종료합니다.",
@@ -92,6 +114,8 @@ const QuizPage: React.FC = () => {
     setCoin(100)
     setQuiz(null)
     setRound(0)
+    setQuizIds([])
+    setIsEnd(false)
   }
 
   useEffect(() => {
@@ -108,7 +132,7 @@ const QuizPage: React.FC = () => {
         fetchQuiz().then()
       }}
     />
-  ) : coin > 0 ? (
+  ) : !isEnd ? (
     <QuizTemplate
       coin={coin}
       quiz={quiz}
@@ -122,6 +146,7 @@ const QuizPage: React.FC = () => {
   ) : (
     <QuizResultTemplate
       round={round}
+      coin={coin}
       tags={selectedTags}
       onResetGame={resetGame}
     />

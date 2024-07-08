@@ -20,11 +20,21 @@ export class QuizService {
     return this.getWordQuiz(dto);
   }
 
+  private idToSimplifiedName(id: string): string {
+    return id.split('_')[1];
+  }
+
   private async getWordQuiz(dto: GetRandomQuizDto): Promise<QuizDto> {
     // 랜덤으로 조건에 맞는 단어 하나를 가져옴
     let query = this.wordRepository
       .createQueryBuilder()
       .select('"simplifiedName"');
+
+    if (dto.exclude.length) {
+      query = query.andWhere('"simplifiedName" NOT IN (:...exclude)', {
+        exclude: dto.exclude.map((e) => this.idToSimplifiedName(e)),
+      });
+    }
 
     console.log(dto);
     if (dto.tags.length) {
@@ -88,7 +98,7 @@ export class QuizService {
     hints.sort((a, b) => b.cost - a.cost);
 
     return {
-      id: `${QuizType.Word}_`,
+      id: `${QuizType.Word}_${answer}`,
       hints,
       quizType: QuizType.Word,
       answer,
