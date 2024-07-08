@@ -79,7 +79,11 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
                       <ThemeTag
                         userSelect={"none"}
                         cursor={"pointer"}
-                        onClick={() => navigate("/search?tags=" + tag.tag)}
+                        onClick={() =>
+                          navigate(
+                            "/search?tags=" + encodeURIComponent(tag.tag),
+                          )
+                        }
                         tag={tag.tag}
                       />
                     </Tooltip>

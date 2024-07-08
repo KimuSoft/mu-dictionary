@@ -136,6 +136,11 @@ const run = async () => {
       continue;
     }
 
+    const tags = ["게임"];
+
+    const subTag = i.platform.replace(/\//, "·").trim();
+    if (subTag) tags.push("게임/" + subTag);
+
     result.items.push({
       sourceId: REFERENCE_ID + "_" + i.rateno,
       name: nameData.name,
@@ -146,7 +151,7 @@ const run = async () => {
       } ${i.platform} ${i.summary}. ${
         i.givenrate
       } 게임이며 등급분류번호는 ${i.rateno}이다.`,
-      tags: ["게임", "게임/" + i.platform.replace(/\//, "·")],
+      tags,
       url: `https://namu.wiki/w/${encodeURI(nameData.origin)}`,
     });
   }
