@@ -10,10 +10,9 @@ export default function analyzeUnknownWords(words: string[]) {
   const wordList = words
     .map((word) => word.split(/\s+/))
     .flat()
-    .filter((w) => !wordConvert(w.trim()))
-    .map((w) => w.toLowerCase());
+    .map((w) => w.toLowerCase().trim());
 
-  // 단어 빈도수 계산
+  // 빈도 수 계산
   wordList.forEach((word) => {
     if (wordMap[word]) {
       wordMap[word]++;
@@ -21,6 +20,12 @@ export default function analyzeUnknownWords(words: string[]) {
       wordMap[word] = 1;
     }
   });
+
+  for (const word in wordMap) {
+    if (wordConvert(word)) {
+      delete wordMap[word];
+    }
+  }
 
   return Object.entries(wordMap)
     .sort((a, b) => b[1] - a[1])

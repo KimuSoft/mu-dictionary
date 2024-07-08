@@ -1,7 +1,7 @@
 // 같은 경로의 TextMapKR.json 파일 불러오기 (무거우므로 import 말고 async로 파싱)
-import { readFile, writeFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDict, PartOfSpeech } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 
 // bun genshin <경로>
@@ -50,22 +50,31 @@ const run = async () => {
       continue;
     }
 
+    const tags = ["마인크래프트"];
+
     let definition = "게임 '마인크래프트'에 등장하는 단어.";
 
     if (key.startsWith("block.")) {
       definition = '게임 "마인크래프트"에 등장하는 블록.';
+      tags.push("마인크래프트/블록");
     } else if (key.startsWith("item.")) {
       definition = '게임 "마인크래프트"에 등장하는 아이템.';
+      tags.push("마인크래프트/아이템");
     } else if (key.startsWith("advancements.")) {
       definition = '게임 "마인크래프트"의 도전과제.';
+      tags.push("마인크래프트/도전과제");
     } else if (key.startsWith("enchantment.")) {
       definition = '게임 "마인크래프트"의 인챈트.';
+      tags.push("마인크래프트/인챈트");
     } else if (key.startsWith("entity.")) {
       definition = '게임 "마인크래프트"의 엔티티.';
+      tags.push("마인크래프트/엔티티");
     } else if (key.startsWith("gameMode.")) {
       definition = '게임 "마인크래프트"의 게임 모드.';
+      tags.push("마인크래프트/게임 모드");
     } else if (key.startsWith("gamerule.")) {
       definition = '게임 "마인크래프트"의 게임 설정값.';
+      tags.push("마인크래프트/게임 설정값");
     }
 
     const description = textMapKR[key.replace(".title", "") + ".description"];
@@ -77,6 +86,7 @@ const run = async () => {
       ...wordData,
       sourceId: REFERENCE_ID + "_" + key.replace(/\./g, "_"),
       definition,
+      tags,
       url:
         "https://minecraft.fandom.com/ko/wiki/" +
         encodeURI(value.replace(/\./g, "/")),

@@ -70,6 +70,12 @@ const run = async () => {
         ...result.default,
         ...nameData,
         definition,
+        tags: [
+          "대중교통",
+          "대중교통/버스",
+          "대중교통/버스/" +
+            (item.cityFullName === "서울특별시" ? "서울" : item.cityName),
+        ],
         url: `https://www.google.co.kr/maps/place/${item.latitude},${item.longitude}`,
       };
 

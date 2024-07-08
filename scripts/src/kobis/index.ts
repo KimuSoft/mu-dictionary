@@ -67,8 +67,15 @@ const run = async () => {
       continue;
     }
 
+    const tags = ["영화"];
+
+    if (movie.productionCountry) {
+      tags.push("영화/" + movie.productionCountry.trim());
+    }
+
     result.items.push({
       ...nameData,
+      tags,
       sourceId: REFERENCE_ID + "_" + idx,
       // <제작연도>년 <제작국가>에서 제작된 <감독> 감독의 <유형> <장르> 영화. 제작사는 <제작사>이다.
       definition:

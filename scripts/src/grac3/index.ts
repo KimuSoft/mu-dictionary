@@ -146,7 +146,7 @@ const run = async () => {
       } ${i.platform} ${i.summary}. ${
         i.givenrate
       } 게임이며 등급분류번호는 ${i.rateno}이다.`,
-      tags: ["게임", i.platform],
+      tags: ["게임", "게임/" + i.platform.replace(/\//, "·")],
       url: `https://namu.wiki/w/${encodeURI(nameData.origin)}`,
     });
   }

@@ -251,14 +251,17 @@ const run = async () => {
       continue;
     }
 
+    const tags: string[] = ["붕괴: 스타레일"];
     let definition = "게임 '붕괴: 스타레일'에 등장하는 ";
 
     if (item.id.endsWith("-achievement")) {
+      tags.push("붕괴: 스타레일/업적");
       definition += `'${item.detail["시리즈_업적"]}'의 ${item.detail["열기"] === "❌" ? "히든 " : ""}업적. ${item.detail["설명"]} 달성 시 ${item.detail["획득_가능한_보상"]}을 획득할 수 있다.`;
     } else if (item.id.endsWith("-item")) {
       let additionalDescription = "";
 
       if (item.detail["운명의_길"]) {
+        tags.push("붕괴: 스타레일/광추");
         additionalDescription = `${item.detail["운명의_길"]} 광추. ${item.detail["전투_스킬"]} `;
       } else {
         additionalDescription = `${item.detail["유형"]}. `;
@@ -266,6 +269,7 @@ const run = async () => {
 
       definition += `${additionalDescription}${item.detail["설명"] || ""}`;
     } else if (item.id.endsWith("-character")) {
+      tags.push("붕괴: 스타레일/캐릭터");
       definition += `${item.detail["소속"]} 소속 ${item.detail["운명의_길"]} 운명의 길의 ${item.detail["전투_속성"]} 속성 캐릭터. ${item.detail["스토리"]} (CV. ${item.detail["한국어"]})`;
     } else {
       definition += "단어.";
@@ -276,6 +280,7 @@ const run = async () => {
       ...nameData,
       definition: definition.trim(),
       thumbnail: item.detail["thumbnail"],
+      tags,
       sourceId:
         REFERENCE_ID +
         "_" +

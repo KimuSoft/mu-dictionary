@@ -5,6 +5,7 @@ import { FoodNutritionInfo } from "./types";
 import { wordConvert } from "../utils/wordConvert";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { josa } from "es-hangul";
+import removeBraket from "../utils/removeBraket";
 
 // bun <Command> <Path>
 const EXISTING_PATH = process.argv[2] || "./src/foodsafetykorea/data";
@@ -56,7 +57,7 @@ const run = async () => {
     });
 
     for (const item of jsonData) {
-      const nameData = wordConvert(item.FoodName.replace(/\(.+\)/g, ""));
+      const nameData = wordConvert(removeBraket(item.FoodName));
 
       if (!nameData) {
         console.log(`Failed to convert ${item.FoodName}`);
@@ -70,6 +71,10 @@ const run = async () => {
         sourceId: REFERENCE_ID + "_" + item.FoodCode,
         ...result.default,
         ...nameData,
+        tags: [
+          "식품",
+          "식품/" + removeBraket(item.FoodCategory.replace(/\//g, "·")),
+        ],
         definition,
         url: `https://various.foodsafetykorea.go.kr/nutrient/general/food/firstList.do?searchText=${encodeURI(item.FoodName)}`,
       };

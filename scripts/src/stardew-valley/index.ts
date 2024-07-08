@@ -1,5 +1,5 @@
-import { readdir, readFile, writeFile } from "fs/promises";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { readdir, readFile } from "fs/promises";
+import { MuDict, PartOfSpeech } from "../types";
 import { parse as yamlParse } from "yaml";
 import { StardewValleyStringXnbData } from "./types";
 import { wordConvert } from "../utils/wordConvert";
@@ -68,6 +68,7 @@ const run = async () => {
       continue;
     }
 
+    const tags = ["스타듀 밸리"];
     let definition = "게임 '스타듀 밸리'에 등장하는 ";
 
     switch (item.file) {
@@ -77,41 +78,51 @@ const run = async () => {
 
       case "Buildings.ko-KR.yaml":
         definition += `건물.`;
+        tags.push("스타듀 밸리/건물");
         break;
 
       case "EnchantmentNames.ko-KR.yaml":
         definition += `인챈트 이름.`;
+        tags.push("스타듀 밸리/인챈트");
         break;
 
       case "Furniture.ko-KR.yaml":
         definition += `가구 아이템.`;
+        tags.push("스타듀 밸리/가구");
         break;
 
       case "Movies.ko-KR.yaml":
         definition += `영화.`;
+        tags.push("스타듀 밸리/영화");
         break;
 
       case "NPCNames.ko-KR.yaml":
         definition += `등장인물.`;
+        tags.push("스타듀 밸리/등장인물");
         break;
 
       case "Objects.ko-KR.yaml":
+        tags.push("스타듀 밸리/아이템");
         definition += `아이템.`;
         break;
 
       case "Pants.ko-KR.yaml":
+        tags.push("스타듀 밸리/의상");
         definition += `바지 아이템.`;
         break;
 
       case "Shirts.ko-KR.yaml":
+        tags.push("스타듀 밸리/의상");
         definition += `상의 아이템.`;
         break;
 
       case "Weapons.ko-KR.yaml":
+        tags.push("스타듀 밸리/무기");
         definition += `무기 아이템.`;
         break;
 
       case "WorldMap.ko-KR.yaml":
+        tags.push("스타듀 밸리/장소");
         definition += `장소.`;
         break;
 
@@ -131,6 +142,7 @@ const run = async () => {
       sourceId: sourceId.toLowerCase().replace(/[.\s]/g, "_").replace(/'/g, ""),
       origin: nameData.origin,
       name: nameData.name,
+      tags,
       simplifiedName: nameData.simplifiedName,
       definition,
       url: `https://ko.stardewvalleywiki.com/${encodeURI(item.name)}`,

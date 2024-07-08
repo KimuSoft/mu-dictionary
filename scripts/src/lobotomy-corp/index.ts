@@ -15,7 +15,7 @@ const result: MuDict = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,
-    tags: ["프로젝트 문"],
+    tags: ["로보토미 코퍼레이션", "로보토미 코퍼레이션/환상체"],
     pos: PartOfSpeech.Noun,
   },
 };

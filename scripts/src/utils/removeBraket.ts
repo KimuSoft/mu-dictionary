@@ -1,3 +1,6 @@
 export default function removeBraket(str: string) {
-  return str.replace(/\([^)]+\)/g, "").replace(/\[[^\]]+]/g, "");
+  return str
+    .replace(/\([^)]+\)/g, "")
+    .replace(/\[[^\]]+]/g, "")
+    .trim();
 }

@@ -77,6 +77,13 @@ const run = async () => {
           simplifiedName: subNameData.simplifiedName + "역",
           origin: (subNameOrigin?.replace(/\s/g, "") || subName) + "驛",
           definition: subDefinition,
+          tags: [
+            "대중교통",
+            "대중교통/철도",
+            "대중교통/철도/부역명",
+            "대중교통/철도/" + station.lineName.trim(),
+          ],
+          url: `https://www.google.co.kr/maps/place/${station.latitude},${station.longitude}`,
         };
 
         result.items.push(item);
@@ -104,6 +111,11 @@ const run = async () => {
     const item: MuDictItem = {
       sourceId: `${REFERENCE_ID}_${station.lineCode}_${station.stationCode}`,
       name: nameData.name + (!nameData.name.endsWith("역") ? "역" : ""),
+      tags: [
+        "대중교통",
+        "대중교통/철도",
+        "대중교통/철도/" + station.lineName.trim(),
+      ],
       simplifiedName:
         nameData.simplifiedName + (!nameData.name.endsWith("역") ? "역" : ""),
       origin: originName.replace(/-\s/g, "")
@@ -111,6 +123,7 @@ const run = async () => {
           (!nameData.name.endsWith("역") ? "驛" : "")
         : nameData.name,
       definition,
+      url: `https://www.google.co.kr/maps/place/${station.latitude},${station.longitude}`,
     };
 
     result.items.push(item);

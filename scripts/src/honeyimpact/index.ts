@@ -1,11 +1,11 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDict, PartOfSpeech } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as cheerio from "cheerio";
 import axios, { AxiosResponse } from "axios";
 import { uniqBy } from "lodash";
-import { josa } from "es-hangul";
+import removeBraket from "../utils/removeBraket";
 
 // bun <Command> <Path>
 const reset = process.argv.includes("--reset");
@@ -189,8 +189,7 @@ const run = async () => {
           .toLowerCase()
           .replace(/\s/g, "_")
           .trim();
-        const value = $(element).find("td").last().text().trim();
-        detail[key] = value;
+        detail[key] = $(element).find("td").last().text().trim();
       });
 
       item.detail = detail;
@@ -210,7 +209,7 @@ const run = async () => {
   for (const item of genshinItems) {
     if (!item.name || !item.id) continue;
 
-    const nameData = wordConvert(item.name);
+    const nameData = wordConvert(removeBraket(item.name));
     if (!nameData) {
       console.error("Failed to convert", item.name);
       continue;
@@ -227,16 +226,28 @@ const run = async () => {
     }
 
     let definition = "게임 '원신'에 등장하는 ";
+    const tags = ["원신"];
 
     if (item.id.startsWith("a_")) {
+      tags.push("원신/업적");
       definition += `'${item.detail["parent_category"]}'의 ${item.detail["shown"] === "❌" ? "히든 " : ""}업적. ${item.detail["description"]} 달성 시 ${item.detail["reward"]}을 획득할 수 있다.`;
     } else if (item.id.startsWith("ch_")) {
       let questType = "퀘스트";
-      if (item.detail["sub"] === "Event Quests") questType = "이벤트 스토리";
-      else if (item.detail["sub"] === "Archon Quests") questType = "마신 임무";
-      else if (item.detail["sub"] === "World Quests") questType = "월드 임무";
-      else if (item.detail["sub"] === "Hangout Quests")
+      tags.push("원신/임무");
+
+      if (item.detail["sub"] === "Event Quests") {
+        tags.push("원신/임무/이벤트 스토리");
+        questType = "이벤트 스토리";
+      } else if (item.detail["sub"] === "Archon Quests") {
+        tags.push("원신/임무/마신 임무");
+        questType = "마신 임무";
+      } else if (item.detail["sub"] === "World Quests") {
+        tags.push("원신/임무/월드 임무");
+        questType = "월드 임무";
+      } else if (item.detail["sub"] === "Hangout Quests") {
+        tags.push("원신/임무/초대 이벤트");
         questType = "초대 이벤트";
+      }
 
       const subQuest = item.detail["title"]
         ? ` '${item.detail["title"]}'의 임무.`
@@ -244,23 +255,37 @@ const run = async () => {
 
       definition += `${questType}${subQuest}`;
     } else if (item.id.startsWith("com_")) {
+      tags.push("원신/임무");
+      tags.push("원신/임무/일일 임무");
       definition += `일일 임무. ${item.detail["description"]}. 목표는 ${item.detail["objective"]}`;
     } else if (item.id.startsWith("d_")) {
+      tags.push("원신/비경");
       let domainType = "비경";
       if (item.detail["sub"] === "Boss") domainType = "주간 보스 비경.";
       else if (item.detail["sub"] === "Regular Domain")
         domainType = "일반 비경";
-      else if (item.detail["sub"] === "Event") domainType = "이벤트 전용 비경";
+      else if (item.detail["sub"] === "Event") {
+        tags.push("원신/비경/이벤트");
+        domainType = "이벤트 전용 비경";
+      }
 
       definition += `비경. ${item.detail["description"] || ""}`;
     } else if (item.id.startsWith("i_")) {
       let itemType = "아이템";
-      if (item.detail["family"] === "Namecard") itemType = "명함";
-      else if (item.detail["type_(ingame)"])
+      if (item.detail["family"] === "Namecard") {
+        tags.push("원신/명함");
+        itemType = "명함";
+      } else if (item.detail["type_(ingame)"]) {
         itemType = item.detail["type_(ingame)"];
+        tags.push("원신/아이템");
+      } else {
+        tags.push("원신/아이템");
+      }
 
       definition += `${itemType}. ${item.detail["description"] || ""}`;
     } else if (item.detail["weapon"]) {
+      tags.push("원신/캐릭터");
+
       let weapon = item.detail["weapon"];
       if (item.detail["weapon"] === "Bow") weapon = "활";
       else if (item.detail["weapon"] === "Claymore") weapon = "대검";
@@ -281,6 +306,7 @@ const run = async () => {
     } else if (item.id.startsWith("h_")) {
       continue;
     } else if (item.id.startsWith("view_")) {
+      tags.push("원신/전망 포인트");
       // 전망 포인트
       definition += `전망 포인트. ${item.detail["description"] || ""}`;
     } else {
@@ -292,6 +318,7 @@ const run = async () => {
     result.items.push({
       ...nameData,
       definition: definition.trim(),
+      tags,
       thumbnail: getImageUrl(item.id),
       sourceId: REFERENCE_ID + "_" + item.id,
       url: `https://gensh.honeyhunterworld.com/${item.id}/?lang=KO`,

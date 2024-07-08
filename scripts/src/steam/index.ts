@@ -23,7 +23,7 @@ const result: MuDict = {
   default: {
     definition: "~에 등장하는 단어",
     referenceId: REFERENCE_ID,
-    tags: ["게임", "스팀 게임"],
+    tags: ["게임", "게임/스팀 게임"],
     pos: PartOfSpeech.Noun,
   },
 };
@@ -126,6 +126,7 @@ const run = async () => {
       continue;
     }
 
+    const tags = ["게임", "게임/스팀 게임"];
     let definition = "";
     let thumbnail = "";
     let url = item.url;
@@ -145,11 +146,16 @@ const run = async () => {
 
       definition = `${releaseDataStr} ${developerStr}${genres} 게임. ${item.short_description}`;
       url = item.website || item.url;
+
+      if (item.supported_languages?.includes("한국어")) {
+        tags.push("게임/스팀 게임/한국어 지원");
+      }
     }
 
     result.items.push({
       ...nameData,
       definition,
+      tags,
       sourceId: REFERENCE_ID + "_" + item.appid,
       url,
       thumbnail,
@@ -163,7 +169,7 @@ const run = async () => {
   for (const item of refData.applist.apps) {
     if (!item.name) continue;
     if (!gameCache[item.appid]) {
-      const nameData = wordConvert(item.name);
+      const nameData = wordConvert(removeBraket(item.name));
       if (!nameData) {
         // console.warn("Failed to convert:", item.name);
         failedName.push(item.name);

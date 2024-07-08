@@ -84,20 +84,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "GC-CC-NP-240531-007",
-    "rateddate": "2024-05-31",
-    "gametitle": "TIEBREAK: Official game of the ATP and WTA (타이브레이크: 오피셜 게임 오브 ATP 앤드 WTA)",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "(주)에이치투인터렉티브",
-    "summary": "프로 테니스협회 ATP와 여자 테니스협회 WTA의 오피셜 게임으로, 현실적으로 구현된 각 테니스 경기장에서 실제 선수들을 플레이할 수 있는 테니스 스포츠 게임",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-240531-002",
     "rateddate": "2024-05-31",
     "gametitle": "EA SPORTS™ Madden NFL 25",
@@ -224,20 +210,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-240516-002",
-    "rateddate": "2024-05-16",
-    "gametitle": "Tavern Legend",
-    "orgname": "게임물관리위원회",
-    "entname": "TAP4FUN",
-    "summary": "선술집 운영을 통해 술, 음료, 음식을 만들고 판매하여 부를 축적하는 시뮬레이션 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OV-240516-001",
     "rateddate": "2024-05-16",
     "gametitle": "Flock",
@@ -318,20 +290,6 @@
     "genre": "롤플레잉",
     "platform": "비디오 게임",
     "discriptors": "폭력성,선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NA-240502-002",
-    "rateddate": "2024-05-02",
-    "gametitle": "CRAZY TOY",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)엔터스",
-    "summary": "레버와 버튼을 사용하여 집게로 경품을 획득하는 크레인 게임물",
-    "givenrate": "전체이용가",
-    "genre": "크레인",
-    "platform": "아케이드 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -700,20 +658,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-240307-001",
-    "rateddate": "2024-03-07",
-    "gametitle": "Warframe",
-    "orgname": "게임물관리위원회",
-    "entname": "Digital Extremes Ltd.",
-    "summary": "SF 세계를 배경으로 한 무료 3인칭 액션 슈팅 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "액션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OP-240229-002",
     "rateddate": "2024-02-29",
     "gametitle": "Millennia",
@@ -1022,20 +966,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "GC-CC-NV-240112-005",
-    "rateddate": "2024-01-12",
-    "gametitle": "4 in a Row",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "엘지전자",
-    "summary": "자신의 말 4개로 1줄을 만들어 이기는 차량 내 서비스용 캐주얼 게임",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "비디오 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NA-240111-006",
     "rateddate": "2024-01-11",
     "gametitle": "FAST ＆ FURIOUS",
@@ -1114,20 +1044,6 @@
     "summary": "로보카 폴리, 도레미 프렌즈 등의 애니메이션 콘텐츠 IP를 기반으로 제작한 동작인식 체험형 학습 게임물",
     "givenrate": "전체이용가",
     "genre": "교육용",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NA-240104-004",
-    "rateddate": "2024-01-04",
-    "gametitle": "CHIKA CHIKA",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)에이앤드에이엔터테이먼트",
-    "summary": "브러쉬를 이용하여 하마이빨을 청소하고 그에 따른 점수를 획득하고 획득점수에 따라 경품을 획득하는 캐주얼 게임물",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
     "platform": "아케이드 게임",
     "discriptors": "",
     "cancelstatus": "False",
@@ -1232,20 +1148,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-231221-002",
-    "rateddate": "2023-12-21",
-    "gametitle": "Arcane Saga : Turn Based RPG",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 와이제이엠게임즈 삼성동지점",
-    "summary": "다양한 캐릭터를 수집하고 획득한 캐릭터를 성장시키는 내용의 턴제 수집형 RPG 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "롤플레잉",
-    "platform": "모바일 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-231214-002",
     "rateddate": "2023-12-14",
     "gametitle": "Breaker Fun 2",
@@ -1274,20 +1176,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OP-231214-002",
-    "rateddate": "2023-12-14",
-    "gametitle": "영웅왕, 극한의 무를 위해 전생하다 : Bravery Road",
-    "orgname": "게임물관리위원회",
-    "entname": "CTWinc.",
-    "summary": "라이트노벨 \"영웅왕, 극한의 무를 위해 전생하다 ~그리고 세계최강의 견습기사가 되다♀~\"을 기반으로 한 캐주얼 롤플레잉 게임물",
-    "givenrate": "12세이용가",
-    "genre": "보드게임(베팅성)",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NP-231207-001",
     "rateddate": "2023-12-07",
     "gametitle": "OZ게임2",
@@ -1312,20 +1200,6 @@
     "genre": "보드게임(베팅성)",
     "platform": "PC/온라인 게임",
     "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-231130-001",
-    "rateddate": "2023-11-30",
-    "gametitle": "Arrow Quest: Idle defense RPG",
-    "orgname": "게임물관리위원회",
-    "entname": "Noret Design AB",
-    "summary": "첨탑을 지키는 궁사가 되어 적들을 제압하여 지키는 타워 디펜스 게임물",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -1568,20 +1442,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "GC-CC-NP-231020-004",
-    "rateddate": "2023-10-20",
-    "gametitle": "Kill The Crows",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "(주)5민랩",
-    "summary": "서부 시대를 배경으로 한 빠른 페이스의 탑다운 아레나 슈팅 게임",
-    "givenrate": "15세이용가",
-    "genre": "액션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-231020-002",
     "rateddate": "2023-10-20",
     "gametitle": "GUNVOLT RECORDS 사이크로니클",
@@ -1610,20 +1470,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-231019-001",
-    "rateddate": "2023-10-19",
-    "gametitle": "眞천외천 (眞.天外天)",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 팀퀘스트(TestQueat)",
-    "summary": "무협 판타지 세계관을 배경으로 진행되는 MMORPG 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "MMORPG",
-    "platform": "PC/온라인 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-231019-002",
     "rateddate": "2023-10-19",
     "gametitle": "Merge Cooking:Theme Restaurant",
@@ -1634,20 +1480,6 @@
     "genre": "퍼즐",
     "platform": "모바일 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-231019-001",
-    "rateddate": "2023-10-19",
-    "gametitle": "Arashi: Castles of Sin - Final Cut",
-    "orgname": "게임물관리위원회",
-    "entname": "Skydance Interactive",
-    "summary": "봉건시대 일본 전역의 성에 침투하여 이가의 6대 오니를 물리치는 내용의 VR 액션 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "액션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,약물",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -1932,20 +1764,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-230713-002",
-    "rateddate": "2023-07-13",
-    "gametitle": "eBadaCD",
-    "orgname": "게임물관리위원회",
-    "entname": "엣지리스",
-    "summary": "4x1의 슬롯을 돌려 점수표에 있는 족보에 따라 점수를 획득하는 슬롯 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임(베팅성)",
-    "platform": "PC/온라인 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-230713-001",
     "rateddate": "2023-07-13",
     "gametitle": "Too Hot To Handle 2",
@@ -2058,20 +1876,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OP-230629-002",
-    "rateddate": "2023-06-29",
-    "gametitle": "Portal Dungeon",
-    "orgname": "게임물관리위원회",
-    "entname": "Huang Kuan Chang",
-    "summary": "캐릭터를 강화하고 몬스터와 전투를 진행하는 액션 게임",
-    "givenrate": "전체이용가",
-    "genre": "액션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OP-230629-003",
     "rateddate": "2023-06-29",
     "gametitle": "Trine 5: A Clockwork Conspiracy",
@@ -2082,20 +1886,6 @@
     "genre": "퍼즐",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-230622-001",
-    "rateddate": "2023-06-22",
-    "gametitle": "Ghosts of Tabor",
-    "orgname": "게임물관리위원회",
-    "entname": "Beyond Frames Entertainment",
-    "summary": "2042년 슬라브 무장 세력의 스토리를 기반으로 만들어진 1인칭 FPS 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,언어",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -3024,48 +2814,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-220929-004",
-    "rateddate": "2022-09-29",
-    "gametitle": "Last Labyrinth",
-    "orgname": "게임물관리위원회",
-    "entname": "AMATA K.K.",
-    "summary": "저택에 감금된 주인공이 한 소녀와 함께 탈출하는 내용의 VR 탈출 어드벤처 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "어드벤처",
-    "platform": "모바일 게임",
-    "discriptors": "공포,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-220929-001",
-    "rateddate": "2022-09-29",
-    "gametitle": "Deep Rock Galactic",
-    "orgname": "게임물관리위원회",
-    "entname": "Ghost Ship Games ApS",
-    "summary": "은하계 광산 회사에서 일하는 주인공이 가장 깊고 위험한 동굴에서 외계인 무리를 제거하며 광석을 캐는 FPS 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OV-220929-001",
-    "rateddate": "2022-09-29",
-    "gametitle": "The Tale of Onogoro",
-    "orgname": "게임물관리위원회",
-    "entname": "AMATA K.K.",
-    "summary": "오노고로 섬에 소환되어 세상을 구하는 스토리를 배경으로 진행되는 어드벤처 게임물",
-    "givenrate": "15세이용가",
-    "genre": "어드벤처",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-220922-006",
     "rateddate": "2022-09-22",
     "gametitle": "City of Crime:Gang Wars",
@@ -3090,20 +2838,6 @@
     "genre": "FPS/TPS",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NV-220922-001",
-    "rateddate": "2022-09-22",
-    "gametitle": "니디 걸 오버도즈 : NEEDY GIRL OVERDOSE",
-    "orgname": "게임물관리위원회",
-    "entname": "코멧소프트",
-    "summary": "최고의 인터넷 스트리머를 목표로 하는 소녀의 생활을 체험하는 멀티 엔딩 어드벤처 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "어드벤처",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어,약물",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -3160,20 +2894,6 @@
     "genre": "어드벤처",
     "platform": "PC/온라인 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OV-220908-001",
-    "rateddate": "2022-09-08",
-    "gametitle": "Unspottable",
-    "orgname": "게임물관리위원회",
-    "entname": "GrosChevaux",
-    "summary": "NPC 속에 숨어있는 다른 유저를 발견해 내는 캐주얼 액션 게임물",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -3290,20 +3010,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-220707-001",
-    "rateddate": "2022-07-07",
-    "gametitle": "Three Kingdoms: Hero Wars",
-    "orgname": "게임물관리위원회",
-    "entname": "Shanghai Zhangbei Network Technology Co.,Ltd.",
-    "summary": "혼란스러운 세상을 평정하고 악마 일족의 침략에 저항하여 세상을 안전하게 만드는 시뮬레이션 게임물",
-    "givenrate": "12세이용가",
-    "genre": "시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성,선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OV-220707-001",
     "rateddate": "2022-07-07",
     "gametitle": "Hokko Life",
@@ -3342,20 +3048,6 @@
     "genre": "롤플레잉",
     "platform": "PC/온라인 게임",
     "discriptors": "약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-220630-003",
-    "rateddate": "2022-06-30",
-    "gametitle": "CHIMERALAND",
-    "orgname": "게임물관리위원회",
-    "entname": "Proxima Beta Pte.Limited",
-    "summary": "불가사의한 미지의 지역을 탐험해 나가는 오픈월드 MMORPG",
-    "givenrate": "청소년이용불가",
-    "genre": "MMORPG",
-    "platform": "PC/온라인 게임",
-    "discriptors": "사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -3458,20 +3150,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-220526-005",
-    "rateddate": "2022-05-26",
-    "gametitle": "Pretty Girls Rivers (Shisen-Sho) (프리티 걸스 리버스 (사천성) )",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 스마일게이트홀딩스",
-    "summary": "같은 모양의 타일을 연결하여 제거하는 사천성 퍼즐 게임물",
-    "givenrate": "15세이용가",
-    "genre": "퍼즐",
-    "platform": "PC/온라인 게임",
-    "discriptors": "선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OP-220526-003",
     "rateddate": "2022-05-26",
     "gametitle": "Her Story",
@@ -3556,20 +3234,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OP-220407-001",
-    "rateddate": "2022-04-07",
-    "gametitle": "Startenders",
-    "orgname": "게임물관리위원회",
-    "entname": "YOGSCAST LTD",
-    "summary": "우주에서 칵테일을 만드는 직업을 체험할 수 있는 시뮬레이션 게임물",
-    "givenrate": "15세이용가",
-    "genre": "시뮬레이션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "언어,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OV-220407-001",
     "rateddate": "2022-04-07",
     "gametitle": "Stray",
@@ -3608,20 +3272,6 @@
     "genre": "어드벤처",
     "platform": "비디오 게임",
     "discriptors": "폭력성,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-220310-003",
-    "rateddate": "2022-03-10",
-    "gametitle": "Sniper Attack 3D: Shooting War",
-    "orgname": "게임물관리위원회",
-    "entname": "Matchingham Games Limited",
-    "summary": "인질극 해결, 무장 세력의 군사기지 점령 등 다양한 분쟁 지역과 시나리오에 따라 사람, 폭탄, 차량 등을 저격하는 1인칭 FPS 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -3690,20 +3340,6 @@
     "summary": "공격적인 클론 돌연변이가 들끓는 우주 식민지의 우주선을 구하기 위해 싸우는 FPS 게임물",
     "givenrate": "청소년이용불가",
     "genre": "FPS/TPS",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OV-220127-003",
-    "rateddate": "2022-01-27",
-    "gametitle": "Paradise Killer",
-    "orgname": "게임물관리위원회",
-    "entname": "Surprise Attack Pty Ltd",
-    "summary": "파라다이스에서 벌어진 살해 사건을 배경으로 하는 1인칭 어드벤처 추리 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "어드벤처",
     "platform": "비디오 게임",
     "discriptors": "폭력성,언어",
     "cancelstatus": "False",
@@ -3836,20 +3472,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OV-211118-001",
-    "rateddate": "2021-11-18",
-    "gametitle": "Deep Rock Galactic",
-    "orgname": "게임물관리위원회",
-    "entname": "Ghost Ship Games ApS",
-    "summary": "우주 행성에서 난쟁이 광부들이 광물을 채굴하기 위해 동굴을 탐험하고 몬스터를 물리치는 FPS 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-211112-004",
     "rateddate": "2021-11-12",
     "gametitle": "Chocobo GP (초코보 GP)",
@@ -3888,20 +3510,6 @@
     "genre": "기타",
     "platform": "비디오 게임",
     "discriptors": "약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OV-211028-003",
-    "rateddate": "2021-10-28",
-    "gametitle": "Bloodroots",
-    "orgname": "게임물관리위원회",
-    "entname": "Paper Cult",
-    "summary": "비스트의 구성원들에 의해 배신당한 수정 미스터 울프가 조직원들을 찾아 복수하는 이야기를 그린 액션 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "액션",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -4014,20 +3622,6 @@
     "genre": "액션",
     "platform": "비디오 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-210916-001",
-    "rateddate": "2021-09-16",
-    "gametitle": "Youtubers Life 2",
-    "orgname": "게임물관리위원회",
-    "entname": "EXNOA LLC",
-    "summary": "가상의 세계 뉴튜브시티에서 최고의 유투버가 되기 위하여 진행되는 어드벤처 게임물",
-    "givenrate": "전체이용가",
-    "genre": "어드벤처",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -4182,20 +3776,6 @@
     "genre": "어드벤처",
     "platform": "PC/온라인 게임",
     "discriptors": "공포",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-210729-012",
-    "rateddate": "2021-07-29",
-    "gametitle": "Lucky Tile Master",
-    "orgname": "게임물관리위원회",
-    "entname": "HONGKONG JOY HUNTER TECHNOLOGY CO., LIMITED",
-    "summary": "같은 타일 3개를 연결하여 제거하는 게임물",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "모바일 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -4788,34 +4368,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OP-210513-001",
-    "rateddate": "2021-05-13",
-    "gametitle": "Killsquad",
-    "orgname": "게임물관리위원회",
-    "entname": "Novarama Technology SL",
-    "summary": "무법천지가 된 은하계의 현상금 사냥꾼이 되어 전투를 치르는 액션 RPG 게임물",
-    "givenrate": "15세이용가",
-    "genre": "롤플레잉",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-210506-001",
-    "rateddate": "2021-05-06",
-    "gametitle": "Retro Machina",
-    "orgname": "게임물관리위원회",
-    "entname": "SUPER DOT COM LTD",
-    "summary": "복잡한 퍼즐을 풀고 지구의 마지막 도시로 가는 길을 찾는 퍼즐 어드벤처 게임",
-    "givenrate": "전체이용가",
-    "genre": "어드벤처",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OV-210506-001",
     "rateddate": "2021-05-06",
     "gametitle": "영웅전설 섬의 궤적 Ⅰ: Kai  -Thors Military Academy 1204-",
@@ -4872,20 +4424,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-210422-001",
-    "rateddate": "2021-04-22",
-    "gametitle": "Sniper Arena",
-    "orgname": "게임물관리위원회",
-    "entname": "Nordcurrent Group",
-    "summary": "스나이퍼가 되어 숨어있는 적을 확인하고 상대방을 저격하는 FPS 시뮬레이션 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-210422-010",
     "rateddate": "2021-04-22",
     "gametitle": "The Walking Dead: Survivors",
@@ -4896,20 +4434,6 @@
     "genre": "시뮬레이션",
     "platform": "모바일 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "GC-CC-NV-210416-002",
-    "rateddate": "2021-04-16",
-    "gametitle": "Shadow Corridor 그림자 복도",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "아크시스템웍스주식회사 아시아지점",
-    "summary": "플레이어가 길을 잃고 들어간 복도에서 배회자를 피해 탈출한다는 내용의 Nintendo Switch 호러 액션 게임.",
-    "givenrate": "15세이용가",
-    "genre": "액션",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,공포",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -5054,20 +4578,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-210408-001",
-    "rateddate": "2021-04-08",
-    "gametitle": "Bullet Force",
-    "orgname": "게임물관리위원회",
-    "entname": "Blayze",
-    "summary": "미국군과 러시아군으로 구분되어 정해진 전장에서 전투를 펼치며, 무기와 스킨을 구매하여 유저 간 대결을 하는 1인칭 FPS 모바일 게임물",
-    "givenrate": "15세이용가",
-    "genre": "FPS/TPS",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OP-210408-001",
     "rateddate": "2021-04-08",
     "gametitle": "Boreal Blade",
@@ -5180,34 +4690,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-210401-006",
-    "rateddate": "2021-04-01",
-    "gametitle": "오뎅집 인정이야기4 〜Life Goes On〜",
-    "orgname": "게임물관리위원회",
-    "entname": "GAGEX Co., Ltd.",
-    "summary": "포장마차를 운영하면서 손님들의 푸념을 듣고 일기장을 완성하는 어드벤쳐 게임물",
-    "givenrate": "15세이용가",
-    "genre": "어드벤처",
-    "platform": "모바일 게임",
-    "discriptors": "약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-210401-001",
-    "rateddate": "2021-04-01",
-    "gametitle": "SOL CRESTA",
-    "orgname": "게임물관리위원회",
-    "entname": "PlatinumGames Inc.",
-    "summary": "비행 기체를 조종하여 적과 전투를 진행해가는 비행 슈팅 게임물",
-    "givenrate": "전체이용가",
-    "genre": "비행슈팅",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NA-170210-005",
     "rateddate": "2021-03-25",
     "gametitle": "JBIC 이스칸 달의 전투",
@@ -5220,20 +4702,6 @@
     "discriptors": "",
     "cancelstatus": "True",
     "canceleddate": "2021-03-25"
-  },
-  {
-    "rateno": "CC-OM-210325-005",
-    "rateddate": "2021-03-25",
-    "gametitle": "Pirates Outlaws",
-    "orgname": "게임물관리위원회",
-    "entname": "FABLED GAME LIMITED",
-    "summary": "해적이 악당들과 싸워나가는 것을 배경으로 하는 수집용 카드 게임물",
-    "givenrate": "12세이용가",
-    "genre": "시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
   },
   {
     "rateno": "CC-OP-210325-002",
@@ -5302,20 +4770,6 @@
     "genre": "롤플레잉",
     "platform": "비디오 게임",
     "discriptors": "선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-210318-002",
-    "rateddate": "2021-03-18",
-    "gametitle": "UNU - Crazy 8 Family Card Games",
-    "orgname": "게임물관리위원회",
-    "entname": "Mobilaxy GmbH",
-    "summary": "동일한 숫자 또는 색깔을 맞추어 보유한 카드를 모두 다 낸 사람이 승리하는 게임물",
-    "givenrate": "12세이용가",
-    "genre": "캐주얼",
-    "platform": "모바일 게임",
-    "discriptors": "사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -5474,20 +4928,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OP-210204-001",
-    "rateddate": "2021-02-04",
-    "gametitle": "Marchen Forest",
-    "orgname": "게임물관리위원회",
-    "entname": "Clouded Leopard Entertainment Inc.",
-    "summary": "일류 약사가 되기 위해 신기한 숲을 탐험하며 약재를 모으는 롤플레잉 게임물",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OV-210204-001",
     "rateddate": "2021-02-04",
     "gametitle": "Neo Cab",
@@ -5526,20 +4966,6 @@
     "genre": "어드벤처",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성,언어,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-210128-002",
-    "rateddate": "2021-01-28",
-    "gametitle": "Tribes of Midgard",
-    "orgname": "게임물관리위원회",
-    "entname": "Gearbox Publishing",
-    "summary": "라그나로크 기간 동안 요툰을 상대로 마을을 방어하는 액션 RPG 게임물",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,언어",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -5922,20 +5348,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OV-201210-002",
-    "rateddate": "2020-12-10",
-    "gametitle": "Marchen Forest ＜Switch＞",
-    "orgname": "게임물관리위원회",
-    "entname": "Clouded Leopard Entertainment Inc.",
-    "summary": "판타지세계를 배경으로 연금술사 수업을 받는 소녀가 주인공인 롤플레잉 게임물",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NP-201127-012",
     "rateddate": "2020-11-27",
     "gametitle": "카운터 파이트 4 on STOVE",
@@ -6244,20 +5656,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OV-201022-003",
-    "rateddate": "2020-10-22",
-    "gametitle": "Bugsnax",
-    "orgname": "게임물관리위원회",
-    "entname": "Young Horses inc",
-    "summary": "신비로운 섬에서 벌어지는 미스터리한 사건을 해결하는 어드벤처 게임물",
-    "givenrate": "12세이용가",
-    "genre": "어드벤처",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NP-201016-003",
     "rateddate": "2020-10-16",
     "gametitle": "흉가VR Ep.3 곤지암",
@@ -6552,20 +5950,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OV-200827-001",
-    "rateddate": "2020-08-27",
-    "gametitle": "Monkey Barrels",
-    "orgname": "게임물관리위원회",
-    "entname": "Justdan International Co., Ltd.",
-    "summary": "납치된 친구들을 구출하고자 모험을 떠나는 원숭이를 주제로 한 액션 게임물",
-    "givenrate": "전체이용가",
-    "genre": "액션",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-200821-007",
     "rateddate": "2020-08-21",
     "gametitle": "Youtubers Life – OMG Edition (유튜버 라이프 - OMG 에디션)",
@@ -6720,20 +6104,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OV-200813-001",
-    "rateddate": "2020-08-13",
-    "gametitle": "Takeshi and Hiroshi",
-    "orgname": "게임물관리위원회",
-    "entname": "Oink Games Inc",
-    "summary": "자신이 개발한 게임 동생이 플레이하여 진행하는 스토리를 가진 어드벤처 게임물",
-    "givenrate": "전체이용가",
-    "genre": "어드벤처",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NP-200807-003",
     "rateddate": "2020-08-07",
     "gametitle": "Virus Popper on STOVE 바이러스 팝퍼",
@@ -6804,20 +6174,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-200716-002",
-    "rateddate": "2020-07-16",
-    "gametitle": "Bullet Echo",
-    "orgname": "게임물관리위원회",
-    "entname": "Zeptolab UK Limited",
-    "summary": "정해진 팀과 배틀로얄 형식으로 전투를 진행하는 탑뷰방식의 액션게임",
-    "givenrate": "청소년이용불가",
-    "genre": "액션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-200716-004",
     "rateddate": "2020-07-16",
     "gametitle": "Pascal＇s Wager",
@@ -6842,20 +6198,6 @@
     "genre": "스포츠",
     "platform": "PC/온라인 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OV-200709-001",
-    "rateddate": "2020-07-09",
-    "gametitle": "RimWorld",
-    "orgname": "게임물관리위원회",
-    "entname": "Ludeon Studios Inc.",
-    "summary": "우주 난민이 된 생존자들이 새로운 행성에서 개척하여 생존하는 시뮬레이션 게임",
-    "givenrate": "15세이용가",
-    "genre": "전략시뮬레이션",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,약물",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -7700,20 +7042,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-191120-001",
-    "rateddate": "2019-11-20",
-    "gametitle": "Tropico",
-    "orgname": "게임물관리위원회",
-    "entname": "Feral Interactive",
-    "summary": "트로피코 섬의 두려운 독재자 또는 평화를 사랑하는 정치가로서 자신만의 공화국을 만드는 시뮬레이션 게임",
-    "givenrate": "15세이용가",
-    "genre": "시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NP-191115-023",
     "rateddate": "2019-11-15",
     "gametitle": "흉가VR Ep.2 충북제천",
@@ -7793,20 +7121,6 @@
     "givenrate": "전체이용가",
     "genre": "롤플레잉",
     "platform": "비디오 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "GC-CC-NP-190920-031",
-    "rateddate": "2019-09-20",
-    "gametitle": "빵셔틀 : The First Revenge",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "휴먼웍스",
-    "summary": "캐릭터들을 배치하여 다가오는 적들을 없애는 PC 웹브라우저용 캐주얼 게임",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "PC/온라인 게임",
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -8172,20 +7486,6 @@
     "genre": "어드벤처",
     "platform": "비디오 게임",
     "discriptors": "폭력성,선정성,언어,약물,범죄",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "GC-CC-NV-190419-007",
-    "rateddate": "2019-04-19",
-    "gametitle": "케이던스 오브 하이랄: 크립트 오브 더 네크로댄서 feat. 젤다의 전설",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "한국닌텐도 주식회사",
-    "summary": "케이던스, 링크, 젤다 3명이 옥타보의 야망을 저지하기 위해 여행을 떠난다는 내용의 Nintendo Switch 리듬액션 게임.",
-    "givenrate": "전체이용가",
-    "genre": "액션",
-    "platform": "비디오 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -8736,20 +8036,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NA-180801-002",
-    "rateddate": "2018-08-01",
-    "gametitle": "치타CHEETAH",
-    "orgname": "게임물관리위원회",
-    "entname": "블루라이트",
-    "summary": "미사일을 발사하여 달리는 목표물을 명중시키는 1인칭 슈팅 게임",
-    "givenrate": "전체이용가",
-    "genre": "FPS/TPS",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NA-180801-005",
     "rateddate": "2018-08-01",
     "gametitle": "해마SEAHORSE",
@@ -9072,20 +8358,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "GC-CC-NP-171215-009",
-    "rateddate": "2017-12-15",
-    "gametitle": "신과함께 with NAVER WEBTOON",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "Archive Factory",
-    "summary": "네이버 웹툰 신과함께(주호민 저)를 원작으로 하는 롤플레잉 PC 게임.",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "PC/온라인 게임",
-    "discriptors": "약물,범죄",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-171129-001",
     "rateddate": "2017-11-29",
     "gametitle": "SR 민화투",
@@ -9170,20 +8442,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NA-170705-011",
-    "rateddate": "2017-07-05",
-    "gametitle": "LET’S GO ISLAND＜렛츠 고 아일랜드＞",
-    "orgname": "게임물관리위원회",
-    "entname": "제이텍",
-    "summary": "주인공 남녀가 섬에서 만나게 되는 몬스터들을 제거하는 액션게임물",
-    "givenrate": "전체이용가",
-    "genre": "액션",
-    "platform": "아케이드 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-170630-002",
     "rateddate": "2017-06-30",
     "gametitle": "[PS4] MADDEN NFL 18 (매든 NFL 18)",
@@ -9254,20 +8512,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NA-170628-008",
-    "rateddate": "2017-06-28",
-    "gametitle": "LET’S GO TO JUNGLE !＜렛츠 고 투 정글!＞",
-    "orgname": "게임물관리위원회",
-    "entname": "제이텍",
-    "summary": "주인공 남녀가 섬에서 만나게 되는 몬스터들을 제거하는 2인용 슈팅 게임물",
-    "givenrate": "전체이용가",
-    "genre": "FPS/TPS",
-    "platform": "아케이드 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NV-170622-004",
     "rateddate": "2017-06-22",
     "gametitle": "XB1_드래곤즈 도그마: 다크 어리즌",
@@ -9306,20 +8550,6 @@
     "genre": "스포츠",
     "platform": "PC/온라인 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "GC-CC-NV-170616-004",
-    "rateddate": "2017-06-16",
-    "gametitle": "파이어 엠블렘 Echoes 또 하나의 영웅왕",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "한국닌텐도 주식회사",
-    "summary": "남녀 두 명의 주인공을 조작하며 서로 다른 부대를 이끌며 평화를 되찾기 위해 모험하는 내용의 턴제 시뮬레이션형 롤플레잉 게임.",
-    "givenrate": "12세이용가",
-    "genre": "롤플레잉",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -9404,20 +8634,6 @@
     "genre": "스포츠",
     "platform": "아케이드 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NA-170510-004",
-    "rateddate": "2017-05-10",
-    "gametitle": "미친용DRAGON CASTLE Crazy",
-    "orgname": "게임물관리위원회",
-    "entname": "해피플레이",
-    "summary": "5장의 트럼프 카드를 이용한 Draw 방식의 포커 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임(베팅성)",
-    "platform": "아케이드 게임",
-    "discriptors": "사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -10290,20 +9506,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-150528-003",
-    "rateddate": "2015-05-28",
-    "gametitle": "辛적벽무쌍",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)휴머니티게임즈",
-    "summary": "삼국시대를 배경으로 캐릭터를 육성하는 횡스크롤 RPG 유형의 턴방식 웹게임",
-    "givenrate": "청소년이용불가",
-    "genre": "MMORPG",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-150501-001",
     "rateddate": "2015-05-01",
     "gametitle": "PS3_전국바사라 4 皇",
@@ -10962,20 +10164,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "GC-CC-NV-140822-009",
-    "rateddate": "2014-08-22",
-    "gametitle": "초차차원게임 넵튠 Re；Birth2 SISTERS GENERATION",
-    "orgname": "게임콘텐츠등급분류위원회",
-    "entname": "(주)씨에프케이",
-    "summary": "범죄조직 마제콘느의 습격으로 쓰러진 여신들과 황폐해져가는 게임업계를 구하기 위해 여신후보생들이 모험을 떠나는 어드벤처 롤플레잉 게임",
-    "givenrate": "15세이용가",
-    "genre": "롤플레잉",
-    "platform": "비디오 게임",
-    "discriptors": "선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "GC-CC-NV-140711-003",
     "rateddate": "2014-07-11",
     "gametitle": "PS3 Super Robot Wars OG Saga Masou Kishin F COFFIN OF THE END (슈퍼로봇대전OG사가 마장기신F 코핀 오브 디 엔드)",
@@ -11042,20 +10230,6 @@
     "genre": "레이싱",
     "platform": "모바일 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NV-140416-008",
-    "rateddate": "2014-04-16",
-    "gametitle": "Watch Dogs XO (와치독 XO)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)인트라게임즈",
-    "summary": "현실보다 발전한 현대의 시카고를 배경으로 한 오픈월드의 액션 어드벤처 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "액션",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,선정성,사행성,언어,약물,범죄",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -11172,20 +10346,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-140305-017",
-    "rateddate": "2014-03-05",
-    "gametitle": "TV Sports Shooting[티비 스포츠 사격]",
-    "orgname": "게임물관리위원회",
-    "entname": "디지엠정보기술(주)",
-    "summary": "TV리모콘을 이용하여 사격을 하는 게임물",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NP-140305-018",
     "rateddate": "2014-03-05",
     "gametitle": "TV Sports Javelin Throw[티비 스포츠 창던지기]",
@@ -11242,20 +10402,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-140128-005",
-    "rateddate": "2014-01-28",
-    "gametitle": "Monster Sniper",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사아이디어토리",
-    "summary": "1인칭 시점으로 전개되어 플레이어 캐릭터는 보이지 않으며 등장하는 몬스터를 표창을 던져 제거하는 게임",
-    "givenrate": "전체이용가",
-    "genre": "액션",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NP-140122-019",
     "rateddate": "2014-01-22",
     "gametitle": "도전! OX퀴즈",
@@ -11280,48 +10426,6 @@
     "genre": "기타",
     "platform": "모바일 게임",
     "discriptors": "선정성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-140108-002",
-    "rateddate": "2014-01-08",
-    "gametitle": "Bunny POKER",
-    "orgname": "게임물관리위원회",
-    "entname": "PG소프트",
-    "summary": "네트워크를 이용하여 다른 유저와 함께 즐길수 있는 포커 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임(베팅성)",
-    "platform": "모바일 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-140108-003",
-    "rateddate": "2014-01-08",
-    "gametitle": "Bunny 바둑이",
-    "orgname": "게임물관리위원회",
-    "entname": "PG소프트",
-    "summary": "네트워크를 이용하여 다른 유저와 함께 즐길수 있는 바둑이 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임(베팅성)",
-    "platform": "모바일 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NP-140102-005",
-    "rateddate": "2014-01-02",
-    "gametitle": "로봇 빌더 / Robot Builder",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 페퍼콘",
-    "summary": "제시된 로봇의 부품을 모아서 로봇을 완성하는 게임",
-    "givenrate": "전체이용가",
-    "genre": "기타",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -11522,20 +10626,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-130717-002",
-    "rateddate": "2013-07-17",
-    "gametitle": "新영웅전",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)에스지데이타",
-    "summary": "중국 무협 소설을 원작으로 캐릭터를 조종하며 전투 및 퀘스트를 진행하는 MMORPG",
-    "givenrate": "12세이용가",
-    "genre": "MMORPG",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NV-130710-004",
     "rateddate": "2013-07-10",
     "gametitle": "PS3 Super Robot Taisen OG：Maso Kishin III PRIDE OF JUSTICE (슈퍼 로봇 대전 OG: 마장기신 3 프라이드 오브 저스티스)",
@@ -11592,20 +10682,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NP-130621-002",
-    "rateddate": "2013-06-21",
-    "gametitle": "LET＇S PLAY DART [렛플다트]",
-    "orgname": "게임물관리위원회",
-    "entname": "디지엠정보기술(주)",
-    "summary": "스마트폰과 TV를 이용해 다트 게임을 즐기는 체감형 게임",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NP-130619-004",
     "rateddate": "2013-06-19",
     "gametitle": "2012 LONDONGAMES ARCHERY [런던게임즈 양궁]",
@@ -11657,34 +10733,6 @@
     "givenrate": "전체이용가",
     "genre": "스포츠",
     "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NP-130619-003",
-    "rateddate": "2013-06-19",
-    "gametitle": "2012 LONDONGAMES SHOOTING [런던게임즈 사격]",
-    "orgname": "게임물관리위원회",
-    "entname": "디지엠정보기술(주)",
-    "summary": "스포츠게임이 여러개의 미니게임으로 구성되어 있는 캐주얼 게임물",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NA-130612-001",
-    "rateddate": "2013-06-12",
-    "gametitle": "Skeleton Quiz II [스켈레톤 퀴즈 II]",
-    "orgname": "게임물관리위원회",
-    "entname": "올림포스 전자",
-    "summary": "화면에 주어지는 수학 문제를 제한 시간 내에 계산하여 4가지 보기 중 정답을 고르는 게임물임",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "아케이드 게임",
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -11756,20 +10804,6 @@
     "genre": "액션",
     "platform": "PC/온라인 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-130412-001",
-    "rateddate": "2013-04-12",
-    "gametitle": "스타美슬롯",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 하이모비",
-    "summary": "슬롯을 돌려 보유한 코인만큼 화보를 볼 수 있는 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "캐주얼",
-    "platform": "모바일 게임",
-    "discriptors": "선정성,사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -11854,20 +10888,6 @@
     "genre": "보드게임(베팅성)",
     "platform": "모바일 게임",
     "discriptors": "선정성,사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NP-121226-004",
-    "rateddate": "2012-12-26",
-    "gametitle": "트리플래닛 - Spirits of the Forest",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 트리플래닛",
-    "summary": "이용자가 가상의 나무를 키워 숲을 꾸며나가는 내용의 소셜 네트워킹 게임물",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -11984,20 +11004,6 @@
     "canceleddate": "2012-11-23"
   },
   {
-    "rateno": "CC-NP-121017-010",
-    "rateddate": "2012-10-17",
-    "gametitle": "Rise of Dragonian Era (RODE) (라이즈 오브 드래고니안 에라)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)엠게임",
-    "summary": "Rise Of Dragonian Era는 다중 접속 역활 분담 게임(MMORPG)로 동서양 판타지의 만남을 토대로 이용자의 성장과 서로 다른 연합간의 전투를 플레이하는 게임이다.",
-    "givenrate": "청소년이용불가",
-    "genre": "MMORPG",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NP-120831-004",
     "rateddate": "2012-08-31",
     "gametitle": "MotoGP 08(모토 GP08)",
@@ -12054,20 +11060,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-120810-003",
-    "rateddate": "2012-08-10",
-    "gametitle": "ONLINE BASEBALL 골든글러브",
-    "orgname": "게임물관리위원회",
-    "entname": "엔에이치엔 주식회사",
-    "summary": "구단을 선택하여 단순한 조작을 통해서 야구경기를 즐기는 캐주얼 스포츠 게임물",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NM-120803-002",
     "rateddate": "2012-08-03",
     "gametitle": "NFL Pro 2013 (NFL 프로 2013)",
@@ -12078,20 +11070,6 @@
     "genre": "스포츠",
     "platform": "모바일 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NM-120727-002",
-    "rateddate": "2012-07-27",
-    "gametitle": "에너미스팟 killerpack(Enemy Spot killerpack)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)픽토소프트",
-    "summary": "S.I.T와 테러리스트 전쟁을 다룬 일인칭 슈팅 액션 게임",
-    "givenrate": "15세이용가",
-    "genre": "FPS/TPS",
-    "platform": "모바일 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -12133,20 +11111,6 @@
     "givenrate": "전체이용가",
     "genre": "퍼즐",
     "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-NA-120502-006",
-    "rateddate": "2012-05-02",
-    "gametitle": "新대 공",
-    "orgname": "게임물관리위원회",
-    "entname": "W소프트",
-    "summary": "그림이 좌에서 우측으로 지나가고 해당그림과 동일한 그림을 찾아 경품을 획득하는 게임물",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "아케이드 게임",
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -12418,34 +11382,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-111223-010",
-    "rateddate": "2011-12-23",
-    "gametitle": "XO Advanced (XO 어드밴스드)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)유비누리",
-    "summary": "O/X를 표시하여 연달아 설정된 O/X를 먼저 만드는 사람이 승리하는 게임",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-111221-003",
-    "rateddate": "2011-12-21",
-    "gametitle": "삼국지TD - 촉의 전설",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 넥슨코리아",
-    "summary": "삼국지를 배경으로 한 타워디펜스 게임",
-    "givenrate": "전체이용가",
-    "genre": "시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-111209-014",
     "rateddate": "2011-12-09",
     "gametitle": "MK JigSaw (MK 퍼즐)",
@@ -12484,20 +11420,6 @@
     "genre": "FPS/TPS",
     "platform": "아케이드 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-111202-013",
-    "rateddate": "2011-12-02",
-    "gametitle": "신들린맞고X-MAS",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 모바인엔터테인먼트",
-    "summary": "맞고를 소재로 만들어진 단독형 모바일 게임물",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임(베팅성)",
-    "platform": "모바일 게임",
-    "discriptors": "선정성,사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -12740,20 +11662,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-111007-011",
-    "rateddate": "2011-10-07",
-    "gametitle": "Checkers [체커스]",
-    "orgname": "게임물관리위원회",
-    "entname": "스트라스타",
-    "summary": "체스와 비슷한 형식의 지능형 보드 게임!",
-    "givenrate": "전체이용가",
-    "genre": "보드게임",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NM-111005-001",
     "rateddate": "2011-10-05",
     "gametitle": "GT Racing Free＋ (GT 레이싱 Free＋)",
@@ -12832,20 +11740,6 @@
     "summary": "타이거우즈 캐릭터와 다양한 모드로 골프 경기를 즐길 수 있는 스포츠 게임",
     "givenrate": "전체이용가",
     "genre": "스포츠",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-110715-002",
-    "rateddate": "2011-07-15",
-    "gametitle": "인공지능실전바둑Tab",
-    "orgname": "게임물관리위원회",
-    "entname": "김욱",
-    "summary": "인공지능과 바둑을 둘 수 있는 게임물",
-    "givenrate": "전체이용가",
-    "genre": "보드게임",
     "platform": "PC/온라인 게임",
     "discriptors": "",
     "cancelstatus": "False",
@@ -13076,20 +11970,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-NM-110126-005",
-    "rateddate": "2011-01-26",
-    "gametitle": "EA프로야구2011(EA BASEBALL 2011)",
-    "orgname": "게임물관리위원회",
-    "entname": "일렉트로닉아츠코리아(유)",
-    "summary": "선수 플레이 및 매니지먼트 시스템 등 프로야구를 즐길 수 있는 스포츠 게임",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-110119-005",
     "rateddate": "2011-01-19",
     "gametitle": "RDC: 포커(RDC: Video Poker)",
@@ -13174,20 +12054,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-101229-086",
-    "rateddate": "2010-12-29",
-    "gametitle": "X-MAS 틀린그림찾기",
-    "orgname": "게임물관리위원회",
-    "entname": "이매진앤쇼",
-    "summary": "크리스마스 관련 내용들을 주제로 틀린그림찾기를 하는 내용",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-OM-101222-046",
     "rateddate": "2010-12-22",
     "gametitle": "오델로-REVERSI",
@@ -13224,20 +12090,6 @@
     "summary": "우주 공간에서 도시를 관리하고 함대를 생산하여 적국과 대결을 펼치는 전략 게임",
     "givenrate": "전체이용가",
     "genre": "전략시뮬레이션",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OM-101117-006",
-    "rateddate": "2010-11-17",
-    "gametitle": "OX게임 (Tic-Tac-Toe)",
-    "orgname": "게임물관리위원회",
-    "entname": "이비즈앤앱",
-    "summary": "상대와 플레이 할수 있는 OX게임",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
     "platform": "모바일 게임",
     "discriptors": "",
     "cancelstatus": "False",
@@ -13454,20 +12306,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "CC-OM-100127-001",
-    "rateddate": "2010-01-27",
-    "gametitle": "토템스타XMAS(Totem star XMAS)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)모바일버스",
-    "summary": "같은 색상이나, 모양의 별을 하나로 묶는 모바일 게임",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "CC-NM-091218-001",
     "rateddate": "2009-12-18",
     "gametitle": "CRAZY ARCADE BNB 2010 , 크레이지아케이드비엔비2010 , 크아비엔비2010",
@@ -13505,20 +12343,6 @@
     "givenrate": "전체이용가",
     "genre": "레이싱",
     "platform": "비디오 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "CC-OP-091209-010",
-    "rateddate": "2009-12-09",
-    "gametitle": "TAU 주사위배틀",
-    "orgname": "게임물관리위원회",
-    "entname": "네이버 주식회사",
-    "summary": "주사위를 굴려 나온 눈금 수만큼 자신의 돌을 나의 진영으로 이동하여 모든 돌을 나의 진영으로 먼저 가져오면 승리하는 게임",
-    "givenrate": "전체이용가",
-    "genre": "보드게임",
-    "platform": "온라인 게임",
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -13888,20 +12712,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "OL-090603-007",
-    "rateddate": "2009-06-03",
-    "gametitle": "어나더데이 – 디 온리 스쿼드 / Anotherday – the only squad",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)퀸스소프트",
-    "summary": "파란에서 서비스예정인 1인칭 온라인 FPS게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "OL-090603-001",
     "rateddate": "2009-06-03",
     "gametitle": "Spore™ Galactic Adventures (Spore™ 우주 대모험)_PC",
@@ -13912,20 +12722,6 @@
     "genre": "시뮬레이션",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-090529-006",
-    "rateddate": "2009-05-29",
-    "gametitle": "新신맞고",
-    "orgname": "게임물관리위원회",
-    "entname": "네이버 주식회사",
-    "summary": "카드 게임의 일종인 고스톱을 온라인상에서 구현한 웹보드 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임",
-    "platform": "온라인 게임",
-    "discriptors": "사행성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -14126,20 +12922,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "AR-090401-004",
-    "rateddate": "2009-04-01",
-    "gametitle": "WIZKID",
-    "orgname": "게임물관리위원회",
-    "entname": "Zero-soft",
-    "summary": "3개의 같은 공을 모으면 공이 없어지는 퍼즐게임으로 1인,2인 진행이 가능함",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "AR-090401-001",
     "rateddate": "2009-04-01",
     "gametitle": "PAWIKAN",
@@ -14248,20 +13030,6 @@
     "genre": "롤플레잉",
     "platform": "모바일 게임",
     "discriptors": "폭력성,언어",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "MO-090313-004",
-    "rateddate": "2009-03-13",
-    "gametitle": "부루마불_Anycall",
-    "orgname": "게임물관리위원회",
-    "entname": "엠엔엠게임즈 주식회사",
-    "summary": "주사위를 굴려 말판을 돌며 세계 유명 도시의 건물을 구입하고 통행료를 받아 상대를 파산시키면 이기는 게임",
-    "givenrate": "전체이용가",
-    "genre": "보드게임",
-    "platform": "모바일 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -14448,20 +13216,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "VC-090128-003",
-    "rateddate": "2009-01-28",
-    "gametitle": "Killzone 2",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)소니인터랙티브엔터테인먼트코리아",
-    "summary": "콘솔기반의 FPS장르의 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "VC-090128-002",
     "rateddate": "2009-01-28",
     "gametitle": "Resistance Retribution",
@@ -14644,20 +13398,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "OL-081110-015",
-    "rateddate": "2008-11-10",
-    "gametitle": "Chicken Invaders3 Xmas(치킨 대반란3 X-mas)",
-    "orgname": "게임물관리위원회",
-    "entname": "오베론미디어엔터프라이즈",
-    "summary": "우주선을 조정하여 공격해오는 닭들을 제거하는 슈팅 게임",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "PC/온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "MO-081110-003",
     "rateddate": "2008-11-10",
     "gametitle": "Chicken Runaway",
@@ -14710,34 +13450,6 @@
     "genre": "퍼즐",
     "platform": "모바일 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "VC-081008-013",
-    "rateddate": "2008-10-08",
-    "gametitle": "FarCry 2, 파 크라이 2",
-    "orgname": "게임물관리위원회",
-    "entname": "블루인터렉티브주식회사",
-    "summary": "아프리카를 배경으로 한 일인칭 슈팅 액션게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "VC-081008-012",
-    "rateddate": "2008-10-08",
-    "gametitle": "Far Cry 2 파크라이2",
-    "orgname": "게임물관리위원회",
-    "entname": "유비소프트엔터테인먼트",
-    "summary": "아프리카를 배경으로 한 일인칭 슈팅 액션게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "비디오 게임",
-    "discriptors": "폭력성,언어,약물",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -14834,20 +13546,6 @@
     "summary": "2차 세계 대전을 배경으로 하였으며, 다양한 기체를 조종하는 비행 시뮬레이션 단계를 거쳐 비행, 정보수집, 전투 폭격 등의 임무수행을 하는 액션 시뮬레이션 게임",
     "givenrate": "12세이용가",
     "genre": "시뮬레이션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-080917-003",
-    "rateddate": "2008-09-17",
-    "gametitle": "Crysis Wars",
-    "orgname": "게임물관리위원회",
-    "entname": "일렉트로닉아츠코리아(유)",
-    "summary": "2019년을 배경으로 주인공 “마이클 사익스(Sykes)”가 외계인의 침략에 맞서 싸운다는 내용의 1인칭 슈팅 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
     "cancelstatus": "False",
@@ -14962,20 +13660,6 @@
     "genre": "액션",
     "platform": "비디오 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "VC-080827-001",
-    "rateddate": "2008-08-27",
-    "gametitle": "팡야 Portable",
-    "orgname": "게임물관리위원회",
-    "entname": "엔트리브 소프트",
-    "summary": "용사를 기리기 위한 축제로 열리는 팡야 대회를 소재로 하는 골프 PSP게임",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "비디오 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -15792,20 +14476,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "MO-080307-021",
-    "rateddate": "2008-03-07",
-    "gametitle": "BOWLING",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)플래시게임",
-    "summary": "‘My racer’라는 휴대용 기기에서 플레이 되는 게임으로 공의 방향과 회전 방향을 선택하여 볼링공을 던져 핀을 넘어뜨리는 게임",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "OL-080307-001",
     "rateddate": "2008-03-07",
     "gametitle": "팡야-season4 Delight",
@@ -15904,20 +14574,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "VC-080213-013",
-    "rateddate": "2008-02-13",
-    "gametitle": "AI MAHJONG SELECTION",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)소니인터랙티브엔터테인먼트코리아",
-    "summary": "자신의 레벨에 맞춰 컴퓨터와 대전할 수 있는 마작게임",
-    "givenrate": "청소년이용불가",
-    "genre": "보드게임",
-    "platform": "비디오 게임",
-    "discriptors": "사행성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "OL-080213-020",
     "rateddate": "2008-02-13",
     "gametitle": "SPORE CREATURE CREATOR",
@@ -15955,20 +14611,6 @@
     "givenrate": "전체이용가",
     "genre": "퍼즐",
     "platform": "온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "MO-080213-005",
-    "rateddate": "2008-02-13",
-    "gametitle": "Tangram",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)모바일버스",
-    "summary": "○사각형을 7개의 조각으로 분리하여, 1000개가 넘는 그림들을 조합 할 수 있는 단독형 모바일 퍼즐 게임",
-    "givenrate": "전체이용가",
-    "genre": "퍼즐",
-    "platform": "모바일 게임",
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -16014,20 +14656,6 @@
     "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
-  },
-  {
-    "rateno": "AR-080123-001",
-    "rateddate": "2008-01-23",
-    "gametitle": "GOLD ARROW",
-    "orgname": "게임물관리위원회",
-    "entname": "푸른상사",
-    "summary": "＜게임 개요＞\n12개의 화살을 이용하여 타겟을 맞추는 게임. \n\n＜논의 사항＞\n향후 개변조의 우려가 있으므로 철저한 사후관리 요망.",
-    "givenrate": "전체이용가",
-    "genre": "기타",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "True",
-    "canceleddate": "2010-03-26"
   },
   {
     "rateno": "MO-080123-011",
@@ -16082,20 +14710,6 @@
     "genre": "격투게임",
     "platform": "아케이드 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "MO-080104-014",
-    "rateddate": "2008-01-04",
-    "gametitle": "CRAZYSOCCER",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)센씨인모바일",
-    "summary": "",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "모바일 게임",
-    "discriptors": "",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -16264,20 +14878,6 @@
     "genre": "기타",
     "platform": "아케이드 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "AR-071128-004",
-    "rateddate": "2007-11-28",
-    "gametitle": "Let＇＇s Go Jungle Standard(렛츠고 정글 STD)",
-    "orgname": "게임물관리위원회",
-    "entname": "(주)세가코리아",
-    "summary": "주인공 남녀가 섬에서 만나게 되는 몬스터들을 제거한다는 내용의 아케이드 건슈팅 게임",
-    "givenrate": "전체이용가",
-    "genre": "기타",
-    "platform": "아케이드 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -16562,20 +15162,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "AR-071005-001",
-    "rateddate": "2007-10-05",
-    "gametitle": "CRAZY CRAINE",
-    "orgname": "게임물관리위원회",
-    "entname": "A-Z tech info",
-    "summary": "",
-    "givenrate": "전체이용가",
-    "genre": "기타",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "OL-071005-012",
     "rateddate": "2007-10-05",
     "gametitle": "Infernal",
@@ -16586,20 +15172,6 @@
     "genre": "FPS/TPS",
     "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-071005-010",
-    "rateddate": "2007-10-05",
-    "gametitle": "COMMANDO STRIKE FORCE",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 게임공판장",
-    "summary": "2차 세계대전을 배경으로 한 PC기반의 1인칭 슈팅게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,언어",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -16646,20 +15218,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "MO-070921-009",
-    "rateddate": "2007-09-21",
-    "gametitle": "World Baseball",
-    "orgname": "게임물관리위원회",
-    "entname": "이루고",
-    "summary": "",
-    "givenrate": "전체이용가",
-    "genre": "스포츠",
-    "platform": "모바일 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "MO-070921-005",
     "rateddate": "2007-09-21",
     "gametitle": "트루크라임NYC(True Crime NYC)",
@@ -16669,20 +15227,6 @@
     "givenrate": "청소년이용불가",
     "genre": "액션",
     "platform": "모바일 게임",
-    "discriptors": "폭력성",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-070921-004",
-    "rateddate": "2007-09-21",
-    "gametitle": "Sniper Elite",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 게임공판장",
-    "summary": "Rebellion(영국)이 제작하고, Namco가 배급한 게임으로, 주식회사 게임공판장에서 병행 수입을 통해 국내에 배급하기 위하여 심의 신청한 게임물\n2차 세계 대전 막바지의 베를린을 배경으로 독일군과 러시아군 사이에서 활약하는 미국 OSS 저격수의 활약을 바탕으로 한 FPS 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
     "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
@@ -16758,20 +15302,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "OL-070919-007",
-    "rateddate": "2007-09-19",
-    "gametitle": "Bioshock",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 게임공판장",
-    "summary": "비행기 사고로 불시착한 주인공이 비밀도시인 ＇Rapture＇ 를 발견하면서 벌어지는 에피소드를 그린 게임",
-    "givenrate": "청소년이용불가",
-    "genre": "FPS/TPS",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성,언어,약물",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "AR-070919-002",
     "rateddate": "2007-09-19",
     "gametitle": "TWINS 777",
@@ -16782,20 +15312,6 @@
     "genre": "기타",
     "platform": "아케이드 게임",
     "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-070914-025",
-    "rateddate": "2007-09-14",
-    "gametitle": "Medieval 2 Total War Kingdoms 확장팩",
-    "orgname": "게임물관리위원회",
-    "entname": "주식회사 게임공판장",
-    "summary": "게임위에서 5월 심의회의에서 15세 이용가로 등급 분류 되었음",
-    "givenrate": "15세이용가",
-    "genre": "전략시뮬레이션",
-    "platform": "PC/온라인 게임",
-    "discriptors": "폭력성",
     "cancelstatus": "False",
     "canceleddate": ""
   },
@@ -17010,20 +15526,6 @@
     "canceleddate": ""
   },
   {
-    "rateno": "AR-070810-002",
-    "rateddate": "2007-08-10",
-    "gametitle": "GOLDEN SHOOT",
-    "orgname": "게임물관리위원회",
-    "entname": "유영산업",
-    "summary": "",
-    "givenrate": "전체이용가",
-    "genre": "기타",
-    "platform": "아케이드 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
     "rateno": "VC-070810-007",
     "rateddate": "2007-08-10",
     "gametitle": "NBA 라이브 08",
@@ -17142,20 +15644,6 @@
     "orgname": "게임물관리위원회",
     "entname": "(주)인포렉스",
     "summary": "",
-    "givenrate": "전체이용가",
-    "genre": "캐주얼",
-    "platform": "온라인 게임",
-    "discriptors": "",
-    "cancelstatus": "False",
-    "canceleddate": ""
-  },
-  {
-    "rateno": "OL-070801-070",
-    "rateddate": "2007-08-01",
-    "gametitle": "FRUIT PARTY",
-    "orgname": "게임물관리위원회",
-    "entname": "네이버 주식회사",
-    "summary": "해당게임물은 플래시로 구현된 PC게임물로서 주어지는 카드를 일정한 조건에 따라 조합을 만들며 진행하는 게임임",
     "givenrate": "전체이용가",
     "genre": "캐주얼",
     "platform": "온라인 게임",

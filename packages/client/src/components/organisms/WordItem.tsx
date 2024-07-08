@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import {
   Box,
   Highlight,
@@ -6,6 +6,12 @@ import {
   IconButton,
   Image,
   Link,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+  Tag,
   Text,
   Tooltip,
   useColorModeValue,
@@ -30,6 +36,14 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   keyword,
 }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)")
+
+  const mainTags = useMemo(() => {
+    return word.tags.filter((tag) => !tag.includes("/"))
+  }, [word.tags])
+
+  const subTags = useMemo(() => {
+    return word.tags.filter((tag) => tag.includes("/"))
+  }, [word.tags])
 
   const toast = useToast()
 
@@ -181,9 +195,24 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
           <Text fontSize={isMobile ? "sm" : "md"}>
             <HStack display={"inline-flex"} mr={3} gap={1}>
               <PosTag pos={word.pos} />
-              {word.tags.map((tag, idx) => (
+              {mainTags.map((tag, idx) => (
                 <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
               ))}
+              {subTags.length ? (
+                <Popover>
+                  <PopoverTrigger>
+                    <Tag>...</Tag>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverBody>
+                      {subTags.map((tag, idx) => (
+                        <ThemeTag key={`${word.id}-${idx}`} tag={tag} />
+                      ))}
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              ) : null}
             </HStack>
             {removeHTMLTags(word.definition)}
           </Text>
