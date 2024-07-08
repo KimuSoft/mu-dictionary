@@ -192,9 +192,6 @@ const QuizTemplate: React.FC<{
             >
               <HStack w={"100%"}>
                 <Tag colorScheme={colorScheme}>제{round}문제</Tag>
-                {quiz.tags.map((tag) => (
-                  <ThemeTag size={"md"} tag={tag} key={tag} />
-                ))}
                 <Spacer />
 
                 <Tag>
@@ -209,6 +206,11 @@ const QuizTemplate: React.FC<{
               </HStack>
               <Divider />
               <VStack gap={2} h={"65vh"} w={"100%"} overflowY={"auto"}>
+                <HStack justifyContent={"center"} w={"100%"} flexWrap={"wrap"}>
+                  {quiz.tags.map((tag) => (
+                    <ThemeTag size={"md"} tag={tag} key={tag} />
+                  ))}
+                </HStack>
                 {
                   // 힌트 표시
                   quiz.hints.map((hint, i) => (

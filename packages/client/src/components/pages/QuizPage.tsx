@@ -53,6 +53,7 @@ const QuizPage: React.FC = () => {
           isClosable: true,
           position: "top-right",
         })
+        setIsEnd(true)
       }
     }
   }
