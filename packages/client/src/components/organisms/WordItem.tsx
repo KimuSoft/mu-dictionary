@@ -40,11 +40,11 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   const [isMobile] = useMediaQuery("(max-width: 768px)")
 
   const mainTags = useMemo(() => {
-    return word.tags.filter((tag) => !tag.includes("/"))
+    return word.tags.filter((tag) => !tag?.includes("/"))
   }, [word.tags])
 
   const subTags = useMemo(() => {
-    return word.tags.filter((tag) => tag.includes("/"))
+    return word.tags.filter((tag) => tag?.includes("/"))
   }, [word.tags])
 
   const toast = useToast()
