@@ -201,7 +201,9 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
               {subTags.length ? (
                 <Popover>
                   <PopoverTrigger>
-                    <Tag>...</Tag>
+                    <Tag size={"sm"} colorScheme={"black"}>
+                      ...
+                    </Tag>
                   </PopoverTrigger>
                   <PopoverContent>
                     <PopoverArrow />
