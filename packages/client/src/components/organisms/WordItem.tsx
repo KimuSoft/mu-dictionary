@@ -40,16 +40,19 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   const [isMobile] = useMediaQuery("(max-width: 768px)")
 
   const mainTags = useMemo(() => {
-    return word.tags.filter((tag) => !tag?.includes("/"))
+    return word.tags.filter((tag) => !tag.includes("/"))
   }, [word.tags])
 
   const subTags = useMemo(() => {
-    return word.tags.filter((tag) => tag?.includes("/"))
+    return word.tags.filter((tag) => tag.includes("/"))
   }, [word.tags])
 
   const toast = useToast()
 
-  const subTagColor = useMemo(() => getTagData(subTags[0]).color, [subTags])
+  const subTagColor = useMemo(
+    () => (subTags[0] ? getTagData(subTags[0]).color : "gray"),
+    [subTags],
+  )
 
   const getSpeech = (text: string) => {
     let voices: SpeechSynthesisVoice[] = []
