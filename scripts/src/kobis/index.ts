@@ -70,7 +70,11 @@ const run = async () => {
     const tags = ["영화"];
 
     if (movie.productionCountry) {
-      tags.push("영화/" + movie.productionCountry.trim());
+      for (const country of movie.productionCountry
+        .split(",")
+        .map((c) => c.trim())) {
+        tags.push("영화/" + country);
+      }
     }
 
     result.items.push({
