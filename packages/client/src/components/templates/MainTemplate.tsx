@@ -52,6 +52,7 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
         // bgColor={useColorModeValue("gray.200", "gray.900")}
         w={"100%"}
         minH={"100vh"}
+        py={10}
       >
         <Container h={"100%"} maxW={"3xl"}>
           {tagStats.length ? (

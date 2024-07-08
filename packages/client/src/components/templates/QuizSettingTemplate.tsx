@@ -136,7 +136,7 @@ const QuizSettingTemplate: React.FC<{
           <Box h={"65vh"} overflowY={"auto"}>
             <SimpleGrid
               w={"100%"}
-              columns={isMobile ? 2 : 3}
+              columns={isMobile ? 1 : 3}
               gridColumnGap={3}
               gridRowGap={2}
             >
