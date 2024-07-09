@@ -28,6 +28,7 @@ import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
 import { Word } from "mudict-api-types"
 import getTagData from "../../utils/getTagData"
+import { useNavigate } from "react-router-dom"
 
 const removeHTMLTags = (str: string) => {
   return str.replace(/<[^>]*>?/gm, "").replace(/&[A-z]{0,5};/, "")
@@ -38,6 +39,8 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   keyword,
 }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)")
+
+  const navigate = useNavigate()
 
   const mainTags = useMemo(() => {
     return word.tags.filter((tag) => !tag.includes("/"))
@@ -115,7 +118,7 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
             fontSize={isMobile ? "md" : "lg"}
             fontWeight={"bold"}
           >
-            <Link href={word.url}>
+            <Link onClick={() => navigate(`words/${word.id}`)}>
               <Highlight
                 query={keyword}
                 styles={{
