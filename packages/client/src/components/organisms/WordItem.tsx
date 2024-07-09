@@ -118,7 +118,7 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
             fontSize={isMobile ? "md" : "lg"}
             fontWeight={"bold"}
           >
-            <Link onClick={() => navigate(`/words/${word.id}`)}>
+            <Link onClick={() => navigate(`/words/${word.sourceId}`)}>
               <Highlight
                 query={keyword}
                 styles={{

@@ -113,7 +113,7 @@ export class WordsService {
     const word = await this.wordRepository.findOneBy({ id });
 
     if (!word) {
-      return this.wordRepository.findOneBy({ referenceId: id });
+      return this.wordRepository.findOneBy({ sourceId: id });
     }
 
     return word;
