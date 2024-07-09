@@ -110,13 +110,7 @@ export class WordsService {
   }
 
   async findOneById(id: string) {
-    const word = await this.wordRepository.findOneBy({ id });
-
-    if (!word) {
-      return this.wordRepository.findOneBy({ sourceId: id });
-    }
-
-    return word;
+    return this.wordRepository.findOneBy({ sourceId: id });
   }
 
   async search({ q: query, limit, offset, tags }: SearchWordDto) {

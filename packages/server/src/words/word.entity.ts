@@ -10,6 +10,7 @@ import { PartOfSpeech, Word, Metadata } from 'mudict-api-types';
 @Entity('word')
 export class WordEntity implements Word {
   @PrimaryGeneratedColumn('uuid')
+  /** @deprecated 그냥 sourceId를 쓰세요 */
   id: string;
 
   @Column({ unique: true })
