@@ -13,7 +13,7 @@ import { SyncWordMeilisearchRepository } from './implements/sync-word-meilisearc
     MeilisearchService,
     {
       provide: SYNC_WORD_REPOSITORY,
-      useValue: SyncWordMeilisearchRepository,
+      useClass: SyncWordMeilisearchRepository,
     },
   ],
 })

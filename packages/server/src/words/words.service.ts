@@ -110,12 +110,14 @@ export class WordsService {
   }
 
   async findOneById(id: string) {
-    return this.wordRepository.findOneBy({ id });
-  }
+    const word = await this.wordRepository.findOneBy({ id });
 
-  // async find() {
-  //   return this.wordRepository.find();
-  // }
+    if (!word) {
+      return this.wordRepository.findOneBy({ referenceId: id });
+    }
+
+    return word;
+  }
 
   async search({ q: query, limit, offset, tags }: SearchWordDto) {
     return this.meilisearch.index('words').search(query, {

@@ -45,7 +45,7 @@ export class WordsController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: '단어 상세 조회' })
+  @ApiOperation({ summary: '단어 상세 조회 (일반 id와 refId 모두 가능)' })
   async findOneById(@Param() { id }: FindOneWorkDto) {
     return this.wordsService.findOneById(id);
   }

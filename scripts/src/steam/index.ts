@@ -83,7 +83,7 @@ const run = async () => {
         `https://store.steampowered.com/api/appdetails?appids=${item.appid}&l=korean`,
       );
 
-      if (!res.data[item.appid].success) {
+      if (!res.data?.[item.appid]?.success) {
         console.error("Failed to get game detail:", item.appid);
         gameCache[item.appid] = {
           appid: item.appid,
