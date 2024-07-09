@@ -12,7 +12,7 @@ const Router: React.FC = () => {
       <Routes>
         <Route index path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/word/:id" element={<WordPage />} />
+        <Route path="/words/:id" element={<WordPage />} />
         <Route path="/long-word" element={<LongWordSearch />} />
         <Route path="/quiz" element={<QuizPage />} />
       </Routes>

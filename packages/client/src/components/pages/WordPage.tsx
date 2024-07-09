@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { api } from "../../api/api"
 import { Word } from "mudict-api-types"
-import { useToast } from "@chakra-ui/react"
+import { Center, Textarea, useToast } from "@chakra-ui/react"
 
 const WordPage: React.FC = () => {
   const { id } = useParams()
@@ -35,7 +35,15 @@ const WordPage: React.FC = () => {
     fetchWord().then()
   }, [id])
 
-  return <div>{JSON.stringify(word)}</div>
+  return (
+    <Center w={"100vw"}>
+      {word ? (
+        <Textarea value={JSON.stringify(word, null, 2)} readOnly={true} />
+      ) : (
+        <Textarea value={"Loading..."} readOnly={true} />
+      )}
+    </Center>
+  )
 }
 
 export default WordPage
