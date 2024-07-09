@@ -4,6 +4,7 @@ import Search from "./components/pages/Search"
 import Main from "./components/pages/Main"
 import LongWordSearch from "./components/pages/LongWordSearch"
 import QuizPage from "./components/pages/QuizPage"
+import WordPage from "./components/pages/WordPage"
 
 const Router: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Router: React.FC = () => {
       <Routes>
         <Route index path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/word/:id" element={<WordPage />} />
         <Route path="/long-word" element={<LongWordSearch />} />
         <Route path="/quiz" element={<QuizPage />} />
       </Routes>

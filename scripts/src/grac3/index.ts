@@ -1,10 +1,11 @@
 import axios, { isAxiosError } from "axios";
 import { XMLParser } from "fast-xml-parser";
 import { GameRating, GameRatingResponse } from "./types";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { wordConvert } from "../utils/wordConvert";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { readFile, writeFile } from "fs/promises";
+import { PartOfSpeech } from "mudict-api-types";
 
 const REFERENCE_ID = "grac3";
 const ENDPOINT_URL =
@@ -17,7 +18,7 @@ const REQUEST_INTERVAL = 500;
 
 const useCache = !!process.argv[2];
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,

@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import axios from "axios";
 import * as cheerio from "cheerio";
@@ -15,13 +15,11 @@ const REFERENCE_ID = "tj-music";
 
 const REQUEST_DELAY = 500;
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "",
     referenceId: REFERENCE_ID,
     tags: ["음악"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

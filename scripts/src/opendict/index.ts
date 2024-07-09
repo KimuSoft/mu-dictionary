@@ -3,15 +3,15 @@ import { readdir, readFile, writeFile } from "fs/promises";
 import { simplifyName, wordConvert } from "../utils/wordConvert";
 import {
   convertStringToPartOfSpeech,
-  MuDict,
-  MuDictItem,
-  PartOfSpeech,
+  MuDictDump,
+  MudictDumpItem,
 } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { DictionaryFile } from "./types";
 import { toIpfString } from "hypua";
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { PartOfSpeech } from "mudict-api-types";
 
 // bun <Command> <Path>
 const EXISTING_PATH = "./src/opendict/data";
@@ -19,7 +19,7 @@ const REFERENCE_ID = "opendict";
 
 const resetCache = process.argv.includes("--reset-cache");
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     definition: "",
@@ -156,7 +156,7 @@ const run = async () => {
 
       const url = item.link;
 
-      const muDictItem: MuDictItem = {
+      const muDictItem: MudictDumpItem = {
         sourceId: id,
         name: word,
         simplifiedName: simplifyName(word),

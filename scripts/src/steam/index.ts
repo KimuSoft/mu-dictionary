@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import {
   GameDetailResponse,
@@ -18,13 +18,11 @@ const REFERENCE_ID = "steam";
 const noCache = process.argv[2] === "--no-cache";
 const skipDownload = process.argv[2] === "--skip-download";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "~에 등장하는 단어",
     referenceId: REFERENCE_ID,
     tags: ["게임", "게임/스팀 게임"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

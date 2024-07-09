@@ -2,7 +2,7 @@
 import { readdir, readFile } from "fs/promises";
 import Knex from "knex";
 import "dotenv";
-import { MuDict, MuDictItem } from "../types";
+import { MuDictDump, MudictDumpItem } from "../types";
 
 const whitelist = process.argv.slice(2);
 
@@ -16,10 +16,10 @@ const loadJsonFiles = async () => {
   const files = await readdir("./data");
   const jsonFiles = files.filter((file) => file.endsWith(".json"));
 
-  const data = await Promise.all(
+  return Promise.all(
     jsonFiles.map(async (file) => {
       const json = await readFile(`./data/${file}`, "utf8");
-      const jsonData = JSON.parse(json) as MuDict;
+      const jsonData = JSON.parse(json) as MuDictDump;
 
       // whitelist가 비어있지 않고 whitelist에 해당되지 않는 경우 데이터 제외
       if (
@@ -29,11 +29,9 @@ const loadJsonFiles = async () => {
         return null;
       }
 
-      return jsonData as MuDict;
+      return jsonData as MuDictDump;
     }),
   );
-
-  return data;
 };
 
 const run = async () => {
@@ -50,7 +48,7 @@ const run = async () => {
     await knex("word").where("referenceId", dict.default.referenceId).delete();
 
     // word 테이블에 데이터 삽입 전 default 값 적용
-    const items: MuDictItem[] = dict.items.map((item) => ({
+    const items: MudictDumpItem[] = dict.items.map((item) => ({
       definition: "",
       ...dict.default,
       ...item,

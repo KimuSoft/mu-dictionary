@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as XLSX from "xlsx";
 import { Movie } from "./types";
@@ -10,13 +10,11 @@ const EXISTING_PATH =
   process.argv[2] || "./src/kobis/영화정보 리스트_2024-06-13.xls";
 const REFERENCE_ID = "kobis";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "~에 등장하는 단어",
     referenceId: REFERENCE_ID,
     tags: ["영화"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

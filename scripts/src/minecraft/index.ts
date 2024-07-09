@@ -1,7 +1,7 @@
 // 같은 경로의 TextMapKR.json 파일 불러오기 (무거우므로 import 말고 async로 파싱)
 import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 
 // bun genshin <경로>
@@ -9,13 +9,11 @@ const EXISTING_PATH = process.argv[2] || "./src/minecraft/ko_kr.json";
 
 const REFERENCE_ID = "minecraft";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "게임 '마인크래프트'에 등장하는 단어.",
     referenceId: REFERENCE_ID,
     tags: ["마인크래프트"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

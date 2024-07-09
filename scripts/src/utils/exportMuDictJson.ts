@@ -1,17 +1,27 @@
 import { writeFile } from "fs/promises";
 import { uniqBy } from "lodash";
-import { MuDict } from "../types";
+import { MuDictDump } from "../types";
+import { PartOfSpeech } from "mudict-api-types";
 
-export const exportMuDictJson = async (refId: string, data: MuDict) => {
+export const exportMuDictJson = async (refId: string, data: MuDictDump) => {
+  // default에 referenceId가 있는지 체크
+  if (!data.default.referenceId) {
+    throw new Error("default에 referenceId가 없습니다. (exportMuDictJson)");
+  }
+
+  data.default = {
+    pos: PartOfSpeech.Noun,
+    definition: "",
+    ...data.default,
+  };
+
   // ID 중복이 있는지 체크
   const itemsWithId = data.items.filter((item) => item.sourceId);
 
-  // ID가 없는 아이템 개수만큼 경고
   if (itemsWithId.length !== data.items.length) {
-    console.error(
+    throw new Error(
       `${data.items.length - itemsWithId.length}개의 아이템이 ID를 가지고 있지 않습니다. (exportMuDictJson)`,
     );
-    return;
   }
 
   // referenceId가 /[A-z0-9-_]/를 제외한 문자가 있는지 체크
@@ -21,11 +31,10 @@ export const exportMuDictJson = async (refId: string, data: MuDict) => {
 
   // invalidIdItems가 있으면 경고하고 종료
   if (invalidIdItems.length) {
-    console.error(
+    console.warn(invalidIdItems.map((item) => item.sourceId).join(", "));
+    throw new Error(
       `${invalidIdItems.length}개의 아이템이 올바르지 않은 ID를 가지고 있습니다. (exportMuDictJson)`,
-      invalidIdItems.map((item) => item.sourceId).join(", "),
     );
-    return;
   }
 
   if (uniqBy(itemsWithId, "sourceId").length !== itemsWithId.length) {

@@ -1,3 +1,5 @@
+import { Metadata } from "./metadata"
+
 export interface Word {
   id: string
   sourceId: string
@@ -11,6 +13,7 @@ export interface Word {
   thumbnail?: string
   url?: string
   referenceId: string
+  metadata?: Metadata
 }
 
 /**

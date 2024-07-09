@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import axios from "axios";
 
@@ -8,13 +8,11 @@ import axios from "axios";
 const useCache = !!process.argv[2];
 const REFERENCE_ID = "pokemon";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "~에 등장하는 단어",
     referenceId: REFERENCE_ID,
     tags: ["포켓몬스터"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

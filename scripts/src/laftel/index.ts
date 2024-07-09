@@ -1,5 +1,5 @@
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { Anime } from "./types";
 import { readFile, writeFile } from "fs/promises";
@@ -11,13 +11,11 @@ const REFERENCE_ID = "laftel";
 
 const REQUEST_INTERVAL = 100;
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "",
     referenceId: REFERENCE_ID,
     tags: ["애니메이션"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

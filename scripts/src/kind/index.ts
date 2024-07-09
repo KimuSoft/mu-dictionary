@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as XLSX from "xlsx";
 import { CompanyInfo } from "./types";
@@ -10,12 +10,11 @@ import { josa } from "es-hangul";
 const EXISTING_PATH = process.argv[2] || "./src/kind/상장법인목록.xlsx";
 const REFERENCE_ID = "kind";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,
     tags: ["기업"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

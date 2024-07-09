@@ -1,13 +1,14 @@
 import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
+import { PartOfSpeech } from "mudict-api-types";
 
 // bun <Command> <Path>
 const EXISTING_PATH = process.argv[2] || "./src/경로";
 const REFERENCE_ID = "ID 입력 (영어 소문자)";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     definition: "~에 등장하는 단어",

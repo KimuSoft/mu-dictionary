@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as cheerio from "cheerio";
 import axios, { AxiosResponse } from "axios";
@@ -12,13 +12,11 @@ const reset = process.argv.includes("--reset");
 const skipDetail = process.argv.includes("--skip-detail");
 const REFERENCE_ID = "genshin";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "게임 '원신'에 등장하는 단어",
     referenceId: REFERENCE_ID,
     tags: ["원신"],
-    pos: PartOfSpeech.Noun,
   },
 };
 
@@ -283,7 +281,7 @@ const run = async () => {
       }
 
       definition += `${itemType}. ${item.detail["description"] || ""}`;
-    } else if (item.detail["weapon"]) {
+    } else if (item.detail["weapon"] && item.detail["element"]) {
       tags.push("원신/캐릭터");
 
       let weapon = item.detail["weapon"];

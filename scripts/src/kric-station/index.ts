@@ -1,17 +1,18 @@
 import { readFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump, MudictDumpItem } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as XLSX from "xlsx";
 import { SubwayStation } from "./types";
 import { josa } from "es-hangul";
+import { PartOfSpeech } from "mudict-api-types";
 
 // bun <Command> <Path>
 const EXISTING_PATH =
   process.argv[2] || "./src/kric-station/전체_도시철도역사정보_20240331.xlsx";
 const REFERENCE_ID = "kric_station";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,
@@ -71,7 +72,7 @@ const run = async () => {
           "이/가",
         )} 운영하는 ${station.lineName} ${name}역의 부역명.`;
 
-        const item: MuDictItem = {
+        const item: MudictDumpItem = {
           sourceId: `${REFERENCE_ID}_${station.lineCode}_${station.stationCode}_sub`,
           name: subNameData.name + "역",
           simplifiedName: subNameData.simplifiedName + "역",
@@ -108,7 +109,7 @@ const run = async () => {
         : ""
     }`;
 
-    const item: MuDictItem = {
+    const item: MudictDumpItem = {
       sourceId: `${REFERENCE_ID}_${station.lineCode}_${station.stationCode}`,
       name: nameData.name + (!nameData.name.endsWith("역") ? "역" : ""),
       tags: [

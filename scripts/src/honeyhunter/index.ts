@@ -1,11 +1,10 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import * as cheerio from "cheerio";
 import axios, { AxiosResponse } from "axios";
 import { uniqBy } from "lodash";
-import { josa } from "es-hangul";
 import removeBraket from "../utils/removeBraket";
 
 // bun <Command> <Path>
@@ -14,13 +13,11 @@ const skipDetail = process.argv.includes("--skip-detail");
 const overwrite = process.argv.includes("--overwrite");
 const REFERENCE_ID = "starrail";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
-    definition: "게임 '붕괴: 스타레일'에 등장하는 단어",
     referenceId: REFERENCE_ID,
     tags: ["붕괴: 스타레일"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

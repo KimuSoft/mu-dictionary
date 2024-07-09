@@ -1,5 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { PartOfSpeech, Word } from 'mudict-api-types';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { PartOfSpeech, Word, Metadata } from 'mudict-api-types';
 
 @Entity('word')
 export class WordEntity implements Word {
@@ -45,20 +51,29 @@ export class WordEntity implements Word {
   @Column()
   referenceId: string;
 
-  toJSON() {
-    return {
-      id: this.id,
-      sourceId: this.sourceId,
-      name: this.name,
-      simplifiedName: this.simplifiedName,
-      origin: this.origin,
-      pronunciation: this.pronunciation,
-      definition: this.definition,
-      pos: this.pos,
-      tags: this.tags,
-      thumbnail: this.thumbnail,
-      url: this.url,
-      referenceId: this.referenceId,
-    };
-  }
+  @Column({ nullable: true, type: 'jsonb' })
+  metadata?: Metadata;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  // toJSON() {
+  //   return {
+  //     id: this.id,
+  //     sourceId: this.sourceId,
+  //     name: this.name,
+  //     simplifiedName: this.simplifiedName,
+  //     origin: this.origin,
+  //     pronunciation: this.pronunciation,
+  //     definition: this.definition,
+  //     pos: this.pos,
+  //     tags: this.tags,
+  //     thumbnail: this.thumbnail,
+  //     url: this.url,
+  //     referenceId: this.referenceId,
+  //   };
+  // }
 }

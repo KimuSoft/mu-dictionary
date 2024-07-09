@@ -1,9 +1,10 @@
 import { readdir, readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { XMLParser } from "fast-xml-parser";
 import { LobotomyCreature } from "./types";
+import { PartOfSpeech } from "mudict-api-types";
 
 // bun <Command> <Path>
 const EXISTING_PATH =
@@ -11,7 +12,7 @@ const EXISTING_PATH =
   "C:/Program Files (x86)/Steam/steamapps/common/LobotomyCorp";
 const REFERENCE_ID = "lobotomy_corp";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,

@@ -1,5 +1,5 @@
 import { readdir, readFile } from "fs/promises";
-import { MuDict, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { parse as yamlParse } from "yaml";
 import { StardewValleyStringXnbData } from "./types";
 import { wordConvert } from "../utils/wordConvert";
@@ -9,12 +9,11 @@ import { exportMuDictJson } from "../utils/exportMuDictJson";
 const EXISTING_PATH = process.argv[2] || "./src/stardew-valley/data";
 const REFERENCE_ID = "stardew_valley";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     referenceId: REFERENCE_ID,
     tags: ["스타듀 밸리"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

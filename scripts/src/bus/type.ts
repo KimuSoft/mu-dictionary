@@ -6,20 +6,20 @@ export interface BusStopData {
   stopName: string;
 
   // 위도
-  latitude: string;
+  latitude?: number;
 
   // 경도
-  longitude: string;
+  longitude?: number;
 
   // 모바일단축번호
-  mobileNumber: string;
+  mobileNumber?: number;
 
   // 도시코드
-  cityCode: string;
+  cityCode?: number;
 
   // 도시명
   cityFullName: string;
 
   // 관리도시명
-  cityName: string;
+  operatorCity: string;
 }

@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { wordConvert } from "../utils/wordConvert";
-import { MuDict, MuDictItem, PartOfSpeech } from "../types";
+import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
 import axios from "axios";
 import * as cheerio from "cheerio";
@@ -12,13 +12,12 @@ import { uniqBy } from "lodash";
 const EXISTING_PATH = "./src/mahjong-soul";
 const REFERENCE_ID = "mahjong-soul";
 
-const result: MuDict = {
+const result: MuDictDump = {
   items: [],
   default: {
     definition: "게임, '작혼: 리치 마작'에 등장하는 단어.",
     referenceId: REFERENCE_ID,
     tags: ["작혼"],
-    pos: PartOfSpeech.Noun,
   },
 };
 

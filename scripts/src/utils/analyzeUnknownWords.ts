@@ -1,4 +1,17 @@
 import { wordConvert } from "./wordConvert";
+import { writeFile } from "fs/promises";
+
+export const analyzeAndSaveUnknownWords = async (
+  id: string,
+  words: string[],
+) => {
+  const unknownWords = analyzeUnknownWords(words);
+
+  await writeFile(
+    `./logs/unknown-words-${id}.json`,
+    JSON.stringify(unknownWords, null, 2),
+  );
+};
 
 export default function analyzeUnknownWords(words: string[]) {
   // 띄어쓰기 기준으로 split 해서 단어 단위로 쪼갠 후 Record<string, number(빈도)> 로
