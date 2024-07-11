@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { WordsModule } from './words/words.module';
 import { MeiliSearchModule } from 'nestjs-meilisearch';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import { MeilisearchModule } from './meilisearch/meilisearch.module';
 import { QuizModule } from './quiz/quiz.module';
 import { StatisticsModule } from './statistics/statistics.module';
