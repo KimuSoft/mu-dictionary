@@ -182,7 +182,7 @@ const tagData: PartialTagData[] = [
   { id: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" },
 ]
 
-export default function (tag: string): TagData {
+export default function getTagData(tag: string): TagData {
   const defaultTagData = { id: tag, name: tag, color: "gray" }
 
   const tagDataItem = tagData.find((item) => item.id === tag)

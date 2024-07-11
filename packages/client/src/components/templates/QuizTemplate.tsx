@@ -89,6 +89,8 @@ const HintItem: React.FC<{
     `${colorScheme}.500`,
   )
 
+  const bgColor = useColorModeValue("gray.200", "gray.700")
+
   return (
     <Box
       userSelect={"none"}
@@ -101,9 +103,7 @@ const HintItem: React.FC<{
       py={2}
       cursor={isOpened ? "default" : "pointer"}
       transition={"background-color 0.2s"}
-      _hover={
-        isOpened ? {} : { bgColor: useColorModeValue("gray.200", "gray.700") }
-      }
+      _hover={isOpened ? {} : { bgColor }}
       borderColor={isOpened ? "gray.500" : borderColor}
       onClick={() => {
         if (!Openable || isOpened) return

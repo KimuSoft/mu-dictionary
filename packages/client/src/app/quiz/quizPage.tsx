@@ -55,7 +55,7 @@ const QuizPage: React.FC<{ tags: TagStatItem[] }> = ({ tags }) => {
       isClosable: true,
       position: "top-right",
     })
-  }, [coin])
+  }, [coin, toast])
 
   const onSkip = () => {
     nextQuiz().then()

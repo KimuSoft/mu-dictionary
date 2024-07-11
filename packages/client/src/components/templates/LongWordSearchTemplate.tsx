@@ -105,16 +105,8 @@ const SearchHeader: React.FC<{
         ) : (
           <Text fontSize={"md"}>
             {"'"}
-            <Highlight
-              query={letter}
-              styles={{
-                color: useColorModeValue("black", "white"),
-                fontWeight: "bold",
-              }}
-            >
-              {letter}
-            </Highlight>
-            '로 시작하는 긴 단어 목록
+            <b>{letter}</b>
+            {"'"}로 시작하는 긴 단어 목록
           </Text>
         )}
         <Spacer />
