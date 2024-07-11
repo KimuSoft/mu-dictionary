@@ -1,10 +1,10 @@
-import React from "react";
-import ParingTemplate from "@/components/templates/ParingTemplate";
+import React from "react"
+import ParingTemplate from "@/components/templates/ParingTemplate"
+
+export const dynamic = "force-dynamic"
 
 const Page: React.FC = async () => {
-  // const res = await api.get("/words");
+  return <ParingTemplate />
+}
 
-  return <ParingTemplate />;
-};
-
-export default Page;
+export default Page

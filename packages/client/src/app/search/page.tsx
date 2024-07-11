@@ -1,10 +1,17 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { searchWords } from "@/api/actions/searchWords"
 import SearchTemplate from "@/components/templates/SearchTemplate"
 
-const Page: React.FC<{ searchParams: { q?: string; tags?: string } }> = async ({
-  searchParams,
-}) => {
+export const dynamic = "force-dynamic"
+
+interface Props {
+  searchParams: {
+    q?: string
+    tags?: string
+  }
+}
+
+const Page: React.FC<Props> = async ({ searchParams }) => {
   const searchQuery = searchParams.q || ""
   const tagsFilterQuery = searchParams.tags?.split(",") || []
 
@@ -23,6 +30,13 @@ const Page: React.FC<{ searchParams: { q?: string; tags?: string } }> = async ({
       totalCount={estimatedTotalHits}
     />
   )
+}
+
+export const generateMetadata = async ({ searchParams }: Props) => {
+  return {
+    title: `'${searchParams.q}'의 검색 결과 : 키뮤사전`,
+    description: "우리만의 조금 특별한 한국어 사전, 키뮤사전",
+  }
 }
 
 export default Page

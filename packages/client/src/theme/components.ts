@@ -1,5 +1,5 @@
-import { defineStyleConfig } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import { defineStyleConfig } from "@chakra-ui/react"
+import { mode } from "@chakra-ui/theme-tools"
 
 const components = {
   Input: defineStyleConfig({
@@ -28,6 +28,6 @@ const components = {
       variant: "custom",
     },
   }),
-};
+}
 
-export default components;
+export default components

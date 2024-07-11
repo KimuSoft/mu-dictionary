@@ -5,6 +5,8 @@ import WordDetailTemplate from "@/components/templates/WordDetailTemplate"
 import { api } from "@/api/api"
 import { fetchHomonym } from "@/api/actions/fetchHomonym"
 
+export const dynamic = "force-dynamic"
+
 const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
   const res = await api.get<Word | null>(`/words/${params.id}`)
   const word = res.data

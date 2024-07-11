@@ -1,7 +1,8 @@
-import React, { useEffect } from "react"
+import React from "react"
 import LongWordSearchTemplate from "../../components/templates/LongWordSearchTemplate"
-import { api } from "@/api/api"
-import { fetchLongWords, LongWordItem } from "@/api/actions/fetchLongWords"
+import { fetchLongWords } from "@/api/actions/fetchLongWords"
+
+export const dynamic = "force-dynamic"
 
 const Page: React.FC<{ searchParams: { letter?: string } }> = async ({
   searchParams,
