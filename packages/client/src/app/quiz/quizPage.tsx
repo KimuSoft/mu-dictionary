@@ -1,16 +1,16 @@
-import React, { useEffect } from "react"
-import QuizSettingTemplate from "../templates/QuizSettingTemplate"
-import { Quiz } from "mudict-api-types"
-import { api } from "../../api/api"
-import { TagStatItem } from "./Main"
-import QuizTemplate from "../templates/QuizTemplate"
-import { useToast } from "@chakra-ui/react"
-import QuizResultTemplate from "../templates/QuizResultTemplate"
-import { isAxiosError } from "axios"
+"use client"
 
-const QuizPage: React.FC = () => {
+import React, { useEffect } from "react"
+import QuizSettingTemplate from "../../components/templates/QuizSettingTemplate"
+import { Quiz } from "mudict-api-types"
+import QuizTemplate from "../../components/templates/QuizTemplate"
+import { useToast } from "@chakra-ui/react"
+import QuizResultTemplate from "../../components/templates/QuizResultTemplate"
+import { TagStatItem } from "@/api/actions/fetchTags"
+import { fetchQuiz } from "@/api/actions/fetchQuiz"
+
+const QuizPage: React.FC<{ tags: TagStatItem[] }> = ({ tags }) => {
   // Setting
-  const [tagStats, setTagStats] = React.useState<TagStatItem[]>([])
   const [selectedTags, setSelectedTags] = React.useState<string[]>([])
 
   // Game
@@ -24,38 +24,24 @@ const QuizPage: React.FC = () => {
 
   const toast = useToast()
 
-  const fetchTags = async () => {
-    const res = await api.get("/statistics/tags")
-    res.data.sort((a: TagStatItem, b: TagStatItem) => b.count - a.count)
-    setTagStats(res.data)
-  }
+  const nextQuiz = async () => {
+    const quiz = await fetchQuiz(selectedTags, quizIds)
+    setQuiz(quiz)
 
-  const fetchQuiz = async () => {
-    try {
-      const res = await api.get("/quiz", {
-        params: {
-          tags: selectedTags,
-          exclude: quizIds,
-        },
+    if (!quiz) {
+      toast({
+        title: "모든 퀴즈를 다 풀었어요!!!.",
+        description: "클리어를 축하드려요!!",
+        status: "info",
+        isClosable: true,
+        position: "top-right",
       })
-
-      setQuizIds([...quizIds, res.data.id])
-      setRound(round + 1)
-      setQuiz(res.data)
-    } catch (e) {
-      if (!isAxiosError(e)) throw e
-
-      if (e.response?.status === 404) {
-        toast({
-          title: "모든 퀴즈를 다 풀었어요!!!.",
-          description: "클리어를 축하드려요!!",
-          status: "info",
-          isClosable: true,
-          position: "top-right",
-        })
-        setIsEnd(true)
-      }
+      setIsEnd(true)
+      return
     }
+
+    setQuizIds([...quizIds, quiz.id])
+    setRound(round + 1)
   }
 
   useEffect(() => {
@@ -72,7 +58,7 @@ const QuizPage: React.FC = () => {
   }, [coin])
 
   const onSkip = () => {
-    fetchQuiz().then()
+    nextQuiz().then()
     setCoin(coin - 10)
     toast({
       title: "10코인이 차감되었습니다.",
@@ -108,7 +94,7 @@ const QuizPage: React.FC = () => {
       setCoin(coin - 1)
       return
     }
-    fetchQuiz().then()
+    void nextQuiz()
   }
 
   const resetGame = () => {
@@ -119,18 +105,14 @@ const QuizPage: React.FC = () => {
     setIsEnd(false)
   }
 
-  useEffect(() => {
-    fetchTags().then()
-  }, [])
-
   return !quiz ? (
     <QuizSettingTemplate
-      tags={tagStats}
+      tags={tags}
       selectedTags={selectedTags}
       onSelectedTagsChange={setSelectedTags}
       onQuizStart={() => {
         setCoin(100)
-        fetchQuiz().then()
+        void nextQuiz()
       }}
     />
   ) : !isEnd ? (

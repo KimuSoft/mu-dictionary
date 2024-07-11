@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import { Button, Center, Heading, HStack, Text, VStack } from "@chakra-ui/react"
 import Header from "../organisms/Header"

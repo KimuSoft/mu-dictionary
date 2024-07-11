@@ -1,10 +1,13 @@
+"use client"
+
 import React, { useRef } from "react"
-import { useNavigate } from "react-router-dom"
 import {
   Center,
   Container,
   Divider,
   Heading,
+  HStack,
+  Link,
   Text,
   Tooltip,
   useMediaQuery,
@@ -12,19 +15,17 @@ import {
 } from "@chakra-ui/react"
 import SearchInput from "../organisms/SearchInput"
 import Header from "../organisms/Header"
-import { TagStatItem } from "../pages/Main"
 import ThemeTag from "../atoms/ThemeTag"
 import { motion } from "framer-motion"
+import { useRouter } from "next-nprogress-bar"
+import { TagStatItem } from "@/api/actions/fetchTags"
+import NextLink from "next/link"
 
-const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
+const MainTemplate: React.FC<{ tags: TagStatItem[] }> = ({ tags }) => {
+  const { push } = useRouter()
+
   const [isMobile] = useMediaQuery("(max-width: 768px)")
-  const navigate = useNavigate()
   const scrollRef = useRef(null)
-
-  const onSearch = async (keyword: string) => {
-    if (!keyword) return
-    navigate("/search?q=" + encodeURIComponent(keyword))
-  }
 
   return (
     <VStack ref={scrollRef} w={"100vw"}>
@@ -42,8 +43,20 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
               <SearchInput
                 w={"100%"}
                 placeholder={"단어 무더기에서 원하는 거 찾기"}
-                onSubmit={onSearch}
               />
+              <HStack fontSize={"sm"} color={"gray.500"} mt={3}>
+                <Link as={NextLink} href={"/long-words"}>
+                  긴 단어 검색기
+                </Link>
+                <Text>&nbsp; · &nbsp;</Text>
+                <Link as={NextLink} href={"/quiz"}>
+                  단어 퀴즈
+                </Link>
+                <Text>&nbsp; · &nbsp;</Text>
+                <Link as={NextLink} href={"/paring"}>
+                  파링이 누르기
+                </Link>
+              </HStack>
             </VStack>
           </Center>
         </Container>
@@ -55,7 +68,7 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
         py={10}
       >
         <Container h={"100%"} maxW={"3xl"}>
-          {tagStats.length ? (
+          {tags.length ? (
             <Center
               as={motion.div}
               initial={{ opacity: 0 }}
@@ -69,7 +82,7 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
               <Heading fontSize={"lg"}>키뮤사전 수록 주제</Heading>
               <Divider />
               <Center gap={2} flexWrap={"wrap"} maxW={"100%"}>
-                {tagStats.map((tag) => {
+                {tags.map((tag) => {
                   return (
                     <Tooltip
                       key={tag.tag}
@@ -80,9 +93,7 @@ const MainTemplate: React.FC<{ tagStats: TagStatItem[] }> = ({ tagStats }) => {
                         userSelect={"none"}
                         cursor={"pointer"}
                         onClick={() =>
-                          navigate(
-                            "/search?tags=" + encodeURIComponent(tag.tag),
-                          )
+                          push("/search?tags=" + encodeURIComponent(tag.tag))
                         }
                         tag={tag.tag}
                       />

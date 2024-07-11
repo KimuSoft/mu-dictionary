@@ -1,5 +1,4 @@
 import React, { useMemo } from "react"
-import { LongWordItem } from "../pages/LongWordSearch"
 import {
   Heading,
   HStack,
@@ -9,14 +8,15 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
 import ThemeTag from "../atoms/ThemeTag"
+import { LongWordItem } from "@/api/actions/fetchLongWords"
+import NextLink from "next/link"
+
+const MotionLink = motion(NextLink)
 
 const WordLengthRankingItem: React.FC<
   StackProps & { ranking: number; word: LongWordItem }
 > = ({ word, ranking, ...props }) => {
-  const navigate = useNavigate()
-
   const colorScheme = useMemo(() => {
     if (word.length >= 50) return "red"
 
@@ -27,7 +27,7 @@ const WordLengthRankingItem: React.FC<
 
   return (
     <VStack
-      as={motion.div}
+      as={MotionLink}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       w={"100%"}
@@ -46,7 +46,7 @@ const WordLengthRankingItem: React.FC<
         cursor: "pointer",
       }}
       gap={1}
-      onClick={() => navigate("/search?q=" + word.simplifiedName)}
+      href={`/search?q=${word.simplifiedName}`}
       {...props}
     >
       <HStack w={"100%"}>

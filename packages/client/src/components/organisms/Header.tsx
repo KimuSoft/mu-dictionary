@@ -9,8 +9,8 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react"
 import ToggleColorModeButton from "../molecules/ToggleColorModeButton"
-import { useNavigate } from "react-router-dom"
 import SearchInput from "./SearchInput"
+import NextLink from "next/link"
 
 const Header: React.FC<
   StackProps & {
@@ -19,14 +19,7 @@ const Header: React.FC<
     searchProps?: Omit<InputProps, "onChange" | "onSubmit">
   }
 > = ({ showLogo, showSearch, searchProps, ...props }) => {
-  // 세로화면인지 확인ㅇ
   const [isMobile] = useMediaQuery("(max-width: 768px)")
-  const navigate = useNavigate()
-
-  const onSearch = async (keyword: string) => {
-    if (!keyword) return
-    navigate("/search?q=" + encodeURIComponent(keyword))
-  }
 
   return (
     <HStack
@@ -40,11 +33,12 @@ const Header: React.FC<
     >
       {showLogo ? (
         <Heading
+          as={NextLink}
           size={"lg"}
           userSelect={"none"}
           cursor={"pointer"}
           ml={3}
-          onClick={() => navigate("/")}
+          href={"/"}
         >
           {isMobile ? "μD" : "μDict"}
         </Heading>
@@ -55,7 +49,6 @@ const Header: React.FC<
           size={"sm"}
           w={isMobile ? "100%" : "300px"}
           placeholder={"단어 무더기에서 원하는 거 찾기"}
-          onSubmit={onSearch}
           {...searchProps}
         />
       )}

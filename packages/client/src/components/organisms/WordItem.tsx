@@ -24,23 +24,17 @@ import { IoVolumeMedium } from "react-icons/io5"
 import PosTag from "../atoms/PosTag"
 import ThemeTag from "../atoms/ThemeTag"
 import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
-import { motion } from "framer-motion"
 import { FaMapMarkedAlt } from "react-icons/fa"
 import { Word } from "mudict-api-types"
 import getTagData from "../../utils/getTagData"
-import { useNavigate } from "react-router-dom"
-
-const removeHTMLTags = (str: string) => {
-  return str.replace(/<[^>]*>?/gm, "").replace(/&[A-z]{0,5};/, "")
-}
+import NextLink from "next/link"
+import { removeHTMLTags } from "@/utils/removeHTMLTags"
 
 const WordItem: React.FC<{ word: Word; keyword: string }> = ({
   word,
   keyword,
 }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)")
-
-  const navigate = useNavigate()
 
   const mainTags = useMemo(() => {
     return word.tags.filter((tag) => !tag.includes("/"))
@@ -103,9 +97,9 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
 
   return (
     <HStack
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      // as={motion.div}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
       w={"100%"}
       mb={7}
       alignItems={"flex-start"}
@@ -118,7 +112,7 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
             fontSize={isMobile ? "md" : "lg"}
             fontWeight={"bold"}
           >
-            <Link onClick={() => navigate(`/words/${word.sourceId}`)}>
+            <Link as={NextLink} href={`/words/${word.sourceId}`}>
               <Highlight
                 query={keyword}
                 styles={{
@@ -202,7 +196,7 @@ const WordItem: React.FC<{ word: Word; keyword: string }> = ({
           </HStack>
         </HStack>
         <Box w={"100%"}>
-          <Text fontSize={isMobile ? "sm" : "md"}>
+          <Text fontSize={isMobile ? "sm" : "md"} as="div">
             <HStack display={"inline-flex"} mr={3} gap={1}>
               <PosTag pos={word.pos} />
               {mainTags.map((tag, idx) => (
