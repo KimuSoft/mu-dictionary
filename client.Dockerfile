@@ -9,4 +9,4 @@ RUN pnpm api build
 
 RUN pnpm --filter client build
 
-CMD ["pnpm", "--filter", "client", "migrateandstart"]
+CMD ["pnpm", "--filter", "client", "start"]
