@@ -8,7 +8,9 @@ import {
   SteamGameListResponse,
 } from "./types";
 import axios from "axios";
-import analyzeUnknownWords from "../utils/analyzeUnknownWords";
+import analyzeUnknownWords, {
+  analyzeAndSaveUnknownWords,
+} from "../utils/analyzeUnknownWords";
 import removeBraket from "../utils/removeBraket";
 
 // bun <Command> <Path>
@@ -184,15 +186,12 @@ const run = async () => {
   }
   console.info("Missing data added.");
 
-  console.log("saving failed names...");
-  await writeFile(
-    "./src/steam/data/failed-names.json",
-    JSON.stringify(analyzeUnknownWords(failedName), null, 2),
-    "utf8",
-  );
-
-  // 종료 단계
+  console.info("Saving...");
   await exportMuDictJson(REFERENCE_ID, result);
+
+  console.log("saving failed names...");
+  await analyzeAndSaveUnknownWords(REFERENCE_ID, failedName);
+
   console.info("Done.");
 };
 

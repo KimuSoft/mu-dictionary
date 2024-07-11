@@ -22,4 +22,16 @@ export interface PersonMetadata {
 
   // 국적
   country: string
+
+  // 키
+  height: number | string
+
+  // 성별
+  sex: string
+
+  // 혈액형
+  bloodType: string
+
+  // 나이
+  age: number | string
 }

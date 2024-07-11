@@ -46,8 +46,8 @@ const loadData = async (): Promise<BusStopData[]> => {
       results.push({
         stopNumber: row[0],
         stopName: row[1],
-        latitude: parseInt(row[2]) || undefined,
-        longitude: parseInt(row[3]) || undefined,
+        latitude: parseFloat(row[2]) || undefined,
+        longitude: parseFloat(row[3]) || undefined,
         mobileNumber: parseInt(row[5]) || undefined,
         cityCode: parseInt(row[6]) || undefined,
         cityFullName: row[7],
