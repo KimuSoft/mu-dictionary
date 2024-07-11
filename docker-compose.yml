@@ -12,7 +12,7 @@ services:
 
   mudict-client:
     ports:
-      - "127.0.0.1:5223:3000"
+      - "127.0.0.1:2462:3000"
     build:
       context: .
       dockerfile: client.Dockerfile
