@@ -7,6 +7,7 @@ import {
   TagProps,
 } from "@chakra-ui/react"
 import getTagData from "../../utils/getTagData"
+import NextLink from "next/link"
 
 const ThemeTag = forwardRef<TagProps & { tag: string }, "div">(
   ({ tag, ...props }, ref) => {
@@ -14,6 +15,10 @@ const ThemeTag = forwardRef<TagProps & { tag: string }, "div">(
 
     return (
       <Tag
+        userSelect={"none"}
+        as={NextLink}
+        cursor={"pointer"}
+        href={`/search?tags=${tag}`}
         colorScheme={tagData.color}
         size={"sm"}
         flexShrink={0}

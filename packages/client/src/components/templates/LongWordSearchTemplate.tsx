@@ -1,4 +1,6 @@
-import React from "react"
+"use client"
+
+import React, { useMemo } from "react"
 import {
   Box,
   Center,
@@ -15,21 +17,34 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import Header from "../organisms/Header"
-import { LongWordItem } from "../pages/LongWordSearch"
 import { Virtuoso } from "react-virtuoso"
 import { FaCrown } from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
 import WordLengthRankingItem from "../molecules/WordLengthRankingItem"
+import { useRouter } from "next-nprogress-bar"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { fetchLongWords, LongWordItem } from "@/api/actions/fetchLongWords"
+
+const PAGE_SIZE = 10
+const MAX_RANKING = 100
 
 const LongWordSearchTemplate: React.FC<{
-  letter: string | null
-  words: LongWordItem[]
-  loadMore: () => void
-  isAllLoaded: boolean
-  isLoading: boolean
-}> = ({ words, letter, loadMore, isAllLoaded, isLoading }) => {
+  letter: string
+  initialResult: LongWordItem[]
+}> = ({ initialResult, letter }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)")
-  const navigate = useNavigate()
+  const { replace } = useRouter()
+
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+    queryKey: ["fetchLongWords", { letter }],
+    queryFn: async ({ pageParam }) =>
+      fetchLongWords(letter, PAGE_SIZE, pageParam * PAGE_SIZE),
+    initialData: { pageParams: [0], pages: [initialResult] },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, pages) =>
+      pages.length <= MAX_RANKING / PAGE_SIZE ? pages.length : undefined,
+  })
+
+  const words = useMemo(() => data?.pages.flat() || [], [data])
 
   return (
     <VStack position={"relative"} px={2}>
@@ -41,7 +56,7 @@ const LongWordSearchTemplate: React.FC<{
             height: "calc(100vh - 100px)",
           }}
           data={words}
-          endReached={loadMore}
+          endReached={() => fetchNextPage()}
           itemContent={(index, word) => (
             <WordLengthRankingItem
               key={`${letter}-${index}`}
@@ -54,7 +69,7 @@ const LongWordSearchTemplate: React.FC<{
               <SearchHeader
                 letter={letter}
                 onSearch={(letter: string) => {
-                  navigate("/long-word?letter=" + encodeURIComponent(letter))
+                  replace("/long-word?letter=" + encodeURIComponent(letter))
                 }}
               />
             ),

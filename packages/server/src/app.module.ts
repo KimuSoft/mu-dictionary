@@ -19,9 +19,9 @@ import { StatisticsModule } from './statistics/statistics.module';
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
     }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'client', 'dist'),
-    }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', '..', 'client', 'dist'),
+    // }),
     WordsModule,
     MeilisearchModule,
     StatisticsModule,

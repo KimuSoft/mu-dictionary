@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import {
   InputGroup,
   InputProps,
@@ -14,38 +14,43 @@ import {
   AutoCompleteItem,
   AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete"
-import { autocompleteWords } from "../../api/word"
 import { motion } from "framer-motion"
+import { useQuery } from "@tanstack/react-query"
+import { useDebounce } from "use-debounce"
+import { useRouter } from "next-nprogress-bar"
 
-const SearchInput: React.FC<
-  {
-    onChange?: (value: string) => unknown
-    onSubmit?: (value: string) => unknown
-  } & Omit<InputProps, "onChange" | "onSubmit">
-> = ({ onChange, onSubmit, ...props }) => {
+import { fetchAutocomplete } from "@/api/actions/fetchAutocomplete"
+
+export const queryAutocomplete = async ({
+  queryKey,
+}: {
+  queryKey: [string, { query: string }]
+}) => {
+  return fetchAutocomplete(queryKey[1].query, 5)
+}
+
+const SearchInput: React.FC<InputProps> = (props) => {
+  const { push } = useRouter()
   const { colorMode } = useColorMode()
 
   const [searchQuery, setSearchQuery] = React.useState("")
-  const [autocompleteItems, setAutocompleteItems] = React.useState<string[]>([])
+  const [searchQueryDebounced] = useDebounce(searchQuery, 50)
+
+  const { data: autocompleteItems, isLoading } = useQuery({
+    queryKey: ["autocomplete", { query: searchQueryDebounced }],
+    queryFn: queryAutocomplete,
+    initialData: [],
+  })
+
+  const onSubmit = async (value: string) => {
+    if (!searchQuery) return
+    push("/search?q=" + encodeURIComponent(value))
+  }
+
   const [isMobile] = useMediaQuery("(max-width: 768px)")
-
-  useEffect(() => {
-    if (!searchQuery) {
-      console.log(searchQuery)
-      return setAutocompleteItems([])
-    }
-
-    const timeout = setTimeout(async () => {
-      const autocompletes = await autocompleteWords(searchQuery, 5)
-      setAutocompleteItems(autocompletes)
-    }, 50)
-
-    return () => clearTimeout(timeout)
-  }, [searchQuery])
 
   const _onChange = async (value: string) => {
     setSearchQuery(value)
-    onChange?.(value)
   }
 
   return (
@@ -54,8 +59,7 @@ const SearchInput: React.FC<
         placement={"bottom"}
         emptyState={false}
         onSelectOption={(value) => {
-          onSubmit?.(value.item.value.trim())
-          // _onChange(value.item.value).then()
+          void onSubmit(value.item.value.trim())
         }}
       >
         <AutoCompleteInput
@@ -63,9 +67,7 @@ const SearchInput: React.FC<
           borderColor={useColorModeValue("gray.200", "gray.700")}
           onChange={(e) => _onChange(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onSubmit?.(searchQuery)
-            }
+            if (e.key === "Enter") void onSubmit(searchQuery)
           }}
           {...props}
         />

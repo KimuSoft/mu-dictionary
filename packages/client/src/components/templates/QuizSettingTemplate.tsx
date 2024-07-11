@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useMemo } from "react"
 import {
   Box,
@@ -14,9 +16,9 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import Header from "../organisms/Header"
-import { TagStatItem } from "../pages/Main"
 import getTagData from "../../utils/getTagData"
 import { motion } from "framer-motion"
+import { TagStatItem } from "@/api/actions/fetchTags"
 
 const TagItem: React.FC<{
   tag: TagStatItem

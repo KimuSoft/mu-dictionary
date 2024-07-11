@@ -6,6 +6,7 @@ WORKDIR /app
 COPY . .
 RUN corepack enable && pnpm install
 RUN pnpm api build
+
 RUN pnpm --filter client build
-RUN pnpm --filter server build
-CMD ["pnpm", "--filter", "server", "migrateandstart"]
+
+CMD ["pnpm", "--filter", "client", "migrateandstart"]

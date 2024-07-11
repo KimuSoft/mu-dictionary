@@ -1,4 +1,6 @@
-import { api } from "./api"
+"use server"
+
+import { api } from "@/api/api"
 import { Word } from "mudict-api-types"
 
 export interface SearchWordsResponse {
@@ -22,20 +24,6 @@ export const searchWords = async (
       tags,
       limit,
       offset,
-    },
-  })
-
-  return res.data
-}
-
-export const autocompleteWords = async (
-  query: string,
-  limit: number = 10,
-): Promise<string[]> => {
-  const res = await api.get("words/autocomplete", {
-    params: {
-      q: query,
-      limit,
     },
   })
 
