@@ -13,6 +13,8 @@ async function bootstrap() {
     }),
   );
 
+  console.info('process.env.DATABASE_URL', process.env.DATABASE_URL);
+
   const config = new DocumentBuilder()
     .setTitle('mu-Dictionary API')
     .setDescription('mu-Dictionary API')
