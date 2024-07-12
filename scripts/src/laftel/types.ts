@@ -6,7 +6,7 @@ export interface Anime {
   home_img: string;
   home_cropped_img: string;
   images: AnimeImage[];
-  content_rating: string;
+  content_rating?: string;
   is_adult: boolean;
   genres: string[];
   medium: string;
@@ -23,6 +23,16 @@ export interface Anime {
   is_expired: boolean;
   rating: number;
   highlight_video: string | null;
+}
+
+export interface AnimeDetail {
+  content: string;
+  content_rating: string;
+  air_year_quarter: string;
+  distributed_air_time: string;
+  production: string;
+  tags: string;
+  author?: string[];
 }
 
 export interface AnimeImage {

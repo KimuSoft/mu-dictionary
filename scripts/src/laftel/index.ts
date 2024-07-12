@@ -1,12 +1,14 @@
 import { wordConvert } from "../utils/wordConvert";
 import { MuDictDump } from "../types";
 import { exportMuDictJson } from "../utils/exportMuDictJson";
-import { Anime } from "./types";
-import { readFile, writeFile } from "fs/promises";
+import { Anime, AnimeDetail } from "./types";
 import { uniqBy } from "lodash";
+import { loadCache, saveCache } from "../utils/cache";
+import axios from "axios";
 
 // bun <Command>
-const USE_CACHE = !!process.argv[2];
+const isReset = process.argv.includes("--reset");
+const skipDetail = process.argv.includes("--skip-detail");
 const REFERENCE_ID = "laftel";
 
 const REQUEST_INTERVAL = 100;
@@ -20,9 +22,14 @@ const result: MuDictDump = {
 };
 
 const run = async () => {
-  const animes: Anime[] = [];
+  let animes: (Anime & { detail?: AnimeDetail })[] = [];
 
-  if (!USE_CACHE) {
+  if (!isReset) {
+    console.info("Loading cache...");
+    animes = (await loadCache(REFERENCE_ID)) || [];
+  }
+
+  if (isReset || !animes.length) {
     const fetchNext = async (url: string) => {
       const res = await fetch(url);
       const result = (await res.json()) as {
@@ -44,13 +51,25 @@ const run = async () => {
     }
 
     // anime 저장
-    await writeFile("./src/anime.json", JSON.stringify(animes, null, 2));
-  } else {
-    console.info("Loading cache...");
-    const data = JSON.parse(
-      await readFile("./src/laftel/anime.json", "utf8"),
-    ) as Anime[];
-    animes.push(...data);
+    await saveCache(REFERENCE_ID, animes);
+  }
+
+  if (!skipDetail) {
+    // 디테일 추가
+    // https://api.laftel.net/api/items/v2/{id}
+    for (const anime of animes) {
+      if (anime.detail) continue;
+
+      console.info(`Fetching detail: ${anime.id}`);
+      const res = await axios.get<AnimeDetail>(
+        `https://api.laftel.net/api/items/v2/${anime.id}`,
+      );
+      anime.detail = res.data;
+      // 500ms 대기
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      // 저장
+      await saveCache(REFERENCE_ID, animes);
+    }
   }
 
   // 키뮤사전 형식으로 변환
@@ -68,12 +87,32 @@ const run = async () => {
       continue;
     }
 
+    const ratingStr = anime.content_rating
+      ? ` 등급은 ${anime.content_rating}이다.`
+      : "";
+
+    const releaseYear =
+      parseInt(anime.detail?.air_year_quarter?.split("년")?.[0] || "") ||
+      undefined;
+
+    const releaseStr = anime.detail?.air_year_quarter
+      ? `${anime.detail.air_year_quarter}에 `
+      : "";
+    const productionStr = anime.detail?.production
+      ? `${anime.detail.production}에서 제작한 `
+      : "";
+
     result.items.push({
       ...nameData,
       sourceId: REFERENCE_ID + "_" + anime.id,
-      definition: `${anime.genres.join(", ")} ${anime.medium} 애니메이션. 등급은 ${anime.content_rating}이다.`,
+      definition:
+        `${releaseStr}${productionStr}${anime.genres.join(", ")} ${anime.medium} 애니메이션. ${ratingStr} ${anime.detail?.content || ""}`.trim(),
       url: `https://laftel.net/item/${anime.id}`,
       thumbnail: anime.img,
+      metadata: {
+        releaseYear,
+        genres: anime.genres,
+      },
     });
   }
 

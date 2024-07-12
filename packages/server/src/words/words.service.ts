@@ -8,6 +8,7 @@ import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
 import { FindWordDto } from './dto/find-word.dto';
 import { SearchLongWordDto } from './dto/search-long-word.dto';
+import { uniq } from 'lodash';
 
 @Injectable()
 export class WordsService {
@@ -162,7 +163,7 @@ export class WordsService {
         select: ['id', 'tags'],
         where: { simplifiedName: result.simplifiedName },
       });
-      result.tags = words.map((word) => word.tags).flat();
+      result.tags = uniq(words.map((word) => word.tags).flat());
       result.ids = words.map((word) => word.id);
     }
 

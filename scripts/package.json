@@ -23,7 +23,9 @@
     "steam": "bun run src/steam/index.ts",
     "cv": "bun run src/utils/convert-cli.ts",
     "pokemon": "bun run src/pokemon/index.ts",
-    "starrail": "bun run src/honeyhunter/index.ts"
+    "starrail": "bun run src/honeyhunter/index.ts",
+    "manga": "bun run src/manga/index.ts",
+    "light-novel": "bun run src/light-novel/index.ts"
   },
   "keywords": [],
   "author": "",

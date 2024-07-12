@@ -152,7 +152,7 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
                   }
                   onClick={() => {
                     void navigator.clipboard.writeText(
-                      `${window.location.origin}/words/${word.id}`,
+                      `${window.location.origin}/words/${word.sourceId}`,
                     )
                     toast({
                       status: "success",
