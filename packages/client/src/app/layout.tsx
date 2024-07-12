@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./globals.css"
 import React from "react"
 import Providers from "@/app/providers"
@@ -19,6 +19,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://dict.kimustory.net"),
   category: "dictionary",
   classification: "dictionary",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "키뮤사전",
+    images: {
+      url: "/thumbnail.png",
+      width: 627,
+      height: 228,
+    },
+  },
+}
+
+export const generateViewport = (): Viewport => {
+  return { themeColor: "#63B3ED" }
 }
 
 export default function RootLayout({

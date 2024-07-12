@@ -22,7 +22,7 @@ import Header from "@/components/organisms/Header"
 import ThemeTag from "@/components/atoms/ThemeTag"
 import PosTag from "@/components/atoms/PosTag"
 import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
-import { IoVolumeMedium } from "react-icons/io5"
+import { IoShareSocial, IoVolumeMedium } from "react-icons/io5"
 import { FaMapMarkedAlt, FaRegQuestionCircle } from "react-icons/fa"
 import { PiApproximateEqualsFill } from "react-icons/pi"
 import { LuFileJson2 } from "react-icons/lu"
@@ -109,7 +109,9 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
               gap={5}
               rowGap={2}
             >
-              <Heading fontSize={"3xl"}>{word.name}</Heading>
+              <Heading as={"h1"} fontSize={"3xl"}>
+                {word.name}
+              </Heading>
               {word.origin !== word.name && (
                 <Tooltip label={"단어의 유래"} openDelay={500}>
                   <Text
@@ -139,6 +141,26 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
                 </Text>
               )}
               <HStack gap={0}>
+                <IconButton
+                  aria-label={"copy word"}
+                  icon={<IoShareSocial />}
+                  variant={"ghost"}
+                  isRound
+                  size={"sm"}
+                  color={
+                    colorMode === "light" ? "blackAlpha.500" : "whiteAlpha.500"
+                  }
+                  onClick={() => {
+                    void navigator.clipboard.writeText(
+                      `${window.location.origin}/words/${word.id}`,
+                    )
+                    toast({
+                      status: "success",
+                      title: "URL이 복사되었습니다",
+                      duration: 1000,
+                    })
+                  }}
+                />
                 <IconButton
                   aria-label={"copy word"}
                   icon={<FaCopy />}
@@ -249,19 +271,23 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
           <Textarea h={"400px"} defaultValue={JSON.stringify(word, null, 2)} />
 
           {/* 동음이의어 및 다의어 */}
-          <HStack mt={"45px"} ml={"15px"} gap={3}>
-            <PiApproximateEqualsFill
-              size={18}
-              color={`var(--chakra-colors-${colorScheme}-400)`}
-            />
-            <Heading fontSize={"xl"}>동음이의어 · 다의어</Heading>
-          </HStack>
-          <Divider />
-          <VStack gap={0} mt={5} w={"100%"}>
-            {homonyms.map((h) => (
-              <WordItem key={h.id} word={h} keyword={""} />
-            ))}
-          </VStack>
+          {homonyms.length && (
+            <>
+              <HStack mt={"45px"} ml={"15px"} gap={3}>
+                <PiApproximateEqualsFill
+                  size={18}
+                  color={`var(--chakra-colors-${colorScheme}-400)`}
+                />
+                <Heading fontSize={"xl"}>동음이의어 · 다의어</Heading>
+              </HStack>
+              <Divider />
+              <VStack gap={0} mt={5} w={"100%"}>
+                {homonyms.map((h) => (
+                  <WordItem key={h.id} word={h} keyword={""} />
+                ))}
+              </VStack>
+            </>
+          )}
         </VStack>
       </Container>
     </VStack>
