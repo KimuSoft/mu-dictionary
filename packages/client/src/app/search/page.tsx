@@ -34,8 +34,9 @@ const Page: React.FC<Props> = async ({ searchParams }) => {
 
 export const generateMetadata = async ({ searchParams }: Props) => {
   return {
-    title: `'${searchParams.q}'의 검색 결과 : 키뮤사전`,
+    title: `'${searchParams.q}' 검색 결과 : 키뮤사전`,
     description: "우리만의 조금 특별한 한국어 사전, 키뮤사전",
+    classification: "search",
   }
 }
 
