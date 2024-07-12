@@ -69,7 +69,7 @@ const LongWordSearchTemplate: React.FC<{
               <SearchHeader
                 letter={letter}
                 onSearch={(letter: string) => {
-                  replace("/long-word?letter=" + encodeURIComponent(letter))
+                  replace("/long-words?letter=" + encodeURIComponent(letter))
                 }}
               />
             ),

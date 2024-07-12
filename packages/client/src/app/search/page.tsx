@@ -33,9 +33,16 @@ const Page: React.FC<Props> = async ({ searchParams }) => {
 }
 
 export const generateMetadata = async ({ searchParams }: Props) => {
+  const tagsFilterQuery = searchParams.tags?.split(",")
+  const tagFilterStr = tagsFilterQuery
+    ? tagsFilterQuery.join(", ") + " 주제 "
+    : ""
+
+  const queryStr = searchParams.q ? `'${searchParams.q}' ` : "전체 "
+
   return {
-    title: `'${searchParams.q}' 검색 결과 : 키뮤사전`,
-    description: "우리만의 조금 특별한 한국어 사전, 키뮤사전",
+    title: `${tagFilterStr}${queryStr}검색 결과`,
+    description: `${tagFilterStr}${queryStr} 키뮤사전 검색 결과입니다.`,
     classification: "search",
   }
 }
