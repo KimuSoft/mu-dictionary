@@ -257,7 +257,7 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
             <Heading fontSize={"xl"}>동음이의어 · 다의어</Heading>
           </HStack>
           <Divider />
-          <VStack gap={0} mt={5}>
+          <VStack gap={0} mt={5} w={"100%"}>
             {homonyms.map((h) => (
               <WordItem key={h.id} word={h} keyword={""} />
             ))}
