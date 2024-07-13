@@ -5,6 +5,7 @@ import { Anime, AnimeDetail } from "./types";
 import { uniqBy } from "lodash";
 import { loadCache, saveCache } from "../utils/cache";
 import axios from "axios";
+import { analyzeAndSaveUnknownWords } from "../utils/analyzeUnknownWords";
 
 // bun <Command>
 const isReset = process.argv.includes("--reset");
@@ -72,18 +73,22 @@ const run = async () => {
     }
   }
 
+  const failed: string[] = [];
+
   // 키뮤사전 형식으로 변환
   for (const anime of animes) {
     const nameData = wordConvert(
       anime.name
         .replace(/\([^)]+\)/g, "")
         .replace(/\s1기/, "")
+        .replace(/\s시즌\s?1/, "")
+        .replace(/\s?-\s?배리어프리/, "")
         .replace(/\s?-\s?판권\s부활/, "")
         .trim(),
     );
 
     if (!nameData) {
-      console.warn(`Failed to convert: ${anime.name}`);
+      failed.push(anime.name);
       continue;
     }
 
@@ -119,7 +124,12 @@ const run = async () => {
   result.items = uniqBy(result.items, "name");
 
   // 종료 단계
+  console.info("Exporting...");
   await exportMuDictJson(REFERENCE_ID, result);
+
+  console.info("Failed to convert words: ", failed.length);
+  await analyzeAndSaveUnknownWords(REFERENCE_ID, failed);
+
   console.info("Done.");
 };
 
