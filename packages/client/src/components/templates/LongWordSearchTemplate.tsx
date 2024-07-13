@@ -99,11 +99,11 @@ const SearchHeader: React.FC<{
       <HStack w={"100%"} gap={3}>
         <FaCrown size={"20px"} />
         {!letter ? (
-          <Text fontSize={"md"} fontWeight={"800"}>
+          <Text as={"h1"} fontSize={"md"} fontWeight={"800"}>
             한국어 긴 단어 TOP 100
           </Text>
         ) : (
-          <Text fontSize={"md"}>
+          <Text as={"h1"} fontSize={"md"}>
             {"'"}
             <b>{letter}</b>
             {"'"}로 시작하는 긴 단어 목록

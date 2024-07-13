@@ -12,7 +12,7 @@ import ThemeTag from "../atoms/ThemeTag"
 import { LongWordItem } from "@/api/actions/fetchLongWords"
 import NextLink from "next/link"
 
-const MotionLink = motion(NextLink)
+// const MotionLink = motion(NextLink)
 
 const WordLengthRankingItem: React.FC<
   StackProps & { ranking: number; word: LongWordItem }
@@ -27,9 +27,10 @@ const WordLengthRankingItem: React.FC<
 
   return (
     <VStack
-      as={MotionLink}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      // as={MotionLink}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      as={NextLink}
       w={"100%"}
       borderColor={`${colorScheme}.500`}
       userSelect={"none"}

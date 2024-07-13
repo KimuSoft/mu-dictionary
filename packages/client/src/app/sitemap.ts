@@ -15,7 +15,11 @@ const sitemap = (): MetadataRoute.Sitemap => {
       changeFrequency: "monthly",
     },
     {
-      url: "http://dict.kimustory.net/words",
+      url: "http://dict.kimustory.net/words/sitemap/index.xml",
+      changeFrequency: "weekly",
+    },
+    {
+      url: "http://dict.kimustory.net/long-words/sitemap.xml",
       changeFrequency: "weekly",
     },
   ]

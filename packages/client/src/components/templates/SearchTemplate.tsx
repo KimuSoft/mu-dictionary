@@ -120,14 +120,14 @@ const SearchHeader: React.FC<{ keyword: string; totalCount: number }> = ({
     <VStack w={"100%"}>
       <HStack w={"100%"}>
         {keyword ? (
-          <Text fontSize={"md"}>
+          <Text as={"h1"} fontSize={"md"}>
             {"' "}
             <b>{keyword}</b>
             {" ' "}
             검색 결과
           </Text>
         ) : (
-          <Text>전체 검색 결과</Text>
+          <Text as={"h1"}>전체 검색 결과</Text>
         )}
         <Spacer />
         <Text flexShrink={0} color={"gray.500"} fontSize={"sm"}>
