@@ -126,6 +126,9 @@ const MapSection: React.FC<{
   const { colorMode } = useColorMode()
   const { push } = useRouter()
 
+  if (!process.env.NEXT_PUBLIC_KAKAO_APP_KEY) {
+    console.warn("Kakao App Key is not provided.")
+  }
   useKakaoLoader({
     appkey: process.env.NEXT_PUBLIC_KAKAO_APP_KEY as string,
     libraries: ["services", "drawing"],
