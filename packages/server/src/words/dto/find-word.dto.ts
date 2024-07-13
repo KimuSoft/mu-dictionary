@@ -11,18 +11,32 @@ import {
 import { Transform } from 'class-transformer';
 import { PartOfSpeech } from 'mudict-api-types';
 
-export enum WordFields {
-  Id = 'id',
-  Name = 'name',
-  SimplifiedName = 'simplifiedName',
-  Origin = 'origin',
-  Pronunciation = 'pronunciation',
-  Definition = 'definition',
-  Pos = 'pos',
-  Tags = 'tags',
-  Thumbnail = 'thumbnail',
-  Url = 'url',
-  ReferenceId = 'referenceId',
+// export enum WordFields {
+//   Id = 'id',
+//   Name = 'name',
+//   SimplifiedName = 'simplifiedName',
+//   Origin = 'origin',
+//   Pronunciation = 'pronunciation',
+//   Definition = 'definition',
+//   Pos = 'pos',
+//   Tags = 'tags',
+//   Thumbnail = 'thumbnail',
+//   Url = 'url',
+//   ReferenceId = 'referenceId',
+// }
+
+export enum SearchMode {
+  // 정확한 검색
+  Exact = 'exact',
+
+  // 포함 검색
+  Include = 'include',
+
+  // Like식 검색
+  Like = 'like',
+
+  // 정규식 검색
+  Regex = 'regex',
 }
 
 export class FindWordDto {
@@ -46,13 +60,13 @@ export class FindWordDto {
   simplifiedName?: string;
 
   // 얻어올 필드
-  @ApiProperty({
-    description: '얻어올 필드',
-    required: false,
-  })
-  @IsEnum(WordFields, { each: true })
-  @IsOptional()
-  fields?: string[];
+  // @ApiProperty({
+  //   description: '얻어올 필드',
+  //   required: false,
+  // })
+  // @IsEnum(WordFields, { each: true })
+  // @IsOptional()
+  // fields?: string[];
 
   @ApiProperty({
     description: '검색할 태그 조건 (or)',
@@ -100,9 +114,22 @@ export class FindWordDto {
   offset: number = 0;
 
   @ApiProperty({
-    description: '정확한 이름 검색',
+    description: '검색 모드',
+    required: false,
+    example: SearchMode.Include,
+    default: SearchMode.Include,
+    enum: SearchMode,
+  })
+  @IsEnum(SearchMode)
+  @IsOptional()
+  @Transform(({ value }) => value.toString().toLowerCase())
+  mode: SearchMode = SearchMode.Include;
+
+  @ApiProperty({
+    description: '정확한 이름 검색 (mode를 대신 사용하세요)',
     required: false,
     default: false,
+    deprecated: true,
   })
   @IsOptional()
   @IsBoolean()

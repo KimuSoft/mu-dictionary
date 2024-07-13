@@ -38,7 +38,7 @@ import {
   MdTempleBuddhist,
 } from "react-icons/md"
 import { BiBuildings, BiSolidFactory } from "react-icons/bi"
-import { IoIosWifi, IoMdPlanet } from "react-icons/io"
+import { IoIosStar, IoIosWifi, IoMdPlanet } from "react-icons/io"
 import {
   FaEarthAsia,
   FaFaceFrownOpen,
@@ -180,6 +180,7 @@ const tagData: PartialTagData[] = [
   { id: "붕괴: 스타레일", icon: FaMoon, color: "purple" },
   { id: "작혼", icon: GiBamboo, color: "pink" },
   { id: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" },
+  { id: "일상어", icon: IoIosStar, color: "gray" },
 ]
 
 export default function getTagData(tag: string): TagData {

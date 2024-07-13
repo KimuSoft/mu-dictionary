@@ -86,7 +86,12 @@ const SearchTemplate: React.FC<{
           endReached={() => fetchNextPage()}
           initialItemCount={initialResult.length}
           itemContent={(_index, word) => (
-            <WordItem key={"word-" + word.id} word={word} keyword={keyword} />
+            <WordItem
+              key={"word-" + word.id}
+              word={word}
+              keyword={keyword}
+              isSummary
+            />
           )}
           components={{
             Header: () => (

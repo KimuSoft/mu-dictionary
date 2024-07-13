@@ -3,10 +3,10 @@ import { InjectMeiliSearch } from 'nestjs-meilisearch';
 import { Meilisearch } from 'meilisearch';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WordEntity } from './word.entity';
-import { Like, Repository } from 'typeorm';
+import { Like, Repository, SelectQueryBuilder } from 'typeorm';
 import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
-import { FindWordDto } from './dto/find-word.dto';
+import { FindWordDto, SearchMode } from './dto/find-word.dto';
 import { SearchLongWordDto } from './dto/search-long-word.dto';
 import { uniq } from 'lodash';
 
@@ -19,61 +19,54 @@ export class WordsService {
     private readonly wordRepository: Repository<WordEntity>,
   ) {}
 
+  addModeWhere(
+    mode: SearchMode,
+    query: SelectQueryBuilder<WordEntity>,
+    field: string,
+    keyword: string,
+  ) {
+    switch (mode) {
+      case SearchMode.Exact:
+        return query.andWhere(`"${field}" = :${field}`, { [field]: keyword });
+      case SearchMode.Include:
+        return query.andWhere(`"${field}" LIKE :${field}`, {
+          [field]: `%${keyword}%`,
+        });
+      case SearchMode.Like:
+        return query.andWhere(`"${field}" LIKE :${field}`, {
+          [field]: keyword,
+        });
+      case SearchMode.Regex:
+        return query.andWhere(`"${field}" ~ :${field}`, { [field]: keyword });
+    }
+  }
+
   async find(dto: FindWordDto): Promise<WordEntity[]> {
     let query = this.wordRepository.createQueryBuilder();
-    let filedPrefix = '';
-
-    // fields
-    if (dto.fields) {
-      if (!Array.isArray(dto.fields)) {
-        dto.fields = [dto.fields];
-      }
-      query = query
-        .select(dto.fields.map((f) => 'word.' + f))
-        .from(WordEntity, 'word');
-      filedPrefix = 'word.';
-    }
 
     // 이름 쿼리
     if (dto.name) {
-      if (dto.exact) {
-        query = query.andWhere(`${filedPrefix}name = :name`, {
-          name: dto.name,
-        });
-      } else {
-        query = query.andWhere(`${filedPrefix}name LIKE :name`, {
-          name: dto.name.includes('%') ? dto.name : `%${dto.name}%`,
-        });
-      }
+      query = this.addModeWhere(SearchMode.Exact, query, 'name', dto.name);
     }
 
     // 단순화된 이름 쿼리
     if (dto.simplifiedName) {
-      if (dto.exact) {
-        query = query.andWhere(
-          `"${filedPrefix}simplifiedName" = :simplifiedName`,
-          {
-            simplifiedName: dto.simplifiedName,
-          },
-        );
-      } else {
-        query = query.andWhere(
-          `"${filedPrefix}simplifiedName" LIKE :simplifiedName`,
-          {
-            simplifiedName: `%${dto.simplifiedName}%`,
-          },
-        );
-      }
+      query = this.addModeWhere(
+        SearchMode.Exact,
+        query,
+        'simplifiedName',
+        dto.simplifiedName,
+      );
     }
 
     // 태그 쿼리
     if (dto.tags) {
       if (!Array.isArray(dto.tags)) {
-        query = query.andWhere(`:tag = ANY("${filedPrefix}tags")`, {
+        query = query.andWhere(`:tag = ANY("tags")`, {
           tag: dto.tags,
         });
       } else {
-        query = query.andWhere(`"${filedPrefix}tags" && :tags`, {
+        query = query.andWhere(`tags" && :tags`, {
           tags: dto.tags,
         });
       }
@@ -82,9 +75,9 @@ export class WordsService {
     // 품사 쿼리
     if (dto.pos !== undefined) {
       if (!Array.isArray(dto.pos)) {
-        query = query.andWhere(`"${filedPrefix}pos" = :pos`, { pos: dto.pos });
+        query = query.andWhere(`pos" = :pos`, { pos: dto.pos });
       } else {
-        query = query.andWhere(`${filedPrefix}pos" = ANY(:pos)`, {
+        query = query.andWhere(`pos" = ANY(:pos)`, {
           pos: dto.pos,
         });
       }
@@ -92,9 +85,7 @@ export class WordsService {
 
     // 정렬 쿼리
     query = query.orderBy(
-      dto.sort === 'length'
-        ? `LENGTH("${filedPrefix}simplifiedName")`
-        : dto.sort,
+      dto.sort === 'length' ? `LENGTH("simplifiedName")` : dto.sort,
       dto.order,
     );
 
@@ -164,7 +155,7 @@ export class WordsService {
         where: { simplifiedName: result.simplifiedName },
       });
       result.tags = uniq(words.map((word) => word.tags).flat());
-      result.ids = words.map((word) => word.id);
+      result.ids = words.map((word) => word.sourceId);
     }
 
     return results;

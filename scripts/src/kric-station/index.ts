@@ -119,12 +119,21 @@ const run = async () => {
       ],
       simplifiedName:
         nameData.simplifiedName + (!nameData.name.endsWith("역") ? "역" : ""),
-      origin: originName.replace(/-\s/g, "")
+      origin: originName.replace(/[-\s]/g, "")
         ? originName?.replace(/\s/g, "") +
           (!nameData.name.endsWith("역") ? "驛" : "")
         : nameData.name,
       definition,
-      url: `https://www.google.co.kr/maps/place/${station.latitude},${station.longitude}`,
+      // url: `https://www.google.co.kr/maps/place/${station.latitude},${station.longitude}`,
+      metadata: {
+        stationCode: station.stationCode,
+        latitude: station.latitude,
+        longitude: station.longitude,
+        phoneNumber: station.phoneNumber,
+        operator: station.operatingAgency,
+        lineName: station.lineName,
+        lineCode: station.lineCode,
+      },
     };
 
     result.items.push(item);

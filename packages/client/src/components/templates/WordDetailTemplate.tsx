@@ -28,6 +28,12 @@ import { PiApproximateEqualsFill } from "react-icons/pi"
 import { LuFileJson2 } from "react-icons/lu"
 import WordItem from "@/components/organisms/WordItem"
 import { removeHTMLTags } from "@/utils/removeHTMLTags"
+import { useSpeech } from "@/hooks/useSpeech"
+import DetailSection from "@/components/molecules/DetailSection"
+import DefinitionSection from "@/components/organisms/DefinitionSection"
+import MetadataSection from "@/components/organisms/MetadataSection"
+import HomonymSection from "@/components/organisms/HomonymSection"
+import MapSection from "@/components/organisms/MapSection"
 
 const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
   word,
@@ -38,49 +44,7 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
 
   const toast = useToast()
 
-  const getSpeech = (text: string) => {
-    let voices: SpeechSynthesisVoice[] = []
-
-    text = text.replace(/[\^-]/g, "")
-
-    //디바이스에 내장된 voice를 가져온다.
-    const setVoiceList = () => {
-      voices = window.speechSynthesis.getVoices()
-    }
-
-    setVoiceList()
-
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      // voice list에 변경됐을때, voice를 다시 가져온다.
-      window.speechSynthesis.onvoiceschanged = setVoiceList
-    }
-
-    const speech = (txt: string) => {
-      const lang = "ko-KR"
-      const utterThis = new SpeechSynthesisUtterance(txt)
-
-      utterThis.lang = lang
-
-      /* 한국어 vocie 찾기
-         디바이스 별로 한국어는 ko-KR 또는 ko_KR로 voice가 정의되어 있다.
-      */
-      const kor_voice = voices.find(
-        (elem) => elem.lang === lang || elem.lang === lang.replace("-", "_"),
-      )
-
-      //힌국어 voice가 있다면 ? utterance에 목소리를 설정한다 : 리턴하여 목소리가 나오지 않도록 한다.
-      if (kor_voice) {
-        utterThis.voice = kor_voice
-      } else {
-        return
-      }
-
-      //utterance를 재생(speak)한다.
-      window.speechSynthesis.speak(utterThis)
-    }
-
-    speech(text)
-  }
+  const { speech } = useSpeech()
 
   const colorScheme = useMemo(
     () => getTagData(word.tags[0] || "").color,
@@ -188,7 +152,7 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
                   color={
                     colorMode === "light" ? "blackAlpha.500" : "whiteAlpha.500"
                   }
-                  onClick={() => getSpeech(word.pronunciation || word.name)}
+                  onClick={() => speech(word.pronunciation || word.name)}
                 />
                 {word.url ? (
                   <Tooltip label={word.url} hasArrow openDelay={500}>
@@ -245,49 +209,21 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
       </HStack>
 
       <Container maxW={"3xl"} px={5} py={7}>
-        <VStack w={"100%"} alignItems={"flex-start"} gap={2}>
-          {/* Definition */}
-          <HStack ml={"15px"} gap={3}>
-            <FaRegQuestionCircle
-              size={18}
-              color={`var(--chakra-colors-${colorScheme}-400)`}
-            />
-            <Heading fontSize={"xl"}>정의</Heading>
-          </HStack>
-          <Divider />
-          <Text fontSize={"md"} textIndent={"15px"}>
-            {removeHTMLTags(word.definition)}
-          </Text>
+        <VStack w={"100%"} alignItems={"flex-start"} gap={10}>
+          {/* 정의 */}
+          <DefinitionSection
+            definition={word.definition}
+            colorScheme={colorScheme}
+          />
 
-          {/* JSON */}
-          <HStack mt={"45px"} ml={"15px"} gap={3}>
-            <LuFileJson2
-              size={18}
-              color={`var(--chakra-colors-${colorScheme}-400)`}
-            />
-            <Heading fontSize={"xl"}>JSON 데이터</Heading>
-          </HStack>
-          <Divider />
-          <Textarea h={"400px"} defaultValue={JSON.stringify(word, null, 2)} />
+          {/* 위치 */}
+          <MapSection word={word} colorScheme={colorScheme} />
+
+          {/* 메타데이터 */}
+          <MetadataSection word={word} colorScheme={colorScheme} />
 
           {/* 동음이의어 및 다의어 */}
-          {homonyms.length && (
-            <>
-              <HStack mt={"45px"} ml={"15px"} gap={3}>
-                <PiApproximateEqualsFill
-                  size={18}
-                  color={`var(--chakra-colors-${colorScheme}-400)`}
-                />
-                <Heading fontSize={"xl"}>동음이의어 · 다의어</Heading>
-              </HStack>
-              <Divider />
-              <VStack gap={0} mt={5} w={"100%"}>
-                {homonyms.map((h) => (
-                  <WordItem key={h.id} word={h} keyword={""} />
-                ))}
-              </VStack>
-            </>
-          )}
+          <HomonymSection homonyms={homonyms} colorScheme={colorScheme} />
         </VStack>
       </Container>
     </VStack>

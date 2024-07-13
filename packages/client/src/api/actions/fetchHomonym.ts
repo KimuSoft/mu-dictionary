@@ -10,5 +10,5 @@ export const fetchHomonym = async (word: Word) => {
     },
   })
 
-  return res.data.filter((w) => w.id !== word.id)
+  return res.data.filter((w) => w.sourceId !== word.sourceId)
 }

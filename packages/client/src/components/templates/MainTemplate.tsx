@@ -44,13 +44,22 @@ const MainTemplate: React.FC<{ tags: TagStatItem[] }> = ({ tags }) => {
                 w={"100%"}
                 placeholder={"단어 무더기에서 원하는 거 찾기"}
               />
-              <HStack fontSize={"sm"} color={"gray.500"} mt={3}>
+              <HStack
+                fontSize={"sm"}
+                color={"gray.500"}
+                mt={3}
+                gap={isMobile ? 1 : 3}
+              >
                 <Link as={NextLink} href={"/long-words"}>
                   긴 단어 검색기
                 </Link>
                 <Text>&nbsp; · &nbsp;</Text>
                 <Link as={NextLink} href={"/quiz"}>
                   단어 퀴즈
+                </Link>
+                <Text>&nbsp; · &nbsp;</Text>
+                <Link as={NextLink} href={"https://danoo.kimustory.net"}>
+                  다누 끝말잇기 (베타)
                 </Link>
                 <Text>&nbsp; · &nbsp;</Text>
                 <Link as={NextLink} href={"/paring"}>
