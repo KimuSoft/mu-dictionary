@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsBoolean,
   IsEnum,
   IsInt,
   IsOptional,
@@ -124,17 +123,6 @@ export class FindWordDto {
   @IsOptional()
   @Transform(({ value }) => value.toString().toLowerCase())
   mode: SearchMode = SearchMode.Include;
-
-  @ApiProperty({
-    description: '정확한 이름 검색 (mode를 대신 사용하세요)',
-    required: false,
-    default: false,
-    deprecated: true,
-  })
-  @IsOptional()
-  @IsBoolean()
-  @Transform(({ value }) => value === 'true')
-  exact: boolean = false;
 
   @ApiProperty({
     description: '검색 결과 정렬 조건',

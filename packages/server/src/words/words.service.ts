@@ -46,13 +46,13 @@ export class WordsService {
 
     // 이름 쿼리
     if (dto.name) {
-      query = this.addModeWhere(SearchMode.Exact, query, 'name', dto.name);
+      query = this.addModeWhere(dto.mode, query, 'name', dto.name);
     }
 
     // 단순화된 이름 쿼리
     if (dto.simplifiedName) {
       query = this.addModeWhere(
-        SearchMode.Exact,
+        dto.mode,
         query,
         'simplifiedName',
         dto.simplifiedName,
