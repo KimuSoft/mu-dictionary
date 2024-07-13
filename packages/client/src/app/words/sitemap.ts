@@ -29,7 +29,7 @@ export async function generateSitemaps() {
     return data
   } catch (e) {
     console.warn("Failed to fetch initials")
-    return [index]
+    return []
   }
 }
 

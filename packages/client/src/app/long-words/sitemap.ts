@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next"
 import { fetchInitials } from "@/api/actions/fetchInitials"
 
+export const dynamic = "force-dynamic"
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const initialData = await fetchInitials()
 
