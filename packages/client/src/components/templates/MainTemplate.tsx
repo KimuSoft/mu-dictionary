@@ -59,11 +59,7 @@ const MainTemplate: React.FC<{ tags: TagStatItem[] }> = ({ tags }) => {
                 </Link>
                 <Text>&nbsp; · &nbsp;</Text>
                 <Link as={NextLink} href={"https://danoo.kimustory.net"}>
-                  다누 끝말잇기 (베타)
-                </Link>
-                <Text>&nbsp; · &nbsp;</Text>
-                <Link as={NextLink} href={"/paring"}>
-                  파링이 누르기
+                  다누 끝말잇기 (알파)
                 </Link>
               </HStack>
             </VStack>

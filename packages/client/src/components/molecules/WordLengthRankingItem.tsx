@@ -64,7 +64,7 @@ const WordLengthRankingItem: React.FC<
         {word.simplifiedName}
       </Heading>
       {word.tags.length ? (
-        <HStack mt={2}>
+        <HStack mt={2} w={"100%"} flexWrap={"wrap"}>
           {word.tags.map((tag) => (
             <ThemeTag tag={tag} key={tag} />
           ))}

@@ -4,19 +4,19 @@ const sitemap = (): MetadataRoute.Sitemap => {
   return [
     {
       url: "https://dict.kimustory.net",
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
     },
     {
       url: "http://dict.kimustory.net/long-words",
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
     },
     {
       url: "http://dict.kimustory.net/quiz",
-      changeFrequency: "daily",
+      changeFrequency: "monthly",
     },
     {
       url: "http://dict.kimustory.net/words",
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
     },
   ]
 }

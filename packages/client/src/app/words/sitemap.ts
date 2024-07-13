@@ -32,7 +32,7 @@ export default async function sitemap({
 
   return words.map((word) => ({
     url: `https://dict.kimustory.net/words/${word.sourceId}`,
-    changeFrequency: "daily",
+    changeFrequency: "weekly",
     lastModified: word.updatedAt,
   }))
 }
