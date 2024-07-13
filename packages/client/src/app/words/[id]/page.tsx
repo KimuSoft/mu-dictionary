@@ -15,6 +15,8 @@ interface Props {
   params: { id: string }
 }
 
+const KAKAO_APP_KEY = process.env.KAKAO_APP_KEY!
+
 const Page: React.FC<Props> = async ({ params }) => {
   const res = await fetchWordCache(params.id)
   const word = res.data
@@ -23,7 +25,13 @@ const Page: React.FC<Props> = async ({ params }) => {
 
   const homonyms = await fetchHomonym(word)
 
-  return <WordDetailTemplate word={word} homonyms={homonyms} />
+  return (
+    <WordDetailTemplate
+      word={word}
+      homonyms={homonyms}
+      kakaoMapAppKey={KAKAO_APP_KEY}
+    />
+  )
 }
 
 export const generateViewport = async ({

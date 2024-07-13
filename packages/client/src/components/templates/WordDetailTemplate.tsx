@@ -35,10 +35,11 @@ import MetadataSection from "@/components/organisms/MetadataSection"
 import HomonymSection from "@/components/organisms/HomonymSection"
 import MapSection from "@/components/organisms/MapSection"
 
-const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
-  word,
-  homonyms,
-}) => {
+const WordDetailTemplate: React.FC<{
+  word: Word
+  homonyms: Word[]
+  kakaoMapAppKey: string
+}> = ({ word, homonyms, kakaoMapAppKey }) => {
   const { colorMode } = useColorMode()
   const [isMobile] = useMediaQuery("(max-width: 768px)")
 
@@ -217,7 +218,11 @@ const WordDetailTemplate: React.FC<{ word: Word; homonyms: Word[] }> = ({
           />
 
           {/* 위치 */}
-          <MapSection word={word} colorScheme={colorScheme} />
+          <MapSection
+            word={word}
+            colorScheme={colorScheme}
+            kakaoMapAppKey={kakaoMapAppKey}
+          />
 
           {/* 메타데이터 */}
           <MetadataSection word={word} colorScheme={colorScheme} />

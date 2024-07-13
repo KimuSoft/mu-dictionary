@@ -122,7 +122,8 @@ const KakaoMap: React.FC<{
 const MapSection: React.FC<{
   word: Word
   colorScheme?: string
-}> = ({ word, colorScheme = "gray" }) => {
+  kakaoMapAppKey: string
+}> = ({ word, colorScheme = "gray", kakaoMapAppKey }) => {
   const { colorMode } = useColorMode()
   const { push } = useRouter()
 
@@ -130,7 +131,7 @@ const MapSection: React.FC<{
     console.warn("Kakao App Key is not provided.")
   }
   useKakaoLoader({
-    appkey: process.env.NEXT_PUBLIC_KAKAO_APP_KEY as string,
+    appkey: kakaoMapAppKey,
     libraries: ["services", "drawing"],
   })
 
