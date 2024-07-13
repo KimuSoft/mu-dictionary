@@ -46,4 +46,21 @@ export class StatisticsService {
 
     return tagStats;
   }
+
+  async getInitialStats(): Promise<{ initial: string; count: number }[]> {
+    const query = this.wordRepository
+      .createQueryBuilder('word')
+      .select('LEFT(word.name, 1)', 'initial')
+      .addSelect('COUNT(LEFT(word.name, 1))', 'count')
+      .groupBy('LEFT(word.name, 1)')
+      .orderBy('LEFT(word.name, 1)');
+
+    return query.getRawMany();
+  }
+
+  async getReferenceStats() {
+    return this.wordRepository.query(
+      'SELECT "referenceId", COUNT("referenceId") FROM word GROUP BY "referenceId"',
+    );
+  }
 }

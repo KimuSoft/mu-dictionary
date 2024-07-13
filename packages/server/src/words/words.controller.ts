@@ -23,12 +23,6 @@ export class WordsController {
     return this.wordsService.find(dto);
   }
 
-  @Get('stat')
-  @ApiOperation({ summary: '단어 출처 현황' })
-  async stat() {
-    return this.wordsService.stat();
-  }
-
   @Get('search')
   @ApiOperation({ summary: '단어 검색하기 (use Meilisearch)' })
   async search(@Query() searchDto: SearchWordDto) {
