@@ -8,37 +8,14 @@ import {
   Min,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { PartOfSpeech } from 'mudict-api-types';
+import {
+  FindMode,
+  FindWordsRequestQuery,
+  PartOfSpeech,
+  SortableWordField,
+} from 'mudict-api-types';
 
-// export enum WordFields {
-//   Id = 'id',
-//   Name = 'name',
-//   SimplifiedName = 'simplifiedName',
-//   Origin = 'origin',
-//   Pronunciation = 'pronunciation',
-//   Definition = 'definition',
-//   Pos = 'pos',
-//   Tags = 'tags',
-//   Thumbnail = 'thumbnail',
-//   Url = 'url',
-//   ReferenceId = 'referenceId',
-// }
-
-export enum SearchMode {
-  // 정확한 검색
-  Exact = 'exact',
-
-  // 포함 검색
-  Include = 'include',
-
-  // Like식 검색
-  Like = 'like',
-
-  // 정규식 검색
-  Regex = 'regex',
-}
-
-export class FindWordDto {
+export class FindWordDto implements FindWordsRequestQuery {
   @ApiProperty({
     description: '단어 이름',
     example: '사과',
@@ -58,15 +35,6 @@ export class FindWordDto {
   @Transform(({ value }) => value?.trim())
   simplifiedName?: string;
 
-  // 얻어올 필드
-  // @ApiProperty({
-  //   description: '얻어올 필드',
-  //   required: false,
-  // })
-  // @IsEnum(WordFields, { each: true })
-  // @IsOptional()
-  // fields?: string[];
-
   @ApiProperty({
     description: '검색할 태그 조건 (or)',
     required: false,
@@ -74,7 +42,7 @@ export class FindWordDto {
   })
   @IsString({ each: true })
   @IsOptional()
-  tags?: string[] | string;
+  tags?: string | string[];
 
   @ApiProperty({
     description: '검색할 품사 조건 (or)',
@@ -84,7 +52,7 @@ export class FindWordDto {
   @IsEnum(PartOfSpeech, { each: true })
   @IsOptional()
   @Transform(({ value }) => parseInt(value))
-  pos?: PartOfSpeech[] | PartOfSpeech;
+  pos?: PartOfSpeech | PartOfSpeech[];
 
   @ApiProperty({
     description: '개수',
@@ -115,14 +83,14 @@ export class FindWordDto {
   @ApiProperty({
     description: '검색 모드',
     required: false,
-    example: SearchMode.Include,
-    default: SearchMode.Include,
-    enum: SearchMode,
+    example: FindMode.Include,
+    default: FindMode.Include,
+    enum: FindMode,
   })
-  @IsEnum(SearchMode)
+  @IsEnum(FindMode)
   @IsOptional()
   @Transform(({ value }) => value.toString().toLowerCase())
-  mode: SearchMode = SearchMode.Include;
+  mode: FindMode = FindMode.Include;
 
   @ApiProperty({
     description: '검색 결과 정렬 조건',
@@ -132,7 +100,7 @@ export class FindWordDto {
   })
   @IsEnum(['id', 'sourceId', 'name', 'length'])
   @IsOptional()
-  sort: string = 'id';
+  sort: SortableWordField = SortableWordField.Id;
 
   @ApiProperty({
     description: '검색 결과 정렬 순서',

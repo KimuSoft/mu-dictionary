@@ -14,6 +14,8 @@ export interface Word {
   url?: string
   referenceId: string
   metadata?: Metadata
+  createdAt: Date
+  updatedAt: Date
 }
 
 /**

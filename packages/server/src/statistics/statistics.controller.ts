@@ -19,9 +19,9 @@ export class StatisticsController {
     return this.statisticsService.getInitialStats();
   }
 
-  @Get('stat')
+  @Get('references')
   @ApiOperation({ summary: '단어 출처 현황' })
-  async stat() {
+  async references() {
     return this.statisticsService.getReferenceStats();
   }
 }

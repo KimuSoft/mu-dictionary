@@ -6,9 +6,10 @@ import { WordEntity } from './word.entity';
 import { Like, Repository, SelectQueryBuilder } from 'typeorm';
 import { SearchWordDto } from './dto/search-word.dto';
 import { AutocompleteWordDto } from './dto/autocomplete-word.dto';
-import { FindWordDto, SearchMode } from './dto/find-word.dto';
+import { FindWordDto } from './dto/find-word.dto';
 import { SearchLongWordDto } from './dto/search-long-word.dto';
 import { uniq } from 'lodash';
+import { FindMode } from 'mudict-api-types';
 
 @Injectable()
 export class WordsService {
@@ -20,23 +21,23 @@ export class WordsService {
   ) {}
 
   addModeWhere(
-    mode: SearchMode,
+    mode: FindMode,
     query: SelectQueryBuilder<WordEntity>,
     field: string,
     keyword: string,
   ) {
     switch (mode) {
-      case SearchMode.Exact:
+      case FindMode.Exact:
         return query.andWhere(`"${field}" = :${field}`, { [field]: keyword });
-      case SearchMode.Include:
+      case FindMode.Include:
         return query.andWhere(`"${field}" LIKE :${field}`, {
           [field]: `%${keyword}%`,
         });
-      case SearchMode.Like:
+      case FindMode.Like:
         return query.andWhere(`"${field}" LIKE :${field}`, {
           [field]: keyword,
         });
-      case SearchMode.Regex:
+      case FindMode.Regex:
         return query.andWhere(`"${field}" ~ :${field}`, { [field]: keyword });
     }
   }
