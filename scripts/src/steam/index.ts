@@ -8,14 +8,16 @@ import {
   SteamGameListResponse,
 } from "./types";
 import axios from "axios";
-import analyzeUnknownWords, {
-  analyzeAndSaveUnknownWords,
-} from "../utils/analyzeUnknownWords";
+import { analyzeAndSaveUnknownWords } from "../utils/analyzeUnknownWords";
 import removeBraket from "../utils/removeBraket";
+import { Logger } from "tslog";
+import * as path from "node:path";
 
 // bun <Command> <Path>
-const EXISTING_PATH = "./src/steam/data/v2.json";
+const DATA_PATH = path.join(__dirname, "data/v2.json");
 const REFERENCE_ID = "steam";
+
+const logger = new Logger({ name: REFERENCE_ID.toUpperCase() });
 
 const noCache = process.argv[2] === "--no-cache";
 const skipDownload = process.argv[2] === "--skip-download";
@@ -29,16 +31,32 @@ const result: MuDictDump = {
 };
 
 const run = async () => {
-  console.info("Loding JSON file...");
+  logger.info("Loding JSON file...");
   const refData = JSON.parse(
-    await readFile(EXISTING_PATH, "utf8"),
+    await readFile(DATA_PATH, "utf8"),
   ) as SteamGameListResponse;
-  console.info("JSON file loaded.");
+  logger.info("JSON file loaded. length: " + refData.applist.apps.length);
+
+  // refData.applist.apps 를 가나다 순으로 정렬 (영어가 더 뒤로)
+  logger.info("Sorting...");
+  refData.applist.apps.sort((a, b) => {
+    // 한글이 있는지 확인
+    const aHasKorean = /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(a.name);
+    const bHasKorean = /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(b.name);
+
+    // 둘 중 하나에 한글이 있으면
+    if (aHasKorean && !bHasKorean) return -1;
+    if (!aHasKorean && bHasKorean) return 1;
+
+    if (a.name.trim() < b.name.trim()) return -1;
+    if (a.name.trim() > b.name.trim()) return 1;
+    return 0;
+  });
 
   const gameCache: SteamGameCache = {};
 
   if (!noCache) {
-    console.info("Using cache...");
+    logger.info("Using cache...");
     const cache = JSON.parse(
       await readFile("./src/steam/data/cache.json", "utf8"),
     ) as SteamGameCache;
@@ -56,20 +74,20 @@ const run = async () => {
   let idx = 0;
 
   if (!skipDownload) {
-    console.info("Download Detailed Data...");
+    logger.info("Download Detailed Data...");
     for (const item of refData.applist.apps) {
       idx++;
       if (!item.name) continue;
 
       // 캐시에 이미 정보가 있으면 패스
       if (gameCache[item.appid]) {
-        // console.info("Already cached:", item.appid, item.name);
+        // logger.info("Already cached:", item.appid, item.name);
         continue;
       }
 
       // 100회마다 퍼센테이지 알려주며 로깅하고 캐시 저장
       if (idx % 100 === 0) {
-        console.info(
+        logger.info(
           `${idx} / ${refData.applist.apps.length} (${((idx / refData.applist.apps.length) * 100).toFixed(2)}%)`,
         );
       }
@@ -86,7 +104,7 @@ const run = async () => {
       );
 
       if (!res.data?.[item.appid]?.success) {
-        console.error("Failed to get game detail:", item.appid);
+        logger.warn("Failed to get game detail:", item.appid);
         gameCache[item.appid] = {
           appid: item.appid,
           detail: false,
@@ -106,22 +124,22 @@ const run = async () => {
         originalName: item.name,
       };
 
-      console.info(`Downloaded: ${item.appid} - ${item.name} (${data.name})`);
+      logger.info(`Downloaded: ${item.appid} - ${item.name} (${data.name})`);
 
       // 500ms 대기
       await new Promise((resolve) => setTimeout(resolve, 1200));
     }
-    console.info("Download finished.");
+    logger.info("Download finished.");
   }
 
   const failedName: string[] = [];
 
-  console.info("Converting...");
+  logger.info("Converting...");
   for (const id in gameCache) {
     const item = gameCache[id];
     const nameData = wordConvert(removeBraket(item.name));
     if (!nameData) {
-      // console.warn("Failed to convert:", item.name);
+      // logger.warn("Failed to convert:", item.name);
       failedName.push(item.name);
       continue;
     }
@@ -150,6 +168,14 @@ const run = async () => {
       if (item.supported_languages?.includes("한국어")) {
         tags.push("게임/스팀 게임/한국어 지원");
       }
+
+      if (item.type === "demo") {
+        tags.push("게임/스팀 게임/데모");
+      }
+
+      if (item.type === "dlc") {
+        tags.push("게임/스팀 게임/확장팩");
+      }
     }
 
     result.items.push({
@@ -162,16 +188,16 @@ const run = async () => {
     });
   }
 
-  console.log("Converting finished.");
+  logger.info("Converting finished.");
 
   // 데이터가 없는 것도 추가
-  console.info("Adding missing data...");
+  logger.info("Adding missing data...");
   for (const item of refData.applist.apps) {
     if (!item.name) continue;
     if (!gameCache[item.appid]) {
       const nameData = wordConvert(removeBraket(item.name));
       if (!nameData) {
-        // console.warn("Failed to convert:", item.name);
+        // logger.warn("Failed to convert:", item.name);
         failedName.push(item.name);
         continue;
       }
@@ -184,15 +210,15 @@ const run = async () => {
       });
     }
   }
-  console.info("Missing data added.");
+  logger.info("Missing data added.");
 
-  console.info("Saving...");
+  logger.info("Saving...");
   await exportMuDictJson(REFERENCE_ID, result);
 
-  console.log("saving failed names...");
+  logger.info("saving failed names...");
   await analyzeAndSaveUnknownWords(REFERENCE_ID, failedName);
 
-  console.info("Done.");
+  logger.info("Done.");
 };
 
-run().then();
+void run();

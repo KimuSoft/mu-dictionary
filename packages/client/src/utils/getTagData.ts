@@ -179,7 +179,7 @@ const tagData: PartialTagData[] = [
   { id: "원신", icon: PiStarFourFill, color: "purple" },
   { id: "붕괴: 스타레일", icon: FaMoon, color: "purple" },
   { id: "작혼", icon: GiBamboo, color: "pink" },
-  { id: "프로젝트 문", icon: FaStarAndCrescent, color: "pink" },
+  { id: "로보토미 코퍼레이션", icon: FaStarAndCrescent, color: "pink" },
   { id: "일상어", name: "", icon: IoIosStar, color: "gray" },
 ]
 

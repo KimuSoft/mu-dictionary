@@ -73,12 +73,14 @@ export class WordsService {
       }
     }
 
+    console.log(dto);
+
     // 품사 쿼리
-    if (dto.pos !== undefined) {
+    if (dto.pos) {
       if (!Array.isArray(dto.pos)) {
-        query = query.andWhere(`pos" = :pos`, { pos: dto.pos });
+        query = query.andWhere(`"pos" = :pos`, { pos: dto.pos });
       } else {
-        query = query.andWhere(`pos" = ANY(:pos)`, {
+        query = query.andWhere(`"pos" = ANY(:pos)`, {
           pos: dto.pos,
         });
       }

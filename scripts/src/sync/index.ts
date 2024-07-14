@@ -1,10 +1,12 @@
-// knex로 pg 데이터베이스 연결
 import { readdir, readFile } from "fs/promises";
 import Knex from "knex";
 import "dotenv";
 import { MuDictDump, MudictDumpItem } from "../types";
+import { Logger } from "tslog";
 
 const whitelist = process.argv.slice(2);
+
+const logger = new Logger({ name: "MUDICT_SYNC" });
 
 const knex = Knex({
   client: "pg",
@@ -41,10 +43,10 @@ const run = async () => {
   for (const dict of data) {
     if (!dict) continue;
 
-    console.info(`Start to sync ${dict.default.referenceId}...`);
+    logger.info(`Start to sync ${dict.default.referenceId}...`);
 
     // word 테이블에서 기존 동일 referenceId 데이터 삭제
-    console.info(`Deleting ${dict.default.referenceId}...`);
+    logger.info(`Deleting ${dict.default.referenceId}...`);
     await knex("word").where("referenceId", dict.default.referenceId).delete();
 
     // word 테이블에 데이터 삽입 전 default 값 적용
@@ -54,7 +56,7 @@ const run = async () => {
       ...item,
     }));
 
-    console.info(
+    logger.info(
       `Inserting ${dict.default.referenceId}... (SIZE: ${items.length})`,
     );
 
@@ -62,7 +64,8 @@ const run = async () => {
     await knex.batchInsert("word", items, 1000);
   }
 
-  console.info("Done.");
+  logger.info("Done.");
+  process.exit(0);
 };
 
-run().then();
+void run();

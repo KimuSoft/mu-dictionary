@@ -4,6 +4,8 @@ data/*.json
 cache/*.json
 foreign_replace_backup.json
 
+src/*/data/*
+
 # Logs
 
 logs

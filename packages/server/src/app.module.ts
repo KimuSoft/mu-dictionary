@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MeilisearchModule } from './meilisearch/meilisearch.module';
 import { QuizModule } from './quiz/quiz.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import 'dotenv/config';
 
 @Module({
   imports: [

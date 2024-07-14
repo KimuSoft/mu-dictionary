@@ -6,11 +6,14 @@ import { uniqBy } from "lodash";
 import { loadCache, saveCache } from "../utils/cache";
 import axios from "axios";
 import { analyzeAndSaveUnknownWords } from "../utils/analyzeUnknownWords";
+import { Logger } from "tslog";
 
 // bun <Command>
 const isReset = process.argv.includes("--reset");
 const skipDetail = process.argv.includes("--skip-detail");
 const REFERENCE_ID = "laftel";
+
+const logger = new Logger({ name: REFERENCE_ID.toUpperCase() });
 
 const REQUEST_INTERVAL = 100;
 
@@ -26,7 +29,7 @@ const run = async () => {
   let animes: (Anime & { detail?: AnimeDetail })[] = [];
 
   if (!isReset) {
-    console.info("Loading cache...");
+    logger.info("Loading cache...");
     animes = (await loadCache(REFERENCE_ID)) || [];
   }
 
@@ -46,7 +49,7 @@ const run = async () => {
       "https://api.laftel.net/api/search/v1/discover/?sort=name&offset=0&size=100";
 
     while (next) {
-      console.log(`Fetching: ${next}`);
+      logger.info(`Fetching: ${next}`);
       next = await fetchNext(next);
       await new Promise((resolve) => setTimeout(resolve, REQUEST_INTERVAL));
     }
@@ -61,7 +64,7 @@ const run = async () => {
     for (const anime of animes) {
       if (anime.detail) continue;
 
-      console.info(`Fetching detail: ${anime.id}`);
+      logger.info(`Fetching detail: ${anime.id}`);
       const res = await axios.get<AnimeDetail>(
         `https://api.laftel.net/api/items/v2/${anime.id}`,
       );
@@ -107,12 +110,20 @@ const run = async () => {
       ? `${anime.detail.production}에서 제작한 `
       : "";
 
+    const tags = ["애니메이션"];
+
+    // 애니메이션/2010년대 처럼 년대별로 태그 추가
+    if (releaseYear) {
+      tags.push(`애니메이션/${Math.floor(releaseYear / 10) * 10}년대`);
+    }
+
     result.items.push({
       ...nameData,
       sourceId: REFERENCE_ID + "_" + anime.id,
       definition:
         `${releaseStr}${productionStr}${anime.genres.join(", ")} ${anime.medium} 애니메이션. ${ratingStr} ${anime.detail?.content || ""}`.trim(),
       url: `https://laftel.net/item/${anime.id}`,
+      tags,
       thumbnail: anime.img,
       metadata: {
         releaseYear,
@@ -124,13 +135,13 @@ const run = async () => {
   result.items = uniqBy(result.items, "name");
 
   // 종료 단계
-  console.info("Exporting...");
+  logger.info("Exporting...");
   await exportMuDictJson(REFERENCE_ID, result);
 
-  console.info("Failed to convert words: ", failed.length);
+  logger.info("Failed to convert words: ", failed.length);
   await analyzeAndSaveUnknownWords(REFERENCE_ID, failed);
 
-  console.info("Done.");
+  logger.info("Done.");
 };
 
-run().then();
+void run();

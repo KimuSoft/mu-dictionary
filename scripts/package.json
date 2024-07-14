@@ -24,6 +24,8 @@
     "cv": "bun run src/utils/convert-cli.ts",
     "pokemon": "bun run src/pokemon/index.ts",
     "starrail": "bun run src/honeyhunter/index.ts",
+    "krdict": "bun run src/krdict/index.ts",
+    "isbn": "bun run src/isbn/index.ts",
     "manga": "bun run src/manga/index.ts",
     "light-novel": "bun run src/light-novel/index.ts"
   },
@@ -41,11 +43,12 @@
     "hypua": "^1.0.3",
     "knex": "^3.1.0",
     "lodash": "^4.17.21",
+    "mudict-api-types": "file:../packages/mudict-api-types",
     "pg": "^8.12.0",
     "read-excel-file": "^5.8.1",
+    "tslog": "^4.9.3",
     "xlsx": "^0.18.5",
-    "yaml": "^2.4.5",
-    "mudict-api-types": "file:../packages/mudict-api-types"
+    "yaml": "^2.4.5"
   },
   "devDependencies": {
     "@types/bun": "^1.1.4"

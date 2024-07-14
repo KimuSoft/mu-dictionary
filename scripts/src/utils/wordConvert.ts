@@ -2,8 +2,8 @@ import { ForeignReplaceData } from "./foreignFormat";
 import { readFileSync } from "fs";
 
 export const simplifyName = (word: string) => {
-  // 한국어와 숫자만을 허용
-  return word.replace(/[^ㅏ-ㅣㄱ-ㅎ가-힣0-9]/g, "");
+  // 단순화명: 한국어(글자 및 자모, 옛한글), 숫자 만을 허용
+  return word.replace(/[^ㅏ-ㅣㄱ-ㅎ가-힣0-9\u1100-\u115E\u1161-\u11A7]/g, "");
 };
 
 console.log("foreign_replace.json 파일을 읽어옵니다.");
