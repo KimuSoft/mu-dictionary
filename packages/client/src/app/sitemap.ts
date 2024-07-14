@@ -7,19 +7,19 @@ const sitemap = (): MetadataRoute.Sitemap => {
       changeFrequency: "weekly",
     },
     {
-      url: "http://dict.kimustory.net/long-words",
+      url: "https://dict.kimustory.net/long-words",
       changeFrequency: "weekly",
     },
     {
-      url: "http://dict.kimustory.net/quiz",
+      url: "https://dict.kimustory.net/quiz",
       changeFrequency: "monthly",
     },
     {
-      url: "http://dict.kimustory.net/words/sitemap/index.xml",
+      url: "https://dict.kimustory.net/words/sitemap/index.xml",
       changeFrequency: "weekly",
     },
     {
-      url: "http://dict.kimustory.net/long-words/sitemap.xml",
+      url: "https://dict.kimustory.net/long-words/sitemap.xml",
       changeFrequency: "weekly",
     },
   ]
