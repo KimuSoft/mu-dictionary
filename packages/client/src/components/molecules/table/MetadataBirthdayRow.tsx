@@ -24,17 +24,17 @@ const MetadataBirthdayRow: React.FC<{
   }, [metadata])
 
   return (
-    metadata.birthDate ||
-    metadata.birthMonth ||
-    metadata.birthYear ||
-    (metadata.birthDay && (
+    (metadata.birthDate ||
+      metadata.birthMonth ||
+      metadata.birthYear ||
+      metadata.birthDay) && (
       <Tr>
         <MetadataKeyTableData colorScheme={colorScheme} metadataKey={"생일"} />
         <Td w={"100%"}>
           <Text>{birthDayText}</Text>
         </Td>
       </Tr>
-    ))
+    )
   )
 }
 
