@@ -23,8 +23,7 @@ import {
 import { IoVolumeMedium } from "react-icons/io5"
 import PosTag from "../atoms/PosTag"
 import ThemeTag from "../atoms/ThemeTag"
-import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
-import { FaMapMarkedAlt } from "react-icons/fa"
+import { FaCopy, FaLink } from "react-icons/fa6"
 import { Word } from "mudict-api-types"
 import getTagData from "../../utils/getTagData"
 import NextLink from "next/link"
@@ -147,27 +146,26 @@ const WordItem: React.FC<{
               color={"gray.500"}
               onClick={() => speech(word.pronunciation || word.name)}
             />
-            {word.url ? (
-              <Tooltip label={word.url} hasArrow openDelay={500}>
-                <IconButton
-                  aria-label={"link"}
-                  icon={
-                    /youtube/.test(word.url) ? (
-                      <FaYoutube />
-                    ) : /map/.test(word.url) ? (
-                      <FaMapMarkedAlt />
-                    ) : (
-                      <FaLink />
-                    )
-                  }
-                  variant={"ghost"}
-                  isRound
-                  size={"sm"}
-                  color={"gray.500"}
-                  onClick={() => (window.location.href = word.url!)}
-                />
-              </Tooltip>
-            ) : null}
+            <IconButton
+              aria-label={"copy word"}
+              icon={<FaLink />}
+              variant={"ghost"}
+              isRound
+              size={"sm"}
+              color={"gray.500"}
+              onClick={() => {
+                void navigator.clipboard.writeText(
+                  `${window.location.origin}/words/${word.sourceId}`,
+                )
+                toast({
+                  status: "success",
+                  title: "문서 URL이 복사되었습니다",
+                  description:
+                    "SNS에 붙여넣기 시 임베드를 통해 단어 정보를 손쉽게 공유하실 수 있습니다.",
+                  duration: 1000,
+                })
+              }}
+            />
           </HStack>
         </HStack>
         <Box w={"100%"}>

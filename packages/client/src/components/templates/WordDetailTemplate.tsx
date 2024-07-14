@@ -19,15 +19,15 @@ import getTagData from "@/utils/getTagData"
 import Header from "@/components/organisms/Header"
 import ThemeTag from "@/components/atoms/ThemeTag"
 import PosTag from "@/components/atoms/PosTag"
-import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
-import { IoShareSocial, IoVolumeMedium } from "react-icons/io5"
-import { FaMapMarkedAlt } from "react-icons/fa"
+import { FaCopy, FaLink } from "react-icons/fa6"
+import { IoVolumeMedium } from "react-icons/io5"
 import { useSpeech } from "@/hooks/useSpeech"
 import DefinitionSection from "@/components/organisms/sections/DefinitionSection"
 import HomonymSection from "@/components/organisms/sections/HomonymSection"
 import MapSection from "@/components/organisms/sections/MapSection"
 import InfoTable from "@/components/organisms/InfoTable"
 import { MdUpdate } from "react-icons/md"
+import ReferenceLink from "@/components/organisms/ReferenceLink"
 
 const WordDetailTemplate: React.FC<{
   word: Word
@@ -115,7 +115,7 @@ const WordDetailTemplate: React.FC<{
               <HStack gap={0}>
                 <IconButton
                   aria-label={"copy word"}
-                  icon={<IoShareSocial />}
+                  icon={<FaLink />}
                   variant={"ghost"}
                   isRound
                   size={"sm"}
@@ -128,7 +128,9 @@ const WordDetailTemplate: React.FC<{
                     )
                     toast({
                       status: "success",
-                      title: "URL이 복사되었습니다",
+                      title: "문서 URL이 복사되었습니다",
+                      description:
+                        "SNS에 붙여넣기 시 임베드를 통해 단어 정보를 손쉽게 공유하실 수 있습니다.",
                       duration: 1000,
                     })
                   }}
@@ -162,31 +164,6 @@ const WordDetailTemplate: React.FC<{
                   }
                   onClick={() => speech(word.pronunciation || word.name)}
                 />
-                {word.url ? (
-                  <Tooltip label={word.url} hasArrow openDelay={500}>
-                    <IconButton
-                      aria-label={"link"}
-                      icon={
-                        /youtube/.test(word.url) ? (
-                          <FaYoutube />
-                        ) : /map/.test(word.url) ? (
-                          <FaMapMarkedAlt />
-                        ) : (
-                          <FaLink />
-                        )
-                      }
-                      variant={"ghost"}
-                      isRound
-                      size={"sm"}
-                      color={
-                        colorMode === "light"
-                          ? "blackAlpha.500"
-                          : "whiteAlpha.500"
-                      }
-                      onClick={() => (window.location.href = word.url!)}
-                    />
-                  </Tooltip>
-                ) : null}
               </HStack>
             </HStack>
             <HStack gap={2} flexWrap={"wrap"}>
@@ -223,8 +200,11 @@ const WordDetailTemplate: React.FC<{
         alignItems={"flex-start"}
         gap={10}
       >
+        <ReferenceLink word={word} colorScheme={colorScheme} />
+
         <HStack
           gap={7}
+          w={"100%"}
           alignItems={"flex-start"}
           flexDir={isMobile ? "column-reverse" : "row"}
         >

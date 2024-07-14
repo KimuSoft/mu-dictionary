@@ -1,8 +1,7 @@
 import React, { useMemo } from "react"
 import MetadataKeyTableData from "@/components/atoms/metadata-table/MetadataKeyTableData"
-import { HStack, Td, Tr, Text } from "@chakra-ui/react"
+import { Td, Text, Tr } from "@chakra-ui/react"
 import { Metadata } from "mudict-api-types"
-import { FaCalendarAlt } from "react-icons/fa"
 
 const MetadataBirthdayRow: React.FC<{
   metadata: Metadata
