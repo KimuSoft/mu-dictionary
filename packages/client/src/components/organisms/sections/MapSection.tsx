@@ -125,9 +125,6 @@ const MapSection: React.FC<{
 }> = ({ word, colorScheme = "gray", kakaoMapAppKey }) => {
   const { colorMode } = useColorMode()
 
-  if (!process.env.NEXT_PUBLIC_KAKAO_APP_KEY) {
-    console.warn("Kakao App Key is not provided.")
-  }
   useKakaoLoader({
     appkey: kakaoMapAppKey,
     libraries: ["services", "drawing"],
