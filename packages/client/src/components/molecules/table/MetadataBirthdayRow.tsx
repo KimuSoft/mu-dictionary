@@ -7,14 +7,6 @@ const MetadataBirthdayRow: React.FC<{
   metadata: Metadata
   colorScheme: string
 }> = ({ colorScheme, metadata }) => {
-  if (
-    !metadata.birthDate &&
-    !metadata.birthMonth &&
-    !metadata.birthYear &&
-    !metadata.birthDay
-  )
-    return null
-
   const birthDayText = useMemo(() => {
     const texts: string[] = []
 
@@ -32,12 +24,17 @@ const MetadataBirthdayRow: React.FC<{
   }, [metadata])
 
   return (
-    <Tr>
-      <MetadataKeyTableData colorScheme={colorScheme} metadataKey={"생일"} />
-      <Td w={"100%"}>
-        <Text>{birthDayText}</Text>
-      </Td>
-    </Tr>
+    metadata.birthDate ||
+    metadata.birthMonth ||
+    metadata.birthYear ||
+    (metadata.birthDay && (
+      <Tr>
+        <MetadataKeyTableData colorScheme={colorScheme} metadataKey={"생일"} />
+        <Td w={"100%"}>
+          <Text>{birthDayText}</Text>
+        </Td>
+      </Tr>
+    ))
   )
 }
 
