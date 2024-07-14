@@ -13,6 +13,7 @@ import { PersonMetadata } from "./person-metadata"
 import { CharacterMetadata } from "./character-metadata"
 import { StarrailMetadata } from "./starrail-metadata"
 import { BusStopMetadata } from "./bus-stop-metadata"
+import { BookMetadata } from "./book-metadata"
 
 export * from "./place-metadata"
 export * from "./food-metadata"
@@ -29,6 +30,7 @@ export * from "./person-metadata"
 export * from "./character-metadata"
 export * from "./starrail-metadata"
 export * from "./bus-stop-metadata"
+export * from "./book-metadata"
 
 export type Metadata = Partial<BusStopMetadata> &
   Partial<CharacterMetadata> &
@@ -44,4 +46,5 @@ export type Metadata = Partial<BusStopMetadata> &
   Partial<PersonMetadata> &
   Partial<PlaceMetadata> &
   Partial<StarrailMetadata> &
-  Partial<StationMetadata>
+  Partial<StationMetadata> &
+  Partial<BookMetadata>
