@@ -26,7 +26,7 @@ const ThemeTag = forwardRef<TagProps & { tag: string }, "div">(
         {...props}
       >
         {tagData.icon && <TagLeftIcon as={tagData.icon} />}
-        <TagLabel>{tagData.name}</TagLabel>
+        {tagData.name && <TagLabel>{tagData.name}</TagLabel>}
       </Tag>
     )
   },

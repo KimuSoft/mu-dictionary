@@ -1,8 +1,8 @@
 import DetailSection from "@/components/molecules/DetailSection"
-import { FaRegQuestionCircle } from "react-icons/fa"
 import { Text } from "@chakra-ui/react"
 import { removeHTMLTags } from "@/utils/removeHTMLTags"
 import React from "react"
+import { ImParagraphLeft } from "react-icons/im"
 
 const DefinitionSection: React.FC<{
   definition: string
@@ -13,7 +13,7 @@ const DefinitionSection: React.FC<{
   return (
     <DetailSection
       title={"정의"}
-      icon={<FaRegQuestionCircle />}
+      icon={<ImParagraphLeft />}
       colorScheme={colorScheme}
     >
       <Text fontSize={"md"} textIndent={"15px"}>

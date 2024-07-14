@@ -34,7 +34,7 @@ const SearchInput: React.FC<InputProps> = (props) => {
   const { colorMode } = useColorMode()
 
   const [searchQuery, setSearchQuery] = React.useState("")
-  const [searchQueryDebounced] = useDebounce(searchQuery, 50)
+  const [searchQueryDebounced] = useDebounce(searchQuery, 150)
 
   const { data: autocompleteItems, isLoading } = useQuery({
     queryKey: ["autocomplete", { query: searchQueryDebounced }],

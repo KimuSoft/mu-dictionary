@@ -3,13 +3,11 @@
 import React, { useMemo } from "react"
 import {
   Container,
-  Divider,
   Heading,
   HStack,
   IconButton,
   Image,
   Text,
-  Textarea,
   Tooltip,
   useColorMode,
   useMediaQuery,
@@ -23,17 +21,13 @@ import ThemeTag from "@/components/atoms/ThemeTag"
 import PosTag from "@/components/atoms/PosTag"
 import { FaCopy, FaLink, FaYoutube } from "react-icons/fa6"
 import { IoShareSocial, IoVolumeMedium } from "react-icons/io5"
-import { FaMapMarkedAlt, FaRegQuestionCircle } from "react-icons/fa"
-import { PiApproximateEqualsFill } from "react-icons/pi"
-import { LuFileJson2 } from "react-icons/lu"
-import WordItem from "@/components/organisms/WordItem"
-import { removeHTMLTags } from "@/utils/removeHTMLTags"
+import { FaMapMarkedAlt } from "react-icons/fa"
 import { useSpeech } from "@/hooks/useSpeech"
-import DetailSection from "@/components/molecules/DetailSection"
-import DefinitionSection from "@/components/organisms/DefinitionSection"
-import MetadataSection from "@/components/organisms/MetadataSection"
-import HomonymSection from "@/components/organisms/HomonymSection"
-import MapSection from "@/components/organisms/MapSection"
+import DefinitionSection from "@/components/organisms/sections/DefinitionSection"
+import HomonymSection from "@/components/organisms/sections/HomonymSection"
+import MapSection from "@/components/organisms/sections/MapSection"
+import InfoTable from "@/components/organisms/InfoTable"
+import { MdUpdate } from "react-icons/md"
 
 const WordDetailTemplate: React.FC<{
   word: Word
@@ -52,6 +46,11 @@ const WordDetailTemplate: React.FC<{
     [word.tags],
   )
 
+  const lastUpdatedDateStr = useMemo(() => {
+    const date = new Date(word.updatedAt)
+    return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`
+  }, [word.updatedAt])
+
   const background = useMemo(() => {
     return `linear-gradient(45deg, var(--chakra-colors-${colorScheme}-${colorMode === "light" ? "300" : "700"}) 0%, var(--chakra-colors-${colorScheme}-${colorMode === "light" ? "100" : "500"}) 100%);`
   }, [colorScheme, colorMode])
@@ -66,14 +65,22 @@ const WordDetailTemplate: React.FC<{
         alignItems={"flex-end"}
         py={10}
       >
-        <Container px={7} pt={"65px"} maxW={"3xl"} position={"relative"}>
-          <VStack gap={4} w={"100%"} alignItems={"flex-start"}>
-            <HStack
-              w={word.thumbnail ? "calc(100% - 150px)" : "100%"}
-              flexWrap={"wrap"}
-              gap={5}
-              rowGap={2}
-            >
+        <Container
+          px={7}
+          pt={"65px"}
+          maxW={"5xl"}
+          position={"relative"}
+          display={"flex"}
+          flexDir={"row"}
+          gap={3}
+        >
+          <VStack
+            gap={3}
+            w={"100%"}
+            alignItems={"flex-start"}
+            justifyContent={"center"}
+          >
+            <HStack w={"100%"} flexWrap={"wrap"} gap={4} rowGap={2}>
               <Heading as={"h1"} fontSize={"3xl"}>
                 {word.name}
               </Heading>
@@ -191,17 +198,15 @@ const WordDetailTemplate: React.FC<{
           </VStack>
           {word.thumbnail ? (
             <Image
-              position={"absolute"}
-              right={5}
-              top={"calc(70px)"}
               bgColor={
                 colorMode === "light" ? "whiteAlpha.500" : "blackAlpha.500"
               }
               p={1}
-              h={"150px"}
+              maxW={isMobile ? "200px" : "400px"}
+              maxH={"150px"}
               boxShadow={"lg"}
               borderRadius={4}
-              objectFit={"cover"}
+              objectFit={"contain"}
               alt={word.name}
               src={word.thumbnail}
             />
@@ -209,27 +214,56 @@ const WordDetailTemplate: React.FC<{
         </Container>
       </HStack>
 
-      <Container maxW={"3xl"} px={5} py={7}>
-        <VStack w={"100%"} alignItems={"flex-start"} gap={10}>
+      <Container
+        maxW={"5xl"}
+        px={5}
+        py={7}
+        display={"flex"}
+        flexDir={"column"}
+        alignItems={"flex-start"}
+        gap={10}
+      >
+        <HStack
+          gap={7}
+          alignItems={"flex-start"}
+          flexDir={isMobile ? "column-reverse" : "row"}
+        >
           {/* 정의 */}
           <DefinitionSection
             definition={word.definition}
             colorScheme={colorScheme}
           />
 
-          {/* 위치 */}
-          <MapSection
+          <InfoTable
+            w={isMobile ? "100%" : "300px"}
             word={word}
             colorScheme={colorScheme}
-            kakaoMapAppKey={kakaoMapAppKey}
           />
+        </HStack>
 
-          {/* 메타데이터 */}
-          <MetadataSection word={word} colorScheme={colorScheme} />
+        {/* 위치 */}
+        <MapSection
+          word={word}
+          colorScheme={colorScheme}
+          kakaoMapAppKey={kakaoMapAppKey}
+        />
 
-          {/* 동음이의어 및 다의어 */}
-          <HomonymSection homonyms={homonyms} colorScheme={colorScheme} />
-        </VStack>
+        {/* 메타데이터 */}
+        {/*<MetadataSection word={word} colorScheme={colorScheme} />*/}
+
+        {/* 동음이의어 및 다의어 */}
+        <HomonymSection homonyms={homonyms} colorScheme={colorScheme} />
+
+        <HStack
+          mt={5}
+          fontSize={"sm"}
+          color={`gray.500`}
+          w={"100%"}
+          justifyContent={"center"}
+        >
+          <MdUpdate />
+          <Text>이 문서는 {lastUpdatedDateStr}에 갱신되었습니다.</Text>
+        </HStack>
       </Container>
     </VStack>
   )

@@ -21,7 +21,6 @@ import {
 } from "@chakra-ui/react"
 import { FaLocationDot } from "react-icons/fa6"
 import { motion } from "framer-motion"
-import { useRouter } from "next-nprogress-bar"
 import { getMapLinkData } from "@/utils/getMapLinkData"
 import NextLink from "next/link"
 import { SiGooglemaps, SiKakaotalk, SiNaver } from "react-icons/si"
@@ -125,7 +124,6 @@ const MapSection: React.FC<{
   kakaoMapAppKey: string
 }> = ({ word, colorScheme = "gray", kakaoMapAppKey }) => {
   const { colorMode } = useColorMode()
-  const { push } = useRouter()
 
   if (!process.env.NEXT_PUBLIC_KAKAO_APP_KEY) {
     console.warn("Kakao App Key is not provided.")
@@ -146,7 +144,11 @@ const MapSection: React.FC<{
     return null
 
   return (
-    <DetailSection title={"위치"} icon={<FaMap />} colorScheme={colorScheme}>
+    <DetailSection
+      title={"위치 정보"}
+      icon={<FaMap />}
+      colorScheme={colorScheme}
+    >
       <Box
         w={"100%"}
         h={"400px"}
@@ -202,9 +204,10 @@ const MapSection: React.FC<{
           />
         )}
       </Box>
-      <ButtonGroup size={"sm"} w={"100%"} colorScheme={colorScheme} isAttached>
+      <ButtonGroup size={"sm"} w={"100%"} colorScheme={colorScheme}>
         <Button
-          onClick={() => push(mapLinkData.kakaoMap)}
+          as={NextLink}
+          href={mapLinkData.kakaoMap}
           w={"100%"}
           colorScheme={"yellow"}
           leftIcon={<SiKakaotalk />}
@@ -212,7 +215,8 @@ const MapSection: React.FC<{
           카카오맵
         </Button>
         <Button
-          onClick={() => push(mapLinkData.naverMap)}
+          as={NextLink}
+          href={mapLinkData.naverMap}
           w={"100%"}
           colorScheme={"green"}
           leftIcon={<SiNaver />}
@@ -220,17 +224,16 @@ const MapSection: React.FC<{
           네이버맵
         </Button>
         <Button
-          onClick={() => push(mapLinkData.googleMap)}
+          as={NextLink}
+          href={mapLinkData.googleMap}
           w={"100%"}
-          bgColor={"gray"}
-          _hover={{ bgColor: "gray" }}
+          colorScheme={"blue"}
           leftIcon={<SiGooglemaps />}
         >
           구글맵
         </Button>
         <Button
           as={NextLink}
-          ml={2}
           href={mapLinkData.kakaoRoadView}
           w={"100%"}
           colorScheme={"yellow"}
