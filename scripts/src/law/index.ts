@@ -284,7 +284,8 @@ const run = async () => {
     } else {
       const promulgationDateStr = `${metadata.promulgationDate.getFullYear()}년 ${metadata.promulgationDate.getMonth() + 1}월 ${metadata.promulgationDate.getDate()}일`;
       const enforcementDateStr = `${metadata.enforcementDate.getFullYear()}년 ${metadata.enforcementDate.getMonth() + 1}월 ${metadata.enforcementDate.getDate()}일`;
-      definition = `${metadata.agencyName}에서 소관하는 ${metadata.areaName}의 자치법규로, ${promulgationDateStr}에 공포되어 ${enforcementDateStr}에 시행되었다.`;
+      const areaNameStr = metadata.areaName ? `${metadata.areaName}의 ` : "";
+      definition = `${metadata.agencyName}에서 소관하는 ${areaNameStr}자치법규로, ${promulgationDateStr}에 공포되어 ${enforcementDateStr}에 시행되었다.`;
     }
 
     const url = "https://www.law.go.kr/" + item.자치법규상세링크;
