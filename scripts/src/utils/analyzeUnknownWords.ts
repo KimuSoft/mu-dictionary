@@ -5,6 +5,8 @@ export const analyzeAndSaveUnknownWords = async (
   id: string,
   words: string[],
 ) => {
+  if (!words.length) return;
+
   const unknownWords = analyzeUnknownWords(words);
 
   await writeFile(

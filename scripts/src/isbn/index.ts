@@ -22,18 +22,21 @@ const SUBSCRIBED_PUBLISHERS = [
   "학산문화사",
   "서울문화사",
   "디앤씨미디어",
-  "AK 커뮤니케이션즈",
   "영상출판미디어",
   "소미미디어",
-  "길찾기",
   "레진엔터테인먼트",
   "제우미디어",
-  "네이버",
-  "카카오",
   "문학동네",
   "북이십일",
   "예림당",
   "민음사",
+  "위즈덤하우스",
+  "미디어그룹",
+  "시공사",
+  "김영사",
+  "창비",
+  "웅진씽크빅",
+  "길벗",
 ];
 
 const result: MuDictDump = {
@@ -138,6 +141,11 @@ const run = async () => {
   const failed: string[] = [];
 
   for (const item of cache) {
+    // 속편 제외
+    if (parseInt(item.VOL) && parseInt(item.VOL) > 1) {
+      continue;
+    }
+
     const wordData = wordConvert(item.TITLE);
 
     const releaseYear = item.PUBLISH_PREDATE.slice(0, 4);
@@ -165,10 +173,12 @@ const run = async () => {
       definition: `${authorStr}${KDCSubjectToStr(item.SUBJECT)} 도서. ${item.PUBLISHER}에서 출판하였으며, ISBN은 '${item.EA_ISBN || item.SET_ISBN}'이다.`,
       sourceId: REFERENCE_ID + "_" + (item.EA_ISBN || item.SET_ISBN),
       url: item.PUBLISHER_URL || undefined,
+      thumbnail: item.TITLE_URL || undefined,
       metadata: {
         publishers: [item.PUBLISHER],
-        // authors,
-        // isbn: item.EA_ISBN || item.SET_ISBN,
+        authors,
+        isbn: item.EA_ISBN || item.SET_ISBN,
+        page: item.PAGE,
         releaseYear: parseInt(releaseYear) || undefined,
       },
     });

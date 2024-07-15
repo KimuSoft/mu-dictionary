@@ -56,7 +56,7 @@ export const generateMetadata = async ({
   const originStr = word.name !== word.origin ? `(${word.origin}) ` : ""
   let tagStr = word.tags.length ? ` (${word.tags[0]})` : ""
 
-  const title = word.name.replace(/[-^]/g, " ") + tagStr
+  const title = word.name.replace(/[-]/g, "").replace(/[^]/g, " ") + tagStr
   const description =
     originStr +
     (word.definition.length > 100

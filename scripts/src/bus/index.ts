@@ -6,10 +6,8 @@ import { exportMuDictJson } from "../utils/exportMuDictJson";
 import { BusStopData } from "./type";
 import { loadCache, saveCache } from "../utils/cache";
 import removeBraket from "../utils/removeBraket";
-import { PartOfSpeech, Word } from "mudict-api-types";
-import analyzeUnknownWords, {
-  analyzeAndSaveUnknownWords,
-} from "../utils/analyzeUnknownWords";
+import { PartOfSpeech } from "mudict-api-types";
+import { analyzeAndSaveUnknownWords } from "../utils/analyzeUnknownWords";
 
 const EXISTING_PATH = "./src/bus/data";
 const REFERENCE_ID = "bus";

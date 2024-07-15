@@ -57,13 +57,13 @@ export const wordConvert = (
   let name = word;
 
   // 만약 한국어가 아닌 경우 한국어로 변환함
-  if (!/^[ㅏ-ㅣㄱ-ㅎ가-힣0-9\s]+$/.test(name)) {
+  if (!/^[ㅏ-ㅣㄱ-ㅎ가-힣0-9·\s]+$/.test(name)) {
     name = convertToKorean(name, options)
-      .replace(/[^一-龯ぁ-んァ-ンa-zA-Z0-9ㄱ-ㅎ가-힣ㅏ-ㅣ\s]/g, "")
+      .replace(/[^一-龯ぁ-んァ-ンa-zA-Z0-9ㄱ-ㅎ가-힣ㅏ-ㅣ·\s]/g, "")
       .trim();
 
     // 영어가 제거가 안 되는 경우 null을 반환함
-    if (!/^[ㅏ-ㅣㄱ-ㅎ가-힣0-9\s]+$/.test(name)) {
+    if (!/^[ㅏ-ㅣㄱ-ㅎ가-힣0-9·\s]+$/.test(name)) {
       return null;
     }
   }

@@ -1,4 +1,4 @@
-import { readdir, readFile, writeFile } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import { MuDictDump, MudictDumpItem } from "../types";
 import * as XLSX from "xlsx";
 import { FoodNutritionInfo } from "./types";
@@ -78,6 +78,15 @@ const run = async () => {
         ],
         definition,
         url: `https://various.foodsafetykorea.go.kr/nutrient/general/food/firstList.do?searchText=${encodeURI(item.FoodName)}`,
+        metadata: {
+          releaseYear: item.Year,
+          manufacturer: item.ManufacturerDistributor,
+          foodCategory: item.FoodCategory,
+          foodDetailCategory: item.FoodSubcategory,
+          foodCode: item.FoodCode,
+          servingSize: item.ServingSizePerMeal + item.ContentUnit,
+          energy: item.EnergyKcal,
+        },
       };
 
       result.items.push(muDictItem);

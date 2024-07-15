@@ -27,6 +27,7 @@
     "krdict": "bun run src/krdict/index.ts",
     "isbn": "bun run src/isbn/index.ts",
     "manga": "bun run src/manga/index.ts",
+    "law": "bun run src/law/index.ts",
     "light-novel": "bun run src/light-novel/index.ts"
   },
   "keywords": [],
