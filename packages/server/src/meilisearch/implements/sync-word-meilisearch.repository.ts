@@ -8,7 +8,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 
 const indexFields: (keyof WordEntity)[] = [
-  'id',
   'sourceId',
   'name',
   'simplifiedName',
@@ -18,7 +17,6 @@ const indexFields: (keyof WordEntity)[] = [
   'pos',
   'tags',
   'thumbnail',
-  'url',
 ];
 
 @Injectable()
