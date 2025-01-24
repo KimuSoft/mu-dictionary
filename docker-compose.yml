@@ -31,6 +31,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=paring
       - POSTGRES_DB=mudict
+    restart: always
 
   meilisearch:
     image: getmeili/meilisearch:v1.1.1
